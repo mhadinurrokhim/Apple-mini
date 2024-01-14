@@ -1,15 +1,16 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\DashboardController;
+// use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ShopController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\WishlistController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::controller(ShopController::class)->group(function () {
-    Route::get('product/detail', 'productDetails')->name('user.product_detail');
+    Route::get('product/detail', 'productDetails')->name('user.product_details');
     Route::get('products', 'productList')->name('user.product_list');
 });
 Route::controller(WishlistController::class)->prefix('wishlist')->group(function () {
@@ -53,11 +54,11 @@ Route::controller(CartController::class)->prefix('cart')->group(function () {
 });
 
 
-Route::prefix('admin')->group(function() {
-    Route::get('/', [DashboardController::class,'index'])->name('admin.dashboard');
-    Route::get('/products', [DashboardController::class,'products'])->name('admin.products');
-    Route::get('/add-product', [DashboardController::class,'addProduct'])->name('admin.add_product');
-    Route::get('/customers', [DashboardController::class,'customers'])->name('admin.customers');
-    Route::get('/orders', [DashboardController::class,'orders'])->name('admin.orders');
-    Route::get('/orders-details', [DashboardController::class,'orderDetails'])->name('admin.orders_details');
+Route::prefix('admin')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/products', [DashboardController::class, 'products'])->name('admin.products');
+    Route::get('/add-product', [DashboardController::class, 'addProduct'])->name('admin.add_product');
+    Route::get('/customers', [DashboardController::class, 'customers'])->name('admin.customers');
+    Route::get('/orders', [DashboardController::class, 'orders'])->name('admin.orders');
+    Route::get('/order-details', [DashboardController::class, 'orderDetails'])->name('admin.orders_details');
 });

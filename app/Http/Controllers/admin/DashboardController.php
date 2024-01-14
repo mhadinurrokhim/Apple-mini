@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
+
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
@@ -15,6 +17,7 @@ class DashboardController extends Controller
     public function orders() {
         return view('admin.orders');
     }
+    
     public function orderDetails() {
         return view('admin.order-details');
     }
