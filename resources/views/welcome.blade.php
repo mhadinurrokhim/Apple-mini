@@ -95,7 +95,7 @@
                             @if (Route::has('login'))
                             <div class="d-flex align-items-center mt-3" style="margin-left: 150px;">
                                 @auth
-                                <a href="{{ route('home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                                <a href="{{ route('dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
                                     <button type="button" class="btn btn-outline-primary me-2" style="width: 100px;" onclick="redirectToSignIn()">Home</button>
                                 </a>
                                 @else

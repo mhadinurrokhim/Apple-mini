@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->id();
             $table->string('metode_pembayaran', 100);
-            $table->integer('no_rekening');
             $table->timestamps();
         });
     }

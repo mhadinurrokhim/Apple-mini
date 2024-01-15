@@ -1,15 +1,16 @@
 <?php
 
+use App\Http\Controllers\Homeuser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\Homeuser;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\ProdukfilterController;
 
 /*
@@ -29,11 +30,11 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Admin
 Route::middleware(['auth', 'verified', 'admin'])->group(function () {
-    Route::get('home', [HomeController::class, 'index'])->name('home');
+    Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
 
     Route::controller(KategoriController::class)->prefix('kategori')->group(function () {
         Route::get('', 'index')->name('kategori');
@@ -53,14 +54,15 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     //     Route::put('edit/{id}', 'update')->name('pelanggan.update');
     //     Route::delete('destroy/{id}', 'destroy')->name('pelanggan.destroy');
     // });
-    // Route::controller(PembayaranController::class)->prefix('pembayaran')->group(function () {
-    //     Route::get('', 'index')->name('pembayaran');
-    //     Route::get('create', 'create')->name('pembayaran.create');
-    //     Route::post('store', 'store')->name('pembayaran.store');
-    //     Route::get('edit/{id}', 'edit')->name('pembayaran.edit');
-    //     Route::put('edit/{id}', 'update')->name('pembayaran.update');
-    //     Route::delete('destroy/{id}', 'destroy')->name('pembayaran.destroy');
-    // });
+    Route::controller(PembayaranController::class)->prefix('pembayaran')->group(function () {
+        Route::get('', 'index')->name('pembayaran');
+        Route::get('create', 'create')->name('pembayaran.create');
+        Route::post('store', 'store')->name('pembayaran.store');
+        Route::get('edit/{id}', 'edit')->name('pembayaran.edit');
+        Route::put('edit/{id}', 'update')->name('pembayaran.update');
+        Route::get('destroy/{id}', 'destroy')->name('pembayaran.destroy');
+        // Route::delete('destroy/{id}', 'destroy')->name('pembayaran.destroy');
+    });
     Route::controller(ProdukController::class)->prefix('produk')->group(function () {
         Route::get('/', 'index')->name('produk.index');
         Route::get('create', 'create')->name('produk.create');
