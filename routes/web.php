@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\Homeuser;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\WishlistController;
@@ -105,9 +106,11 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
 });
 
 // User
+Route::get('/homeuser', [Homeuser::class, 'index']);
 // Route::get('/home', [HomeController::class, 'home']);
-Route::get('/produkfilter', [ProdukfilterController::class, 'produkfilter']);
-Route::get('/wishlist', [WishlistController::class, 'wishlist']);
-Route::get('/tracking', [TrackingController::class, 'tracking']);
-Route::get('/checkout', [CheckoutController::class, 'checkout']);
-Route::get('/profil', [ProfilController::class, 'profil']);
+// Route::get('/homeuser', [Homeuser::class, 'Homeuser']);
+// Route::get('/produkfilter', [ProdukfilterController::class, 'produkfilter']);
+// Route::get('/wishlist', [WishlistController::class, 'wishlist']);
+// Route::get('/tracking', [TrackingController::class, 'tracking']);
+// Route::get('/checkout', [CheckoutController::class, 'checkout']);
+// Route::get('/profil', [ProfilController::class, 'profil']);
