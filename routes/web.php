@@ -12,6 +12,7 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\HomeUserController;
 use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\AdminorderController;
@@ -39,7 +40,7 @@ Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware(['web', 'auth'])->group(function () {
-    
+
 });
 
 // Admin
@@ -106,7 +107,7 @@ Route::middleware(['web', 'auth'])->group(function () {
 // });
 
 // USER
-Route::get('/homeuser', [Homeuser::class, 'index']);
+Route::get('/homeuser', [HomeUserController::class, 'homeuser']);
 // Route::get('/home', [HomeController::class, 'home']);
 // Route::get('/homeuser', [Homeuser::class, 'Homeuser']);
 // Route::get('/produkfilter', [ProdukfilterController::class, 'produkfilter']);

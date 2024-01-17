@@ -66,6 +66,8 @@
 
       <!-- ============================================-->
       <!-- <section> begin ============================-->
+
+
       <section class="py-0">
         <div class="container-small">
           <div class="ecommerce-topbar">
@@ -347,6 +349,126 @@
                   </div> --}}
                 </div>
               </div>
+            </div>
+            @foreach ($produk as $product)
+
+            <div class="row g-4 mb-6">
+                <div class="col-12 col-lg-9 col-xxl-10">
+                    <div class="d-flex flex-between-center mb-3">
+                        <div class="d-flex"><span class="fas fa-bolt text-warning fs-2"></span>
+                            <h3 class="mx-2">Top Deals today</h3><span class="fas fa-bolt text-warning fs-2"></span>
+                        </div><a class="btn btn-link btn-lg p-0 d-none d-md-block" href="#!">Explore more<span class="fas fa-chevron-right fs--1 ms-1"></span></a>
+                    </div>
+                <div class="swiper-theme-container products-slider">
+                  <div class="swiper swiper-container theme-slider" data-swiper='{"slidesPerView":1,"spaceBetween":16,"breakpoints":{"450":{"slidesPerView":2,"spaceBetween":16},"768":{"slidesPerView":3,"spaceBetween":20},"1200":{"slidesPerView":4,"spaceBetween":16},"1540":{"slidesPerView":5,"spaceBetween":16}}}'>
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <div class="position-relative text-decoration-none product-card h-100">
+                          <div class="d-flex flex-column justify-content-between h-100">
+                            <div>
+                              <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/6.png" alt="" /></div><a class="stretched-link" href="product-details.html">
+                                <h6 class="mb-2 lh-sm line-clamp-3 product-name">{{ $product->nama_produk }}</h6>
+                              </a>
+                              <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(67 people rated)</span></p>
+                            </div>
+                            <div>
+                              <p class="fs--1 text-1000 fw-bold mb-2">{{ $product->deskripsi }}</p>
+                              <div class="d-flex align-items-center mb-1">
+                                <p class="me-2 text-900 text-decoration-line-through mb-0">IDR.21999000</p>
+                                <h3 class="text-1100 mb-0">IDR.{{ $product->harga }}</h3>
+                              </div>
+                              <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    @endforeach
+                      <div class="swiper-slide">
+                          <div class="position-relative text-decoration-none product-card h-100">
+                          <div class="d-flex flex-column justify-content-between h-100">
+                            <div>
+                              <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/2.png" alt="" /></div><a class="stretched-link" href="product-details.html">
+                                <h6 class="mb-2 lh-sm line-clamp-3 product-name">iPhone 13 pro max-Pacific Blue, 128GB storage</h6>
+                              </a>
+                              <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(33 people rated)</span></p>
+                            </div>
+                            <div>
+                              <p class="fs--1 text-1000 fw-bold mb-2">Stock limited</p>
+                              <div class="d-flex align-items-center mb-1">
+                                <p class="me-2 text-900 text-decoration-line-through mb-0">$899.99</p>
+                                <h3 class="text-1100 mb-0">$850.99</h3>
+                              </div>
+                              <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">5 colors</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="position-relative text-decoration-none product-card h-100">
+                          <div class="d-flex flex-column justify-content-between h-100">
+                            <div>
+                              <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/3.png" alt="" /></div><a class="stretched-link" href="product-details.html">
+                                <h6 class="mb-2 lh-sm line-clamp-3 product-name">Apple MacBook Pro 13 inch-M1-8/256GB-Space Gray</h6>
+                              </a>
+                              <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(97 people rated)</span></p>
+                            </div>
+                            <div>
+                              <p class="fs--1 text-1000 fw-bold mb-2">Apple care included</p>
+                              <div class="d-flex align-items-center mb-1">
+                                <p class="me-2 text-900 text-decoration-line-through mb-0">$1299.00</p>
+                                <h3 class="text-1100 mb-0">$1149.00</h3>
+                              </div>
+                              <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="position-relative text-decoration-none product-card h-100">
+                          <div class="d-flex flex-column justify-content-between h-100">
+                            <div>
+                              <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/4.png" alt="" /></div><a class="stretched-link" href="product-details.html">
+                                <h6 class="mb-2 lh-sm line-clamp-3 product-name">Apple iMac 24&quot; 4K Retina Display M1 8 Core CPU, 7 Core GPU, 256GB SSD, Green (MJV83ZP/A) 2021</h6>
+                              </a>
+                              <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(134 people rated)</span></p>
+                            </div>
+                            <div>
+                              <p class="fs--1 text-1000 fw-bold mb-2">Exchange with kidney</p>
+                              <div class="d-flex align-items-center mb-1">
+                                <p class="me-2 text-900 text-decoration-line-through mb-0">$1499.00</p>
+                                <h3 class="text-1100 mb-0">$1399.00</h3>
+                              </div>
+                              <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">7 colors</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="position-relative text-decoration-none product-card h-100">
+                          <div class="d-flex flex-column justify-content-between h-100">
+                            <div>
+                              <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/5.png" alt="" /></div><a class="stretched-link" href="product-details.html">
+                                <h6 class="mb-2 lh-sm line-clamp-3 product-name">Razer Kraken v3 x Wired 7.1 Surroung Sound Gaming headset</h6>
+                              </a>
+                              <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(59 people rated)</span></p>
+                            </div>
+                            <div>
+                              <h3 class="text-1100">$59.00</h3>
+                              <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-nav swiper-product-nav">
+                    <div class="swiper-button-next"><span class="fas fa-chevron-right nav-icon"></span></div>
+                    <div class="swiper-button-prev"><span class="fas fa-chevron-left nav-icon"></span></div>
+                  </div>
+                </div><a class="fw-bold d-md-none px-0" href="#!">Explore more<span class="fas fa-chevron-right fs--1 ms-1"></span></a>
+              </div>
+              <div class="col-12 d-lg-none"><a href="#!"><img class="w-100 rounded-3" src="../../../assets/img/e-commerce/6.png" alt="" /></a></div>
             </div>
             <div class="mb-6">
               <div class="d-flex flex-between-center mb-3">
