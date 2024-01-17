@@ -124,7 +124,7 @@
                                             <hr class="bg-200" />
                                             <div class="divider-content-center bg-white">or use email</div>
                                         </div>
-                                        <form method="POST" action="{{ route('register') }}">
+                                        <form method="POST" action="{{ route('Createregister') }}">
                                             @csrf
 
                                             <div class="mb-3 text-start"><label class="form-label"
