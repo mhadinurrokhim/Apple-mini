@@ -5,74 +5,70 @@
         document.querySelector('body').classList.add(`navbar-${navbarStyle}`);
       }
     </script>
+    {{-- SIDEBAR --}}
     <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
       <!-- scrollbar removed-->
       <div class="navbar-vertical-content">
         <ul class="navbar-nav flex-column" id="navbarVerticalNav">
           <li class="nav-item">
             <!-- parent pages-->
-            <div class="nav-item-wrapper"><a class="nav-link dropdown-indicator label-1 {{ request()->is('dashboard/*') ? 'active' : ( request()->is('dashboard') ? 'active' : '') }}" href="{{ route('dashboard') }}" role="button" data-bs-toggle="" aria-expanded="false" aria-controls="nv-home">
-                <div class="d-flex align-items-center">
-                  <div class="dropdown-indicator-icon"></div><span class="nav-link-icon"><span data-feather="pie-chart"></span></span><span class="nav-link-text">Dashboard</span>
-                </div>
+            {{-- <div class="nav-item-wrapper"><a class="nav-link dropdown-indicator label-1 {{ request()->is('dashboard/*') ? 'active' : ( request()->is('dashboard') ? 'active' : '') }}" href="{{ route('dashboard') }}" role="button" data-bs-toggle="" aria-expanded="false" aria-controls="nv-home"> --}}
               </a>
-              <div class="parent-wrapper label-1">
-                <ul class="nav collapse parent" data-bs-par
-                ent="#navbarVerticalCollapse" id="nv-home">
-                  <li class="collapsed-nav-item-title d-none">Home</li>
-                  <li class="nav-item"><a class="nav-link" href="../../../index.html" data-bs-toggle="" aria-expanded="false">
-                      <div class="d-flex align-items-center"><span class="nav-link-text">E commerce</span></div>
-                    </a><!-- more inner pages-->
-                  </li>
-                  <li class="nav-item"><a class="nav-link" href="../../../dashboard/project-management.html" data-bs-toggle="" aria-expanded="false">
-                      <div class="d-flex align-items-center"><span class="nav-link-text">Project management</span></div>
-                    </a><!-- more inner pages-->
-                  </li>
-                  <li class="nav-item"><a class="nav-link" href="../../../dashboard/crm.html" data-bs-toggle="" aria-expanded="false">
-                      <div class="d-flex align-items-center"><span class="nav-link-text">CRM</span><span class="badge ms-2 badge badge-phoenix badge-phoenix-info ">New</span></div>
-                    </a><!-- more inner pages-->
-                  </li>
-                  <li class="nav-item"><a class="nav-link" href="../../social/feed.html" data-bs-toggle="" aria-expanded="false">
-                      <div class="d-flex align-items-center"><span class="nav-link-text">Social feed</span></div>
-                    </a><!-- more inner pages-->
-                  </li>
-                </ul>
-              </div>
-            </div>
+              <div class="nav-item-wrapper">
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('dashboard.side') ? 'active' : '' }}" href="{{ route('dashboard.side') }}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center">
+                            <span class="nav-link-icon">
+                                <span data-feather="pie-chart"></span>
+                            </span>
+                            <span class="nav-link-text">Dashboard</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('produk.side') ? 'active' : '' }}" href="{{ route('produk.side') }}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center">
+                            <span class="nav-link-icon">
+                                <span data-feather="package"></span>
+                            </span>
+                            <span class="nav-link-text">Product</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('order.side') ? 'active' : '' }}" href="{{ route('order.side') }}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center">
+                            <span class="nav-link-icon">
+                                <span data-feather="shopping-bag"></span>
+                            </span>
+                            <span class="nav-link-text">Order</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('kategori.side') ? 'active' : '' }}" href="{{ route('kategori.side') }}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center">
+                            <span class="nav-link-icon">
+                                <span data-feather="align-justify"></span>
+                            </span>
+                            <span class="nav-link-text">Category</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center">
+                            <span class="nav-link-icon">
+                                <span data-feather=""></span>
+                            </span>
+                            <span class="nav-link-text"></span>
+                        </div>
+                    </a>
+                </li>
           </li>
-          <li class="nav-item">
-            <!-- label-->
-            <hr class="navbar-vertical-line" /><!-- parent pages-->
-            <div class="nav-item-wrapper"><a class="nav-link dropdown-indicator label-1" href="#nv-e-commerce" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="nv-e-commerce">
-                <div class="d-flex align-items-center">
-                  <div class="dropdown-indicator-icon"><span class="fas fa-caret-right"></span></div><span class="nav-link-icon"><span data-feather="user"></span></span><span class="nav-link-text">Admin</span>
-                </div>
-              </a>
-              <div class="parent-wrapper label-1">
-                <ul class="nav collapse parent show" data-bs-parent="#navbarVerticalCollapse" id="nv-e-commerce">
-                  <li class="nav-item"><a class="nav-link  {{ request()->is('produk/*') ? 'active' : ( request()->is('produk') ? 'active' : '') }}" href="{{ route('produk.index') }}" data-bs-toggle="" aria-expanded="false">
-                        <div class="d-flex align-items-center"><span class="nav-link-text">Product</span></div>
-                    </a><!-- more inner pages-->
-                  </li>
-                  <li class="nav-item"><a class="nav-link  {{ request()->is('kategori/*') ? 'active' : ( request()->is('kategori') ? 'active' : '') }}" href="{{ route('kategori') }}" data-bs-toggle="" aria-expanded="false">
-                        <div class="d-flex align-items-center"><span class="nav-link-text">Category</span></div>
-                    </a><!-- more inner pages-->
-                  </li>
-                  <li class="nav-item"><a class="nav-link  {{ request()->is('produk/*') ? 'active' : ( request()->is('pembayaran') ? 'active' : '') }}" href="{{ route('pembayaran') }}" data-bs-toggle="" aria-expanded="false">
-                        <div class="d-flex align-items-center"><span class="nav-link-text">Payment</span></div>
-                    </a><!-- more inner pages-->
-                  </li>
-                  <li class="nav-item"><a class="nav-link  {{ request()->is('produk/*') ? 'active' : ( request()->is('produk') ? 'active' : '') }}" href="{{ route('produk.index') }}" data-bs-toggle="" aria-expanded="false">
-                        <div class="d-flex align-items-center"><span class="nav-link-text">Product</span></div>
-                    </a><!-- more inner pages-->
-                  </li>
-                  <li class="nav-item"><a class="nav-link  {{ request()->is('produk/*') ? 'active' : ( request()->is('produk') ? 'active' : '') }}" href="{{ route('produk.index') }}" data-bs-toggle="" aria-expanded="false">
-                        <div class="d-flex align-items-center"><span class="nav-link-text">Product</span></div>
-                    </a><!-- more inner pages-->
-                  </li>
-                </ul>
-              </div>
-            </div><!-- parent pages-->
+        </div>
+    </div>
     <div class="navbar-vertical-footer"><button class="btn navbar-vertical-toggle border-0 fw-semi-bold w-100 white-space-nowrap d-flex align-items-center"><span class="uil uil-left-arrow-to-left fs-0"></span><span class="uil uil-arrow-from-right fs-0"></span><span class="navbar-vertical-footer-text ms-2">Collapsed View</span></button></div>
   </nav>
   <nav class="navbar navbar-top fixed-top navbar-expand" id="navbarDefault" style="display:none;">
@@ -88,13 +84,13 @@
         </a>
       </div>
       <div class="search-box navbar-top-search-box d-none d-lg-block" data-list='{"valueNames":["title"]}' style="width:25rem;">
-        <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input class="form-control search-input fuzzy-search rounded-pill form-control-sm" type="search" placeholder="Search..." aria-label="Search" />
+        {{-- <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input class="form-control search-input fuzzy-search rounded-pill form-control-sm" type="search" placeholder="Search..." aria-label="Search" />
           <span class="fas fa-search search-box-icon"></span>
         </form>
         <div class="btn-close position-absolute end-0 top-50 translate-middle cursor-pointer shadow-none" data-bs-dismiss="search"><button class="btn btn-link btn-close-falcon p-0" aria-label="Close"></button></div>
         <div class="dropdown-menu border border-300 font-base start-0 py-0 overflow-hidden w-100">
-          <div class="scrollbar-overlay" style="max-height: 30rem;">
-            <div class="list pb-3">
+          <div class="scrollbar-overlay" style="max-height: 30rem;"> --}}
+            {{-- <div class="list pb-3">
               <h6 class="dropdown-header text-1000 fs--2 py-2">24 <span class="text-500">results</span></h6>
               <hr class="text-200 my-0" />
               <h6 class="dropdown-header text-1000 fs--1 border-bottom border-200 py-2 lh-sm">Recently Searched </h6>
@@ -191,7 +187,7 @@
                   </div>
                 </a>
               </div>
-            </div>
+            </div> --}}
             <div class="text-center">
               <p class="fallback fw-bold fs-1 d-none">No Result Found.</p>
             </div>
@@ -422,7 +418,7 @@
   </nav>
   <nav class="navbar navbar-top navbar-slim fixed-top navbar-expand" id="topNavSlim" style="display:none;">
     <div class="collapse navbar-collapse justify-content-between">
-      <div class="navbar-logo">
+      {{-- <div class="navbar-logo">
         <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
         <a class="navbar-brand navbar-brand" href="../../../index.html">phoenix <span class="text-1000 d-none d-sm-inline">slim</span></a>
       </div>
@@ -643,10 +639,10 @@
           </div>
         </li>
       </ul>
-    </div>
+    </div> --}}
   </nav>
   <nav class="navbar navbar-top fixed-top navbar-expand-lg" id="navbarTop" style="display:none;">
-    <div class="navbar-logo">
+    {{-- <div class="navbar-logo">
       <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTopCollapse" aria-controls="navbarTopCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
       <a class="navbar-brand me-1 me-sm-3" href="../../../index.html">
         <div class="d-flex align-items-center">
@@ -655,8 +651,8 @@
           </div>
         </div>
       </a>
-    </div>
-    <div class="collapse navbar-collapse navbar-top-collapse order-1 order-lg-0 justify-content-center" id="navbarTopCollapse">
+    </div> --}}
+    {{-- <div class="collapse navbar-collapse navbar-top-collapse order-1 order-lg-0 justify-content-center" id="navbarTopCollapse">
       <ul class="navbar-nav navbar-nav-top" data-dropdown-on-hover="data-dropdown-on-hover">
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle lh-1" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false"><span class="uil fs-0 me-2 uil-chart-pie"></span>Home</a>
           <ul class="dropdown-menu navbar-dropdown-caret">
@@ -1147,7 +1143,7 @@
           </ul>
         </li>
       </ul>
-    </div>
+    </div> --}}
     <ul class="navbar-nav navbar-nav-icons flex-row">
       <li class="nav-item">
         <div class="theme-control-toggle fa-icon-wait px-2"><input class="form-check-input ms-0 theme-control-toggle-input" type="checkbox" data-theme-control="phoenixTheme" value="dark" id="themeControlToggle" /><label class="mb-0 theme-control-toggle-label theme-control-toggle-light" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span class="icon" data-feather="moon"></span></label><label class="mb-0 theme-control-toggle-label theme-control-toggle-dark" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span class="icon" data-feather="sun"></span></label></div>
@@ -3538,7 +3534,7 @@
             </div>
           </a>
         </div>
-        <div class="search-box navbar-top-search-box d-none d-lg-block" data-list='{"valueNames":["title"]}' style="width:25rem;">
+        {{-- <div class="search-box navbar-top-search-box d-none d-lg-block" data-list='{"valueNames":["title"]}' style="width:25rem;">
           <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input class="form-control search-input fuzzy-search rounded-pill form-control-sm" type="search" placeholder="Search..." aria-label="Search" />
             <span class="fas fa-search search-box-icon"></span>
           </form>
@@ -3648,7 +3644,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> --}}
         <ul class="navbar-nav navbar-nav-icons flex-row">
           <li class="nav-item">
             <div class="theme-control-toggle fa-icon-wait px-2"><input class="form-check-input ms-0 theme-control-toggle-input" type="checkbox" data-theme-control="phoenixTheme" value="dark" id="themeControlToggle" /><label class="mb-0 theme-control-toggle-label theme-control-toggle-light" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span class="icon" data-feather="moon"></span></label><label class="mb-0 theme-control-toggle-label theme-control-toggle-dark" for="themeControlToggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span class="icon" data-feather="sun"></span></label></div>
@@ -3769,7 +3765,7 @@
             </div>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link" id="navbarDropdownNindeDots" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" data-bs-auto-close="outside" aria-expanded="false"><svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {{-- <a class="nav-link" id="navbarDropdownNindeDots" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" data-bs-auto-close="outside" aria-expanded="false"><svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="2" cy="2" r="2" fill="currentColor"></circle>
                 <circle cx="2" cy="8" r="2" fill="currentColor"></circle>
                 <circle cx="2" cy="14" r="2" fill="currentColor"></circle>
@@ -3779,10 +3775,10 @@
                 <circle cx="14" cy="14" r="2" fill="currentColor"></circle>
                 <circle cx="8" cy="2" r="2" fill="currentColor"></circle>
                 <circle cx="14" cy="2" r="2" fill="currentColor"></circle>
-              </svg></a>
+              </svg></a> --}}
             <div class="dropdown-menu dropdown-menu-end navbar-dropdown-caret py-0 dropdown-nide-dots shadow border border-300" aria-labelledby="navbarDropdownNindeDots">
               <div class="card bg-white position-relative border-0">
-                <div class="card-body pt-3 px-3 pb-0 overflow-auto scrollbar" style="height: 20rem;">
+                {{-- <div class="card-body pt-3 px-3 pb-0 overflow-auto scrollbar" style="height: 20rem;">
                   <div class="row text-center align-items-center gx-0 gy-0">
                     <div class="col-4"><a class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3" href="#!"><img src="../../../assets/img/nav-icons/behance.webp" alt="" width="30" />
                         <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Behance</p>
@@ -3827,18 +3823,18 @@
                         <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Spotify</p>
                       </a></div>
                   </div>
-                </div>
+                </div> --}}
               </div>
             </div>
           </li>
           <li class="nav-item dropdown"><a class="nav-link lh-1 pe-0" id="navbarDropdownUser" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
-              <div class="avatar avatar-l ">
+              {{-- <div class="avatar avatar-l ">
                 <img class="rounded-circle " src="../../../assets/img/team/40x40/57.webp" alt="" />
-              </div>
+              </div> --}}
             </a>
             <div class="dropdown-menu dropdown-menu-end navbar-dropdown-caret py-0 dropdown-profile shadow border border-300" aria-labelledby="navbarDropdownUser">
               <div class="card position-relative border-0">
-                <div class="card-body p-0">
+                {{-- <div class="card-body p-0">
                   <div class="text-center pt-4 pb-3">
                     <div class="avatar avatar-xl ">
                       <img class="rounded-circle " src="../../../assets/img/team/72x72/57.webp" alt="" />
@@ -3846,8 +3842,8 @@
                     <h6 class="mt-2 text-black">Jerry Seinfield</h6>
                   </div>
                   <div class="mb-3 mx-3"><input class="form-control form-control-sm" id="statusUpdateInput" type="text" placeholder="Update your status" /></div>
-                </div>
-                <div class="overflow-auto scrollbar" style="height: 10rem;">
+                </div> --}}
+                {{-- <div class="overflow-auto scrollbar" style="height: 10rem;">
                   <ul class="nav d-flex flex-column mb-2 pb-1">
                     <li class="nav-item"><a class="nav-link px-3" href="#!"> <span class="me-2 text-900" data-feather="user"></span><span>Profile</span></a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#!"><span class="me-2 text-900" data-feather="pie-chart"></span>Dashboard</a></li>
@@ -3856,21 +3852,21 @@
                     <li class="nav-item"><a class="nav-link px-3" href="#!"> <span class="me-2 text-900" data-feather="help-circle"></span>Help Center</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#!"> <span class="me-2 text-900" data-feather="globe"></span>Language</a></li>
                   </ul>
-                </div>
-                <div class="card-footer p-0 border-top">
+                </div> --}}
+                {{-- <div class="card-footer p-0 border-top">
                   <ul class="nav d-flex flex-column my-3">
                     <li class="nav-item"><a class="nav-link px-3" href="#!"> <span class="me-2 text-900" data-feather="user-plus"></span>Add another account</a></li>
                   </ul>
                   <hr />
                   <div class="px-3"> <a class="btn btn-phoenix-secondary d-flex flex-center w-100" href="#!"> <span class="me-2" data-feather="log-out"> </span>Sign out</a></div>
                   <div class="my-2 text-center fw-bold fs--2 text-600"><a class="text-600 me-1" href="#!">Privacy policy</a>&bull;<a class="text-600 mx-1" href="#!">Terms</a>&bull;<a class="text-600 ms-1" href="#!">Cookies</a></div>
-                </div>
+                </div> --}}
               </div>
             </div>
           </li>
         </ul>
       </div>
-      <div class="collapse navbar-collapse navbar-top-collapse justify-content-center" id="navbarTopCollapse">
+      {{-- <div class="collapse navbar-collapse navbar-top-collapse justify-content-center" id="navbarTopCollapse">
         <ul class="navbar-nav navbar-nav-top" data-dropdown-on-hover="data-dropdown-on-hover">
           <li class="nav-item dropdown"><a class="nav-link dropdown-toggle lh-1" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false"><span class="uil fs-0 me-2 uil-chart-pie"></span>Home</a>
             <ul class="dropdown-menu navbar-dropdown-caret">
@@ -4361,6 +4357,6 @@
             </ul>
           </li>
         </ul>
-      </div>
+      </div> --}}
     </div>
   </nav>

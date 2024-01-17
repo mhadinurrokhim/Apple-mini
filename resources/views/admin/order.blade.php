@@ -223,7 +223,7 @@
     <div class="mb-9">
       <div class="row g-3 mb-4">
         <div class="col-auto">
-          <h2 class="mb-0">Products</h2>
+          <h2 class="mb-0">Order</h2>
         </div>
       </div>
       <div id="products" data-list='{"valueNames":["product","price","category","tags","vendor","time"],"page":10,"pagination":true}'>
@@ -238,9 +238,9 @@
               <div class="btn-group position-static" role="group">
             <div class="ms-xxl-auto">
                 <button class="btn btn-link text-900 me-4 px-0"></button>
-                <a href="{{ route('tambah.produk') }}" class="btn btn-primary" id="addBtn">
+                {{-- <a href="{{ route('tambah.produk') }}" class="btn btn-primary" id="addBtn">
                     <span class="fas fa-plus me-2"></span>Add product
-                </a>
+                </a> --}}
             </div>
           </div>
         </div>
@@ -252,41 +252,32 @@
                 <tr class="text-center">
 
                     <th class="white-space-nowrap align-middle ps-4 fs--1 text-dark" style="width:350px;" data-sort="no">NO</th>
-                    <th class="white-space-nowrap align-middle ps-4 fs--1 text-dark" style="width:350px;" data-sort="path_produk">IMAGE</th>
-                    <th class="white-space-nowrap align-middle ps-4 fs--1 text-dark" style="width:350px;" data-sort="path_nama">PRODUCT NAME</th>
+                    <th class="white-space-nowrap align-middle ps-4 fs--1 text-dark" style="width:350px;" data-sort="pelanggan">NAME CUSTOMERS</th>
+                    <th class="white-space-nowrap align-middle ps-4 fs--1 text-dark" style="width:350px;" data-sort="email">EMAIL</th>
                     {{-- <th class="white-space-nowrap align-middle fs--2" style="width:70px;"></th> --}}
-                    <th class="white-space-nowrap align-middle text-end fs--1 ps-4 text-dark" style="width:150px;" data-sort="harga">PRICE</th>
-                    <th class="white-space-nowrap align-middle fs--1 ps-4 text-dark" style="width:150px;" data-sort="categori">CATEGORY</th>
-                    <th class="white-space-nowrap align-middle fs--1 ps-4 text-dark" style="width:200px;" data-sort="stok">PRODUCT STOCK</th>
-                    <th class="white-space-nowrap align-middle fs--1 ps-4 text-dark" style="width:10px;" data-sort="deskripsi">PRODUCT DESCRIPTION</th>
-                    <th class="white-space-nowrap align-middle fs--1 ps-4 text-dark" style="width:50px;" data-sort="ACTION">ACTION</th>
+                    <th class="white-space-nowrap align-middle text-end fs--1 ps-4 text-dark" style="width:150px;" data-sort="detail">ORDER DETAILS</th>
+                    <th class="white-space-nowrap align-middle fs--1 ps-4 text-dark" style="width:150px;" data-sort="status">STATUS</th>
+                    <th class="white-space-nowrap align-middle fs--1 ps-4 text-dark" style="width:50px;" data-sort="action">ACTION</th>
                 </tr>
               </thead>
               <tbody class="list" id="products-table-body text-center">
-                @foreach ($produk as $no => $produks )
                 <tr class="position-static text-center">
                   <td class="align-middle review fs-0 text-center ps-4">
-                    {{ ++$no }}
+
                   </td>
                   <td class="align-middle white-space-nowrap mx-auto text-center py-0">
-                    <a class="d-block border rounded-2 mx-auto" href="">
-                        <img src="{{ asset('storage/Product/'. $produks->path_produk) }}" alt="" width="100%" height="100" style="object-fit: cover" class="mx-auto"/>
-                    </a>
+                    <td class="price align-middle white-space-nowrap text-end fw-bold fs--1  text-700 ps-4"></td>
                 </td>
                   <td class="produks align-middle ps-4">
-                    <a class="fw-semi-bold fs--1  line-clamp-3 mb-0" href="../landing/produks-details.html">{{ $produks->nama_produk }}</a>
+                    <a class="fw-semi-bold fs--1  line-clamp-3 mb-0" href="../landing/produks-details.html"></a>
                 </td>
-                  <td class="price align-middle white-space-nowrap text-end fw-bold fs--1  text-700 ps-4">{{'Rp ' . number_format( $produks->harga, 0, ',', '.') }}</td>
-                  <td class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold">{{ $produks->kategori_id }}</td>
-                  <td class="tags align-middle review pb-2 ps-3 fs--1 "  style="width:200px;">{{ $produks->stok }}</td>
-                  <td class="align-middle review fs-0 text-center  ps-4 text-truncate" style="max-width: 6px" >{!!$produks->deskripsi!!}</td>
+                  <td class="price align-middle white-space-nowrap text-end fw-bold fs--1  text-700 ps-4"></td>
+                  <td class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold"></td>
+                  <td class="tags align-middle review pb-2 ps-3 fs--1 "  style="width:200px;"></td>
+                  <td class="align-middle review fs-0 text-center  ps-4 text-truncate" style="max-width: 6px" ></td>
                   <td class="align-middle review fs-0 text-center ps-4">
-                    <a href="{{ route('produk.edit',$produks->id) }}"method="POST" enctype="multipart/form-data" class="btn btn-primary" >
-                    edit
-                    </a>
                   </td>
                 </tr>
-                @endforeach
               </tbody>
             </table>
           </div>

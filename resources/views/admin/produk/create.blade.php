@@ -259,209 +259,111 @@
     </script>
     <div class="content">
         <nav class="mb-2" aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="#!">Page 1</a></li>
-                <li class="breadcrumb-item"><a href="#!">Page 2</a></li>
-                <li class="breadcrumb-item active">Default</li>
-            </ol>
         </nav>
-        <form action="{{ route('produk.store') }}" method="POST" enctype="multipart/form-data" class="mb-9">
-            @csrf
+       {{-- {{ TAMBAH }} --}}
+    <form class="mb-9" action="{{ route('produk.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="row g-5">
+          <div class="col-12 col-xl-8">
+            <h4 class="mb-3">Product Title</h4><input class="form-control mb-5" type="text" name="nama_produk"
+              placeholder="Write title here..." />
+            <div class="mb-6">
+              <h4 class="mb-3"> Product Description</h4>
+              <textarea class="tinymce" name="deskripsi"
+                data-tinymce='{"height":"15rem","placeholder":"Write a description here...","plugins": "nonbreaking"}'></textarea>
+            </div>
+            <h4 class="mb-3">Display images</h4>
+            <div>
+          <input type="file" name="path_produk" id=""
+              placeholder=""
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white "
+              required>
+          </div>
 
-            <div class="row g-3 flex-between-end mb-5">
-                <div class="col-auto">
-                    <h2 class="mb-2">Add a product</h2>
-                    <h5 class="text-700 fw-semi-bold">Orders placed across your store</h5>
+            {{-- <div class="dropzone dropzone-multiple p-0" id="dropzone" data-dropzone="data-dropzone"
+              data-options='{"url":"valid/url","maxFiles":1,"dictDefaultMessage":"Choose or Drop a file here"}'>
+              <div class="fallback"><input type="file" name="image" /></div>
+              <div class="dz-message" data-dz-message="data-dz-message">
+                <div class="dz-message-text"><img class="me-2" src="../../../assets/img/icons/cloud-upload.svg"
+                    width="25" alt="" />Drop your file here</div>
+              </div>
+              <div class="dz-preview dz-preview-multiple m-0 d-flex flex-column">
+                <div class="d-flex pb-3 border-bottom media px-2">
+                  <div class="border border-300 p-2 rounded-2 me-2"><img class="rounded-2 dz-image"
+                      src="../../../assets/img/icons/file.png" alt="..." data-dz-thumbnail="data-dz-thumbnail" />
+                  </div>
+                  <div class="flex-1 d-flex flex-between-center">
+                    <div>
+                      <h6 data-dz-name="data-dz-name"></h6>
+                      <div class="d-flex align-items-center">
+                        <p class="mb-0 fs--1 text-400 lh-1" data-dz-size="data-dz-size"></p>
+                        <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress=""></span></div>
+                      </div><span class="fs--2 text-danger" data-dz-errormessage="data-dz-errormessage"></span>
+                    </div>
+                    <div class="dropdown font-sans-serif"><button
+                        class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal dropdown-caret-none" type="button"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span
+                          class="fas fa-ellipsis-h"></span></button>
+                      <div class="dropdown-menu dropdown-menu-end border py-2"><a class="dropdown-item" href="#!"
+                          data-dz-remove="data-dz-remove">Remove File</a></div>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-auto"><button class="btn btn-phoenix-secondary me-2 mb-2 mb-sm-0"
-                        type="button">Discard</button><button class="btn btn-primary mb-2 mb-sm-0"
-                        type="submit">Publish product</button></div>
-            </div>
-            <div class="row g-5">
-                <div class="col-12 col-xl-8">
-                    <h4 class="mb-3">Product Title</h4><input
-                        class="form-control mb-2 @error('nama_produk') is-invalid @enderror" name="nama_produk"
-                        value="{{ old('nama_produk') }}" type="text" placeholder="Write title here..." />
-                    @error('nama_produk')
-                        <div class="invalid-feedback">
-                            {{ $message }}
+              </div>
+            </div> --}}
+
+          </div>
+          <div class="col-12 col-xl-4">
+            <div class="row g-2">
+              <div class="col-12 col-xl-12">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <h4 class="card-title mb-4">Organize</h4>
+                    <div class="row gx-3">
+                      <div class="col-12 col-sm-6 col-xl-12">
+                        <div class="mb-4">
+                          <div class="d-flex flex-wrap mb-2">
+                            <h5 class="mb-0 text-1000 me-2">kategori</h5><a class="fw-bold fs--1" href="#!"></a>
+                          </div>
+                          <select class="form-select mb-3 @error('kategori_id') is-invalid @enderror"name="kategori_id" value="{{ old('kategori_id') }}"aria-label="category">
+                          @foreach ($kategori as $kategoris)
+                              <option value="{{ $kategoris->id }}">
+                                  {{ $kategoris->nama_kategori }}
+                              </option>
+                          @endforeach
+                      </select>
                         </div>
-                    @enderror
-                    <div class="mb-6">
-                        <h4 class="mb-3"> Product Description</h4>
-                        <textarea class="tinymce @error('deskripsi') is-invalid @enderror" name="deskripsi" name="content"
-                            data-tinymce='{"height":"15rem","placeholder":"Write a description here..."}'>{{ old('deskripsi') }}</textarea>
-                        @error('deskripsi')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    <h4 class="mb-3">Display images</h4>
-                    <div class="dropzone dropzone-multiple p-0 mb-5" id="my-awesome-dropzone"
-                        data-dropzone="data-dropzone">
-                        <div class="fallback"><input class="@error('path_produk') is-invalid @enderror"
-                                name="path_produk" type="file" multiple="multiple" /></div>
-                        @error('path_produk')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                        <div class="dz-preview d-flex flex-wrap">
-                            <div class="border bg-white rounded-3 d-flex flex-center position-relative me-2 mb-2"
-                                style="height:80px;width:80px;"><img class="dz-image"
-                                    src="../../../assets/img/products/23.png" alt="..."
-                                    data-dz-thumbnail="data-dz-thumbnail" /><a class="dz-remove text-400" href="#!"
-                                    data-dz-remove="data-dz-remove"><span data-feather="x"></span></a></div>
+                      </div>
+                      <div class="col-12 col-sm-6 col-xl-12">
+                        <div class="mb-4">
+                          <h5 class="mb-2 text-1000">stcok</h5><input class="form-control mb-xl-3" type="number"
+                            name="stok" placeholder="stock" />
                         </div>
-                        <div class="dz-message text-600" data-dz-message="data-dz-message">Drag your photo here<span
-                                class="text-800 px-1">or</span><button class="btn btn-link p-0" type="button">Browse
-                                from device</button><br /><img class="mt-3 me-2"
-                                src="../../../assets/img/icons/image-icon.png" width="40" alt="" /></div>
-                    </div>
-                </div>
-                <div class="col-12 col-xl-4">
-                    <div class="row g-2">
-                        <div class="col-12 col-xl-12">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <div class="row gx-3">
-                                        <div class="col-12 col-sm-6 col-xl-12">
-                                            <div class="mb-4">
-                                                <div class="d-flex flex-wrap mb-2">
-                                                    <h5 class="mb-0 text-1000 me-2">Category</h5><a class="fw-bold fs--1"
-                                                        href="#!">Add new category</a>
-                                                </div><select
-                                                    class="form-select mb-3 @error('kategori_id') is-invalid @enderror"
-                                                    name="kategori_id" value="{{ old('kategori_id') }}"
-                                                    aria-label="category">
-                                                    @foreach ($kategori as $kategoris)
-                                                        <option value="{{ $kategoris->id }}">
-                                                            {{ $kategoris->nama_kategori }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                @error('kategori_id')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-6 col-xl-12">
-                                            <div class="mb-4">
-                                                <h5 class="mb-2 text-1000">Stok</h5><input
-                                                    class="form-control mb-xl-3 @error('stok') is-invalid @enderror"
-                                                    name="stok" value="{{ old('stok') }}" type="number"
-                                                    placeholder="Stok" />
-                                                @error('stok')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-6 col-xl-12">
-                                            <div class="mb-4">
-                                                <h5 class="mb-2 text-1000">Price</h5><input
-                                                    class="form-control mb-xl-3 @error('harga') is-invalid @enderror"
-                                                    name="harga" value="{{ old('harga') }}" type="number"
-                                                    placeholder="Price" />
-                                                @error('harga')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                      </div>
+                      <div class="col-12 col-sm-6 col-xl-12">
+                        <div class="mb-4">
+                          <h5 class="mb-2 text-1000">price</h5><input class="form-control mb-xl-3" type="number"
+                            name="harga" placeholder="price" />
                         </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-            </div>
-        </form>
-        <footer class="footer position-absolute">
-            <div class="row g-0 justify-content-between align-items-center h-100">
-                <div class="col-12 col-sm-auto text-center">
-                    <p class="mb-0 mt-2 mt-sm-0 text-900">Thank you for creating with Phoenix<span
-                            class="d-none d-sm-inline-block"></span><span
-                            class="d-none d-sm-inline-block mx-1">|</span><br class="d-sm-none" />2023 &copy;<a
-                            class="mx-1" href="https://themewagon.com/">Themewagon</a></p>
-                </div>
-                <div class="col-12 col-sm-auto text-center">
-                    <p class="mb-0 text-600">v1.13.0</p>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <div class="support-chat-container">
-        <div class="container-fluid support-chat">
-            <div class="card bg-white">
-                <div class="card-header d-flex flex-between-center px-4 py-3 border-bottom">
-                    <h5 class="mb-0 d-flex align-items-center gap-2">Demo widget<span
-                            class="fa-solid fa-circle text-success fs--3"></span></h5>
-                    <div class="btn-reveal-trigger"><button
-                            class="btn btn-link p-0 dropdown-toggle dropdown-caret-none transition-none d-flex"
-                            type="button" id="support-chat-dropdown" data-bs-toggle="dropdown" data-boundary="window"
-                            aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><span
-                                class="fas fa-ellipsis-h text-900"></span></button>
-                        <div class="dropdown-menu dropdown-menu-end py-2" aria-labelledby="support-chat-dropdown"><a
-                                class="dropdown-item" href="#!">Request a callback</a><a class="dropdown-item"
-                                href="#!">Search in chat</a><a class="dropdown-item" href="#!">Show
-                                history</a><a class="dropdown-item" href="#!">Report to Admin</a><a
-                                class="dropdown-item btn-support-chat" href="#!">Close Support</a></div>
+                <div class="row gx-3">
+                  <div class="col-12">
+                    <div class="d-flex justify-content-center">
+                      <button class="btn btn-danger me-2 mb-2 mb-sm-0" type="button">
+                        <i class="fas fa-trash-alt"></i> Discard
+                      </button>
+                      <button class="btn btn-primary mb-2 mb-sm-0" type="submit">
+                        <i class="fas fa-check"></i> Publish product
+                      </button>
                     </div>
+                  </div>
                 </div>
-                <div class="card-body chat p-0">
-                    <div class="d-flex flex-column-reverse scrollbar h-100 p-3">
-                        <div class="text-end mt-6"><a
-                                class="mb-2 d-inline-flex align-items-center text-decoration-none text-1100 hover-bg-soft rounded-pill border border-primary py-2 ps-4 pe-3"
-                                href="#!">
-                                <p class="mb-0 fw-semi-bold fs--1">I need help with something</p><span
-                                    class="fa-solid fa-paper-plane text-primary fs--1 ms-3"></span>
-                            </a><a
-                                class="mb-2 d-inline-flex align-items-center text-decoration-none text-1100 hover-bg-soft rounded-pill border border-primary py-2 ps-4 pe-3"
-                                href="#!">
-                                <p class="mb-0 fw-semi-bold fs--1">I can’t reorder a product I previously ordered</p><span
-                                    class="fa-solid fa-paper-plane text-primary fs--1 ms-3"></span>
-                            </a><a
-                                class="mb-2 d-inline-flex align-items-center text-decoration-none text-1100 hover-bg-soft rounded-pill border border-primary py-2 ps-4 pe-3"
-                                href="#!">
-                                <p class="mb-0 fw-semi-bold fs--1">How do I place an order?</p><span
-                                    class="fa-solid fa-paper-plane text-primary fs--1 ms-3"></span>
-                            </a><a
-                                class="false d-inline-flex align-items-center text-decoration-none text-1100 hover-bg-soft rounded-pill border border-primary py-2 ps-4 pe-3"
-                                href="#!">
-                                <p class="mb-0 fw-semi-bold fs--1">My payment method not working</p><span
-                                    class="fa-solid fa-paper-plane text-primary fs--1 ms-3"></span>
-                            </a></div>
-                        <div class="text-center mt-auto">
-                            <div class="avatar avatar-3xl status-online"><img
-                                    class="rounded-circle border border-3 border-white"
-                                    src="../../../assets/img/team/30.webp" alt="" /></div>
-                            <h5 class="mt-2 mb-3">Eric</h5>
-                            <p class="text-center text-black mb-0">Ask us anything – we’ll get back to you here or by email
-                                within 24 hours.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer d-flex align-items-center gap-2 border-top ps-3 pe-4 py-3">
-                    <div class="d-flex align-items-center flex-1 gap-3 border rounded-pill px-4"><input
-                            class="form-control outline-none border-0 flex-1 fs--1 px-0" type="text"
-                            placeholder="Write message" /><label class="btn btn-link d-flex p-0 text-500 fs--1 border-0"
-                            for="supportChatPhotos"><span class="fa-solid fa-image"></span></label><input class="d-none"
-                            type="file" accept="image/*" id="supportChatPhotos" /><label
-                            class="btn btn-link d-flex p-0 text-500 fs--1 border-0" for="supportChatAttachment"> <span
-                                class="fa-solid fa-paperclip"></span></label><input class="d-none" type="file"
-                            id="supportChatAttachment" /></div><button class="btn p-0 border-0 send-btn"><span
-                            class="fa-solid fa-paper-plane fs--1"></span></button>
-                </div>
+              </div>
             </div>
-        </div><button class="btn p-0 border border-200 btn-support-chat"><span
-                class="fs-0 btn-text text-primary text-nowrap">Chat demo</span><span
-                class="fa-solid fa-circle text-success fs--1 ms-2"></span><span
-                class="fa-solid fa-chevron-down text-primary fs-1"></span></button>
-    </div>
+          </div>
+        </div>
+    </form>
 @endsection

@@ -1,17 +1,23 @@
 <?php
 
+use App\Models\Adminorder;
 use App\Http\Controllers\Homeuser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\UserMiddleware;
 use App\Http\Controllers\HomeController;
+use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\AdminorderController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\ProdukfilterController;
+use App\Http\Controllers\AdmindashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,21 +36,16 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware(['web', 'auth'])->group(function () {
+    
+});
 
 // Admin
-Route::middleware(['auth', 'verified', 'admin'])->group(function () {
-    Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
+// Route::middleware(['auth', 'admin'])->group(function () {
+//     Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
 
-    Route::controller(KategoriController::class)->prefix('kategori')->group(function () {
-        Route::get('', 'index')->name('kategori');
-        Route::get('create', 'create')->name('kategori.create');
-        Route::post('store', 'store')->name('kategori.store');
-        Route::get('edit/{id}', 'edit')->name('kategori.edit');
-        Route::put('edit/{id}', 'update')->name('kategori.update');
-        Route::get('destroy/{id}', 'destroy')->name('kategori.destroy');
-        // Route::delete('destroy/{id}', 'destroy')->name('kategori.destroy');
-    });
     // Route::controller(PelangganController::class)->prefix('pelanggan')->group(function () {
     //     Route::get('', 'index')->name('pelanggan');
     //     Route::get('create', 'create')->name('pelanggan.create');
@@ -63,15 +64,10 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
         Route::get('destroy/{id}', 'destroy')->name('pembayaran.destroy');
         // Route::delete('destroy/{id}', 'destroy')->name('pembayaran.destroy');
     });
-    Route::controller(ProdukController::class)->prefix('produk')->group(function () {
-        Route::get('/', 'index')->name('produk.index');
-        Route::get('create', 'create')->name('produk.create');
-        Route::post('store', 'store')->name('produk.store');
-        Route::get('edit/{id}', 'edit')->name('produk.edit');
-        Route::put('edit/{id}', 'update')->name('produk.update');
-        Route::get('destroy/{id}', 'destroy')->name('produk.destroy');
-        // Route::delete('destroy/{id}', 'destroy')->name('produk.destroy');
-    });
+
+
+
+
     // Route::controller(SupplierController::class)->prefix('supplier')->group(function () {
     //     Route::get('/', 'index')->name('supplier.index');
     //     Route::get('create', 'create')->name('supplier.create');
@@ -105,9 +101,11 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     //     Route::get('edit/{id}', 'edit')->name('histori.edit');
     //     Route::delete('destroy/{id}', 'destroy')->name('histori.destroy');
     // });
-});
 
-// User
+
+// });
+
+// USER
 Route::get('/homeuser', [Homeuser::class, 'index']);
 // Route::get('/home', [HomeController::class, 'home']);
 // Route::get('/homeuser', [Homeuser::class, 'Homeuser']);
@@ -116,3 +114,25 @@ Route::get('/homeuser', [Homeuser::class, 'index']);
 // Route::get('/tracking', [TrackingController::class, 'tracking']);
 // Route::get('/checkout', [CheckoutController::class, 'checkout']);
 // Route::get('/profil', [ProfilController::class, 'profil']);
+
+// ADMIN
+Route::get('/admindashboard',[AdmindashboardController::class,'index'])->name('dashboard.side');
+Route::get('/adminorder',[AdminorderController::class,'index'])->name('order.side');
+
+Route::controller(ProdukController::class)->prefix('produk')->group(function(){
+    Route::get('','index')->name('produk.side');
+    Route::get('/tambahproduk','create')->name('tambah.produk');
+    Route::post('/create','store')->name('produk.store');
+    Route::get('/produkedit/{id}','edit')->name('produk.edit');
+    Route::put('/produkupdate/{id}','update')->name('produk.update');
+});
+
+Route::controller(KategoriController::class)->prefix('kategori')->group(function () {
+    Route::get('', 'index')->name('kategori.side');
+    Route::get('create', 'create')->name('kategori.create');
+    Route::post('store', 'store')->name('kategori.store');
+    Route::get('edit/{id}', 'edit')->name('kategori.edit');
+    Route::put('edit/{id}', 'update')->name('kategori.update');
+    Route::get('destroy/{id}', 'destroy')->name('kategori.destroy');
+    // Route::delete('destroy/{id}', 'destroy')->name('kategori.destroy');
+});

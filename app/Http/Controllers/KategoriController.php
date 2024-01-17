@@ -38,7 +38,7 @@ class KategoriController extends Controller
         ]);
 
         Kategori::create($request->all());
-        return redirect()->route('kategori')->with("success", "Data kategori berhasil ditambahkan!");
+        return redirect('/kategori')->with("success", "Data kategori berhasil ditambahkan!");
     }
 
     /**
@@ -88,7 +88,7 @@ class KategoriController extends Controller
             return redirect()->route("kategori")->with("success", "Data kategori berhasil dihapus!");
         } catch (\Throwable $th) {
             //throw $th;
-            return redirect()->route("kategori")->with("error", "Gagal menghapus karena data kategori sedang digunakan!");
+            return redirect('kategori')->with("error", "Gagal menghapus karena data kategori sedang digunakan!");
         }
     }
 }
