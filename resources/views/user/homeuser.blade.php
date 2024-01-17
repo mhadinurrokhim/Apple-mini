@@ -245,80 +245,14 @@
       </section><!-- <section> close ============================-->
       <!-- ============================================-->
 
-      <nav class="ecommerce-navbar navbar-expand navbar-light bg-white justify-content-between">
-        <div class="container-small d-flex flex-between-center" data-navbar="data-navbar">
-          <div class="dropdown"><button class="btn text-900 ps-0 pe-5 text-nowrap dropdown-toggle dropdown-caret-none" data-category-btn="data-category-btn" data-bs-toggle="dropdown"><span class="fas fa-bars me-2"></span>Category</button>
-            <div class="dropdown-menu border py-0 category-dropdown-menu">
-              <div class="card border-0 scrollbar" style="max-height: 657px;">
-                <div class="card-body p-6 pb-3">
-                  <div class="row gx-7 gy-5 mb-5">
-                    <div class="col-12 col-sm-6 col-md-4">
-                      <div class="d-flex align-items-center mb-3"><span class="text-primary me-2" data-feather="pocket" style="stroke-width:3;"></span>
-                        <h6 class="text-1000 mb-0 text-nowrap">Collectibles &amp; Art</h6>
-                      </div>
-                      <div class="ms-n2"><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Collectibles</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Antiques</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Sports memorabilia </a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Art</a></div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4">
-                      <div class="d-flex align-items-center mb-3"><span class="text-primary me-2" data-feather="home" style="stroke-width:3;"></span>
-                        <h6 class="text-1000 mb-0 text-nowrap">Beranda &amp; Gardan</h6>
-                      </div>
-                      <div class="ms-n2"><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Yard, Garden &amp; Outdoor</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Crafts</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Home Improvement</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Pet Supplies</a></div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4">
-                      <div class="d-flex align-items-center mb-3"><span class="text-primary me-2" data-feather="globe" style="stroke-width:3;"></span>
-                        <h6 class="text-1000 mb-0 text-nowrap">Sporting Goods</h6>
-                      </div>
-                      <div class="ms-n2"><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Outdoor Sports</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Team Sports</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Exercise &amp; Fitness</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Golf</a></div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4">
-                      <div class="d-flex align-items-center mb-3"><span class="text-primary me-2" data-feather="monitor" style="stroke-width:3;"></span>
-                        <h6 class="text-1000 mb-0 text-nowrap">Electronics</h6>
-                      </div>
-                      <div class="ms-n2"><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Computers &amp; Tablets</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Camera &amp; Photo</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">TV, Audio &amp; Surveillance</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Cell Ohone &amp; Accessories</a></div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4">
-                      <div class="d-flex align-items-center mb-3"><span class="text-primary me-2" data-feather="truck" style="stroke-width:3;"></span>
-                        <h6 class="text-1000 mb-0 text-nowrap">Auto Parts &amp; Accessories</h6>
-                      </div>
-                      <div class="ms-n2"><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">GPS &amp; Security Devices</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Rader &amp; Laser Detectors</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Care &amp; Detailing</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Scooter Parts &amp; Accessories</a></div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4">
-                      <div class="d-flex align-items-center mb-3"><span class="text-primary me-2" data-feather="codesandbox" style="stroke-width:3;"></span>
-                        <h6 class="text-1000 mb-0 text-nowrap">Toys &amp; Hobbies</h6>
-                      </div>
-                      <div class="ms-n2"><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Radio Control</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Kids Toys</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Action Figures</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Dolls &amp; Bears</a></div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4">
-                      <div class="d-flex align-items-center mb-3"><span class="text-primary me-2" data-feather="watch" style="stroke-width:3;"></span>
-                        <h6 class="text-1000 mb-0 text-nowrap">Fashion</h6>
-                      </div>
-                      <div class="ms-n2"><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Women</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Men</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Jewelry &amp; Watches</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Shoes</a></div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4">
-                      <div class="d-flex align-items-center mb-3"><span class="text-primary me-2" data-feather="music" style="stroke-width:3;"></span>
-                        <h6 class="text-1000 mb-0 text-nowrap">Musical Instruments &amp; Gear</h6>
-                      </div>
-                      <div class="ms-n2"><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Guitar</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Pro Audio Equipment</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">String</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Stage Lighting &amp; Effects</a></div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4">
-                      <div class="d-flex align-items-center mb-3"><span class="text-primary me-2" data-feather="grid" style="stroke-width:3;"></span>
-                        <h6 class="text-1000 mb-0 text-nowrap">Other Categories</h6>
-                      </div>
-                      <div class="ms-n2"><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Video Games &amp; Consoles</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Health &amp; Beauty</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Baby</a><a class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2" href="#!">Business &amp; Industrial</a></div>
-                    </div>
-                  </div>
-                  <div class="text-center border-top pt-3"><a class="fw-bold" href="#!">See all Categories<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <ul class="navbar-nav justify-content-end align-items-center">
-            <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link ps-0 active" href="homepage.html">Home</a></li>
-            <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link" href="products-filter.html">Products</a></li>
-            <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link" href="order-tracking.html">Track order</a></li>
-            <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link pe-0" href="checkout.html">Checkout</a></li>
-              <div class="dropdown-menu dropdown-menu-end category-list" aria-labelledby="navbarDropdown" data-category-list="data-category-list"></div>
-            </li>
+      <nav class="ecommerce-navbar navbar-expand navbar-light bg-white justify-content-center">
+        <div class="container-small d-flex flex-between-center text-center" data-navbar="data-navbar">
+          <ul class="navbar-nav mx-auto justify-content-end align-items-center">
+            <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link ps-0" href="homeuser">Home</a></li>
+            <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link active" href="podukfilter">Products</a></li>
+            <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link" href="wishlist">Wishlist</a></li>
+            <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link" href="tracking">Track order</a></li>
+            <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link pe-0" href="checkout">Checkout</a></li>
           </ul>
         </div>
       </nav>
@@ -377,19 +311,22 @@
             <div class="row g-3 mb-9">
               <div class="col-12">
                 <div class="whooping-banner w-100 rounded-3 overflow-hidden">
-                  <div class="bg-holder z-index--1 product-bg" style="background-image:url(../../../assets/img/e-commerce/whooping_banner_product.png);background-position: bottom right;"></div>
+                  <div class="bg-holder z-index--1 product-bg" style="background-image:url(assets/img/benner4.png);background-position: bottom right;"></div>
                   <!--/.bg-holder-->
-                  <div class="bg-holder z-index--1 shape-bg" style="background-image:url(../../../assets/img/e-commerce/whooping_banner_shape_2.png);background-position: bottom left;"></div>
+                  <div class="bg-holder z-index--1 shape-bg" style="background-image:url(assets/img/benner4.png);background-position: bottom left;"></div>
                   <!--/.bg-holder-->
                   <div class="banner-text light">
-                    <h2 class="text-warning-300 fw-bolder fs-lg-5 fs-xxl-6">Whooping <span class="gradient-text">60% </span>Off</h2>
-                    <h3 class="fw-bolder fs-lg-3 fs-xxl-5 text-white light">on everyday items</h3>
+                    <h2 class="text-warning-300 fw-bolder fs-lg-5 fs-xxl-6">MacBook Pro M2 <span class="gradient-text"></span></h2>
+                    <h3 class="fw-bolder fs-lg-3 fs-xxl-5 text-white light">
+                        <strike>Rp 13.000.000</strike>
+                        <span class="small-text" style="color: red;"> (10.000.000)</span>
+                    </h3>
                   </div><a class="btn btn-lg btn-primary rounded-pill banner-button" href="#!">Shop Now</a>
                 </div>
               </div>
               <div class="col-12 col-xl-6">
                 <div class="gift-items-banner w-100 rounded-3 overflow-hidden">
-                  <div class="bg-holder z-index--1 banner-bg" style="background-image:url(../../../assets/img/e-commerce/gift-items-banner-bg.png);"></div>
+                  <div class="bg-holder z-index--1 banner-bg" style="background-image:url(/assets/img/benner4.png);"></div>
                   {{-- <!--/.bg-holder-->
                   <div class="banner-text text-md-center light">
                     <h2 class="text-white fw-bolder fs-xl-4">Get <span class="gradient-text">10% Off </span><br class="d-md-none"> on gift items</h2><a class="btn btn-lg btn-primary rounded-pill banner-button" href="#!">Buy Now</a>
@@ -411,140 +348,199 @@
                 </div>
               </div>
             </div>
-            <div class="row g-4 mb-6">
-              <div class="col-12 col-lg-9 col-xxl-10">
-                <div class="d-flex flex-between-center mb-3">
-                  <div class="d-flex"><span class="fas fa-bolt text-warning fs-2"></span>
-                    <h3 class="mx-2">Top Deals today</h3><span class="fas fa-bolt text-warning fs-2"></span>
-                  </div><a class="btn btn-link btn-lg p-0 d-none d-md-block" href="#!">Explore more<span class="fas fa-chevron-right fs--1 ms-1"></span></a>
-                </div>
-                <div class="swiper-theme-container products-slider">
-                  <div class="swiper swiper-container theme-slider" data-swiper='{"slidesPerView":1,"spaceBetween":16,"breakpoints":{"450":{"slidesPerView":2,"spaceBetween":16},"768":{"slidesPerView":3,"spaceBetween":20},"1200":{"slidesPerView":4,"spaceBetween":16},"1540":{"slidesPerView":5,"spaceBetween":16}}}'>
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide">
-                        <div class="position-relative text-decoration-none product-card h-100">
-                          <div class="d-flex flex-column justify-content-between h-100">
-                            <div>
-                              <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/6.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                                <h6 class="mb-2 lh-sm line-clamp-3 product-name">PlayStation 5 DualSense Wireless Controller</h6>
-                              </a>
-                              <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(67 people rated)</span></p>
-                            </div>
-                            <div>
-                              <p class="fs--1 text-1000 fw-bold mb-2">dbrand skin available</p>
-                              <div class="d-flex align-items-center mb-1">
-                                <p class="me-2 text-900 text-decoration-line-through mb-0">$125.00</p>
-                                <h3 class="text-1100 mb-0">$89.00</h3>
-                              </div>
-                              <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>
-                            </div>
+            <div class="mb-6">
+              <div class="d-flex flex-between-center mb-3">
+                <h3>Top Electronics</h3><a class="fw-bold d-none d-md-block" href="#!">Explore more<span class="fas fa-chevron-right fs--1 ms-1"></span></a>
+              </div>
+              <div class="swiper-theme-container products-slider">
+                <div class="swiper swiper-container theme-slider" data-swiper='{"slidesPerView":1,"spaceBetween":16,"breakpoints":{"450":{"slidesPerView":2,"spaceBetween":16},"576":{"slidesPerView":3,"spaceBetween":20},"768":{"slidesPerView":4,"spaceBetween":20},"992":{"slidesPerView":5,"spaceBetween":20},"1200":{"slidesPerView":6,"spaceBetween":16}}}'>
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <div class="position-relative text-decoration-none product-card h-100">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                          <div>
+                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/5.png" alt="" /></div><a class="stretched-link" href="product-details.html">
+                              <h6 class="mb-2 lh-sm line-clamp-3 product-name">Razer Kraken v3 x Wired 7.1 Surroung Sound Gaming headset</h6>
+                            </a>
+                            <h3 class="text-1100">$59.00</h3>
                           </div>
                         </div>
                       </div>
-                      <div class="swiper-slide">
-                        <div class="position-relative text-decoration-none product-card h-100">
-                          <div class="d-flex flex-column justify-content-between h-100">
-                            <div>
-                              <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/1.png" alt="" /><span class="badge bg-success fs--2 product-verified-badge">Verified<span class="fas fa-check ms-1"></span></span></div><a class="stretched-link" href="product-details.html">
-                                <h6 class="mb-2 lh-sm line-clamp-3 product-name">Fitbit Sense Advanced Smartwatch with Tools for Heart Health, Stress Management &amp; Skin Temperature ...</h6>
-                              </a>
-                              <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(74 people rated)</span></p>
-                            </div>
-                            <div>
-                              <div class="d-flex align-items-center mb-1">
-                                <p class="me-2 text-900 text-decoration-line-through mb-0">$49.99</p>
-                                <h3 class="text-1100 mb-0">$34.99</h3>
-                              </div>
-                              <p class="text-success fw-bold fs--1 lh-1 mb-0">Deal time ends in days</p>
-                            </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="position-relative text-decoration-none product-card h-100">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                          <div>
+                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/7.png" alt="" /></div><a class="stretched-link" href="product-details.html">
+                              <h6 class="mb-2 lh-sm line-clamp-3 product-name">2021 Apple 12.9-inch iPad Pro (Wi‑Fi, 128GB) - Space Gray</h6>
+                            </a>
+                            <h3 class="text-1100">$799.00</h3>
                           </div>
                         </div>
                       </div>
-                      <div class="swiper-slide">
-                        <div class="position-relative text-decoration-none product-card h-100">
-                          <div class="d-flex flex-column justify-content-between h-100">
-                            <div>
-                              <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/2.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                                <h6 class="mb-2 lh-sm line-clamp-3 product-name">iPhone 13 pro max-Pacific Blue, 128GB storage</h6>
-                              </a>
-                              <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(33 people rated)</span></p>
-                            </div>
-                            <div>
-                              <p class="fs--1 text-1000 fw-bold mb-2">Stock limited</p>
-                              <div class="d-flex align-items-center mb-1">
-                                <p class="me-2 text-900 text-decoration-line-through mb-0">$899.99</p>
-                                <h3 class="text-1100 mb-0">$850.99</h3>
-                              </div>
-                              <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">5 colors</p>
-                            </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="position-relative text-decoration-none product-card h-100">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                          <div>
+                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/12.png" alt="" /></div><a class="stretched-link" href="product-details.html">
+                              <h6 class="mb-2 lh-sm line-clamp-3 product-name">HORI Racing Wheel Apex for PlayStation 4/3, and PC</h6>
+                            </a>
+                            <h3 class="text-1100">$299.00</h3>
                           </div>
                         </div>
                       </div>
-                      <div class="swiper-slide">
-                        <div class="position-relative text-decoration-none product-card h-100">
-                          <div class="d-flex flex-column justify-content-between h-100">
-                            <div>
-                              <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/3.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                                <h6 class="mb-2 lh-sm line-clamp-3 product-name">Apple MacBook Pro 13 inch-M1-8/256GB-Space Gray</h6>
-                              </a>
-                              <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(97 people rated)</span></p>
-                            </div>
-                            <div>
-                              <p class="fs--1 text-1000 fw-bold mb-2">Apple care included</p>
-                              <div class="d-flex align-items-center mb-1">
-                                <p class="me-2 text-900 text-decoration-line-through mb-0">$1299.00</p>
-                                <h3 class="text-1100 mb-0">$1149.00</h3>
-                              </div>
-                              <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>
-                            </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="position-relative text-decoration-none product-card h-100">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                          <div>
+                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove from wishlist"><span class="fas fa-heart"></span></button><img class="img-fluid" src="../../../assets/img/products/1.png" alt="" /><span class=""><span class=""></span></span></div><a class="stretched-link" href="product-details.html">
+                              <h6 class="mb-2 lh-sm line-clamp-3 product-name">Amazfit T-Rex Pro Smart Watch with GPS, Outdoor Fitness Watch for Men, Military Standard Certified</h6>
+                            </a>
+                            <h3 class="text-1100">$20.00</h3>
                           </div>
                         </div>
                       </div>
-                      <div class="swiper-slide">
-                        <div class="position-relative text-decoration-none product-card h-100">
-                          <div class="d-flex flex-column justify-content-between h-100">
-                            <div>
-                              <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/4.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                                <h6 class="mb-2 lh-sm line-clamp-3 product-name">Apple iMac 24&quot; 4K Retina Display M1 8 Core CPU, 7 Core GPU, 256GB SSD, Green (MJV83ZP/A) 2021</h6>
-                              </a>
-                              <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(134 people rated)</span></p>
-                            </div>
-                            <div>
-                              <p class="fs--1 text-1000 fw-bold mb-2">Exchange with kidney</p>
-                              <div class="d-flex align-items-center mb-1">
-                                <p class="me-2 text-900 text-decoration-line-through mb-0">$1499.00</p>
-                                <h3 class="text-1100 mb-0">$1399.00</h3>
-                              </div>
-                              <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">7 colors</p>
-                            </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="position-relative text-decoration-none product-card h-100">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                          <div>
+                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/16.png" alt="" /></div><a class="stretched-link" href="product-details.html">
+                              <h6 class="mb-2 lh-sm line-clamp-3 product-name">Apple AirPods Pro</h6>
+                            </a>
+                            <h3 class="text-1100">$59.00</h3>
                           </div>
                         </div>
                       </div>
-                      <div class="swiper-slide">
-                        <div class="position-relative text-decoration-none product-card h-100">
-                          <div class="d-flex flex-column justify-content-between h-100">
-                            <div>
-                              <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/5.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                                <h6 class="mb-2 lh-sm line-clamp-3 product-name">Razer Kraken v3 x Wired 7.1 Surroung Sound Gaming headset</h6>
-                              </a>
-                              <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(59 people rated)</span></p>
-                            </div>
-                            <div>
-                              <h3 class="text-1100">$59.00</h3>
-                              <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>
-                            </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="position-relative text-decoration-none product-card h-100">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                          <div>
+                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/10.png" alt="" /></div><a class="stretched-link" href="product-details.html">
+                              <h6 class="mb-2 lh-sm line-clamp-3 product-name">Apple Magic Mouse (Wireless, Rechargable) - Silver</h6>
+                            </a>
+                            <h3 class="text-1100">$89.00</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="position-relative text-decoration-none product-card h-100">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                          <div>
+                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/8.png" alt="" /></div><a class="stretched-link" href="product-details.html">
+                              <h6 class="mb-2 lh-sm line-clamp-3 product-name">Amazon Basics Matte Black Wired Keyboard - US Layout (QWERTY)</h6>
+                            </a>
+                            <h3 class="text-1100">$98.00</h3>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="swiper-nav swiper-product-nav">
-                    <div class="swiper-button-next"><span class="fas fa-chevron-right nav-icon"></span></div>
-                    <div class="swiper-button-prev"><span class="fas fa-chevron-left nav-icon"></span></div>
+                </div>
+                <div class="swiper-nav">
+                  <div class="swiper-button-next"><span class="fas fa-chevron-right nav-icon"></span></div>
+                  <div class="swiper-button-prev"><span class="fas fa-chevron-left nav-icon"></span></div>
+                </div>
+              </div><a class="fw-bold d-md-none" href="#!">Explore more<span class="fas fa-chevron-right fs--1 ms-1"></span></a>
+            </div>
+            <div class="swiper-theme-container products-slider">
+                <div class="swiper swiper-container theme-slider" data-swiper='{"slidesPerView":1,"spaceBetween":16,"breakpoints":{"450":{"slidesPerView":2,"spaceBetween":16},"576":{"slidesPerView":3,"spaceBetween":20},"768":{"slidesPerView":4,"spaceBetween":20},"992":{"slidesPerView":5,"spaceBetween":20},"1200":{"slidesPerView":6,"spaceBetween":16}}}'>
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <div class="position-relative text-decoration-none product-card h-100">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                          <div>
+                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/5.png" alt="" /></div><a class="stretched-link" href="product-details.html">
+                              <h6 class="mb-2 lh-sm line-clamp-3 product-name">Razer Kraken v3 x Wired 7.1 Surroung Sound Gaming headset</h6>
+                            </a>
+                            <h3 class="text-1100">$59.00</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="position-relative text-decoration-none product-card h-100">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                          <div>
+                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/7.png" alt="" /></div><a class="stretched-link" href="product-details.html">
+                              <h6 class="mb-2 lh-sm line-clamp-3 product-name">2021 Apple 12.9-inch iPad Pro (Wi‑Fi, 128GB) - Space Gray</h6>
+                            </a>
+                            <h3 class="text-1100">$799.00</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="position-relative text-decoration-none product-card h-100">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                          <div>
+                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/12.png" alt="" /></div><a class="stretched-link" href="product-details.html">
+                              <h6 class="mb-2 lh-sm line-clamp-3 product-name">HORI Racing Wheel Apex for PlayStation 4/3, and PC</h6>
+                            </a>
+                            <h3 class="text-1100">$299.00</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="position-relative text-decoration-none product-card h-100">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                          <div>
+                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove from wishlist"><span class="fas fa-heart"></span></button><img class="img-fluid" src="../../../assets/img/products/1.png" alt="" /><span class=""><span class=""></span></span></div><a class="stretched-link" href="product-details.html">
+                              <h6 class="mb-2 lh-sm line-clamp-3 product-name">Amazfit T-Rex Pro Smart Watch with GPS, Outdoor Fitness Watch for Men, Military Standard Certified</h6>
+                            </a>
+                            <h3 class="text-1100">$20.00</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="position-relative text-decoration-none product-card h-100">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                          <div>
+                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/16.png" alt="" /></div><a class="stretched-link" href="product-details.html">
+                              <h6 class="mb-2 lh-sm line-clamp-3 product-name">Apple AirPods Pro</h6>
+                            </a>
+                            <h3 class="text-1100">$59.00</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="position-relative text-decoration-none product-card h-100">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                          <div>
+                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/10.png" alt="" /></div><a class="stretched-link" href="product-details.html">
+                              <h6 class="mb-2 lh-sm line-clamp-3 product-name">Apple Magic Mouse (Wireless, Rechargable) - Silver</h6>
+                            </a>
+                            <h3 class="text-1100">$89.00</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="position-relative text-decoration-none product-card h-100">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                          <div>
+                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/8.png" alt="" /></div><a class="stretched-link" href="product-details.html">
+                              <h6 class="mb-2 lh-sm line-clamp-3 product-name">Amazon Basics Matte Black Wired Keyboard - US Layout (QWERTY)</h6>
+                            </a>
+                            <h3 class="text-1100">$98.00</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div><a class="fw-bold d-md-none px-0" href="#!">Explore more<span class="fas fa-chevron-right fs--1 ms-1"></span></a>
-              </div>
-              <div class="col-12 d-lg-none"><a href="#!"><img class="w-100 rounded-3" src="../../../assets/img/e-commerce/6.png" alt="" /></a></div>
+                </div>
+                <div class="swiper-nav">
+                  <div class="swiper-button-next"><span class="fas fa-chevron-right nav-icon"></span></div>
+                  <div class="swiper-button-prev"><span class="fas fa-chevron-left nav-icon"></span></div>
+                </div>
+              </div><a class="fw-bold d-md-none" href="#!">Explore more<span class="fas fa-chevron-right fs--1 ms-1"></span></a>
             </div>
             <div class="mb-6">
               <div class="d-flex flex-between-center mb-3">
@@ -560,11 +556,7 @@
                             <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/5.png" alt="" /></div><a class="stretched-link" href="product-details.html">
                               <h6 class="mb-2 lh-sm line-clamp-3 product-name">Razer Kraken v3 x Wired 7.1 Surroung Sound Gaming headset</h6>
                             </a>
-                            <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(59 people rated)</span></p>
-                          </div>
-                          <div>
                             <h3 class="text-1100">$59.00</h3>
-                            <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>
                           </div>
                         </div>
                       </div>
@@ -576,11 +568,7 @@
                             <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/7.png" alt="" /></div><a class="stretched-link" href="product-details.html">
                               <h6 class="mb-2 lh-sm line-clamp-3 product-name">2021 Apple 12.9-inch iPad Pro (Wi‑Fi, 128GB) - Space Gray</h6>
                             </a>
-                            <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(13 people rated)</span></p>
-                          </div>
-                          <div>
                             <h3 class="text-1100">$799.00</h3>
-                            <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>
                           </div>
                         </div>
                       </div>
@@ -592,13 +580,7 @@
                             <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/12.png" alt="" /></div><a class="stretched-link" href="product-details.html">
                               <h6 class="mb-2 lh-sm line-clamp-3 product-name">HORI Racing Wheel Apex for PlayStation 4/3, and PC</h6>
                             </a>
-                            <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(64 people rated)</span></p>
-                          </div>
-                          <div>
-                            <p class="fs--1 text-1000 fs--1 mb-0 fw-bold">Leather cover add-on available</p>
-                            <p class="fs--1 text-700 fs--1 mb-2">supports Windows 11</p>
                             <h3 class="text-1100">$299.00</h3>
-                            <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">1 colors</p>
                           </div>
                         </div>
                       </div>
@@ -607,14 +589,10 @@
                       <div class="position-relative text-decoration-none product-card h-100">
                         <div class="d-flex flex-column justify-content-between h-100">
                           <div>
-                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove from wishlist"><span class="fas fa-heart"></span></button><img class="img-fluid" src="../../../assets/img/products/1.png" alt="" /><span class="badge bg-success fs--2 product-verified-badge">Verified<span class="fas fa-check ms-1"></span></span></div><a class="stretched-link" href="product-details.html">
+                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove from wishlist"><span class="fas fa-heart"></span></button><img class="img-fluid" src="../../../assets/img/products/1.png" alt="" /><span class=""><span class=""></span></span></div><a class="stretched-link" href="product-details.html">
                               <h6 class="mb-2 lh-sm line-clamp-3 product-name">Amazfit T-Rex Pro Smart Watch with GPS, Outdoor Fitness Watch for Men, Military Standard Certified</h6>
                             </a>
-                            <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(32 people rated)</span></p>
-                          </div>
-                          <div>
                             <h3 class="text-1100">$20.00</h3>
-                            <p class="text-success fw-bold fs--1 lh-1 mb-0">Deal time ends in 24 hours</p>
                           </div>
                         </div>
                       </div>
@@ -626,13 +604,7 @@
                             <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/16.png" alt="" /></div><a class="stretched-link" href="product-details.html">
                               <h6 class="mb-2 lh-sm line-clamp-3 product-name">Apple AirPods Pro</h6>
                             </a>
-                            <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(39 people rated)</span></p>
-                          </div>
-                          <div>
-                            <p class="fs--1 text-1000 fs--1 mb-0 fw-bold">Free with iPhone 5s</p>
-                            <p class="fs--1 text-700 fs--1 mb-2">Ships to Canada</p>
                             <h3 class="text-1100">$59.00</h3>
-                            <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">3 colors</p>
                           </div>
                         </div>
                       </div>
@@ -644,13 +616,7 @@
                             <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/10.png" alt="" /></div><a class="stretched-link" href="product-details.html">
                               <h6 class="mb-2 lh-sm line-clamp-3 product-name">Apple Magic Mouse (Wireless, Rechargable) - Silver</h6>
                             </a>
-                            <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa-regular fa-star text-warning-300"></span><span class="fa-regular fa-star text-warning-300"></span><span class="fa-regular fa-star text-warning-300"></span><span class="fa-regular fa-star text-warning-300"></span><span class="text-500 fw-semi-bold ms-1">(6 people rated)</span></p>
-                          </div>
-                          <div>
-                            <p class="fs--1 text-1000 fs--1 mb-0 fw-bold">Bundle available</p>
-                            <p class="fs--1 text-700 fs--1 mb-2">Charger not included</p>
                             <h3 class="text-1100">$89.00</h3>
-                            <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>
                           </div>
                         </div>
                       </div>
@@ -662,152 +628,13 @@
                             <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/8.png" alt="" /></div><a class="stretched-link" href="product-details.html">
                               <h6 class="mb-2 lh-sm line-clamp-3 product-name">Amazon Basics Matte Black Wired Keyboard - US Layout (QWERTY)</h6>
                             </a>
-                            <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa-regular fa-star text-warning-300"></span><span class="fa-regular fa-star text-warning-300"></span><span class="text-500 fw-semi-bold ms-1">(7 people rated)</span></p>
-                          </div>
-                          <div>
                             <h3 class="text-1100">$98.00</h3>
-                            <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">1 colors</p>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="swiper-nav">
-                  <div class="swiper-button-next"><span class="fas fa-chevron-right nav-icon"></span></div>
-                  <div class="swiper-button-prev"><span class="fas fa-chevron-left nav-icon"></span></div>
-                </div>
-              </div><a class="fw-bold d-md-none" href="#!">Explore more<span class="fas fa-chevron-right fs--1 ms-1"></span></a>
-            </div>
-            <div class="mb-6">
-              <div class="d-flex flex-between-center mb-3">
-                <h3>Best Offers</h3><a class="fw-bold d-none d-md-block" href="#!">Explore more<span class="fas fa-chevron-right fs--1 ms-1"></span></a>
-              </div>
-              <div class="swiper-theme-container products-slider">
-                <div class="swiper swiper-container theme-slider" data-swiper='{"slidesPerView":1,"spaceBetween":16,"breakpoints":{"450":{"slidesPerView":2,"spaceBetween":16},"576":{"slidesPerView":3,"spaceBetween":20},"768":{"slidesPerView":4,"spaceBetween":20},"992":{"slidesPerView":5,"spaceBetween":20},"1200":{"slidesPerView":6,"spaceBetween":16}}}'>
-                  <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                      <div class="position-relative text-decoration-none product-card h-100">
-                        <div class="d-flex flex-column justify-content-between h-100">
-                          <div>
-                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/25.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                              <h6 class="mb-2 lh-sm line-clamp-3 product-name">RESPAWN 200 Racing Style Gaming Chair, in Gray RSP 200 GRY</h6>
-                            </a>
-                            <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span></p>
-                          </div>
-                          <div>
-                            <h6 class="text-success lh-1 mb-0">35% off</h6>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="position-relative text-decoration-none product-card h-100">
-                        <div class="d-flex flex-column justify-content-between h-100">
-                          <div>
-                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/27.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                              <h6 class="mb-2 lh-sm line-clamp-3 product-name">LEVOIT Humidifiers for Bedroom Large Room 6L Warm and Cool Mist for...</h6>
-                            </a>
-                            <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa-regular fa-star text-warning-300"></span></p>
-                          </div>
-                          <div>
-                            <h6 class="text-success lh-1 mb-0">18% off</h6>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="position-relative text-decoration-none product-card h-100">
-                        <div class="d-flex flex-column justify-content-between h-100">
-                          <div>
-                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/26.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                              <h6 class="mb-2 lh-sm line-clamp-3 product-name">NETGEAR Nighthawk Pro Gaming XR500 Wi-Fi Router with 4 Ethernet Ports...</h6>
-                            </a>
-                            <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span></p>
-                          </div>
-                          <div>
-                            <h6 class="text-success lh-1 mb-0">15% off</h6>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="position-relative text-decoration-none product-card h-100">
-                        <div class="d-flex flex-column justify-content-between h-100">
-                          <div>
-                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/18.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                              <h6 class="mb-2 lh-sm line-clamp-3 product-name">Rachael Ray Cucina Bakeware Set Includes Nonstick Bread Baking Cookie Sheet...</h6>
-                            </a>
-                            <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star-half-alt star-icon text-warning"></span><span class="fa-regular fa-star text-warning-300"></span></p>
-                          </div>
-                          <div>
-                            <h6 class="text-success lh-1 mb-0">20% off</h6>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="position-relative text-decoration-none product-card h-100">
-                        <div class="d-flex flex-column justify-content-between h-100">
-                          <div>
-                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/17.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                              <h6 class="mb-2 lh-sm line-clamp-3 product-name">Xbox Series S</h6>
-                            </a>
-                            <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span></p>
-                          </div>
-                          <div>
-                            <h6 class="text-success lh-1 mb-0">12% off</h6>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="position-relative text-decoration-none product-card h-100">
-                        <div class="d-flex flex-column justify-content-between h-100">
-                          <div>
-                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/24.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                              <h6 class="mb-2 lh-sm line-clamp-3 product-name">FURINNO Computer Writing Desk, Walnut</h6>
-                            </a>
-                            <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span></p>
-                          </div>
-                          <div>
-                            <h6 class="text-success lh-1 mb-0">16% off</h6>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="position-relative text-decoration-none product-card h-100">
-                        <div class="d-flex flex-column justify-content-between h-100">
-                          <div>
-                            <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/18.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                              <h6 class="mb-2 lh-sm line-clamp-3 product-name">Seagate Portable 2TB External Hard Drive Portable HDD</h6>
-                            </a>
-                            <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa-regular fa-star text-warning-300"></span></p>
-                          </div>
-                          <div>
-                            <h6 class="text-success lh-1 mb-0">15% off</h6>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="swiper-nav">
-                  <div class="swiper-button-next"><span class="fas fa-chevron-right nav-icon"></span></div>
-                  <div class="swiper-button-prev"><span class="fas fa-chevron-left nav-icon"></span></div>
-                </div>
-              </div><a class="fw-bold d-md-none" href="#!">Explore more<span class="fas fa-chevron-right fs--1 ms-1"></span></a>
-            </div>
-            <div class="row flex-center mb-15 mt-11 gy-6">
-              <div class="col-auto"><img class="d-dark-none" src="../../../assets/img/spot-illustrations/light_30.png" alt="" width="305" /><img class="d-light-none" src="../../../assets/img/spot-illustrations/dark_30.png" alt="" width="305" /></div>
-              <div class="col-auto">
-                <div class="text-center text-lg-start">
-                  <h3 class="text-1000 mb-2"><span class="fw-semi-bold">Want to have the </span>ultimate <br class="d-md-none" />customer experience?</h3>
-                  <h1 class="display-3 fw-semi-bold mb-4">Become a <span class="text-primary fw-bolder">member </span>today!</h1><a class="btn btn-lg btn-primary px-7" href="../../../pages/authentication/simple/sign-up.html">Sign up<span class="fas fa-chevron-right ms-2 fs--1"></span></a>
-                </div>
-              </div>
-            </div>
           </div><!-- end of .container-->
         </section><!-- <section> close ============================-->
         <!-- ============================================-->
@@ -819,42 +646,24 @@
         <div class="container-small">
           <div class="row justify-content-between gy-4">
             <div class="col-12 col-lg-4">
-              <div class="d-flex align-items-center mb-3"><img src="../../../assets/img/icons/logo.png" alt="phoenix" width="27" />
-                <p class="logo-text ms-2">phoenix</p>
+              <div class="d-flex align-items-center mb-3"><img src="/assets/img/logoapple.png" alt="phoenix" width="27" />
+                <p class="logo-text ms-2">iVibe</p>
               </div>
-              <p class="text-700 mb-1 fw-semi-bold lh-sm fs--1">Phoenix is an admin dashboard template with fascinating features and amazing layout. The template is responsive to all major browsers and is compatible with all available devices and screen sizes.</p>
+              <p class="text-700 mb-1 fw-semi-bold lh-sm fs--1">
+                iVibe is a leading retailer in Indonesia that provides the latest technology products and premium accessories. They offer a complete range of innovative products and invite customers to experience and test products in their stores. Apart from that, iVibe also provides training services and after-sales support through an experienced team.</p>
             </div>
             <div class="col-6 col-md-auto">
-              <h5 class="fw-bolder mb-3">About Phoenix</h5>
+              <h5 class="fw-bolder mb-3">About iVibe</h5>
               <div class="d-flex flex-column"><a class="text-700 fw-semi-bold fs--1 mb-1" href="#!">Careers</a><a class="text-700 fw-semi-bold fs--1 mb-1" href="#!">Affiliate Program</a><a class="text-700 fw-semi-bold fs--1 mb-1" href="#!">Privacy Policy</a><a class="text-700 fw-semi-bold fs--1 mb-1" href="#!">Terms & Conditions</a></div>
             </div>
             <div class="col-6 col-md-auto">
               <h5 class="fw-bolder mb-3">Stay Connected</h5>
-              <div class="d-flex flex-column"><a class="text-700 fw-semi-bold fs--1 mb-1" href="#!">Blogs</a><a class="mb-1 fw-semi-bold fs--1 d-flex" href="#!"><span class="fab fa-facebook-square text-primary me-2 fs-0"></span><span class="text-800">Facebook</span></a><a class="mb-1 fw-semi-bold fs--1 d-flex" href="#!"><span class="fab fa-twitter-square text-info me-2 fs-0"></span><span class="text-800">Twitter</span></a></div>
-            </div>
-            <div class="col-6 col-md-auto">
-              <h5 class="fw-bolder mb-3">Customer Service</h5>
-              <div class="d-flex flex-column"><a class="text-700 fw-semi-bold fs--1 mb-1" href="#!">Help Desk</a><a class="text-700 fw-semi-bold fs--1 mb-1" href="#!">Support, 24/7</a><a class="text-700 fw-semi-bold fs--1 mb-1" href="#!">Community of Phoenix</a></div>
-            </div>
-            <div class="col-6 col-md-auto">
-              <h5 class="fw-bolder mb-3">Payment Method</h5>
-              <div class="d-flex flex-column"><a class="text-700 fw-semi-bold fs--1 mb-1" href="#!">Cash on Delivery</a><a class="text-700 fw-semi-bold fs--1 mb-1" href="#!">Online Payment</a><a class="text-700 fw-semi-bold fs--1 mb-1" href="#!">PayPal</a><a class="text-700 fw-semi-bold fs--1 mb-1" href="#!">Installment</a></div>
+              <div class="d-flex flex-column"><a class="text-700 fw-semi-bold fs--1 mb-1" href="#!">Jalan Ijen No. 123 Kota Malang, Indonesia</a><a class="mb-1 fw-semi-bold fs--1 d-flex" href="#!"><span class="fas fa-phone text-primary me-2 fs-0"></span><span class="text-800">+62 823-3107-9449</span></a><a class="mb-1 fw-semi-bold fs--1 d-flex" href="#!"><span class="fas fa-envelope text-info me-2 fs-0"></span><span class="text-800">Email : info@ivibe.com</span></a></div>
             </div>
           </div>
         </div><!-- end of .container-->
       </section><!-- <section> close ============================-->
       <!-- ============================================-->
-
-      <footer class="footer position-relative">
-        <div class="row g-0 justify-content-between align-items-center h-100">
-          <div class="col-12 col-sm-auto text-center">
-            <p class="mb-0 mt-2 mt-sm-0 text-900">Thank you for creating with Phoenix<span class="d-none d-sm-inline-block"></span><span class="d-none d-sm-inline-block mx-1">|</span><br class="d-sm-none" />2023 &copy;<a class="mx-1" href="https://themewagon.com/">Themewagon</a></p>
-          </div>
-          <div class="col-12 col-sm-auto text-center">
-            <p class="mb-0 text-600">v1.13.0</p>
-          </div>
-        </div>
-      </footer>
     </main><!-- ===============================================-->
     <!--    End of Main Content-->
     <!-- ===============================================-->

@@ -87,7 +87,7 @@
                   <div class="col mx-auto">
                     <div class="auth-form-box">
                       <div class="text-center mb-7"><a class="d-flex flex-center text-decoration-none mb-4" href="../../../index.html">
-                          <div class="d-flex align-items-center fw-bolder fs-5 d-inline-block"><img src="../../../assets/img/icons/logo.png" alt="phoenix" width="58" /></div>
+                          <div class="d-flex align-items-center fw-bolder fs-5 d-inline-block"><img src="/assets/img/logoapple.png" alt="phoenix" width="58" /></div>
                         </a>
                         <h3 class="text-1000">Sign In</h3>
                         <p class="text-700">Get access to your account</p>
@@ -108,15 +108,37 @@
                             @enderror
                         </div>
                     </div>
-                      <div class="mb-3 text-start"><label class="form-label" for="password">Password</label>
-                        <div class="form-icon-container"><input class="form-control form-icon-input @error('password') is-invalid @enderror" name="password" autocomplete="current-password" id="password" type="password" placeholder="Password" /><span class="fas fa-key text-900 fs--1 form-icon"></span>
+                    <div class="mb-3 text-start">
+                        <label class="form-label" for="password">Password</label>
+                        <div class="form-icon-container">
+                            <input class="form-control form-icon-input @error('password') is-invalid @enderror" name="password" autocomplete="current-password" id="password" type="password" placeholder="Password" />
+                            <span class="toggle-password fas fa-eye text-900 fs--1 form-icon" onclick="togglePasswordVisibility()"></span>
+
                             @error('password')
                             <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
+                    </div>
+
+                    <script>
+                        function togglePasswordVisibility() {
+                            var passwordField = document.getElementById('password');
+                            var icon = document.querySelector('.toggle-password');
+
+                            if (passwordField.type === 'password') {
+                                passwordField.type = 'text';
+                                icon.classList.remove('fa-eye');
+                                icon.classList.add('fa-eye-slash');
+                            } else {
+                                passwordField.type = 'password';
+                                icon.classList.remove('fa-eye-slash');
+                                icon.classList.add('fa-eye');
+                            }
+                        }
+                    </script>
+
                         <div class="row flex-between-center mb-7">
                             <div class="col-auto">
                                 <div class="form-check mb-0"><input class="form-check-input" id="basic-checkbox" type="checkbox" checked="checked" /><label class="form-check-label mb-0" for="basic-checkbox">Remember me</label></div>
