@@ -94,7 +94,6 @@ Route::middleware([UserMiddleware::class])->group(function(){
         Route::get('/wishlist', [WishlistController::class, 'wishlist']);
         Route::get('/tracking', [TrackingController::class, 'tracking']);
         Route::get('/checkout', [CheckoutController::class, 'checkout']);
-        Route::get('/profil', [ProfilController::class, 'profil']);
         Route::get('/produkdetail', [ProdukdetailController::class, 'produkdetail']);
     });
 // Route::middleware(['auth', 'admin'])->group(function () {
