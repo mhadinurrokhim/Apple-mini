@@ -88,13 +88,14 @@ Route::middleware([AdminMiddleware::class])->group(function(){
 Route::middleware([UserMiddleware::class])->group(function(){
 
         Route::get('/homeuser', [HomeUserController::class, 'homeuser']);
-        // Route::get('/home', [HomeController::class, 'home']);
-        // Route::get('/homeuser', [Homeuser::class, 'Homeuser']);
-        // Route::get('/produkfilter', [ProdukfilterController::class, 'produkfilter']);
-        // Route::get('/wishlist', [WishlistController::class, 'wishlist']);
-        // Route::get('/tracking', [TrackingController::class, 'tracking']);
-        // Route::get('/checkout', [CheckoutController::class, 'checkout']);
-        // Route::get('/profil', [ProfilController::class, 'profil']);
+        Route::get('/profil',[ProfilController::class,'index'])->name('profil');
+        Route::get('/home', [HomeController::class, 'home']);
+        Route::get('/produkfilter', [ProdukfilterController::class, 'produkfilter']);
+        Route::get('/wishlist', [WishlistController::class, 'wishlist']);
+        Route::get('/tracking', [TrackingController::class, 'tracking']);
+        Route::get('/checkout', [CheckoutController::class, 'checkout']);
+        Route::get('/profil', [ProfilController::class, 'profil']);
+        Route::get('/produkdetail', [ProdukdetailController::class, 'produkdetail']);
     });
 // Route::middleware(['auth', 'admin'])->group(function () {
 //     Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
@@ -157,13 +158,5 @@ Route::middleware([UserMiddleware::class])->group(function(){
 // });
 
 // USER
-Route::get('/homeuser', [HomeUserController::class, 'homeuser']);
-Route::get('/profil',[ProfilController::class,'index'])->name('profil');
-Route::get('/home', [HomeController::class, 'home']);
-Route::get('/produkfilter', [ProdukfilterController::class, 'produkfilter']);
-Route::get('/wishlist', [WishlistController::class, 'wishlist']);
-Route::get('/tracking', [TrackingController::class, 'tracking']);
-Route::get('/checkout', [CheckoutController::class, 'checkout']);
-Route::get('/profil', [ProfilController::class, 'profil']);
-Route::get('/produkdetail', [ProdukdetailController::class, 'produkdetail']);
+
 

@@ -277,9 +277,9 @@
                     <a class="fw-semi-bold fs--1  line-clamp-3 mb-0" href="../landing/produks-details.html">{{ $produks->nama_produk }}</a>
                 </td>
                   <td class="price align-middle white-space-nowrap text-end fw-bold fs--1  text-700 ps-4">{{'Rp ' . number_format( $produks->harga, 0, ',', '.') }}</td>
-                  <td class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold">{{ $produks->kategori_id }}</td>
+                  <td class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold"> {{ $produks->kategori ? $produks->kategori->nama_kategori : 'Tidak Ada Kategori' }}</td>
                   <td class="tags align-middle review pb-2 ps-3 fs--1 "  style="width:200px;">{{ $produks->stok }}</td>
-                  <td class="align-middle review fs-0 text-center  ps-4 text-truncate" style="max-width: 6px" >{!!$produks->deskripsi!!}</td>
+                  <td class="ellipsis-text">{{ strip_tags($produks->deskripsi) }}</td>
                   <td class="align-middle review fs-0 text-center ps-4">
                     <a href="{{ route('produk.edit',$produks->id) }}"method="POST" enctype="multipart/form-data" class="btn btn-primary" >
                     edit
@@ -291,5 +291,14 @@
             </table>
           </div>
       </div>
+      <style>
+        .ellipsis-text {
+            max-width: 200px; /* Sesuaikan dengan lebar maksimum yang diinginkan */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 14px; /* Sesuaikan dengan ukuran font yang diinginkan */
+        }
+    </style>
       {{-- {{ END }} --}}
 @endsection
