@@ -20,6 +20,7 @@ use App\Http\Controllers\AdminorderController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\ProdukfilterController;
 use App\Http\Controllers\AdmindashboardController;
+use App\Http\Controllers\ProdukdetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -158,11 +159,11 @@ Route::middleware([UserMiddleware::class])->group(function(){
 // USER
 Route::get('/homeuser', [HomeUserController::class, 'homeuser']);
 Route::get('/profil',[ProfilController::class,'index'])->name('profil');
-// Route::get('/home', [HomeController::class, 'home']);
-// Route::get('/homeuser', [Homeuser::class, 'Homeuser']);
-// Route::get('/produkfilter', [ProdukfilterController::class, 'produkfilter']);
-// Route::get('/wishlist', [WishlistController::class, 'wishlist']);
-// Route::get('/tracking', [TrackingController::class, 'tracking']);
-// Route::get('/checkout', [CheckoutController::class, 'checkout']);
-// Route::get('/profil', [ProfilController::class, 'profil']);
+Route::get('/home', [HomeController::class, 'home']);
+Route::get('/produkfilter', [ProdukfilterController::class, 'produkfilter']);
+Route::get('/wishlist', [WishlistController::class, 'wishlist']);
+Route::get('/tracking', [TrackingController::class, 'tracking']);
+Route::get('/checkout', [CheckoutController::class, 'checkout']);
+Route::get('/profil', [ProfilController::class, 'profil']);
+Route::get('/produkdetail', [ProdukdetailController::class, 'produkdetail']);
 
