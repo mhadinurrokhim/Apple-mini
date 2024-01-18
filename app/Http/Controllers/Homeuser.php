@@ -3,21 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Produk;
 
-class HomeUserController extends Controller
+class Homeuser extends Controller
 {
-    public function homeuser()
-    {
-        $produk = Produk::all();
-        $user = auth()->user();
-        return view('user.homeuser', compact('produk', 'user'));
-    }
-
-    public function index()
-    {
-        //
-    }
+    /**
+     * Display a listing of the resource.
+     */
 
     /**
      * Show the form for creating a new resource.
