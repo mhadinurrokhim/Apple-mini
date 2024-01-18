@@ -280,9 +280,9 @@
                         </div>
                         <select class="form-select mb-3 @error('kategori_id') is-invalid @enderror" name="kategori_id"
                           aria-label="category">
-                          @foreach ($kategoris as $kategori)
-                            <option value="{{ $kategori->id }}" @if ($produk->kategori_id == $kategori->id) selected @endif>
-                              {{ $kategori->nama_kategori }}
+                          @foreach ($kategori as $kategoris)
+                            <option value="{{ $kategoris->id }}" @if ($produk->kategori_id == $kategoris->id) selected @endif>
+                              {{ $kategoris->nama_kategori }}
                             </option>
                           @endforeach
                         </select>
