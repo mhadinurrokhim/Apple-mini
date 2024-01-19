@@ -89,8 +89,9 @@ Route::middleware([AdminMiddleware::class])->group(function(){
 Route::middleware([UserMiddleware::class])->group(function(){
 
         Route::get('/homeuser', [HomeUserController::class, 'homeuser']);
+        Route::get('/detailproduk{id}', [HomeUserController::class, 'detailproduk'])->name('detail.produk');
         Route::get('/profil',[ProfilController::class,'index'])->name('profil');
-        Route::get('/home', [HomeController::class, 'home']);
+        // Route::get('/home', [HomeController::class, 'home']);
         Route::get('/produkfilter', [ProdukfilterController::class, 'produkfilter']);
         Route::get('/wishlist', [WishlistController::class, 'wishlist']);
         Route::get('/tracking', [TrackingController::class, 'tracking']);

@@ -13,6 +13,7 @@ class ProdukController extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
         $produk = Produk::all();
@@ -170,4 +171,6 @@ class ProdukController extends Controller
     {
         //
     }
+
+    
 }

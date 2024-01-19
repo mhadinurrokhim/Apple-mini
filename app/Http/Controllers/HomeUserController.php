@@ -14,9 +14,12 @@ class HomeUserController extends Controller
         return view('user.homeuser', compact('produk', 'user'));
     }
 
-    public function index()
+    public function detailproduk(Request $request, $id)
     {
-        //
+        // $user = produk::findOrFail($id);
+        $user = auth()->user();
+        $produk = produk::where('id', $id)->get();
+        return view('user.produkdetail',compact('produk','user'));
     }
 
     /**

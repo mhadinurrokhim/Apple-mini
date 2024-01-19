@@ -666,7 +666,7 @@
                                   <img class="card-img-top img-fluid" src="{{ asset('storage/Product/'. $product->path_produk) }}" alt="{{ $product->nama_produk }}" style="width: 300px; height: 200px;" />
                                 </div>
                                 <div class="card-body">
-                                  <a href="produkdetail" class="stretched-link">
+                                  <a href="{{ route ('detail.produk',$product->id) }}" class="stretched-link">
                                     <h6 class="card-title mb-2 lh-sm line-clamp-3 product-name">{{ $product->nama_produk }}</h6>
                                 </a>
                                 <p class="fs--1 text-1000 fw-bold mb-2">Stock {{ $product->stok }}</p>

@@ -262,6 +262,7 @@
 
         <!-- ============================================-->
         <!-- <section> begin ============================-->
+            @foreach ($produk as $detail )
         <section class="py-0">
           <div class="container-small">
             <div class="row g-5 mb-5 mb-lg-8" data-product-details="data-product-details">
@@ -272,45 +273,39 @@
                   </div>
                   <div class="col-12 col-md-10 col-lg-12 col-xl-10">
                     <div class="d-flex align-items-center border rounded-3 text-center p-5 h-100">
-                      <div class="swiper swiper-container theme-slider" data-thumb-target="swiper-products-thumb" data-products-swiper='{"slidesPerView":1,"spaceBetween":16,"thumbsEl":".swiper-products-thumb"}'></div>
+                        <div style="position: relative; width: 100%; height: 100%;">
+                            <img src="{{ asset('storage/Product/'. $detail->path_produk) }}" alt="" style="object-fit: cover; width: 100%; height: 100%; position: absolute; top: 0; left: 0;" />
+                        </div>
+                        <div class="swiper swiper-container theme-slider" data-thumb-target="swiper-products-thumb" data-products-swiper='{"slidesPerView":1,"spaceBetween":16,"thumbsEl":".swiper-products-thumb"}'></div>
                     </div>
+
                   </div>
                 </div>
                 <div class="d-flex"><button class="btn btn-lg btn-outline-primary rounded-pill w-100 me-3 px-2 px-sm-4 fs--1 fs-sm-0"><span class="me-2 far fa-heart"></span>Add to wishlist</button><button class="btn btn-lg btn-primary rounded-pill w-100 fs--1 fs-sm-0"><span class="fas fa-shopping-cart me-2"></span>Add to cart</button></div>
               </div>
               <div class="col-12 col-lg-6">
                 <div class="d-flex flex-column justify-content-between h-100">
-                  <div>
-                    <div class="d-flex flex-wrap">
-                      <div class="me-2"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span></div>
+                  <div class="">
+                      <div class="d-flex flex-wrap">
+                          <div class="me-2"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span></div>
                       <p class="text-primary fw-semi-bold mb-2">6548 People rated and reviewed </p>
                     </div>
-                    <h3 class="mb-3 lh-sm">24" iMac® with Retina 4.5K display - Apple M1 8GB Memory - 256GB SSD - w/Touch ID (Latest Model) - Blue</h3>
+                    <h3 class="mb-3 lh-sm">{{ $detail->nama_produk }}</h3>
+                    <div class="d-flex flex-wrap align-items-start mb-3"><span class="badge bg-success fs--1 rounded-pill me-2 fw-semi-bold">#1 Best seller</span><a class="fw-semi-bold" href="#!">in Phoenix sell analytics 2021</a></div>
                     <div class="d-flex flex-wrap align-items-center">
-                      <h1 class="me-3">Rp 8.000.000/h1>
+                      <h1 class="me-3">Rp.{{ $detail->harga }}</h1>
                     </div>
-                    <p class="text-success fw-semi-bold fs-1 mb-2">In Stock 77</p>
-                    <p class="mb-2 text-800"><strong class="text-1000">Do you want it on Saturday, July 29th?</strong> Choose <strong class="text-1000">Saturday Delivery </strong>at checkout if you want your order delivered within 12 hours 43 minutes,<strong class="text-1000">Gift wrapping is available.</strong></p>
-                    <a class="fw-bold" href="ulasanproduk">Ulasan-></a>
+                    <p class="text-success fw-semi-bold fs-1 mb-2">Stock {{ $detail->stok }}</p>
+                    <p class="mb-2 text-800"><strong class="text-1000">{{strip_tags( $detail->deskripsi) }}</strong></p>
                   </div>
                   <div>
-                    <div class="mb-3">
-                      <div class="d-flex product-color-variants" data-product-color-variants="data-product-color-variants">
-                        <div class="rounded-1 border me-2 active" data-variant="Blue" data-products-images='["../../../assets/img/products/details/blue_front.png","../../../assets/img/products/details/blue_back.png","../../../assets/img/products/details/blue_side.png"]'><img src="../../../assets/img/products/details/blue_front.png" alt="" width="38" /></div>
-                        <div class="rounded-1 border me-2" data-variant="Red" data-products-images='["../../../assets/img/products/details/red_front.png","../../../assets/img/products/details/red_back.png","../../../assets/img/products/details/red_side.png"]'><img src="../../../assets/img/products/details/red_front.png" alt="" width="38" /></div>
-                        <div class="rounded-1 border me-2" data-variant="Green" data-products-images='["../../../assets/img/products/details/green_front.png","../../../assets/img/products/details/green_back.png","../../../assets/img/products/details/green_side.png"]'><img src="../../../assets/img/products/details/green_front.png" alt="" width="38" /></div>
-                        <div class="rounded-1 border me-2" data-variant="Purple" data-products-images='["../../../assets/img/products/details/purple_front.png","../../../assets/img/products/details/purple_back.png","../../../assets/img/products/details/purple_side.png"]'><img src="../../../assets/img/products/details/purple_front.png" alt="" width="38" /></div>
-                        <div class="rounded-1 border me-2" data-variant="Silver" data-products-images='["../../../assets/img/products/details/silver_front.png","../../../assets/img/products/details/silver_back.png","../../../assets/img/products/details/silver_side.png"]'><img src="../../../assets/img/products/details/silver_front.png" alt="" width="38" /></div>
-                        <div class="rounded-1 border me-2" data-variant="Yellow" data-products-images='["../../../assets/img/products/details/yellow_front.png","../../../assets/img/products/details/yellow_back.png","../../../assets/img/products/details/yellow_side.png"]'><img src="../../../assets/img/products/details/yellow_front.png" alt="" width="38" /></div>
-                        <div class="rounded-1 border me-2" data-variant="Orange" data-products-images='["../../../assets/img/products/details/orange_front.png","../../../assets/img/products/details/orange_back.png","../../../assets/img/products/details/orange_side.png"]'><img src="../../../assets/img/products/details/orange_front.png" alt="" width="38" /></div>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div><!-- end of .container-->
         </section><!-- <section> close ============================-->
+                      @endforeach
         <!-- ============================================-->
 
 
@@ -319,6 +314,7 @@
 
       <!-- ============================================-->
       <!-- <section> begin ============================-->
+
       <section class="bg-100 dark__bg-1100 py-9">
         <div class="container-small">
           <div class="row justify-content-between gy-4">
@@ -348,17 +344,6 @@
         </div><!-- end of .container-->
       </section><!-- <section> close ============================-->
       <!-- ============================================-->
-
-      <footer class="footer position-relative">
-        <div class="row g-0 justify-content-between align-items-center h-100">
-          <div class="col-12 col-sm-auto text-center">
-            <p class="mb-0 mt-2 mt-sm-0 text-900">Thank you for creating with Phoenix<span class="d-none d-sm-inline-block"></span><span class="d-none d-sm-inline-block mx-1">|</span><br class="d-sm-none" />2023 &copy;<a class="mx-1" href="https://themewagon.com/">Themewagon</a></p>
-          </div>
-          <div class="col-12 col-sm-auto text-center">
-            <p class="mb-0 text-600">v1.13.0</p>
-          </div>
-        </div>
-      </footer>
     </main><!-- ===============================================-->
     <!--    End of Main Content-->
     <!-- ===============================================-->
