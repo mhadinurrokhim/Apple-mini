@@ -225,21 +225,21 @@
               <div class="col-12 col-md-auto">
                 <div class="d-flex align-items-center"><span class="fa-stack" style="min-height: 46px; min-width: 46px;"><span class="fa-solid fa-square fa-stack-2x text-primary-300" data-fa-transform="down-4 rotate--10 left-4"></span><span class="fa-solid fa-circle fa-stack-2x stack-circle text-primary-100" data-fa-transform="up-4 right-3 grow-2"></span><span class="fa-stack-1x fa-solid fa-shopping-bag text-primary" data-fa-transform="shrink-2 up-8 right-6"></span></span>
                   <div class="ms-3">
-                    <h4 class="mb-0">15 Product</h4>
-                    <p class="text-800 fs--1 mb-0">products</p>
+                    <h4 class="mb-0">{{ $totalProduct}} Product</h4>
+                    <p class="text-800 fs--1 mb-0">Total amount</p>
                   </div>
                 </div>
              </div>
               <div class="col-12 col-md-auto">
                 <div class="d-flex align-items-center"><span class="fa-stack" style="min-height: 46px; min-width: 46px;"><span class="fa-solid fa-square fa-stack-2x text-success-300" data-fa-transform="down-4 rotate--10 left-4"></span><span class="fa-solid fa-circle fa-stack-2x stack-circle text-success-100" data-fa-transform="up-4 right-3 grow-2"></span><span class="fa-stack-1x fa-solid fa-bell text-success" data-fa-transform="shrink-2 up-8 right-6"></span></span>
                   <div class="ms-3">
-                    <h4 class="mb-0">57 new orders</h4>
-                    <p class="text-800 fs--1 mb-0">Awating processing</p>
+                    <h4 class="mb-0"> {{$totalUser}} Users</h4>
+                    <p class="text-800 fs--1 mb-0">Registered users total</p>
                   </div>
                 </div>
               </div>
               <div class="col-12 col-md-auto">
-                <div class="d-flex align-items-center"><span class="fa-stack" style="min-height: 46px; min-width: 46px;"><span class="fa-solid fa-square fa-stack-2x text-warning-300" data-fa-transform="down-4 rotate--10 left-4"></span><span class="fa-solid fa-circle fa-stack-2x stack-circle text-warning-100" data-fa-transform="up-4 right-3 grow-2"></span><span class="fa-stack-1x fa-solid fa-box text-warning" data-fa-transform="shrink-2 up-8 right-6"></span></span>
+                <div class="d-flex align-items-center"><span class="fa-stack" style="min-height: 46px; min-width: 46px;"><span class="fa-solid fa-square fa-stack-2x text-warning-300" data-fa-transform="down-4 rotate--10 left-4"></span><span class="fa-solid fa-circle fa-stack-2x stack-circle text-warning-100" data-fa-transform="up-4 right-3 grow-2"></span><span class="fa-stack-1x fa-brands fa-sellsy text-warning" data-fa-transform="shrink-2 up-8 right-6"></span></span>
                   <div class="ms-3">
                     <h4 class="mb-0">5 Product Pending</h4>
                     <p class="text-800 fs--1 mb-0">Ditahan</p>

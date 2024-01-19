@@ -298,7 +298,7 @@
                           <div class="mb-3 mx-3"><input class="form-control form-control-sm" id="statusUpdateInput"
                               type="text" placeholder="Update your status" /></div>
                         </div>
-                        <div class="overflow-auto scrollbar" style="height: 10rem;">
+                        <div class="overflow-auto scrollbar" style="height: 2rem;">
                           <ul class="nav d-flex flex-column mb-2 pb-1">
                             <li class="nav-item"><a class="nav-link px-3" href="profil"> <span
                                   class="me-2 text-900" data-feather="user"></span><span>Profile</span></a></li>
