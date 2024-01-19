@@ -122,16 +122,11 @@
               <nav class="ecommerce-navbar navbar-expand navbar-light bg-white justify-content-center">
                 <div class="container-small d-flex flex-between-center text-center" data-navbar="data-navbar">
                   <ul class="navbar-nav mx-auto justify-content-end align-items-center">
-                    <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link ps-0" href="homeuser">Home</a>
-                    </li>
-                    <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link active"
-                        href="podukfilter">Products</a></li>
-                    <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link"
-                        href="wishlist">Wishlist</a></li>
-                    <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link" href="tracking">Track
-                        order</a></li>
-                    <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link pe-0"
-                        href="checkout">Checkout</a></li>
+                    <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link" href="homeuser">Home</a></li>
+                    <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link" href="podukfilter">Products</a></li>
+                    <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link" href="wishlist">Wishlist</a></li>
+                    <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link" href="tracking">Trackorder</a></li>
+                    <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link" href="checkout">Checkout</a></li>
                   </ul>
                 </div>
               </nav>

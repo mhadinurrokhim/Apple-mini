@@ -57,6 +57,12 @@
       linkRTL.setAttribute('disabled', true);
       userLinkRTL.setAttribute('disabled', true);
     }
+
+    <style>
+        .swiper-slide {
+            margin-right: 20px !important;
+        }
+    </style>
   </script>
   <link href="../../../vendors/swiper/swiper-bundle.min.css" rel="stylesheet">
 </head>
@@ -647,8 +653,8 @@
                      data-swiper='{"slidesPerView":1,"spaceBetween":16,"breakpoints":{"450":{"slidesPerView":2,"spaceBetween":16},"768":{"slidesPerView":3,"spaceBetween":20},"1200":{"slidesPerView":4,"spaceBetween":16},"1540":{"slidesPerView":5,"spaceBetween":16}}}'>
                   <div class="swiper-wrapper">
                     @foreach ($produk as $product)
-                    <div class="swiper-slide">
-                        <div class="card">
+                    <div class="swiper-slide" style="margin-right: 20px !important;">
+                        <div class="card" style="width: 300px; height: 470px;">
                           <div class="position-relative text-decoration-none product-card h-100">
                             <div class="d-flex flex-column justify-content-between h-100">
                               <div>

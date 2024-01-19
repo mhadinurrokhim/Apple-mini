@@ -276,36 +276,77 @@
                     </div>
                   </div>
                 </div>
-                <div class="d-flex"><button class="btn btn-lg btn-outline-primary rounded-pill w-100 me-3 px-2 px-sm-4 fs--1 fs-sm-0"><span class="me-2 far fa-heart"></span>Add to wishlist</button><button class="btn btn-lg btn-primary rounded-pill w-100 fs--1 fs-sm-0"><span class="fas fa-shopping-cart me-2"></span>Add to cart</button></div>
+                <div class="d-flex"><button class="btn btn-lg btn-outline-primary rounded-pill w-100 me-3 px-2 px-sm-4 fs--1 fs-sm-0"><span class="me-2 far fa-heart"></span>Add to wishlist</button><button class="btn btn-lg btn-outline-primary rounded-pill w-100 me-3 px-2 px-sm-4 fs--1 fs-sm-0""><span class="fas fa-shopping-cart me-2"></span>Add to cart</button></div>
               </div>
               <div class="col-12 col-lg-6">
                 <div class="d-flex flex-column justify-content-between h-100">
                   <div>
-                    <div class="d-flex flex-wrap">
-                      <div class="me-2"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span></div>
-                      <p class="text-primary fw-semi-bold mb-2">6548 People rated and reviewed </p>
+                    <div style="border: 1px solid #ccc; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-height: 486px; overflow-y: auto;">
+                        <div style="padding: 20px;">
+                            <h3 style="margin-top: 0; color: #333;">Ulasan</h3>
+                            <div style="color: #666;">
+                                <hr>
+                                <h4 style="margin-top: 0; color: #333;">sasyah</h4>
+                                <div style="display: flex; align-items: center;">
+                                    <span style="color: #ffd700;">★</span>
+                                    <span style="color: #ffd700;">★</span>
+                                    <span style="color: #ffd700;">★</span>
+                                    <span style="color: #ffd700;">★</span>
+                                    <span style="color: #ffd700;">★</span>
+                                </div>
+                                <span style="margin-right: 5px;">Barangnya original dan & kualitasnya oke banget. Semua masih mulus dan baru. Packagingnya juga aman, dapat dipercaya.</span>
+                                <hr>
+                                <h4 style="margin-top: 0; color: #333;">sasyah</h4>
+                                <div style="display: flex; align-items: center;">
+                                    <span style="color: #ffd700;">★</span>
+                                    <span style="color: #ffd700;">★</span>
+                                    <span style="color: #ffd700;">★</span>
+                                    <span style="color: #ffd700;">★</span>
+                                    <span style="color: #ffd700;">★</span>
+                                </div>
+                                <span style="margin-right: 5px;">Barangnya original dan & kualitasnya oke banget. Semua masih mulus dan baru. Packagingnya juga aman, dapat dipercaya.</span>
+                                <hr>
+                                <h4 style="margin-top: 0; color: #333;">sasyah</h4>
+                                <div style="display: flex; align-items: center;">
+                                    <span style="color: #ffd700;">★</span>
+                                    <span style="color: #ffd700;">★</span>
+                                    <span style="color: #ffd700;">★</span>
+                                    <span style="color: #ffd700;">★</span>
+                                    <span style="color: #ffd700;">★</span>
+                                </div>
+                                <span style="margin-right: 5px;">Barangnya original dan & kualitasnya oke banget. Semua masih mulus dan baru. Packagingnya juga aman, dapat dipercaya.</span>
+                                <hr>
+                                <h4 style="margin-top: 0; color: #333;">sasyah</h4>
+                                <div style="display: flex; align-items: center;">
+                                    <span style="color: #ffd700;">★</span>
+                                    <span style="color: #ffd700;">★</span>
+                                    <span style="color: #ffd700;">★</span>
+                                    <span style="color: #ffd700;">★</span>
+                                    <span style="color: #ffd700;">★</span>
+                                </div>
+                                <span style="margin-right: 5px;">Barangnya original dan & kualitasnya oke banget. Semua masih mulus dan baru. Packagingnya juga aman, dapat dipercaya.</span>
+                                <hr>
+                                <h4 style="margin-top: 0; color: #333;">sasyah</h4>
+                                <div style="display: flex; align-items: center;">
+                                    <span style="color: #ffd700;">★</span>
+                                    <span style="color: #ffd700;">★</span>
+                                    <span style="color: #ffd700;">★</span>
+                                    <span style="color: #ffd700;">★</span>
+                                    <span style="color: #ffd700;">★</span>
+                                </div>
+                                <span style="margin-right: 5px;">Barangnya original dan & kualitasnya oke banget. Semua masih mulus dan baru. Packagingnya juga aman, dapat dipercaya.</span>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="mb-3 lh-sm">24" iMac® with Retina 4.5K display - Apple M1 8GB Memory - 256GB SSD - w/Touch ID (Latest Model) - Blue</h3>
-                    <div class="d-flex flex-wrap align-items-center">
-                      <h1 class="me-3">Rp 8.000.000/h1>
-                    </div>
-                    <p class="text-success fw-semi-bold fs-1 mb-2">In Stock 77</p>
-                    <p class="mb-2 text-800"><strong class="text-1000">Do you want it on Saturday, July 29th?</strong> Choose <strong class="text-1000">Saturday Delivery </strong>at checkout if you want your order delivered within 12 hours 43 minutes,<strong class="text-1000">Gift wrapping is available.</strong></p>
-                    <a class="fw-bold" href="ulasanproduk">Ulasan-></a>
                   </div>
-                  <div>
-                    <div class="mb-3">
-                      <div class="d-flex product-color-variants" data-product-color-variants="data-product-color-variants">
-                        <div class="rounded-1 border me-2 active" data-variant="Blue" data-products-images='["../../../assets/img/products/details/blue_front.png","../../../assets/img/products/details/blue_back.png","../../../assets/img/products/details/blue_side.png"]'><img src="../../../assets/img/products/details/blue_front.png" alt="" width="38" /></div>
-                        <div class="rounded-1 border me-2" data-variant="Red" data-products-images='["../../../assets/img/products/details/red_front.png","../../../assets/img/products/details/red_back.png","../../../assets/img/products/details/red_side.png"]'><img src="../../../assets/img/products/details/red_front.png" alt="" width="38" /></div>
-                        <div class="rounded-1 border me-2" data-variant="Green" data-products-images='["../../../assets/img/products/details/green_front.png","../../../assets/img/products/details/green_back.png","../../../assets/img/products/details/green_side.png"]'><img src="../../../assets/img/products/details/green_front.png" alt="" width="38" /></div>
-                        <div class="rounded-1 border me-2" data-variant="Purple" data-products-images='["../../../assets/img/products/details/purple_front.png","../../../assets/img/products/details/purple_back.png","../../../assets/img/products/details/purple_side.png"]'><img src="../../../assets/img/products/details/purple_front.png" alt="" width="38" /></div>
-                        <div class="rounded-1 border me-2" data-variant="Silver" data-products-images='["../../../assets/img/products/details/silver_front.png","../../../assets/img/products/details/silver_back.png","../../../assets/img/products/details/silver_side.png"]'><img src="../../../assets/img/products/details/silver_front.png" alt="" width="38" /></div>
-                        <div class="rounded-1 border me-2" data-variant="Yellow" data-products-images='["../../../assets/img/products/details/yellow_front.png","../../../assets/img/products/details/yellow_back.png","../../../assets/img/products/details/yellow_side.png"]'><img src="../../../assets/img/products/details/yellow_front.png" alt="" width="38" /></div>
-                        <div class="rounded-1 border me-2" data-variant="Orange" data-products-images='["../../../assets/img/products/details/orange_front.png","../../../assets/img/products/details/orange_back.png","../../../assets/img/products/details/orange_side.png"]'><img src="../../../assets/img/products/details/orange_front.png" alt="" width="38" /></div>
-                      </div>
+                    <div><button class="btn btn-lg btn-primary w-100 fs--1 fs-sm-0" onclick="goBack()"><span class="fas fa-arrow-left me-2"></span>Kembali</button>
+                        <script>
+                            function goBack() {
+                                window.history.back();
+                            }
+                            </script>
                     </div>
-                  </div>
+                    </div>
                 </div>
               </div>
             </div>

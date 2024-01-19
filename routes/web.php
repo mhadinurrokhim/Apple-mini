@@ -21,6 +21,7 @@ use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\ProdukfilterController;
 use App\Http\Controllers\AdmindashboardController;
 use App\Http\Controllers\ProdukdetailController;
+use App\Http\Controllers\UlasanprodukController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,7 +95,8 @@ Route::middleware([UserMiddleware::class])->group(function(){
         Route::get('/wishlist', [WishlistController::class, 'wishlist']);
         Route::get('/tracking', [TrackingController::class, 'tracking']);
         Route::get('/checkout', [CheckoutController::class, 'checkout']);
-        Route::get('/produkdetail', [ProdukdetailController::class, 'produkdetail']);
+        Route::get('/produkdetail', [ProdukdetailController::class, 'produkdetail'])->name('produkdetail');
+        Route::get('/ulasanproduk', [UlasanprodukController::class, 'ulasanproduk']);
     });
 // Route::middleware(['auth', 'admin'])->group(function () {
 //     Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');

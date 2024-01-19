@@ -115,14 +115,6 @@
                                             </a>
                                             <h3 class="text-1000">Sign Up</h3>
                                             <p class="text-700">Create your account today</p>
-                                        </div><button class="btn btn-phoenix-secondary w-100 mb-3"><span
-                                                class="fab fa-google text-danger me-2 fs--1"></span>Sign up with
-                                            google</button><button class="btn btn-phoenix-secondary w-100"><span
-                                                class="fab fa-facebook text-primary me-2 fs--1"></span>Sign up with
-                                            facebook</button>
-                                        <div class="position-relative mt-4">
-                                            <hr class="bg-200" />
-                                            <div class="divider-content-center bg-white">or use email</div>
                                         </div>
                                         <form method="POST" action="{{ route('Createregister') }}">
                                             @csrf
