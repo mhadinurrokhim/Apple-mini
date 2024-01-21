@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_produk');
             $table->string('path_produk');
-            $table->integer('harga');
+            $table->string('harga');
             $table->integer('stok');
             $table->text('deskripsi');
             $table->foreignId('kategori_id')->constrained('kategori')->restrictOnDelete();

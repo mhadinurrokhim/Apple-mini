@@ -97,14 +97,14 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 // USER
 Route::middleware([UserMiddleware::class])->group(function () {
 
-    Route::get('/homeuser', [HomeUserController::class, 'homeuser']);
+    Route::get('/homeuser', [HomeUserController::class, 'homeuser'])->name('homeuser');
     Route::get('/detailproduk{id}', [HomeUserController::class, 'detailproduk'])->name('detail.produk');
-    Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
+    Route::get('/profil', [ProfilController::class, 'index'])->name('profil')->name('profil');
     // Route::get('/home', [HomeController::class, 'home']);
-    Route::get('/produkfilter', [ProdukfilterController::class, 'produkfilter']);
-    Route::get('/wishlist', [WishlistController::class, 'wishlist']);
-    Route::get('/tracking', [TrackingController::class, 'tracking']);
-    Route::get('/checkout', [CheckoutController::class, 'checkout']);
+    Route::get('/produkfilter', [ProdukfilterController::class, 'produkfilter'])->name('produkfilter');
+    Route::get('/wishlist', [WishlistController::class, 'wishlist'])->name('wishlist');
+    Route::get('/tracking', [TrackingController::class, 'tracking'])->name('tracking');
+    Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
     Route::get('/produkdetail', [ProdukdetailController::class, 'produkdetail'])->name('produkdetail');
     Route::get('/ulasanproduk', [UlasanprodukController::class, 'ulasanproduk']);
 });

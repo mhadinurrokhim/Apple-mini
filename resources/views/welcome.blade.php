@@ -14,7 +14,7 @@
   <!-- ===============================================-->
   <!--    Document Title-->
   <!-- ===============================================-->
-  <title>Phoenix</title>
+  <title>iVibe</title>
 
   <!-- ===============================================-->
   <!--    Favicons-->
@@ -84,7 +84,7 @@
               <div class="col-auto mt-5">
                 <a class="text-decoration-none" href="../../../index.html">
                   <div class="d-flex align-items-center">
-                    <img src="../../../assets/img/logoapple.png" alt="phoenix" width="27" />
+                    <img src="{{ asset('assets/storage/logo.png') }}" alt="phoenix" width="27" />
                     <p class="logo-text ms-2">iVibe</p>
                   </div>
                 </a>
@@ -232,7 +232,7 @@
       <div class="container-small">
         <div class="row justify-content-between gy-4">
           <div class="col-12 col-lg-4">
-            <div class="d-flex align-items-center mb-3"><img src="/assets/img/logoapple.png" alt="phoenix"
+            <div class="d-flex align-items-center mb-3"><img src="{{ asset('assets/storage/logo.png') }}" alt="phoenix"
                 width="27" />
               <p class="logo-text ms-2">iVibe</p>
             </div>

@@ -12,7 +12,7 @@
     <!-- ===============================================-->
     <!--    Document Title-->
     <!-- ===============================================-->
-    <title>Phoenix</title>
+    <title>iVibe</title>
 
     <!-- ===============================================-->
     <!--    Favicons-->
@@ -63,7 +63,7 @@
     <!-- ===============================================-->
     <main class="main" id="top">
       <div class="container-fluid bg-300 dark__bg-1200">
-        <div class="bg-holder bg-auth-card-overlay" style="background-image:url(../../../assets/img/bg/37.png);"></div>
+        <div class="bg-holder bg-auth-card-overlay"><img src="{{ asset('assets/storage/logo.png') }}" alt="phoenix" width="58" /></div>
         <!--/.bg-holder-->
         <div class="row flex-center position-relative min-vh-100 g-0 py-5">
           <div class="col-11 col-sm-10 col-xl-8">
@@ -71,7 +71,9 @@
               <div class="card-body pe-md-0">
                 <div class="row align-items-center gx-0 gy-7">
                   <div class="col-auto bg-100 dark__bg-1100 rounded-3 position-relative overflow-hidden auth-title-box">
-                    <div class="bg-holder" style="background-image:url(../../../assets/img/bg/38.png);"></div>
+                    <div class="bg-holder auth-img-holder">
+                        <img src="{{ asset('assets/storage/photo.jpg') }}" class="auth-img" alt="Authentication Image">
+                    </div>
                     <!--/.bg-holder-->
                     <div class="position-relative px-4 px-lg-7 pt-7 pb-7 pb-sm-5 text-center text-md-start pb-lg-7">
                       <h3 class="mb-3 text-black fs-1">Phoenix Authentication</h3>
@@ -87,14 +89,16 @@
                   <div class="col mx-auto">
                     <div class="auth-form-box">
                       <div class="text-center mb-7"><a class="d-flex flex-center text-decoration-none mb-4" href="../../../index.html">
-                          <div class="d-flex align-items-center fw-bolder fs-5 d-inline-block"><img src="../../../assets/img/icons/logo.png" alt="phoenix" width="58" /></div>
+                        <div class="bg-holder auth-img-holder">
+                            <img src="{{ asset('assets/storage/photo.jpg') }}" class="auth-img" alt="Authentication Image">
+                        </div>
                         </a>
                         <h4 class="text-1000">Reset new password</h4>
                         <p class="text-700">Type your new password</p>
                       </div>
                       <form class="mt-5" method="POST" action="{{ route('password.update') }}">
                         @csrf
-                        
+
                         <input type="hidden" name="token" value="{{ $token }}">
                         <input id="email" type="email" class="form-control mb-2 @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" autocomplete="email" autofocus placeholder="name@email.com"/>
                         @error('email')
