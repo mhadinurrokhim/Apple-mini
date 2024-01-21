@@ -14,11 +14,12 @@
   <!-- ===============================================-->
   <!--    Document Title-->
   <!-- ===============================================-->
-  <title>Phoenix</title>
+  <title>iVibe</title>
 
   <!-- ===============================================-->
   <!--    Favicons-->
   <!-- ===============================================-->
+
   <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/img/favicons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/img/favicons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/img/favicons/favicon-16x16.png">
@@ -348,12 +349,16 @@
   <nav class="ecommerce-navbar navbar-expand navbar-light bg-white justify-content-center">
     <div class="container-small d-flex flex-between-center text-center" data-navbar="data-navbar">
       <ul class="navbar-nav mx-auto justify-content-end align-items-center">
-        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link active" href="{{ route('homeuser') }}">Home</a></li>
-        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link" href="{{ route('produkfilter') }}">Products</a></li>
-        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link" href="{{ route('wishlist') }}">Wishlist</a></li>
-        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link" href="{{ route('tracking') }}">Track order</a>
-        </li>
-        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link pe-0" href="{{ route('checkout') }}">Checkout</a>
+        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link active"
+            href="{{ route('homeuser') }}">Home</a></li>
+        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link active"
+            href="{{ route('produkfilter') }}">Products</a></li>
+        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link active"
+            href="{{ route('wishlist') }}">Wishlist</a></li>
+        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link active"
+            href="{{ route('tracking') }}">Track order</a></li>
+        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link active"
+            href="{{ route('checkout') }}">Checkout</a>
         </li>
       </ul>
     </div>
@@ -399,6 +404,7 @@
       </div>
     </section>
   </div>
+
   <script src="../../../vendors/popper/popper.min.js"></script>
   <script src="../../../vendors/bootstrap/bootstrap.min.js"></script>
   <script src="../../../vendors/anchorjs/anchor.min.js"></script>
