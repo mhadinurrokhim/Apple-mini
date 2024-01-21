@@ -21,6 +21,7 @@ use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\ProdukfilterController;
 use App\Http\Controllers\AdmindashboardController;
 use App\Http\Controllers\ProdukdetailController;
+use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\UlasanprodukController;
 
 /*
@@ -40,18 +41,26 @@ Route::get('/', function () {
 });
 
 // LOGIN REGISTER
-Route::get('/login',[AuthController::class,'login'])->name('login');
-Route::get('/register',[AuthController::class,'register'])->name('register');
-Route::post('/proseslogin',[AuthController::class, 'proseslogin'])->name('proseslogin');
-Route::post('/Createregister',[AuthController::class, 'Createregister'])->name('Createregister');
-Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/proseslogin', [AuthController::class, 'proseslogin'])->name('proseslogin');
+Route::post('/Createregister', [AuthController::class, 'Createregister'])->name('Createregister');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// RESET PASSWORD
+Route::controller(ResetPasswordController::class)->group(function () {
+    Route::get('forgot-password', 'request')->name('password.request');
+    Route::post('forgot-password', 'sendEmail')->name('password.email');
+    Route::get('reset-password/{token}', 'resetPassword')->name('password.reset');
+    Route::post('reset-password', 'updatePassword')->name('password.update');
+});
 
 
 // ADMIN
-Route::middleware([AdminMiddleware::class])->group(function(){
+Route::middleware([AdminMiddleware::class])->group(function () {
 
-    Route::get('/AdminDashboard',[AdmindashboardController::class,'index'])->name('dashboard.side');
-    Route::get('/adminorder',[AdminorderController::class,'index'])->name('order.side');
+    Route::get('/AdminDashboard', [AdmindashboardController::class, 'index'])->name('dashboard.side');
+    Route::get('/adminorder', [AdminorderController::class, 'index'])->name('order.side');
 
     // Route::get('/produk',[ProdukController::class,'index'])->name('produk.side');
     // Route::get('/tambahproduk',[ProdukController::class,'create'])->name('tambah.produk');
@@ -59,12 +68,12 @@ Route::middleware([AdminMiddleware::class])->group(function(){
     // Route::get('/produkedit/{id}',[ProdukController::class,'edit'])->name('produk.edit');
     // Route::put('/produkupdate/{id}',[ProdukController::class,'update'])->name('produk.update');
 
-    Route::controller(ProdukController::class)->prefix('produk')->group(function(){
-        Route::get('','index')->name('produk.side');
-        Route::get('/tambahproduk','create')->name('tambah.produk');
-        Route::post('/create','store')->name('produk.store');
-        Route::get('/produkedit/{id}','edit')->name('produk.edit');
-        Route::put('/produkupdate/{id}','update')->name('produk.update');
+    Route::controller(ProdukController::class)->prefix('produk')->group(function () {
+        Route::get('', 'index')->name('produk.side');
+        Route::get('/tambahproduk', 'create')->name('tambah.produk');
+        Route::post('/create', 'store')->name('produk.store');
+        Route::get('/produkedit/{id}', 'edit')->name('produk.edit');
+        Route::put('/produkupdate/{id}', 'update')->name('produk.update');
     });
 
     // Route::get('/kategori',[KategoriController::class,'index'])->name('kategori.side');
@@ -86,40 +95,40 @@ Route::middleware([AdminMiddleware::class])->group(function(){
 
 
 // USER
-Route::middleware([UserMiddleware::class])->group(function(){
+Route::middleware([UserMiddleware::class])->group(function () {
 
-        Route::get('/homeuser', [HomeUserController::class, 'homeuser']);
-        Route::get('/detailproduk{id}', [HomeUserController::class, 'detailproduk'])->name('detail.produk');
-        Route::get('/profil',[ProfilController::class,'index'])->name('profil');
-        // Route::get('/home', [HomeController::class, 'home']);
-        Route::get('/produkfilter', [ProdukfilterController::class, 'produkfilter']);
-        Route::get('/wishlist', [WishlistController::class, 'wishlist']);
-        Route::get('/tracking', [TrackingController::class, 'tracking']);
-        Route::get('/checkout', [CheckoutController::class, 'checkout']);
-        Route::get('/produkdetail', [ProdukdetailController::class, 'produkdetail'])->name('produkdetail');
-        Route::get('/ulasanproduk', [UlasanprodukController::class, 'ulasanproduk']);
-    });
+    Route::get('/homeuser', [HomeUserController::class, 'homeuser']);
+    Route::get('/detailproduk{id}', [HomeUserController::class, 'detailproduk'])->name('detail.produk');
+    Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
+    // Route::get('/home', [HomeController::class, 'home']);
+    Route::get('/produkfilter', [ProdukfilterController::class, 'produkfilter']);
+    Route::get('/wishlist', [WishlistController::class, 'wishlist']);
+    Route::get('/tracking', [TrackingController::class, 'tracking']);
+    Route::get('/checkout', [CheckoutController::class, 'checkout']);
+    Route::get('/produkdetail', [ProdukdetailController::class, 'produkdetail'])->name('produkdetail');
+    Route::get('/ulasanproduk', [UlasanprodukController::class, 'ulasanproduk']);
+});
 // Route::middleware(['auth', 'admin'])->group(function () {
 //     Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
 
-    // Route::controller(PelangganController::class)->prefix('pelanggan')->group(function () {
-    //     Route::get('', 'index')->name('pelanggan');
-    //     Route::get('create', 'create')->name('pelanggan.create');
-    //     Route::post('store', 'store')->name('pelanggan.store');
-    //     Route::get('edit/{id}', 'edit')->name('pelanggan.edit');
+// Route::controller(PelangganController::class)->prefix('pelanggan')->group(function () {
+//     Route::get('', 'index')->name('pelanggan');
+//     Route::get('create', 'create')->name('pelanggan.create');
+//     Route::post('store', 'store')->name('pelanggan.store');
+//     Route::get('edit/{id}', 'edit')->name('pelanggan.edit');
 
-    //     Route::put('edit/{id}', 'update')->name('pelanggan.update');
-    //     Route::delete('destroy/{id}', 'destroy')->name('pelanggan.destroy');
-    // });
-    Route::controller(PembayaranController::class)->prefix('pembayaran')->group(function () {
-        Route::get('', 'index')->name('pembayaran');
-        Route::get('create', 'create')->name('pembayaran.create');
-        Route::post('store', 'store')->name('pembayaran.store');
-        Route::get('edit/{id}', 'edit')->name('pembayaran.edit');
-        Route::put('edit/{id}', 'update')->name('pembayaran.update');
-        Route::get('destroy/{id}', 'destroy')->name('pembayaran.destroy');
-        // Route::delete('destroy/{id}', 'destroy')->name('pembayaran.destroy');
-    });
+//     Route::put('edit/{id}', 'update')->name('pelanggan.update');
+//     Route::delete('destroy/{id}', 'destroy')->name('pelanggan.destroy');
+// });
+Route::controller(PembayaranController::class)->prefix('pembayaran')->group(function () {
+    Route::get('', 'index')->name('pembayaran');
+    Route::get('create', 'create')->name('pembayaran.create');
+    Route::post('store', 'store')->name('pembayaran.store');
+    Route::get('edit/{id}', 'edit')->name('pembayaran.edit');
+    Route::put('edit/{id}', 'update')->name('pembayaran.update');
+    Route::get('destroy/{id}', 'destroy')->name('pembayaran.destroy');
+    // Route::delete('destroy/{id}', 'destroy')->name('pembayaran.destroy');
+});
 
 
     // Route::controller(SupplierController::class)->prefix('supplier')->group(function () {
@@ -160,5 +169,3 @@ Route::middleware([UserMiddleware::class])->group(function(){
 // });
 
 // USER
-
-
