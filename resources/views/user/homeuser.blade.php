@@ -1,5 +1,6 @@
 @extends('layout_user.navbar')
 @section('content')
+
       <section class="py-0 px-xl-3">
         <div class="container px-xl-0 px-xxl-3">
           <div class="row g-3 mb-9">

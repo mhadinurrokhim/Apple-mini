@@ -1,7 +1,5 @@
 @extends('layout_user.navbar')
 @section('content')
-<!-- ============================================-->
-      <!-- <section> begin ============================-->
       <section class="pt-5 pb-9">
         <div class="container-small">
           <nav class="mb-2" aria-label="breadcrumb">
@@ -182,6 +180,5 @@
             </div>
           </div>
         </div><!-- end of .container-->
-      </section><!-- <section> close ============================-->
-      <!-- ============================================-->
+      </section>
 @endsection
