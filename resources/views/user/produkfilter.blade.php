@@ -59,380 +59,51 @@
             </div>
             <div class="col-lg-9 col-xxl-10">
               <div class="row gx-3 gy-6 mb-8">
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-2">
-                  <div class="product-card-container h-100">
-                    <div class="position-relative text-decoration-none product-card h-100">
-                      <div class="d-flex flex-column justify-content-between h-100">
-                        <div>
-                          <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/6.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                            <h6 class="mb-2 lh-sm line-clamp-3 product-name">PlayStation 5 DualSense Wireless Controller</h6>
-                          </a>
-                          <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(67 people rated)</span></p>
-                        </div>
-                        <div>
-                          <p class="fs--1 text-700 mb-2">dbrand skin available</p>
-                          <div class="d-flex align-items-center mb-1">
-                            <p class="me-2 text-900 text-decoration-line-through mb-0">$125.00</p>
-                            <h3 class="text-1100 mb-0">$89.00</h3>
+                <div class="swiper-theme-container products-slider">
+                    <div class="swiper swiper-container theme-slider"
+                         data-swiper='{"slidesPerView":1,"spaceBetween":16,"breakpoints":{"450":{"slidesPerView":2,"spaceBetween":16},"768":{"slidesPerView":3,"spaceBetween":20},"1200":{"slidesPerView":4,"spaceBetween":16},"1540":{"slidesPerView":5,"spaceBetween":16}}}'>
+                      <div class="swiper-wrapper">
+                        @foreach ($produk as $pf)
+                        <div class="swiper-slide" style="margin-right: 20px !important;">
+                            <div class="card" style="width: 300px; height: 470px;">
+                              <div class="position-relative text-decoration-none product-card h-100">
+                                <div class="d-flex flex-column justify-content-between h-100">
+                                  <div>
+                                    <div class="border border-1 rounded-3 position-relative mb-3">
+                                      <button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist">
+                                        <span class="fas fa-heart d-block-hover"></span>
+                                        <span class="far fa-heart d-none-hover"></span>
+                                      </button>
+                                      <img class="card-img-top img-fluid" src="{{ asset('storage/Product/'. $pf->path_produk) }}" alt="{{ $pf->nama_produk }}" style="width: 300px; height: 200px;" />
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="{{route('detail.produk', $pf->id)}}" class="stretched-link"></a>
+                                        <h6 class="card-title mb-2 lh-sm line-clamp-3 product-name">{{ $pf->nama_produk }}</h6>
+                                    </a>
+                                    <p class="fs--1 text-1000 fw-bold mb-2">Stock {{ $pf->stok }}</p>
+                                      <p class="fs--1">
+                                        <span class="fa fa-star text-warning"></span>
+                                        <span class="fa fa-star text-warning"></span>
+                                        <span class="fa fa-star text-warning"></span>
+                                        <span class="fa fa-star text-warning"></span>
+                                        <span class="fa fa-star text-warning"></span>
+                                        <span class="text-500 fw-semi-bold ms-1">(67 people rated)</span>
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <div class="card-footer">
+                                    <div class="d-flex align-items-center mb-1">
+                                      <h3 class="text-1100 mb-0">Rp {{ number_format($pf->harga, 0, ',', '.') }}</h3>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                          <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>
-                        </div>
+                        @endforeach
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-2">
-                  <div class="product-card-container h-100">
-                    <div class="position-relative text-decoration-none product-card h-100">
-                      <div class="d-flex flex-column justify-content-between h-100">
-                        <div>
-                          <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/1.png" alt="" /><span class="badge bg-success fs--2 product-verified-badge">Verified<span class="fas fa-check ms-1"></span></span></div><a class="stretched-link" href="product-details.html">
-                            <h6 class="mb-2 lh-sm line-clamp-3 product-name">Fitbit Sense Advanced Smartwatch with Tools for Heart Health, Stress Management &amp;amp; Skin Temperature ...</h6>
-                          </a>
-                          <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(74 people rated)</span></p>
-                        </div>
-                        <div>
-                          <div class="d-flex align-items-center mb-1">
-                            <p class="me-2 text-900 text-decoration-line-through mb-0">$49.99</p>
-                            <h3 class="text-1100 mb-0">$34.99</h3>
-                          </div>
-                          <p class="text-success fw-bold fs--1 lh-1 mb-0">Deal time ends in days</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-2">
-                  <div class="product-card-container h-100">
-                    <div class="position-relative text-decoration-none product-card h-100">
-                      <div class="d-flex flex-column justify-content-between h-100">
-                        <div>
-                          <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/2.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                            <h6 class="mb-2 lh-sm line-clamp-3 product-name">iPhone 13 pro max-Pacific Blue, 128GB storage</h6>
-                          </a>
-                          <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(33 people rated)</span></p>
-                        </div>
-                        <div>
-                          <p class="fs--1 text-1000 fw-bold mb-2">Stock limited</p>
-                          <div class="d-flex align-items-center mb-1">
-                            <p class="me-2 text-900 text-decoration-line-through mb-0">$899.99</p>
-                            <h3 class="text-1100 mb-0">$850.99</h3>
-                          </div>
-                          <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">5 colors</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-2">
-                  <div class="product-card-container h-100">
-                    <div class="position-relative text-decoration-none product-card h-100">
-                      <div class="d-flex flex-column justify-content-between h-100">
-                        <div>
-                          <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/3.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                            <h6 class="mb-2 lh-sm line-clamp-3 product-name">Apple MacBook Pro 13 inch-M1-8/256GB-Space Gray</h6>
-                          </a>
-                          <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(97 people rated)</span></p>
-                        </div>
-                        <div>
-                          <p class="fs--1 text-1000 fw-bold mb-2">Apple care included</p>
-                          <div class="d-flex align-items-center mb-1">
-                            <p class="me-2 text-900 text-decoration-line-through mb-0">$12.00</p>
-                            <h3 class="text-1100 mb-0">$11.00</h3>
-                          </div>
-                          <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-2">
-                  <div class="product-card-container h-100">
-                    <div class="position-relative text-decoration-none product-card h-100">
-                      <div class="d-flex flex-column justify-content-between h-100">
-                        <div>
-                          <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/4.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                            <h6 class="mb-2 lh-sm line-clamp-3 product-name">Apple iMac 24&quot; 4K Retina Display M1 8 Core CPU, 7 Core GPU, 256GB SSD, Green (MJV83ZP/A) 2021</h6>
-                          </a>
-                          <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(134 people rated)</span></p>
-                        </div>
-                        <div>
-                          <p class="fs--1 text-1000 fw-bold mb-2">Exchange with kidney</p>
-                          <div class="d-flex align-items-center mb-1">
-                            <p class="me-2 text-900 text-decoration-line-through mb-0">$1499.00</p>
-                            <h3 class="text-1100 mb-0">$1399.00</h3>
-                          </div>
-                          <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">7 colors</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-2">
-                  <div class="product-card-container h-100">
-                    <div class="position-relative text-decoration-none product-card h-100">
-                      <div class="d-flex flex-column justify-content-between h-100">
-                        <div>
-                          <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/5.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                            <h6 class="mb-2 lh-sm line-clamp-3 product-name">Razer Kraken v3 x Wired 7.1 Surroung Sound Gaming headset</h6>
-                          </a>
-                          <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(59 people rated)</span></p>
-                        </div>
-                        <div>
-                          <h3 class="text-1100">$59.00</h3>
-                          <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-2">
-                  <div class="product-card-container h-100">
-                    <div class="position-relative text-decoration-none product-card h-100">
-                      <div class="d-flex flex-column justify-content-between h-100">
-                        <div>
-                          <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/7.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                            <h6 class="mb-2 lh-sm line-clamp-3 product-name">2021 Apple 12.9-inch iPad Pro (Wi‑Fi, 128GB) - Space Gray</h6>
-                          </a>
-                          <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(13 people rated)</span></p>
-                        </div>
-                        <div>
-                          <h3 class="text-1100">$799.00</h3>
-                          <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-2">
-                  <div class="product-card-container h-100">
-                    <div class="position-relative text-decoration-none product-card h-100">
-                      <div class="d-flex flex-column justify-content-between h-100">
-                        <div>
-                          <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/12.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                            <h6 class="mb-2 lh-sm line-clamp-3 product-name">HORI Racing Wheel Apex for PlayStation 4/3, and PC</h6>
-                          </a>
-                          <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(64 people rated)</span></p>
-                        </div>
-                        <div>
-                          <h3 class="text-1100">$299.00</h3>
-                          <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">1 colors</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-2">
-                  <div class="product-card-container h-100">
-                    <div class="position-relative text-decoration-none product-card h-100">
-                      <div class="d-flex flex-column justify-content-between h-100">
-                        <div>
-                          <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove from wishlist"><span class="fas fa-heart"></span></button><img class="img-fluid" src="../../../assets/img/products/1.png" alt="" /><span class="badge bg-success fs--2 product-verified-badge">Verified<span class="fas fa-check ms-1"></span></span></div><a class="stretched-link" href="product-details.html">
-                            <h6 class="mb-2 lh-sm line-clamp-3 product-name">Amazfit T-Rex Pro Smart Watch with GPS, Outdoor Fitness Watch for Men, Military Standard Certified</h6>
-                          </a>
-                          <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(32 people rated)</span></p>
-                        </div>
-                        <div>
-                          <h3 class="text-1100">$20.00</h3>
-                          <p class="text-success fw-bold fs--1 lh-1 mb-0">Deal time ends in 24 hours</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-2">
-                  <div class="product-card-container h-100">
-                    <div class="position-relative text-decoration-none product-card h-100">
-                      <div class="d-flex flex-column justify-content-between h-100">
-                        <div>
-                          <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/16.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                            <h6 class="mb-2 lh-sm line-clamp-3 product-name">Apple AirPods Pro</h6>
-                          </a>
-                          <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(39 people rated)</span></p>
-                        </div>
-                        <div>
-                          <h3 class="text-1100">$59.00</h3>
-                          <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">3 colors</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-2">
-                  <div class="product-card-container h-100">
-                    <div class="position-relative text-decoration-none product-card h-100">
-                      <div class="d-flex flex-column justify-content-between h-100">
-                        <div>
-                          <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/10.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                            <h6 class="mb-2 lh-sm line-clamp-3 product-name">Apple Magic Mouse (Wireless, Rechargable) - Silver</h6>
-                          </a>
-                          <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(6 people rated)</span></p>
-                        </div>
-                        <div>
-                          <h3 class="text-1100">$89.00</h3>
-                          <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-2">
-                  <div class="product-card-container h-100">
-                    <div class="position-relative text-decoration-none product-card h-100">
-                      <div class="d-flex flex-column justify-content-between h-100">
-                        <div>
-                          <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/25.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                            <h6 class="mb-2 lh-sm line-clamp-3 product-name">RESPAWN 200 Racing Style Gaming Chair, in Gray RSP 200 GRY</h6>
-                          </a>
-                          <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(8 people rated)</span></p>
-                        </div>
-                        <div>
-                          <h3 class="text-1100">$499.00</h3>
-                          <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-2">
-                  <div class="product-card-container h-100">
-                    <div class="position-relative text-decoration-none product-card h-100">
-                      <div class="d-flex flex-column justify-content-between h-100">
-                        <div>
-                          <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/27.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                            <h6 class="mb-2 lh-sm line-clamp-3 product-name">LEVOIT Humidifiers for Bedroom Large Room 6L Warm and Cool Mist for...</h6>
-                          </a>
-                          <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(3 people rated)</span></p>
-                        </div>
-                        <div>
-                          <h3 class="text-1100">$299.00</h3>
-                          <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">3 colors</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-2">
-                  <div class="product-card-container h-100">
-                    <div class="position-relative text-decoration-none product-card h-100">
-                      <div class="d-flex flex-column justify-content-between h-100">
-                        <div>
-                          <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/26.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                            <h6 class="mb-2 lh-sm line-clamp-3 product-name">NETGEAR Nighthawk Pro Gaming XR500 Wi-Fi Router with 4 Ethernet Ports...</h6>
-                          </a>
-                          <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(8 people rated)</span></p>
-                        </div>
-                        <div>
-                          <h3 class="text-1100">$49.00</h3>
-                          <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">4 colors</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-2">
-                  <div class="product-card-container h-100">
-                    <div class="position-relative text-decoration-none product-card h-100">
-                      <div class="d-flex flex-column justify-content-between h-100">
-                        <div>
-                          <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/18.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                            <h6 class="mb-2 lh-sm line-clamp-3 product-name">Rachael Ray Cucina Bakeware Set Includes Nonstick Bread Baking Cookie Sheet...</h6>
-                          </a>
-                          <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(1 people rated)</span></p>
-                        </div>
-                        <div>
-                          <h3 class="text-1100">$29.00</h3>
-                          <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">3 colors</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-2">
-                  <div class="product-card-container h-100">
-                    <div class="position-relative text-decoration-none product-card h-100">
-                      <div class="d-flex flex-column justify-content-between h-100">
-                        <div>
-                          <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/17.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                            <h6 class="mb-2 lh-sm line-clamp-3 product-name">Xbox Series S</h6>
-                          </a>
-                          <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(6 people rated)</span></p>
-                        </div>
-                        <div>
-                          <h3 class="text-1100">$19.00</h3>
-                          <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-2">
-                  <div class="product-card-container h-100">
-                    <div class="position-relative text-decoration-none product-card h-100">
-                      <div class="d-flex flex-column justify-content-between h-100">
-                        <div>
-                          <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/24.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                            <h6 class="mb-2 lh-sm line-clamp-3 product-name">FURINNO Computer Writing Desk, Walnut</h6>
-                          </a>
-                          <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="text-500 fw-semi-bold ms-1">(8 people rated)</span></p>
-                        </div>
-                        <div>
-                          <h3 class="text-1100">$199.00</h3>
-                          <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-xxl-2">
-                  <div class="product-card-container h-100">
-                    <div class="position-relative text-decoration-none product-card h-100">
-                      <div class="d-flex flex-column justify-content-between h-100">
-                        <div>
-                          <div class="border border-1 rounded-3 position-relative mb-3"><button class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist"><span class="fas fa-heart d-block-hover"></span><span class="far fa-heart d-none-hover"></span></button><img class="img-fluid" src="../../../assets/img/products/20.png" alt="" /></div><a class="stretched-link" href="product-details.html">
-                            <h6 class="mb-2 lh-sm line-clamp-3 product-name">ASUS TUF Gaming F15 Gaming Laptop</h6>
-                          </a>
-                          <p class="fs--1"><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa fa-star text-warning"></span><span class="fa-regular fa-star text-warning-300"></span><span class="text-500 fw-semi-bold ms-1">(3 people rated)</span></p>
-                        </div>
-                        <div>
-                          <h3 class="text-1100">$150.00</h3>
-                          <p class="text-700 fw-semi-bold fs--1 lh-1 mb-0">2 colors</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="d-flex justify-content-end">
-                <nav aria-label="Page navigation example">
-                  <ul class="pagination mb-0">
-                    <li class="page-item">
-                      <a class="page-link" href="#">
-                        <span class="fas fa-chevron-left"> </span>
-                      </a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item active" aria-current="page">
-                      <a class="page-link" href="#">4</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">5</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="#"> <span class="fas fa-chevron-right"></span></a>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-            </div>
           </div>
         </div><!-- end of .container-->
       </section><!-- <section> close ============================-->

@@ -2,7 +2,7 @@
 @section('content')
       <!-- ============================================-->
       <!-- <section> begin ============================-->
-      @foreach ($produk as $detail)
+        @foreach ($produk as $detail )
         <section class="py-0 mt-5">
           <div class="container-small">
             <div class="row g-5 mb-5 mb-lg-8" data-product-details="data-product-details">
@@ -61,7 +61,7 @@
             </div>
           </div>
         </section>
-      @endforeach
+        @endforeach
       <!-- ============================================-->
 
 @endsection

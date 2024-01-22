@@ -8,9 +8,9 @@ use PhpParser\Node\Expr\Cast\String_;
 
 class ProdukdetailController extends Controller
 {
-    public function produkdetail(string $id)
-    {
-        
-        return view('user.produkdetail',compact('produk'));
-    }
+//     public function produkdetail($id)
+//     {
+//         $detail = Produk::all();
+//         return view('user.produkdetail',compact( 'detail'));
+//     }
 }

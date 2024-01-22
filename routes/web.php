@@ -69,7 +69,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
         Route::get('/produkedit/{id}', 'edit')->name('produk.edit');
         Route::put('/produkupdate/{id}', 'update')->name('produk.update');
     });
-    
+
     Route::controller(KategoriController::class)->prefix('kategori')->group(function () {
         Route::get('', 'index')->name('kategori.side');
         Route::get('create', 'create')->name('kategori.create');
@@ -89,10 +89,11 @@ Route::middleware([UserMiddleware::class])->group(function () {
     Route::get('/profil', [ProfilController::class, 'index'])->name('profil')->name('profil');
     // Route::get('/home', [HomeController::class, 'home']);
     Route::get('/produkfilter', [ProdukfilterController::class, 'produkfilter'])->name('produkfilter');
+    Route::get('/produkdetail/{id}', [ProdukfilterController::class, 'detail'])->name('produk.detail');
     Route::get('/wishlist', [WishlistController::class, 'wishlist'])->name('wishlist');
     Route::get('/tracking', [TrackingController::class, 'tracking'])->name('tracking');
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
-    Route::get('/produkdetail', [ProdukdetailController::class, 'produkdetail'])->name('produkdetail');
+    // Route::get('/produkdetail', [ProdukdetailController::class, 'produkdetail'])->name('produkdetail');
     Route::get('/ulasanproduk', [UlasanprodukController::class, 'ulasanproduk']);
 });
 // Route::middleware(['auth', 'admin'])->group(function () {
