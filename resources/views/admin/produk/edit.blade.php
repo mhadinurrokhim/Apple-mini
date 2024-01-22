@@ -261,9 +261,8 @@
           </div>
           <h4 class="mb-3">Display images</h4>
           <div>
-            <input type="file" name="path_produk" id="path_produk"
-              placeholder=""class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white "
-              required>
+            <input type="file" name="path_produk" id="path_produk" value={{ old('path_produk', $produk->path_produk) }}
+              placeholder=""class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white ">
           </div>
         </div>
         <div class="col-12 col-xl-4">

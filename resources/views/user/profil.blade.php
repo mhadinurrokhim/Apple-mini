@@ -16,20 +16,29 @@
               <h2 class="mb-0">Profile</h2>
             </div>
           </div>
-          <div class="row g-3 mb-6">
+          <div class="row g-3 mb-5">
             <div class="col-12 col-lg-8">
-              <div class="card h-100">
+              <div class="card h-90">
                 <div class="card-body">
                   <div class="border-bottom border-dashed border-300 pb-4">
                     <div class="row align-items-center g-3 g-sm-5 text-center text-sm-start">
-                      <div class="col-12 col-sm-auto"><input class="d-none" id="avatarFile" type="file" /><label class="cursor-pointer avatar avatar-5xl" for="avatarFile"><img class="rounded-circle" src="../../../assets/img/team/15.webp" alt="" /></label></div>
+
+                      <div class="col-12 col-sm-auto">
+                        <input class="d-none" id="avatarFile" type="file" onchange="previewImage()" />
+                        <label class="cursor-pointer avatar avatar-5xl" for="avatarFile">
+                            <img class="rounded-circle" id="avatarPreview" src="{{ asset('storage/' . $user->profil) }}" alt="" />
+                        </label>
+                    </div>
+
+
+
                       <div class="col-12 col-sm-auto flex-1">
                         <h3>{{$user->name}}</h3>
-                        <p class="text-800">16 jan 2006</p>
+                        <p class="text-800">{{ Auth::user()->created_at }}</p>
                       </div>
                     </div>
                   </div>
-                  <div class="d-flex flex-between-center pt-4">
+                  <div class="d-flex flex-between-center pt-1">
                     <div>
                       <h6 class="mb-2 text-800">Total Spent</h6>
                       <h4 class="fs-1 text-1000 mb-0">$894</h4>
@@ -47,33 +56,34 @@
               </div>
             </div>
             <div class="col-12 col-lg-4">
-              <div class="card h-100">
+              <div class="card h-80">
                 <div class="card-body">
                   <div class="border-bottom border-dashed border-300">
-                    <h4 class="mb-3 lh-sm lh-xl-1">Default Address<button class="btn btn-link p-0" type="button"></button></h4>
+                    <h4 class="mb-3 lh-sm lh-xl-1">More Info<a href="btn btn-link p-0" type="button"></button></h4>
                   </div>
-                  <div class="pt-4 mb-7 mb-lg-4 mb-xl-7">
+                  <div class="pt-4 mb-7 mb-lg-4 mb-xl-1">
                     <div class="row justify-content-between">
                       <div class="col-auto">
-                        <h5 class="text-1000">Address</h5>
+                        <h5 class="text-1000">Address :</h5>
                       </div>
                       <div class="col-auto">
-                        <p class="text-800">Vancouver, British Columbia<br />Canada</p>
+                        <p class="text-800">Vancouver, British Columbia</p>
                       </div>
                     </div>
                   </div>
-                  <div class="border-top border-dashed border-300 pt-4">
+                  <div class="border-top border-dashed border-300 pt-2">
                     <div class="row flex-between-center mb-2">
                       <div class="col-auto">
-                        <h5 class="text-1000 mb-0">Email</h5>
+                        <h5 class="text-1000 mb-0">Email :</h5>
                       </div>
-                      <div class="col-auto"><a class="lh-1" href="mailto:shatinon@jeemail.com">shatinon@jeemail.com</a></div>
+                      <div class="col-auto">
+                        <p class="text-800">{{ Auth::user()->email }}</p>
                     </div>
                     <div class="row flex-between-center">
                       <div class="col-auto">
-                        <h5 class="text-1000 mb-0">Phone</h5>
+                        <h5 class="text-1000 mb-0">Phone :</h5>
                       </div>
-                      <div class="col-auto"><a href="tel:+1234567890">+1234567890</a></div>
+                      <div class="col-auto">+1234567890</a></div>
                     </div>
                   </div>
                 </div>
@@ -259,6 +269,7 @@
                       </tbody>
                     </table>
                   </div>
+                  <form action="" method="post"></form>
                   <div class="row align-items-center justify-content-between py-2 pe-0 fs--1">
                     <div class="col-auto d-flex">
                       <p class="mb-0 d-none d-sm-block me-3 fw-semi-bold text-900" data-list-info="data-list-info"></p><a class="fw-semi-bold" href="#!" data-list-view="*">View all<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semi-bold d-none" href="#!" data-list-view="less">View Less<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
@@ -272,8 +283,8 @@
               <div class="tab-pane fade" id="tab-personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
                 <div class="row g-3 mb-5">
                   <div class="col-12 col-lg-6">
-                    <label class="form-label text-1000 fs-0 ps-0 text-capitalize lh-sm" for="fullName">Full name</label>
-                    <input class="form-control" id="fullName" type="text" placeholder="Full name" />
+                    <label class="form-label text-1000 fs-0 ps-0 text-capitalize lh-sm" for="name">Full name</label>
+                    <input class="form-control" id="name" type="text" placeholder="Full name" />
                   </div>
                   {{-- <div class="col-12 col-lg-6">
                     <label class="form-label text-1000 fs-0 ps-0 text-capitalize lh-sm" for="Password">Password</label>
@@ -284,8 +295,8 @@
                     <input class="form-control" id="email" type="text" placeholder="Email" />
                   </div>
                   <div class="col-12 col-lg-6">
-                    <label class="form-label text-1000 fw-bold fs-0 ps-0 text-capitalize lh-sm" for="phone">Phone</label>
-                    <input class="form-control" id="phone" type="text" placeholder="Phone" />
+                    <label class="form-label text-1000 fw-bold fs-0 ps-0 text-capitalize lh-sm" for="telp">Phone</label>
+                    <input class="form-control" id="telp" type="text" placeholder="Phone" />
                   </div>
                   <div class="col-12 col-lg-6">
                     <label class="form-label text-1000 fs-0 ps-0 text-capitalize lh-sm" for="address">Address</label>
@@ -307,13 +318,13 @@
         <div class="container-small">
           <div class="row justify-content-between gy-4">
             <div class="col-12 col-lg-4">
-              <div class="d-flex align-items-center mb-3"><img src="../../../assets/img/icons/logo.png" alt="phoenix" width="27" />
-                <p class="logo-text ms-2">phoenix</p>
+              <div class="d-flex align-items-center mb-3"><img src="../../../assets/img/logoapple.png" alt="phoenix" width="27" />
+                <p class="logo-text ms-2">iVibe</p>
               </div>
-              <p class="text-700 mb-1 fw-semi-bold lh-sm fs--1">Phoenix is an admin dashboard template with fascinating features and amazing layout. The template is responsive to all major browsers and is compatible with all available devices and screen sizes.</p>
+              <p class="text-700 mb-1 fw-semi-bold lh-sm fs--1">iVibe is an admin dashboard template with fascinating features and amazing layout. The template is responsive to all major browsers and is compatible with all available devices and screen sizes.</p>
             </div>
             <div class="col-6 col-md-auto">
-              <h5 class="fw-bolder mb-3">About Phoenix</h5>
+              <h5 class="fw-bolder mb-3">About iVibe</h5>
               <div class="d-flex flex-column"><a class="text-700 fw-semi-bold fs--1 mb-1" href="#!">Careers</a><a class="text-700 fw-semi-bold fs--1 mb-1" href="#!">Affiliate Program</a><a class="text-700 fw-semi-bold fs--1 mb-1" href="#!">Privacy Policy</a><a class="text-700 fw-semi-bold fs--1 mb-1" href="#!">Terms & Conditions</a></div>
             </div>
             <div class="col-6 col-md-auto">

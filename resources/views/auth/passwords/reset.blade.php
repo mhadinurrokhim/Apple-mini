@@ -75,7 +75,7 @@
                     </div>
                     <!--/.bg-holder-->
                     <div class="position-relative px-4 px-lg-7 pt-7 pb-7 pb-sm-5 text-center text-md-start pb-lg-7">
-                      <h3 class="mb-3 text-black fs-1">Phoenix Authentication</h3>
+                      <h3 class="mb-3 text-black fs-1">iVibe Authentication</h3>
                       <p class="text-700">Give yourself some hassle-free development process with the uniqueness of Phoenix!</p>
                       <ul class="list-unstyled mb-0 w-max-content w-md-auto mx-auto">
                         <li class="d-flex align-items-center"><span class="uil uil-check-circle text-success me-2"></span><span class="text-700 fw-semi-bold">Fast</span></li>

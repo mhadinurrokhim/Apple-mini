@@ -117,6 +117,15 @@ Route::controller(PembayaranController::class)->prefix('pembayaran')->group(func
     // Route::delete('destroy/{id}', 'destroy')->name('pembayaran.destroy');
 });
 
+    Route::controller(ProfilController::class)->prefix('profil')->group(function () {
+        Route::get('', 'index')->name('profil');
+        Route::get('create', 'create')->name('profil.create');
+        Route::post('store', 'store')->name('profil.store');
+        Route::get('edit/{id}', 'edit')->name('profil.edit');
+        Route::put('edit/{id}', 'update')->name('profil.update');
+        Route::get('destroy/{id}', 'destroy')->name('profil.destroy');
+        // Route::delete('destroy/{id}', 'destroy')->name('pembayaran.destroy');
+    });
 
     // Route::controller(SupplierController::class)->prefix('supplier')->group(function () {
     //     Route::get('/', 'index')->name('supplier.index');

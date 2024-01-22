@@ -12,7 +12,7 @@
     <!-- ===============================================-->
     <!--    Document Title-->
     <!-- ===============================================-->
-    <title>Phoenix</title>
+    <title>iVibe</title>
 
     <!-- ===============================================-->
     <!--    Favicons-->
@@ -87,7 +87,7 @@
                   <div class="col mx-auto">
                     <div class="auth-form-box">
                       <div class="text-center mb-7"><a class="d-flex flex-center text-decoration-none mb-4" href="../../../index.html">
-                          <div class="d-flex align-items-center fw-bolder fs-5 d-inline-block"><img src="../../../assets/img/icons/logo.png" alt="phoenix" width="58" /></div>
+                          <div class="d-flex align-items-center fw-bolder fs-5 d-inline-block"><img src="../../../assets/img/logoapple.png" alt="phoenix" width="58" /></div>
                         </a>
                         <h4 class="text-1000">Verify your email address</h4>
                         <p class="text-700">Before continuing, please check your email for a verification link. if you do not receive the email.</p>

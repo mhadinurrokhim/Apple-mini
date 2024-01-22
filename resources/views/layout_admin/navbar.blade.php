@@ -6286,21 +6286,18 @@
     </ul>
 </nav>
 <nav class="navbar navbar-top fixed-top navbar-expand-lg" id="dualNav" style="display:none;">
-    <div class="w-100">
-        <div class="d-flex flex-between-center dual-nav-first-layer">
-            <div class="navbar-logo">
-                <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button"
-                    data-bs-toggle="collapse" data-bs-target="#navbarTopCollapse"
-                    aria-controls="navbarTopCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span
-                        class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-                <a class="navbar-brand me-1 me-sm-3" href="../../../index.html">
-                    <div class="d-flex align-items-center">
-                        <div class="d-flex align-items-center"><img src="../../../assets/img/icons/logo.png"
-                                alt="phoenix" width="27" />
-                            <p class="logo-text ms-2 d-none d-sm-block">phoenix</p>
-                        </div>
-                    </div>
-                </a>
+  <div class="w-100">
+    <div class="d-flex flex-between-center dual-nav-first-layer">
+      <div class="navbar-logo">
+        <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button"
+          data-bs-toggle="collapse" data-bs-target="#navbarTopCollapse" aria-controls="navbarTopCollapse"
+          aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span
+              class="toggle-line"></span></span></button>
+        <a class="navbar-brand me-1 me-sm-3" href="../../../index.html">
+          <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center"><img src="../../../assets/img/logoapple.png" alt="phoenix"
+                width="27" />
+              <p class="logo-text ms-2 d-none d-sm-block">iVibe</p>
             </div>
             <div class="search-box navbar-top-search-box d-none d-lg-block" data-list='{"valueNames":["title"]}'
                 style="width:25rem;">
