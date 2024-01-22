@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Middleware\user;
-use App\Models\Profil;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ProfilController extends Controller
@@ -31,7 +31,7 @@ class ProfilController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Profil $profil)
+    public function show(User $profil)
     {
         return view('user.profil', compact('profil'));
     }
@@ -39,7 +39,7 @@ class ProfilController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Profil $profil)
+    public function edit(User $profil)
     {
         return view('user.profil', compact('profil'));
     }
@@ -47,13 +47,13 @@ class ProfilController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, profil $profil, $id)
+    public function update(Request $request, User $profil, $id)
     {
-        $profil = profil::find($id);
+        $profil = User::find($id);
         $profil->update([
-            'full_name' => $request->input('full_name'),
+            'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'phone' => $request->input('phone'),
+            'telp' => $request->input('telp'),
             'address' => $request->input('address')
         ]);
 

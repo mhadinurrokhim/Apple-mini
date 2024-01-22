@@ -12,14 +12,14 @@
     <!-- ===============================================-->
     <!--    Document Title-->
     <!-- ===============================================-->
-    <title>Phoenix</title>
+    <title>iVibe</title>
 
     <!-- ===============================================-->
     <!--    Favicons-->
     <!-- ===============================================-->
     <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/img/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/img/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/img/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png/x-icon" sizes="32x32" href="{{ asset('assets/storage/logo.png') }}">
+    <link rel="icon" type="image/png/x-icon" sizes="16x16" href="{{ asset('assets/storage/logo.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="../../../assets/img/favicons/favicon.ico">
     <link rel="manifest" href="../../../assets/img/favicons/manifest.json">
     <meta name="msapplication-TileImage" content="../../../assets/img/favicons/mstile-150x150.png">
@@ -219,12 +219,12 @@
           <div class="row justify-content-between gy-4">
             <div class="col-12 col-lg-4">
               <div class="d-flex align-items-center mb-3"><img src="/assets/img/logoapple.png" alt="phoenix" width="27" />
-                <p class="logo-text ms-2">phoenix</p>
+                <p class="logo-text ms-2"></p>
               </div>
-              <p class="text-700 mb-1 fw-semi-bold lh-sm fs--1">Phoenix is an admin dashboard template with fascinating features and amazing layout. The template is responsive to all major browsers and is compatible with all available devices and screen sizes.</p>
+              <p class="text-700 mb-1 fw-semi-bold lh-sm fs--1">iVibe is an admin dashboard template with fascinating features and amazing layout. The template is responsive to all major browsers and is compatible with all available devices and screen sizes.</p>
             </div>
             <div class="col-6 col-md-auto">
-              <h5 class="fw-bolder mb-3">About Phoenix</h5>
+              <h5 class="fw-bolder mb-3">About iVibe</h5>
               <div class="d-flex flex-column"><a class="text-700 fw-semi-bold fs--1 mb-1" href="#!">Careers</a><a class="text-700 fw-semi-bold fs--1 mb-1" href="#!">Affiliate Program</a><a class="text-700 fw-semi-bold fs--1 mb-1" href="#!">Privacy Policy</a><a class="text-700 fw-semi-bold fs--1 mb-1" href="#!">Terms & Conditions</a></div>
             </div>
             <div class="col-6 col-md-auto">
@@ -247,7 +247,7 @@
       <footer class="footer position-relative">
         <div class="row g-0 justify-content-between align-items-center h-100">
           <div class="col-12 col-sm-auto text-center">
-            <p class="mb-0 mt-2 mt-sm-0 text-900">Thank you for creating with Phoenix<span class="d-none d-sm-inline-block"></span><span class="d-none d-sm-inline-block mx-1">|</span><br class="d-sm-none" />2023 &copy;<a class="mx-1" href="https://themewagon.com/">Themewagon</a></p>
+            <p class="mb-0 mt-2 mt-sm-0 text-900">Thank you for creating with iVibe<span class="d-none d-sm-inline-block"></span><span class="d-none d-sm-inline-block mx-1">|</span><br class="d-sm-none" />2023 &copy;<a class="mx-1" href="https://themewagon.com/">Themewagon</a></p>
           </div>
           <div class="col-12 col-sm-auto text-center">
             <p class="mb-0 text-600">v1.13.0</p>

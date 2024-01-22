@@ -7,6 +7,7 @@ use App\Models\Kategori;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ProdukController extends Controller
 {
@@ -158,6 +159,9 @@ class ProdukController extends Controller
 
             if($existingimage){
                 Storage::delete('path_produk/' . $existingimage);
+            }
+            if ($request->fails()) {
+                return redirect()->back()->withErrors($request)->withInput();
             }
         }
 

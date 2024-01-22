@@ -14,7 +14,7 @@ class AdmindashboardController extends Controller
      */
     public function index()
     {
-        $totalUser = User::count();
+        $totalUser = User::where('role', 'user')->count();
         $totalProduct = Produk::count();
         return view('admin.dashboard', compact('totalUser', 'totalProduct'));
     }
