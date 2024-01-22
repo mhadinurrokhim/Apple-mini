@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Auth as ModelsAuth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreAuthRequest;
 use App\Http\Requests\UpdateAuthRequest;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class AuthController extends Controller
 {
@@ -97,7 +99,8 @@ class AuthController extends Controller
     }
 
     public function logout(){
+
         Auth::logout();
-        return redirect('login')->with('success', 'Berhasil logout');
+        return redirect('/')->with('success', 'Berhasil logout');
     }
 }

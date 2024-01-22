@@ -95,7 +95,7 @@
                       data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span class="icon"
                         data-feather="sun"></span></label></div>
                 </li>
-                <li class="nav-item"><a class="nav-link px-2 icon-indicator icon-indicator-primary" href="cart.html"
+                <li class="nav-item"><a class="nav-link px-2 icon-indicator icon-indicator-primary" href="/keranjang"
                     role="button"><span class="text-700" data-feather="shopping-cart"
                       style="height:20px;width:20px;"></span><span class="icon-indicator-number">3</span></a></li>
                 <li class="nav-item dropdown"><a
@@ -322,7 +322,7 @@
                         </ul>
                         <hr />
                         <div class="px-3"> <a class="btn btn-phoenix-secondary d-flex flex-center w-100"
-                            href="#!"> <span class="me-2" data-feather="log-out"> </span>Sign out</a></div>
+                            href="/logout"><span class="me-2" data-feather="log-out"> </span>Sign out</a></div>
                         <div class="my-2 text-center fw-bold fs--2 text-600"><a class="text-600 me-1"
                             href="#!">Privacy policy</a>&bull;<a class="text-600 mx-1"
                             href="#!">Terms</a>&bull;<a class="text-600 ms-1" href="#!">Cookies</a></div>

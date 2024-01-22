@@ -62,12 +62,6 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/AdminDashboard', [AdmindashboardController::class, 'index'])->name('dashboard.side');
     Route::get('/adminorder', [AdminorderController::class, 'index'])->name('order.side');
 
-    // Route::get('/produk',[ProdukController::class,'index'])->name('produk.side');
-    // Route::get('/tambahproduk',[ProdukController::class,'create'])->name('tambah.produk');
-    // Route::post('/create',[ProdukController::class,'store'])->name('produk.store');
-    // Route::get('/produkedit/{id}',[ProdukController::class,'edit'])->name('produk.edit');
-    // Route::put('/produkupdate/{id}',[ProdukController::class,'update'])->name('produk.update');
-
     Route::controller(ProdukController::class)->prefix('produk')->group(function () {
         Route::get('', 'index')->name('produk.side');
         Route::get('/tambahproduk', 'create')->name('tambah.produk');
@@ -75,14 +69,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
         Route::get('/produkedit/{id}', 'edit')->name('produk.edit');
         Route::put('/produkupdate/{id}', 'update')->name('produk.update');
     });
-
-    // Route::get('/kategori',[KategoriController::class,'index'])->name('kategori.side');
-    // Route::get('/create',[KategoriController::class,'cretae'])->name('kategori.create');
-    // Route::post('/store',[KategoriController::class,'store'])->name('kategori.store');
-    // Route::get('/edit',[KategoriController::class,'edit'])->name('kategori.edit');
-    // Route::put('/edit{id}',[KategoriController::class,'update'])->name('kategori.update');
-    // Route::get('/destroy{id}',[KategoriController::class,'destroy'])->name('kategori.destroy');
-
+    
     Route::controller(KategoriController::class)->prefix('kategori')->group(function () {
         Route::get('', 'index')->name('kategori.side');
         Route::get('create', 'create')->name('kategori.create');
