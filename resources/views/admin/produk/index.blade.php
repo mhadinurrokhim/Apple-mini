@@ -280,7 +280,6 @@
                       data-sort="path_produk">IMAGE</th>
                     <th class="white-space-nowrap align-middle ps-4 fs--1 text-dark" style="width:350px;"
                       data-sort="path_nama">PRODUCT NAME</th>
-                    {{-- <th class="white-space-nowrap align-middle fs--2" style="width:70px;"></th> --}}
                     <th class="white-space-nowrap align-middle text-end fs--1 ps-4 text-dark" style="width:150px;"
                       data-sort="harga">PRICE</th>
                     <th class="white-space-nowrap align-middle fs--1 ps-4 text-dark" style="width:150px;"
@@ -306,16 +305,17 @@
                         </a>
                       </td>
                       <td class="produks align-middle ps-4">
-                        <a class="fw-semi-bold fs--1  line-clamp-3 mb-0"
-                          href="../landing/produks-details.html">{{ $produks->nama_produk }}</a>
+                        <p class="fw-semi-bold fs--1  line-clamp-3 mb-0">{{ $produks->nama_produk }}</p>
                       </td>
                       <td class="price align-middle white-space-nowrap text-end fw-bold fs--1  text-700 ps-4">
                         {{ 'Rp ' . number_format($produks->harga, 0, ',', '.') }}</td>
+
                       <td class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold">
                         {{ $produks->kategori ? $produks->kategori->nama_kategori : 'Tidak Ada Kategori' }}</td>
                       <td class="tags align-middle review pb-2 ps-3 fs--1 " style="width:200px;">{{ $produks->stok }}
                       </td>
-                      <td class="ellipsis-text">{{ strip_tags($produks->deskripsi) }}</td>
+
+                      <td class="ellipsis-text col-1">{{ strip_tags($produks->deskripsi) }}</td>
                       <td class="align-middle review fs-0 text-center ps-4">
                         <a href="{{ route('produk.edit', $produks->id) }}"method="POST" enctype="multipart/form-data"
                           class="btn btn-primary">
