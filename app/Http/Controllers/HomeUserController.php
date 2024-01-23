@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Detailpesanan;
 use Illuminate\Http\Request;
 use App\Models\Produk;
+use App\Models\Userbeli;
+use App\Http\Middleware\user;
 
 class HomeUserController extends Controller
 {
@@ -68,9 +70,27 @@ class HomeUserController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function beliproduk(Request $request)
     {
-        //
+        try {
+
+            $beli = new Userbeli();
+            $beli->user_id = $request->user_id;
+            $beli->produk_id = $request->produk_id;
+            $beli->jumlah = $request->jumlah;
+            $beli->totalharga = $request->totalharga;
+            $beli->save();
+
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+
+    }
+    public function pembelian()
+    {
+
+        $beli = produk::all();
+        return view('user.beli',compact('beli'));
     }
 
     /**

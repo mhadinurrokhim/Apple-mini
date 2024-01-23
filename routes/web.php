@@ -89,7 +89,6 @@ Route::middleware([UserMiddleware::class])->group(function () {
     Route::get('/detailproduk{id}', [HomeUserController::class, 'detailproduk'])->name('detail.produk');
     Route::post('{produk_id}/order', [HomeUserController::class,'order'])->name('shop.order');
     Route::get('/profil', [ProfilController::class, 'index'])->name('profil')->name('profil');
-    // Route::get('/home', [HomeController::class, 'home']);
     Route::get('/produkfilter', [ProdukfilterController::class, 'produkfilter'])->name('produkfilter');
     Route::get('/produkdetail/{id}', [ProdukfilterController::class, 'detail'])->name('produk.detail');
     Route::get('/wishlist', [WishlistController::class, 'wishlist'])->name('wishlist');
@@ -97,24 +96,17 @@ Route::middleware([UserMiddleware::class])->group(function () {
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
     // Route::get('/produkdetail', [ProdukdetailController::class, 'produkdetail'])->name('produkdetail');
     Route::get('/ulasanproduk', [UlasanprodukController::class, 'ulasanproduk']);
+<<<<<<< Updated upstream
     Route::controller(KeranjangController::class)->prefix('keranjang')->group(function () {
         Route::get('keranjang', 'index')->name('keranjang');
         Route::post('keranjang', 'update')->name('keranjang.update');
         Route::delete('keranjang/{id}', 'destroy')->name('keranjang.destroy');
     });
+=======
+    Route::post('/beli{id}',[HomeuserController::class,'beliproduk']);
+    Route::get('/pembelian{id}',[HomeuserController::class,'pembelian'])->name('pembelian');
+>>>>>>> Stashed changes
 });
-// Route::middleware(['auth', 'admin'])->group(function () {
-//     Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
-
-// Route::controller(PelangganController::class)->prefix('pelanggan')->group(function () {
-//     Route::get('', 'index')->name('pelanggan');
-//     Route::get('create', 'create')->name('pelanggan.create');
-//     Route::post('store', 'store')->name('pelanggan.store');
-//     Route::get('edit/{id}', 'edit')->name('pelanggan.edit');
-
-//     Route::put('edit/{id}', 'update')->name('pelanggan.update');
-//     Route::delete('destroy/{id}', 'destroy')->name('pelanggan.destroy');
-// });
 Route::controller(PembayaranController::class)->prefix('pembayaran')->group(function () {
     Route::get('', 'index')->name('pembayaran');
     Route::get('create', 'create')->name('pembayaran.create');
@@ -122,54 +114,7 @@ Route::controller(PembayaranController::class)->prefix('pembayaran')->group(func
     Route::get('edit/{id}', 'edit')->name('pembayaran.edit');
     Route::put('edit/{id}', 'update')->name('pembayaran.update');
     Route::get('destroy/{id}', 'destroy')->name('pembayaran.destroy');
-    // Route::delete('destroy/{id}', 'destroy')->name('pembayaran.destroy');
 });
 
-    Route::controller(ProfilController::class)->prefix('profil')->group(function () {
-        Route::get('', 'index')->name('profil');
-        Route::get('create', 'create')->name('profil.create');
-        Route::post('store', 'store')->name('profil.store');
-        Route::get('edit/{id}', 'edit')->name('profil.edit');
-        Route::put('edit/{id}', 'update')->name('profil.update');
-        Route::get('destroy/{id}', 'destroy')->name('profil.destroy');
-        // Route::delete('destroy/{id}', 'destroy')->name('pembayaran.destroy');
-    });
-
-    // Route::controller(SupplierController::class)->prefix('supplier')->group(function () {
-    //     Route::get('/', 'index')->name('supplier.index');
-    //     Route::get('create', 'create')->name('supplier.create');
-    //     Route::post('store', 'store')->name('supplier.store');
-    //     Route::get('edit/{id}', 'edit')->name('supplier.edit');
-    //     Route::put('edit/{id}', 'update')->name('supplier.update');
-    //     Route::delete('destroy/{id}', 'destroy')->name('supplier.destroy');
-    // });
-    // Route::controller(PesananController::class)->prefix('pesanan')->group(function () {
-    //     Route::get('/', 'index')->name('pesanan.index');
-    //     Route::get('create', 'create')->name('pesanan.create');
-    //     Route::post('store', 'store')->name('pesanan.store');
-    //     Route::get('edit/{id}', 'edit')->name('pesanan.edit');
-    //     Route::put('edit/{id}', 'update')->name('pesanan.update');
-    //     Route::delete('destroy/{id}', 'destroy')->name('pesanan.destroy');
-    //     Route::get('{id}/detail', 'show')->name('pesanan.detail');
-    //     Route::post('{id}/terima', 'terima')->name('pesanan.terima');
-    //     Route::post('{id}/tolak', 'tolak')->name('pesanan.tolak');
-    // });
-    // Route::controller(PengirimanController::class)->prefix('pengiriman')->group(function () {
-    //     Route::get('/', 'index')->name('pengiriman.index');
-    //     Route::get('create', 'create')->name('pengiriman.create');
-    //     Route::post('store', 'store')->name('pengiriman.store');
-    //     Route::get('edit/{id}', 'edit')->name('pengiriman.edit');
-    //     Route::delete('destroy/{id}', 'destroy')->name('pengiriman.destroy');
-    // });
-    // Route::controller(HistoryController::class)->prefix('histori')->group(function () {
-    //     Route::get('/', 'index')->name('histori.index');
-    //     Route::get('create', 'create')->name('histori.create');
-    //     Route::post('store', 'store')->name('histori.store');
-    //     Route::get('edit/{id}', 'edit')->name('histori.edit');
-    //     Route::delete('destroy/{id}', 'destroy')->name('histori.destroy');
-    // });
 
 
-// });
-
-// USER
