@@ -296,7 +296,7 @@
                   @foreach ($produk as $no => $produks)
                     <tr class="position-static text-center">
                       <td class="align-middle review fs-0 text-center ps-4">
-                        {{ ++$no }}
+                        {{ $loop->iteration }}
                       </td>
                       <td class="align-middle white-space-nowrap mx-auto text-center py-0">
                         <a class="d-block border rounded-2 mx-auto" href="">

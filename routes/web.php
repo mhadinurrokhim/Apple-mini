@@ -20,6 +20,7 @@ use App\Http\Controllers\AdminorderController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\ProdukfilterController;
 use App\Http\Controllers\AdmindashboardController;
+use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\ProdukdetailController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\UlasanprodukController;
@@ -81,11 +82,12 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 });
 
 
-// USER
+// User
 Route::middleware([UserMiddleware::class])->group(function () {
 
     Route::get('/homeuser', [HomeUserController::class, 'homeuser'])->name('homeuser');
     Route::get('/detailproduk{id}', [HomeUserController::class, 'detailproduk'])->name('detail.produk');
+    Route::post('{produk_id}/order', [HomeUserController::class,'order'])->name('shop.order');
     Route::get('/profil', [ProfilController::class, 'index'])->name('profil')->name('profil');
     // Route::get('/home', [HomeController::class, 'home']);
     Route::get('/produkfilter', [ProdukfilterController::class, 'produkfilter'])->name('produkfilter');
@@ -95,6 +97,11 @@ Route::middleware([UserMiddleware::class])->group(function () {
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
     // Route::get('/produkdetail', [ProdukdetailController::class, 'produkdetail'])->name('produkdetail');
     Route::get('/ulasanproduk', [UlasanprodukController::class, 'ulasanproduk']);
+    Route::controller(KeranjangController::class)->prefix('keranjang')->group(function () {
+        Route::get('keranjang', 'index')->name('keranjang');
+        Route::post('keranjang', 'update')->name('keranjang.update');
+        Route::delete('keranjang/{id}', 'destroy')->name('keranjang.destroy');
+    });
 });
 // Route::middleware(['auth', 'admin'])->group(function () {
 //     Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
