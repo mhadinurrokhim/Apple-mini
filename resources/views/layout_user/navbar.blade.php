@@ -346,18 +346,18 @@
       </div>
     </div><!-- end of .container-->
   </section>
-  <nav class="ecommerce-navbar navbar-expand navbar-light bg-white justify-content-center">
-    <div class="container-small d-flex flex-between-center text-center" data-navbar="data-navbar">
+  <nav class="ecommerce-navbar navbar-expand navbar-light bg-white justify-content-center h-3" style="height: 35px">
+    <div class="container-small d-flex flex-between-center pt-2 text-center" data-navbar="data-navbar">
       <ul class="navbar-nav mx-auto justify-content-end align-items-center">
-        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link active"
+        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link {{ request()->routeIs('homeuser') ? 'active' : '' }}"
             href="{{ route('homeuser') }}">Home</a></li>
-        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link active"
+        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link {{ request()->routeIs('produkfilter') ? 'active' : '' }}""
             href="{{ route('produkfilter') }}">Products</a></li>
-        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link active"
+        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link {{ request()->routeIs('wishlist') ? 'active' : '' }}""
             href="{{ route('wishlist') }}">Wishlist</a></li>
-        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link active"
+        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link {{ request()->routeIs('tracking') ? 'active' : '' }}""
             href="{{ route('tracking') }}">Track order</a></li>
-        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link active"
+        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link {{ request()->routeIs('checkout') ? 'active' : '' }}""
             href="{{ route('checkout') }}">Checkout</a>
         </li>
       </ul>
