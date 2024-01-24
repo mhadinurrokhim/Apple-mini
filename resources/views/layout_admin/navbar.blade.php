@@ -52,9 +52,20 @@
                         href="{{ route('kategori.side') }}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
-                                <span data-feather="align-justify"></span>
+                                <span data-feather="list"></span>
                             </span>
                             <span class="nav-link-text">Category</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('pembayaran') ? 'active' : '' }}"
+                        href="{{ route('pembayaran') }}" data-bs-toggle="" aria-expanded="false">
+                        <div class="d-flex align-items-center">
+                            <span class="nav-link-icon">
+                                <span data-feather="credit-card"></span>
+                            </span>
+                            <span class="nav-link-text">Payment</span>
                         </div>
                     </a>
                 </li>
