@@ -198,7 +198,7 @@
                                                 <td class="align-middle white-space-nowrap py-0"><a
                                                         class="d-block border rounded-2" href="#"><img
                                                             src="{{ asset('storage/Product/' . $pesanan->produk->path_produk) }}"
-                                                            alt="" width="53" /></a></td>
+                                                            alt="" width="100" /></a></td>
                                                 <td class="products align-middle col-2" style="max-width: 50px;">
                                                     <a class="fw-semi-bold mb-0 text-truncate d-inline-block"
                                                         href="#">
@@ -246,8 +246,18 @@
                                 @csrf
                                 <input type="hidden" name="quantities" value="">
                                 <div class="d-flex justify-content-between">
-                                    <div></div>
-                                    <button class="btn btn-primary mt-2 ml-auto" onclick="updateCart()">Update cart</button>
+                                    <div>
+                                        <a href="{{ route('produkfilter') }}">
+                                            <button class="btn btn-secondary mt-2">
+                                                <span class="fas fa-chevron-left me-1"></span>
+                                                Continue Shopping
+                                            </button>
+                                        </a>
+                                    </div>
+                                    <button class="btn btn-success mt-2 ml-auto" onclick="updateCart()">
+                                        Update Cart
+                                        <span class="fas fa-undo ms-1 order-2"></span>
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -299,20 +309,20 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         function updateCart() {
-    // Collect the values of quantity inputs and order IDs
-    event.preventDefault();
-    var quantities = {};
-    $('input[name^="jumlah"]').each(function() {
-        var id = $(this).attr('name').match(/\[(\d+)\]/)[1];
-        quantities[id] = $(this).val();
-    });
+            // Collect the values of quantity inputs and order IDs
+            event.preventDefault();
+            var quantities = {};
+            $('input[name^="jumlah"]').each(function() {
+                var id = $(this).attr('name').match(/\[(\d+)\]/)[1];
+                quantities[id] = $(this).val();
+            });
 
-    // Assign the object of quantities to a hidden input field
-    $('input[name="quantities"]').val(JSON.stringify(quantities));
+            // Assign the object of quantities to a hidden input field
+            $('input[name="quantities"]').val(JSON.stringify(quantities));
 
-    // Submit the form
-    $('#updateCartForm').submit();
-}
+            // Submit the form
+            $('#updateCartForm').submit();
+        }
     </script>
     {{-- <script>
         document.addEventListener('DOMContentLoaded', function() {
