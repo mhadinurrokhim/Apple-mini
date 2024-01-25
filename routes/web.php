@@ -96,6 +96,8 @@ Route::middleware([UserMiddleware::class])->group(function () {
     Route::get('/tracking', [TrackingController::class, 'tracking'])->name('tracking');
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
     Route::patch('/checkout-keranjang', [CheckoutController::class, 'chekoutKeranjang'])->name('checkout-keranjang');
+    // Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+    // Route::patch('/checkout-keranjang', [CheckoutController::class, 'chekoutKeranjang'])->name('checkout-keranjang');
     Route::get('/navbar', [NavbarController::class, 'navbar'])->name('navbar');
 
     // Route::post('/prosescheckout{id}', [CheckoutController::class, 'prosescheckout'])->name('prosescheckout');
