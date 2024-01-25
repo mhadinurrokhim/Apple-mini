@@ -94,18 +94,20 @@ Route::middleware([UserMiddleware::class])->group(function () {
     Route::get('/wishlist', [WishlistController::class, 'wishlist'])->name('wishlist');
     Route::get('/tracking', [TrackingController::class, 'tracking'])->name('tracking');
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+    Route::patch('/checkout-keranjang', [CheckoutController::class, 'chekoutKeranjang'])->name('checkout-keranjang');
+
+    // Route::post('/prosescheckout{id}', [CheckoutController::class, 'prosescheckout'])->name('prosescheckout');
     // Route::get('/produkdetail', [ProdukdetailController::class, 'produkdetail'])->name('produkdetail');
     Route::get('/ulasanproduk', [UlasanprodukController::class, 'ulasanproduk']);
-<<<<<<< Updated upstream
     Route::controller(KeranjangController::class)->prefix('keranjang')->group(function () {
         Route::get('keranjang', 'index')->name('keranjang');
         Route::post('keranjang', 'update')->name('keranjang.update');
         Route::delete('keranjang/{id}', 'destroy')->name('keranjang.destroy');
+        Route::get('keranjangcheckout/{id}', 'keranjangcheckout')->name('keranjang.checkout');
     });
-=======
-    Route::post('/beli{id}',[HomeuserController::class,'beliproduk']);
-    Route::get('/pembelian{id}',[HomeuserController::class,'pembelian'])->name('pembelian');
->>>>>>> Stashed changes
+    // Route::post('/beli{id}',[HomeuserController::class,'beliproduk']);
+    // Route::get('/pembelian{id}',[HomeuserController::class,'pembelian'])->name('pembelian');
+
 });
 Route::controller(PembayaranController::class)->prefix('pembayaran')->group(function () {
     Route::get('', 'index')->name('pembayaran');

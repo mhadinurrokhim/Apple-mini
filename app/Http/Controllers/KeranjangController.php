@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produk;
 use App\Models\Pesanan;
+use App\Models\Checkout;
 use Illuminate\Http\Request;
 use App\Models\Detailpesanan;
 
@@ -17,15 +18,30 @@ class KeranjangController extends Controller
         $pesanans = Detailpesanan::where('status', 'keranjang')->get();
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
         $order = Pesanan::where('user_id', auth()->user()->id)->whereNot('status', 'completed')->get()->count();
-        return view("user.cart", compact('pesanans', 'totalpesanan', 'order'));
+        return view("user.keranjang", compact('pesanans', 'totalpesanan', 'order'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function keranjangcheckout(Request $request, $id)
     {
-        //
+        $produk = Produk::findOrFail($id);
+        return view('user.checkout',compact('produk'));
+
+        try {
+
+            $beli = new Checkout();
+            $beli->user_id = $request->user_id;
+            $beli->produk_id = $request->produk_id;
+            $beli->jumlah = $request->jumlah;
+            $beli->total = $request->total;
+            $beli->save();
+
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+
     }
 
     /**

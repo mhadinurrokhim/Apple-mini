@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use PhpParser\Node\Expr\FuncCall;
 
 class Produk extends Model
 {
@@ -32,8 +33,10 @@ class Produk extends Model
     {
         return $this->hasMany(Userbeli::class);
     }
-    
-
+    public function Checkout()
+    {
+        return $this->hasMany(Checkout::class);
+    }
     public function scopeOrderByDefault($query)
     {
         return $query->orderBy('created_at', 'desc');
