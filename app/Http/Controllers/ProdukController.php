@@ -18,8 +18,9 @@ class ProdukController extends Controller
     public function index()
     {
         $produk = Produk::all();
+        $user = auth()->user();
         $kategori = Kategori::all();
-        return view("admin.produk.index", compact("produk", "kategori"));
+        return view("admin.produk.index", compact("produk", "kategori", "user"));
     }
 
     /**
