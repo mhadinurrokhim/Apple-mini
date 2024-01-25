@@ -32,7 +32,7 @@ class ProdukController extends Controller
         return view("admin.produk.create", compact("produk", "kategori"));
     }
 
-    public function edit(Produk $produk, $id)  
+    public function edit(Produk $produk, $id)
     {
         $produk = Produk::FindOrFail($id);
         $kategori = Kategori::all();
@@ -44,45 +44,26 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request,[
+            'nama_produk' => 'required',
+            'path_produk' => 'required',
+            'deskripsi' => 'required',
+            'harga' => 'required',
+            'stok' => 'required|gt:0',
+            'kategori_id' => 'required',
+        ],[
+            'nama_produk.required' => 'title please fill in',
+            'path_produk.required' => 'Please fill in the image',
+            'deskripsi.required'=> 'please fill in the description',
+            'kategori_id.required' => 'select category',
+            'stok.required' => 'stock must be filled',
+            'harga.required' => 'price must be filled in',
+
+
+        ]);
+
         $deskripsi = strip_tags($request->deskripsi);
-        // dd($request->all());
-        // // $request->validate([
-        // //     // 'path_produk' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        // //     'nama_produk' => 'required|regex:/^[a-zA-Z ]+$/|max:255', // Hanya karakter alfabet dan spasi yang diperbolehkan
-        // //     'harga' => 'required|numeric|min:10000|max:1000000000',
-        // //     'stok' => 'required|numeric|min:1',
-        // //     // 'deskripsi' => 'required|string',
-        // //     'kategori_id' => 'required|exists:kategori,id',
-        // //     'supplier_id' => 'required|exists:supplier,id',
-        // // ], [
-        // //     // 'path_produk.required' => 'Gambar produk wajib diunggah.',
-        // //     // 'path_produk.image' => 'Berkas harus berupa gambar.',
-        // //     // 'path_produk.mimes' => 'Gambar harus berupa berkas dengan tipe: jpeg, png, jpg, gif.',
-        //     // 'path_produk.max' => 'Gambar tidak boleh lebih dari 2 megabita.',
-
-        //     'nama_produk.required' => 'Nama produk wajib diisi.',
-        //     'nama_produk.regex' => 'Nama produk hanya boleh mengandung karakter alfabet dan spasi.',
-        //     'nama_produk.max' => 'Nama produk tidak boleh lebih dari :max karakter.',
-
-        //     'harga.required' => 'Harga produk wajib diisi.',
-        //     'harga.numeric' => 'Harga produk harus berupa angka.',
-        //     'harga.min' => 'Harga produk minimal harus :10000.',
-        //     'harga.max' => 'Harga produk maksimal: 1000000000.',
-
-        //     'stok.numeric' => 'Stok produk harus berupa angka.',
-        //     'stok.required' => 'Stok produk wajib diisi.',
-        //     'stok.min' => 'Stok produk minimal harus :min.',
-
-        //     // 'deskripsi.required' => 'Deskripsi wajib diisi.',
-        //     // 'deskripsi.string' => 'Deskripsi harus berupa teks.',
-
-        //     'kategori_id.required' => 'Kategori wajib diisi.',
-        //     'kategori_id.exists' => 'Kategori yang dipilih tidak valid.',
-
-        //     'supplier_id.required' => 'Pemasok wajib diisi.',
-        //     'supplier_id.exists' => 'Pemasok yang dipilih tidak valid.',
-        // ]);
-
         $file = $request->file('path_produk');
         $fileName = Str::random(10) . '.' .  $file->getClientOriginalExtension();
         $file->storeAs('public/Product', $fileName);
@@ -117,22 +98,6 @@ class ProdukController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $this->validate($request,[
-            'nama_produk' => 'required',
-            'path_produk' => 'required',
-            'deskripsi' => 'required',
-            'harga' => 'required',
-            'stok' => 'required|gt:0',
-            'kategori_id' => 'required',
-        ],[
-            'nama_produk.required' => 'title mohon untuk diisi',
-            'path_produk.required' => 'gambar mohon untuk diisi',
-            'deskripsi'=> 'test',
-            'category.required' => 'pilih',
-
-
-        ]);
 
         $produk = produk::find($id);
         $existingimage = $produk->path_produk;
