@@ -16,11 +16,12 @@ class KeranjangController extends Controller
      */
     public function index()
     {
+        $pembayaran = Pembayaran::all();
         $user = auth()->user();
         $pesanans = Detailpesanan::where('status', 'keranjang')->get();
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
         $order = Pesanan::where('user_id', auth()->user()->id)->whereNot('status', 'completed')->get()->count();
-        return view("user.keranjang", compact('pesanans', 'totalpesanan', 'order','user'));
+        return view("user.keranjang", compact('pesanans', 'totalpesanan', 'order', 'user', 'pembayaran'));
     }
 
     /**

@@ -198,7 +198,7 @@
                                                 <td class="align-middle white-space-nowrap py-0"><a
                                                         class="d-block border rounded-2" href="#"><img
                                                             src="{{ asset('storage/Product/' . $pesanan->produk->path_produk) }}"
-                                                            alt="" width="53" /></a></td>
+                                                            alt="path_produk" width="100" /></a></td>
                                                 <td class="products align-middle col-2" style="max-width: 50px;">
                                                     <a class="fw-semi-bold mb-0 text-truncate d-inline-block"
                                                         href="#">
