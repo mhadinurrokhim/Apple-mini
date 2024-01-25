@@ -153,8 +153,9 @@
                                             </div>
                                             <div class="card-footer">
                                                 <div class="d-flex align-items-center mb-1">
-                                                    <h3 class="text-1100 mb-0">Rp
-                                                        {{ number_format($pf->harga, 0, ',', '.') }} <i class="fas fa-shopping-cart ml-2"></i></h3>
+                                                    <h3 class="text-1100 mb-0">Rp {{ number_format($pf->harga, 0, ',', '.') }}</h3>
+                                                    <div class="flex-grow-1"></div>
+                                                    <button class="fas fa-shopping-cart me-2 cart-icon"></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -165,6 +166,6 @@
                     </div>
                 </div>
             </div>
-        </div><!-- end of .container-->
-    </section><!-- <section> close ============================-->
+        </div>
+    </section>
 @endsection

@@ -119,8 +119,8 @@
                 </script>
 
               </div>
-              <nav class="ecommerce-navbar navbar-expand navbar-light bg-white justify-content-center">
-                <div class="container-small d-flex flex-between-center text-center" data-navbar="data-navbar">
+              <nav class="ecommerce-navbar navbar-expand navbar-light bg-white justify-content-center h-3" style="height: 35px">
+                <div class="container-small d-flex flex-between-center pt-2 text-center" data-navbar="data-navbar">
                   <ul class="navbar-nav mx-auto justify-content-end align-items-center">
                     <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link" href="homeuser">Home</a></li>
                     <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link" href="podukfilter">Products</a></li>
