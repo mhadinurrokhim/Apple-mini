@@ -267,10 +267,16 @@
           <div class="col-12 col-xl-8">
             <h4 class="mb-3">Product Title</h4><input class="form-control mb-5" type="text" name="nama_produk"
               placeholder="Write title here..." />
+              @error('nama_produk')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
             <div class="mb-6">
               <h4 class="mb-3"> Product Description</h4>
               <textarea class="tinymce" name="deskripsi"
                 data-tinymce='{"height":"15rem","placeholder":"Write a description here...","plugins": "nonbreaking"}'></textarea>
+                @error('deskirpsi')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
             </div>
             <h4 class="mb-3">Display images</h4>
             <div>
@@ -279,38 +285,6 @@
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white "
               required>
           </div>
-
-            {{-- <div class="dropzone dropzone-multiple p-0" id="dropzone" data-dropzone="data-dropzone"
-              data-options='{"url":"valid/url","maxFiles":1,"dictDefaultMessage":"Choose or Drop a file here"}'>
-              <div class="fallback"><input type="file" name="image" /></div>
-              <div class="dz-message" data-dz-message="data-dz-message">
-                <div class="dz-message-text"><img class="me-2" src="../../../assets/img/icons/cloud-upload.svg"
-                    width="25" alt="" />Drop your file here</div>
-              </div>
-              <div class="dz-preview dz-preview-multiple m-0 d-flex flex-column">
-                <div class="d-flex pb-3 border-bottom media px-2">
-                  <div class="border border-300 p-2 rounded-2 me-2"><img class="rounded-2 dz-image"
-                      src="../../../assets/img/icons/file.png" alt="..." data-dz-thumbnail="data-dz-thumbnail" />
-                  </div>
-                  <div class="flex-1 d-flex flex-between-center">
-                    <div>
-                      <h6 data-dz-name="data-dz-name"></h6>
-                      <div class="d-flex align-items-center">
-                        <p class="mb-0 fs--1 text-400 lh-1" data-dz-size="data-dz-size"></p>
-                        <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress=""></span></div>
-                      </div><span class="fs--2 text-danger" data-dz-errormessage="data-dz-errormessage"></span>
-                    </div>
-                    <div class="dropdown font-sans-serif"><button
-                        class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal dropdown-caret-none" type="button"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span
-                          class="fas fa-ellipsis-h"></span></button>
-                      <div class="dropdown-menu dropdown-menu-end border py-2"><a class="dropdown-item" href="#!"
-                          data-dz-remove="data-dz-remove">Remove File</a></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> --}}
 
           </div>
           <div class="col-12 col-xl-4">
