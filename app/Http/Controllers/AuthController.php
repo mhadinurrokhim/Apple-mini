@@ -102,6 +102,11 @@ class AuthController extends Controller
     public function logout(){
 
         Auth::logout();
-        return redirect('/')->with('success', 'Berhasil logout');
+        return redirect('/')->with('success', 'Successfully logout');
+    }
+    public function changeAccount(){
+
+        Auth::logout();
+        return redirect('login')->with('success', 'Succesfully logout, please change account');
     }
 }

@@ -26,10 +26,11 @@ class KeranjangController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    // public function keranjangcheckout(Request $request, $id)
-    // {
-    //     $produk = Produk::findOrFail($id);
-    //     return view('user.checkout',compact('produk'));
+    public function keranjangcheckout(Request $request, $id)
+    {
+        $produk = Produk::findOrFail($id);
+        $user = auth()->user();
+        return view('user.checkout',compact('produk','user'));
 
     //     try {
 

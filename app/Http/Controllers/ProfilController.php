@@ -95,9 +95,9 @@ class ProfilController extends Controller
 
         // Update data pengguna
         $user->update($userData);
-            return redirect('homeuser')->with('success', 'Berhasil memperbarui profil');
+            return redirect()->route('profil')->with('success', 'Berhasil memperbarui profil');
         } catch (\Exception $e) {
-            return redirect('homeuser')->with('error', 'Kesalahan');
+            return redirect()->route('profil')->with('error', 'Kesalahan');
 
 
 
@@ -114,7 +114,7 @@ class ProfilController extends Controller
                 Storage::disk('public')->delete($oldProfilPath);
             }
 
-            return redirect()->route('user.homeuser')->with('success', 'Profil berhasil diperbarui');
+            return redirect()->route('profil')->with('success', 'Profil berhasil diperbarui');
         }}
 
 
