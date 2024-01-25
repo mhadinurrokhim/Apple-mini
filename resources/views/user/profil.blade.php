@@ -2,7 +2,11 @@
 @section('content')
       <!-- ============================================-->
       <!-- <section> begin ============================-->
-      <section class="pt-5 pb-9">
+
+        <form action="{{ route('profil.update', ['id' => $user->id]) }}" method="POST" enctype="multipart/form-data" >
+            @csrf
+            @method('PUT')
+        <section class="pt-5 pb-9">
         <div class="container-small">
           <nav class="mb-2" aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
@@ -24,16 +28,16 @@
                     <div class="row align-items-center g-3 g-sm-5 text-center text-sm-start">
 
                       <div class="col-12 col-sm-auto">
-                        <input class="d-none" id="avatarFile" type="file" onchange="previewImage()" />
+                        <input class="d-none" id="avatarFile" type="file" name="profile" accept="image/*" onchange="previewImage()" />
                         <label class="cursor-pointer avatar avatar-5xl" for="avatarFile">
-                            <img class="rounded-circle" id="avatarPreview" src="{{ asset('storage/' . $user->profil) }}" alt="" />
+                            <img class="rounded-circle" id="avatarPreview" src="{{ asset('storage/' . $user->profile) }}" alt="" />
                         </label>
                     </div>
 
 
 
                       <div class="col-12 col-sm-auto flex-1">
-                        <h3>{{$user->name}}</h3>
+                        <h3>{{ Auth::user()->name }}</h3>
                         <p class="text-800">{{ Auth::user()->created_at }}</p>
                       </div>
                     </div>
@@ -67,7 +71,7 @@
                         <h5 class="text-1000">Address :</h5>
                       </div>
                       <div class="col-auto">
-                        <p class="text-800">Vancouver, British Columbia</p>
+                        <p class="text-800">{{$user->address}}</p>
                       </div>
                     </div>
                   </div>
@@ -83,7 +87,7 @@
                       <div class="col-auto">
                         <h5 class="text-1000 mb-0">Phone :</h5>
                       </div>
-                      <div class="col-auto">+1234567890</a></div>
+                      <div class="col-auto">+{{$user->telp}}</a></div>
                     </div>
                   </div>
                 </div>
@@ -283,38 +287,38 @@
               <div class="tab-pane fade" id="tab-personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
                 <div class="row g-3 mb-5">
                   <div class="col-12 col-lg-6">
-                    <label class="form-label text-1000 fs-0 ps-0 text-capitalize lh-sm" for="name">Full name</label>
-                    <input class="form-control" id="name" type="text" placeholder="Full name" />
+                    <label class="form-label text-1000 fs-0 ps-0 text-capitalize lh-sm" for="name" >Name</label>
+                    <input class="form-control" id="name" name="name" type="text" placeholder="Full name" value="{{ old('name', $user->name) }}" />
                   </div>
                   {{-- <div class="col-12 col-lg-6">
                     <label class="form-label text-1000 fs-0 ps-0 text-capitalize lh-sm" for="Password">Password</label>
                     <input class="form-control" id="Password" type="text" placeholder="Password" />
                   </div> --}}
                   <div class="col-12 col-lg-6">
-                    <label class="form-label text-1000 fs-0 ps-0 text-capitalize lh-sm" for="email">Email</label>
-                    <input class="form-control" id="email" type="text" placeholder="Email" />
-                  </div>
-                  <div class="col-12 col-lg-6">
                     <label class="form-label text-1000 fw-bold fs-0 ps-0 text-capitalize lh-sm" for="telp">Phone</label>
-                    <input class="form-control" id="telp" type="text" placeholder="Phone" />
+                    <input class="form-control" id="telp" name="telp" type="text" placeholder="Phone" value="{{ old('name', $user->telp) }}" />
                   </div>
                   <div class="col-12 col-lg-6">
                     <label class="form-label text-1000 fs-0 ps-0 text-capitalize lh-sm" for="address">Address</label>
-                    <textarea class="form-control" id="address" placeholder="Address"></textarea>
+                    <textarea class="form-control" id="address" name="address" placeholder="Address" ></textarea>
+                  </div>
+                  <div class="col-12 col-lg-6">
                   </div>
                 </div>
-                <div class="text-end"><button type="submit" class="btn btn-primary px-7">Save changes</button></div>
+                <div class="text-end"><button type="submit" class="btn btn-primary px-7">Save changes</button>
+                </div>
               </div>
               </div>
             </div>
           </div>
         </div><!-- end of .container-->
-      </section><!-- <section> close ============================-->
+      </section>
+        </form><!-- <section> close ============================-->
       <!-- ============================================-->
 
       <!-- ============================================-->
       <!-- <section> begin ============================-->
-      <section class="bg-100 dark__bg-1100 py-9">
+      {{-- <section class="bg-100 dark__bg-1100 py-9">
         <div class="container-small">
           <div class="row justify-content-between gy-4">
             <div class="col-12 col-lg-4">
@@ -341,7 +345,7 @@
             </div>
           </div>
         </div><!-- end of .container-->
-      </section><!-- <section> close ============================-->
+      </section><!-- <section> close ============================--> --}}
       <!-- ============================================-->
 
     </main><!-- ===============================================-->
@@ -349,3 +353,24 @@
     <!-- ===============================================-->
 
     @endsection
+
+    <script>
+        function previewImage() {
+            var input = document.getElementById('avatarFile');
+            var preview = document.getElementById('avatarPreview');
+
+            if (input.files.length > 0) {
+                var file = input.files[0];
+                var reader = new FileReader();
+
+                reader.onloadend = function () {
+                    preview.src = reader.result;
+                }
+
+                reader.readAsDataURL(file);
+            } else {
+                // Jika tidak ada file yang dipilih, tampilkan gambar placeholder atau default
+                preview.src = '{{ asset('assets/img/profile.jpg') }}';
+            }
+        }
+    </script>

@@ -290,13 +290,12 @@
                       <div class="card-body p-0">
                         <div class="text-center pt-4 pb-3">
                           <div class="avatar avatar-xl ">
-                            <img class="rounded-circle " src="../../../assets/img/team/72x72/57.webp"
+                            <img class="rounded-circle " src="{{ asset('storage/' . $user->profile) }}"
                               alt="" />
                           </div>
-                          <h6 class="mt-2 text-black">aisyh</h6>
+                          <h6 class="mt-2 text-black">{{ Auth::user()->name }}</h6>
                         </div>
-                        <div class="mb-3 mx-3"><input class="form-control form-control-sm" id="statusUpdateInput"
-                            type="text" placeholder="Update your status" /></div>
+
                       </div>
                       <div class="overflow-auto scrollbar" style="height: 2rem;">
                         <ul class="nav d-flex flex-column mb-2 pb-1">
