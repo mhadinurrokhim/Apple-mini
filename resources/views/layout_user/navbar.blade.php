@@ -44,6 +44,8 @@
   <link href="../../../assets/css/theme.min.css" type="text/css" rel="stylesheet" id="style-default">
   <link href="../../../assets/css/user-rtl.min.css" type="text/css" rel="stylesheet" id="user-style-rtl">
   <link href="../../../assets/css/user.min.css" type="text/css" rel="stylesheet" id="user-style-default">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css" rel="stylesheet">
   <script>
     var phoenixIsRTL = window.config.config.phoenixIsRTL;
     if (phoenixIsRTL) {

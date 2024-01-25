@@ -1,5 +1,14 @@
 @extends('layout_user.navbar')
 @section('content')
+@if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: "{{ session('success') }}"
+            });
+        </script>
+    @endif
       <!-- ============================================-->
       <!-- <section> begin ============================-->
 
