@@ -12,8 +12,9 @@ class PembayaranController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
         $pembayaran = Pembayaran::all();
-        return view("admin.pembayaran.index", compact('pembayaran'));
+        return view("admin.pembayaran.index", compact('pembayaran','user'));
     }
 
     /**

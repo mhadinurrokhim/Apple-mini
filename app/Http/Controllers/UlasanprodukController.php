@@ -8,6 +8,7 @@ class UlasanprodukController extends Controller
 {
     public function ulasanproduk()
     {
-        return view('user.ulasanproduk');
+        $user = auth()->user();
+        return view('user.ulasanproduk', compact('user'));
     }
 }

@@ -12,8 +12,9 @@ class KategoriController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
         $kategori = kategori::all();
-        return view('admin.kategori.index', compact('kategori'));
+        return view('admin.kategori.index', compact('kategori','user'));
     }
 
     /**
