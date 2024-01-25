@@ -43,5 +43,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Userbeli::class);
     }
+    public function Checkout()
+    {
+        return $this->hasMany(Checkout::class);
+    }
 
 }

@@ -227,15 +227,23 @@
           <div class="col-auto"><button class="btn btn-phoenix-secondary me-2 mb-2 mb-sm-0" type="button">Discard</button><button class="btn btn-primary mb-2 mb-sm-0" type="submit">Publish payment</button></div>
         </div>
         <div class="row g-5">
-          <div class="col-12 col-xl-12">
-            <h4 class="mb-3">Payment Title</h4><input class="form-control @error('metode_pembayaran') is-invalid @enderror" name="metode_pembayaran" value="{{ old('metode_pembayaran') }}" type="text" placeholder="Write title here..." />
-            @error('metode_pembayaran')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
-          </div>
+            <div class="col-12 col-xl-12">
+                <h4 class="mb-3">Payment</h4>
+                <select class="form-select @error('metode_pembayaran') is-invalid @enderror" name="metode_pembayaran">
+                    <option value="" selected disabled>Select Payment Method</option>
+                    <option value="credit_card" {{ old('metode_pembayaran') == 'credit_card' ? 'selected' : '' }}>Credit Card</option>
+                    <option value="bank_transfer" {{ old('metode_pembayaran') == 'bank_transfer' ? 'selected' : '' }}>Bank Transfer</option>
+                    <option value="paypal" {{ old('metode_pembayaran') == 'paypal' ? 'selected' : '' }}>PayPal</option>
+                    <!-- Add more options as needed -->
+                </select>
+                @error('metode_pembayaran')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
         </div>
+
       </form>
       <footer class="footer position-absolute">
         <div class="row g-0 justify-content-between align-items-center h-100">

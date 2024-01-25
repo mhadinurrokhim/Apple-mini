@@ -304,7 +304,7 @@
                             width="100%" height="100" style="object-fit: cover" class="mx-auto" />
                         </a>
                       </td>
-                      <td class="produks align-middle ps-4">
+                      <td class="ellipsis-text col-1">
                         <p class="fw-semi-bold fs--1  line-clamp-3 mb-0">{{ $produks->nama_produk }}</p>
                       </td>
                       <td class="price align-middle white-space-nowrap text-end fw-bold fs--1  text-700 ps-4">

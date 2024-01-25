@@ -112,7 +112,7 @@
                       <form method="POST" action="{{ route('proseslogin') }}">
                         @csrf
                           <div class="mb-3 text-start"><label class="form-label" for="email">Email address</label>
-                            <div class="form-icon-container"><input class="form-control form-icon-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus id="email" type="email" placeholder="name@gmail.com" /><span class="fas fa-user text-900 fs--1 form-icon"></span>
+                            <div class="form-icon-container"><input class="form-control form-icon-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus id="email" type="email" placeholder="Email" /><span class="fas fa-user text-900 fs--1 form-icon"></span>
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

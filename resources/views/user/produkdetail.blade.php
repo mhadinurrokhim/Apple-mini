@@ -26,7 +26,6 @@
                   </div>
                 </div>
                 <div class="d-flex">
-<<<<<<< Updated upstream
                     <form action="{{ route('shop.order', $detail->id) }}" method="POST" class="d-flex" style="margin-left: 160px">
                     @csrf
                     <div class="d-flex flex-between-center" data-quantity="data-quantity">
@@ -38,16 +37,6 @@
                             <span class="fas fa-shopping-cart me-2"></span>Add to Cart
                         </button>
                     </form>
-=======
-                    <Form action="{{ route('pembelian', $detail->id) }}">
-                        <button class="btn btn-lg btn-outline-primary rounded-pill w-100 me-3 px-2 px-sm-4 fs--1 fs-sm-0">
-                          <span class="fa-solid fa-dollar-sign me-2"></span>Buy Now
-                        </button>
-                    </Form>
-                    <button class="btn btn-lg btn-primary rounded-pill w-100 fs--1 fs-sm-0">
-                      <span class="fas fa-shopping-cart me-2"></span>Add to Cart
-                    </button>
->>>>>>> Stashed changes
                   </div>
               </div>
               <div class="col-12 col-lg-6">

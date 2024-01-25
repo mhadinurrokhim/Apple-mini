@@ -95,7 +95,7 @@
                       data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span class="icon"
                         data-feather="sun"></span></label></div>
                 </li>
-                <li class="nav-item"><a class="nav-link px-2 icon-indicator icon-indicator-primary" href="/keranjang"
+                <li class="nav-item"><a class="nav-link px-2 icon-indicator icon-indicator-primary" href="{{ route('keranjang') }}"
                     role="button"><span class="text-700" data-feather="shopping-cart"
                       style="height:20px;width:20px;"></span><span class="icon-indicator-number">3</span></a></li>
                 <li class="nav-item dropdown"><a

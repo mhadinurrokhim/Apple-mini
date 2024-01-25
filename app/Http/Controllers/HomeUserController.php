@@ -6,6 +6,7 @@ use App\Models\Detailpesanan;
 use Illuminate\Http\Request;
 use App\Models\Produk;
 use App\Models\Userbeli;
+use App\Models\Kategori;
 use App\Http\Middleware\user;
 
 class HomeUserController extends Controller
@@ -27,6 +28,7 @@ class HomeUserController extends Controller
 
     public function order(Request $request, $produk)
     {
+        $kategori = Kategori::all();
         $produk = Produk::findOrFail($produk);
         $request->validate(
             [
@@ -38,7 +40,6 @@ class HomeUserController extends Controller
         );
 
         $detailPesanan = Detailpesanan::where('produk_id', $produk->id)->where('status', 'keranjang')->first();
-        // return dd($detailPesanan);
 
         if ($detailPesanan) {
             if ($detailPesanan->jumlah > $produk->stok) {
@@ -72,13 +73,16 @@ class HomeUserController extends Controller
      */
     public function beliproduk(Request $request)
     {
+       $produk = Produk::findOrFail($id);
+        return view('user.checkout',compact('produk'));
+
         try {
 
-            $beli = new Userbeli();
+            $beli = new Checkout();
             $beli->user_id = $request->user_id;
             $beli->produk_id = $request->produk_id;
             $beli->jumlah = $request->jumlah;
-            $beli->totalharga = $request->totalharga;
+            $beli->total = $request->total;
             $beli->save();
 
         } catch (\Exception $e) {

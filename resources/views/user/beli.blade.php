@@ -10,7 +10,7 @@
   <!-- <section> begin ============================-->
     @foreach ($beli as $pembelian )
 
-    @endforeach
+
   <section class="pt-5 pb-9">
     <div class="container-small cart">
 
@@ -89,7 +89,8 @@
         </div> --}}
       </div>
     </div><!-- end of .container-->
-  </section><!-- <section> close ============================-->
+  </section>
+  @endforeach<!-- <section> close ============================-->
   <!-- ============================================-->
 
   {{-- <div class="support-chat-container">
