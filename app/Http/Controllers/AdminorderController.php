@@ -13,7 +13,9 @@ class AdminorderController extends Controller
      */
     public function index()
     {
-        return view('admin.order');
+        $user = auth()->user();
+
+        return view('admin.order' ,compact('user'));
     }
 
     /**

@@ -8,6 +8,7 @@ class WishlistController extends Controller
 {
     public function wishlist()
     {
-        return view('user.wishlist');
+        $user = auth()->user();
+        return view('user.wishlist', compact('user'));
     }
 }

@@ -87,9 +87,10 @@ class CheckoutController extends Controller
     }
     public function checkout()
     {
+        $user = auth()->user();
         $id = Auth::user()->id;
         $items = DetailPesanan::where('status', 'checkout')->where('user_id', $id)->get();
-        return view('user.checkout', compact('items'));
+        return view('user.checkout', compact('items', 'user'));
     }
 
     public function chekoutKeranjang()

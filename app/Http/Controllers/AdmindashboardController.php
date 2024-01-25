@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Produk;
 use App\Models\admindashboard;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreadmindashboardRequest;
 use App\Http\Requests\UpdateadmindashboardRequest;
 
@@ -14,6 +15,7 @@ class AdmindashboardController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
         $totalUser = User::where('role', 'user')->count();
         $totalProduct = Produk::count();
         $user = auth()->user();

@@ -8,6 +8,7 @@ class TrackingController extends Controller
 {
     public function tracking()
     {
-        return view('user.tracking');
+        $user = auth()->user();
+        return view('user.tracking',compact('user'));
     }
 }

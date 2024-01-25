@@ -10,11 +10,13 @@ class ProdukfilterController extends Controller
     public function produkfilter()
     {
         $produk = Produk::all();
-        return view('user.produkfilter', compact('produk'));
+        $user = auth()->user();
+        return view('user.produkfilter', compact('produk','user'));
     }
     public function detail(Request $request, $id)
     {
         $produk = produk::where('id', $id)->get();
-        return view('user.produkdetail' , compact('produk','id'));
+        $user = auth()->user();
+        return view('user.produkdetail' , compact('produk','id','user'));
     }
 }
