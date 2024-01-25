@@ -1,5 +1,14 @@
 @extends('layout_user.navbar')
 @section('content')
+@if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: "{{ session('success') }}"
+            });
+        </script>
+    @endif
       <!-- ============================================-->
       <!-- <section> begin ============================-->
 
@@ -8,13 +17,6 @@
             @method('PUT')
         <section class="pt-5 pb-9">
         <div class="container-small">
-          <nav class="mb-2" aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0">
-              <li class="breadcrumb-item"><a href="#!">Page 1</a></li>
-              <li class="breadcrumb-item"><a href="#!">Page 2</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Default</li>
-            </ol>
-          </nav>
           <div class="row align-items-center justify-content-between g-3 mb-4">
             <div class="col-auto">
               <h2 class="mb-0">Profile</h2>
@@ -33,9 +35,6 @@
                             <img class="rounded-circle" id="avatarPreview" src="{{ asset('storage/' . $user->profile) }}" alt="" />
                         </label>
                     </div>
-
-
-
                       <div class="col-12 col-sm-auto flex-1">
                         <h3>{{ Auth::user()->name }}</h3>
                         <p class="text-800">{{ Auth::user()->created_at }}</p>
@@ -63,33 +62,24 @@
               <div class="card h-80">
                 <div class="card-body">
                   <div class="border-bottom border-dashed border-300">
-                    <h4 class="mb-3 lh-sm lh-xl-1">More Info<a href="btn btn-link p-0" type="button"></button></h4>
+                    <h4 class="mb-3 lh-sm lh-xl-1">More Info</h4>
                   </div>
-                  <div class="pt-4 mb-7 mb-lg-4 mb-xl-1">
-                    <div class="row justify-content-between">
-                      <div class="col-auto">
-                        <h5 class="text-1000">Address :</h5>
+                <div class="border-top border-dashed border-300 pt-2">
+                      <div class="row flex-between-center mb-2">
+                        <div class="col-auto">
+                            <h5 class="text-1000 mb-0">Address : <p class="text-1000">{{$user->address}}</p></h5>
+                        </div>
                       </div>
-                      <div class="col-auto">
-                        <p class="text-800">{{$user->address}}</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="border-top border-dashed border-300 pt-2">
                     <div class="row flex-between-center mb-2">
                       <div class="col-auto">
-                        <h5 class="text-1000 mb-0">Email :</h5>
+                        <h5 class="text-1000 mb-0">Email : <p class="text-800">{{ Auth::user()->email }}</p></h5>
                       </div>
-                      <div class="col-auto">
-                        <p class="text-800">{{ Auth::user()->email }}</p>
                     </div>
                     <div class="row flex-between-center">
                       <div class="col-auto">
-                        <h5 class="text-1000 mb-0">Phone :</h5>
+                        <h5 class="text-1000 mb-0">Phone : <p class="text-800">+{{$user->telp}}</p></h5>
                       </div>
-                      <div class="col-auto">+{{$user->telp}}</a></div>
                     </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -286,22 +276,20 @@
               </div>
               <div class="tab-pane fade" id="tab-personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
                 <div class="row g-3 mb-5">
-                  <div class="col-12 col-lg-6">
-                    <label class="form-label text-1000 fs-0 ps-0 text-capitalize lh-sm" for="name" >Name</label>
-                    <input class="form-control" id="name" name="name" type="text" placeholder="Full name" value="{{ old('name', $user->name) }}" />
-                  </div>
-
-                  <div class="col-12 col-lg-6">
-                    <label class="form-label text-1000 fw-bold fs-0 ps-0 text-capitalize lh-sm" for="telp">Phone</label>
-                    <input class="form-control" id="telp" name="telp" type="text" placeholder="Phone" value="{{ old('name', $user->telp) }}" />
-                  </div>
-                  <div class="col-12 col-lg-6">
-                    <label class="form-label text-1000 fs-0 ps-0 text-capitalize lh-sm" for="address">Address</label>
-                    <textarea class="form-control" id="address" name="address" placeholder="Address" ></textarea>
-                  </div>
-                  <div class="col-12 col-lg-6">
-                  </div>
+                    <div class="col-12 col-lg-6">
+                        <label class="form-label text-1000 fs-0 ps-0 text-capitalize lh-sm" for="name">Name</label>
+                        <input class="form-control" id="name" name="name" type="text" placeholder="Full name" value="{{ old('name', $user->name) }}" />
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <label class="form-label text-1000 fw-bold fs-0 ps-0 text-capitalize lh-sm" for="telp">Phone</label>
+                        <input class="form-control" id="telp" name="telp" type="text" placeholder="Phone" value="{{ old('name', $user->telp) }}" />
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label text-1000 fs-0 ps-0 text-capitalize lh-sm" for="address">Address</label>
+                        <textarea class="form-control" id="address" name="address" placeholder="Address"></textarea>
+                    </div>
                 </div>
+
                 <div class="text-end"><button type="submit" class="btn btn-primary px-7">Save changes</button>
                 </div>
               </div>

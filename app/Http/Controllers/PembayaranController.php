@@ -35,9 +35,10 @@ class PembayaranController extends Controller
         $request->validate([
             'metode_pembayaran' => 'required|string|max:255',
         ], [
-            'metode_pembayaran.required' => 'Kolom Metode Pembayaran wajib diisi.',
-            'metode_pembayaran.string' => 'Metode Pembayaran harus berupa teks.',
-            'metode_pembayaran.max' => 'Metode Pembayaran tidak boleh lebih dari :max karakter.',
+            'metode_pembayaran.required' => 'The Payment Method field is required.',
+            'metode_pembayaran.string' => 'The Payment Method must be a string.',
+            'metode_pembayaran.max' => 'The Payment Method must not be more than :max characters.',
+
         ]);
 
         Pembayaran::create($request->all());

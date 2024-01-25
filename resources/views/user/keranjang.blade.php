@@ -1,156 +1,5 @@
 @extends('layout_user.navbar')
 @section('content')
-    <nav class="ecommerce-navbar navbar-expand navbar-light bg-white justify-content-between">
-        <div class="container-small d-flex flex-between-center" data-navbar="data-navbar">
-            <div class="dropdown-menu border py-0 category-dropdown-menu">
-                <div class="card border-0 scrollbar" style="max-height: 657px;">
-                    <div class="card-body p-6 pb-3">
-                        <div class="row gx-7 gy-5 mb-5">
-                            <div class="col-12 col-sm-6 col-md-4">
-                                <div class="d-flex align-items-center mb-3"><span class="text-primary me-2"
-                                        data-feather="pocket" style="stroke-width:3;"></span>
-                                    <h6 class="text-1000 mb-0 text-nowrap">Collectibles &amp; Art</h6>
-                                </div>
-                                <div class="ms-n2"><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Collectibles</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Antiques</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Sports memorabilia </a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Art</a></div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4">
-                                <div class="d-flex align-items-center mb-3"><span class="text-primary me-2"
-                                        data-feather="home" style="stroke-width:3;"></span>
-                                    <h6 class="text-1000 mb-0 text-nowrap">Home &amp; Gardan</h6>
-                                </div>
-                                <div class="ms-n2"><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Yard, Garden &amp; Outdoor</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Crafts</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Home Improvement</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Pet Supplies</a></div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4">
-                                <div class="d-flex align-items-center mb-3"><span class="text-primary me-2"
-                                        data-feather="globe" style="stroke-width:3;"></span>
-                                    <h6 class="text-1000 mb-0 text-nowrap">Sporting Goods</h6>
-                                </div>
-                                <div class="ms-n2"><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Outdoor Sports</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Team Sports</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Exercise &amp; Fitness</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Golf</a></div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4">
-                                <div class="d-flex align-items-center mb-3"><span class="text-primary me-2"
-                                        data-feather="monitor" style="stroke-width:3;"></span>
-                                    <h6 class="text-1000 mb-0 text-nowrap">Electronics</h6>
-                                </div>
-                                <div class="ms-n2"><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Computers &amp; Tablets</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Camera &amp; Photo</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">TV, Audio &amp; Surveillance</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Cell Ohone &amp; Accessories</a></div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4">
-                                <div class="d-flex align-items-center mb-3"><span class="text-primary me-2"
-                                        data-feather="truck" style="stroke-width:3;"></span>
-                                    <h6 class="text-1000 mb-0 text-nowrap">Auto Parts &amp; Accessories</h6>
-                                </div>
-                                <div class="ms-n2"><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">GPS &amp; Security Devices</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Rader &amp; Laser Detectors</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Care &amp; Detailing</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Scooter Parts &amp; Accessories</a></div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4">
-                                <div class="d-flex align-items-center mb-3"><span class="text-primary me-2"
-                                        data-feather="codesandbox" style="stroke-width:3;"></span>
-                                    <h6 class="text-1000 mb-0 text-nowrap">Toys &amp; Hobbies</h6>
-                                </div>
-                                <div class="ms-n2"><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Radio Control</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Kids Toys</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Action Figures</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Dolls &amp; Bears</a></div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4">
-                                <div class="d-flex align-items-center mb-3"><span class="text-primary me-2"
-                                        data-feather="watch" style="stroke-width:3;"></span>
-                                    <h6 class="text-1000 mb-0 text-nowrap">Fashion</h6>
-                                </div>
-                                <div class="ms-n2"><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Women</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Men</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Jewelry &amp; Watches</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Shoes</a></div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4">
-                                <div class="d-flex align-items-center mb-3"><span class="text-primary me-2"
-                                        data-feather="music" style="stroke-width:3;"></span>
-                                    <h6 class="text-1000 mb-0 text-nowrap">Musical Instruments &amp; Gear</h6>
-                                </div>
-                                <div class="ms-n2"><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Guitar</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Pro Audio Equipment</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">String</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Stage Lighting &amp; Effects</a></div>
-                            </div>
-                            <div class="col-12 col-sm-6 col-md-4">
-                                <div class="d-flex align-items-center mb-3"><span class="text-primary me-2"
-                                        data-feather="grid" style="stroke-width:3;"></span>
-                                    <h6 class="text-1000 mb-0 text-nowrap">Other Categories</h6>
-                                </div>
-                                <div class="ms-n2"><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Video Games &amp; Consoles</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Health &amp; Beauty</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Baby</a><a
-                                        class="text-black d-block mb-1 text-decoration-none hover-bg-100 px-2 py-1 rounded-2"
-                                        href="#!">Business &amp; Industrial</a></div>
-                            </div>
-                        </div>
-                        <div class="text-center border-top pt-3"><a class="fw-bold" href="#!">See all
-                                Categories<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-    </nav>
 
     <!-- ============================================-->
     <!-- <section> begin ============================-->
@@ -163,30 +12,24 @@
             <div class="row g-5">
                 <div class="col-12 col-lg-8">
                     <div id="cartTable"
-                        data-list='{"valueNames":["products","color","size","price","quantity","total"],"page":10}'>
-                        <div class="table-responsive scrollbar mx-n1 px-1">
-                            <table class="table fs--1 mb-0 border-top border-200">
-                                <thead>
-                                    <tr>
-                                        <th class="white-space-nowrap align-middle ps-4 fs--1 text-dark" style="width:50;"
-                                            data-sort="path_produk">IMAGE</th>
-                                        <th class="sort white-space-nowrap align-middle" scope="col"
-                                            style="max-width: 50px">PRODUCTS</th>
-                                        <th class="sort align-middle" scope="col" style="width:80px;">CATEGORY</th>
-                                        <th class="sort align-middle text-end" scope="col" style="width:300px;">PRICE
-                                        </th>
-                                        <th class="sort align-middle ps-5" scope="col" style="width:200px;">QUANTITY
-                                        </th>
-                                        <th class="sort align-middle text-end" scope="col" style="width:250px;">TOTAL
-                                        </th>
-                                        <th class="sort align-middle text-end" scope="col" style="width:250px;">ACTION
-                                        </th>
-                                        <th class="sort text-end align-middle pe-0" scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody class="list" id="cart-table-body">
-                                    @if ($pesanans->count() > 0)
-                                        @php
+                    data-list='{"valueNames":["products","color","size","price","quantity","total"],"page":10}'>
+                    <div class="table-responsive scrollbar mx-n1 px-1">
+                        <table class="table fs--1 mb-0 border-top border-200">
+                            <thead>
+                                <tr>
+                                    <th class="white-space-nowrap align-middle ps-4 fs--1 text-dark" style="width: 50px; padding-right: 10px;" data-sort="path_produk">IMAGE</th>
+                                    <th class="sort white-space-nowrap align-middle" scope="col" style="max-width: 100px; padding-right: 10px;">PRODUCTS</th>
+                                    <th class="sort align-middle" scope="col" style="width: 100px; padding-right: 10px;">CATEGORY</th>
+                                    <th class="sort align-middle text-end" scope="col" style="width: 200px; padding-right: 10px;">PRICE</th>
+                                    <th class="sort align-middle ps-5" scope="col" style="width: 100px;">QUANTITY</th>
+                                    <th class="sort align-middle text-end" scope="col" style="width: 150px;">TOTAL</th>
+                                    <th class="sort align-middle text-end" scope="col" style="width: 150px;">ACTION</th>
+                                    <th class="sort text-end align-middle pe-0" scope="col"></th>
+                                </tr>
+                                                </thead>
+                                                <tbody class="list" id="cart-table-body">
+                                                    @if ($pesanans->count() > 0)
+                                                    @php
                                             $subtotal = 0;
                                             $pesanan_id = [];
                                         @endphp

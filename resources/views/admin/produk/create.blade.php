@@ -264,29 +264,42 @@
     <form class="mb-9" action="{{ route('produk.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row g-5">
-          <div class="col-12 col-xl-8">
-            <h4 class="mb-3">Product Title</h4><input class="form-control mb-5" type="text" name="nama_produk"
-              placeholder="Write title here..." />
-              @error('nama_produk')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-            <div class="mb-6">
-              <h4 class="mb-3"> Product Description</h4>
-              <textarea class="tinymce" name="deskripsi"
-                data-tinymce='{"height":"15rem","placeholder":"Write a description here...","plugins": "nonbreaking"}'></textarea>
-                @error('deskirpsi')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-            </div>
-            <h4 class="mb-3">Display images</h4>
-            <div>
-          <input type="file" name="path_produk" id=""
-              placeholder=""
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white "
-              required>
-          </div>
+            <div class="col-12 col-xl-8">
+                <h4 class="mb-3">Product Title</h4>
+                <input class="form-control mb-2 @error('nama_produk') is-invalid @enderror"
+                       type="text"
+                       name="nama_produk"
+                       placeholder="Write title here..." />
 
-          </div>
+                @error('nama_produk')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+
+                <div class="mb-6">
+                    <h4 class="mb-3">Product Description</h4>
+                    <textarea class="tinymce @error('deskripsi') is-invalid @enderror"
+                              name="deskripsi"
+                              data-tinymce='{"height":"15rem","placeholder":"Write a description here...","plugins": "nonbreaking"}'></textarea>
+
+                    @error('deskripsi')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <h4 class="mb-3">Display images</h4>
+                <div>
+                    <input type="file"
+                           name="path_produk"
+                           id=""
+                           placeholder=""
+                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white @error('path_produk') is-invalid @enderror">
+
+                    @error('path_produk')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+
           <div class="col-12 col-xl-4">
             <div class="row g-2">
               <div class="col-12 col-xl-12">
@@ -310,32 +323,39 @@
                       </div>
                       <div class="col-12 col-sm-6 col-xl-12">
                         <div class="mb-4">
-                          <h5 class="mb-2 text-1000">stcok</h5><input class="form-control mb-xl-3" type="number"
-                            name="stok" placeholder="stock" />
+                            <h5 class="mb-2 text-1000">Stock</h5>
+                            <input class="form-control mb-xl-3 @error('stok') is-invalid @enderror" type="number" name="stok" placeholder="Stock" />
+
+                            @error('stok')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
-                      </div>
-                      <div class="col-12 col-sm-6 col-xl-12">
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-xl-12">
                         <div class="mb-4">
-                          <h5 class="mb-2 text-1000">price</h5><input class="form-control mb-xl-3" type="number"
-                            name="harga" placeholder="price" />
+                            <h5 class="mb-2 text-1000">Price</h5>
+                            <input class="form-control mb-xl-3 @error('harga') is-invalid @enderror" type="number" name="harga" placeholder="Price" />
+                            @error('harga')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
-                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="row gx-3">
-                  <div class="col-12">
-                    <div class="d-flex justify-content-center">
-                      <button class="btn btn-danger me-2 mb-2 mb-sm-0" type="button">
-                        <i class="fas fa-trash-alt"></i> Discard
-                      </button>
-                      <button class="btn btn-primary mb-2 mb-sm-0" type="submit">
-                        <i class="fas fa-check"></i> Publish product
-                      </button>
-                    </div>
-                  </div>
+            </div>
+            <div class="row gx-3">
+              <div class="col-12">
+                <div class="d-flex justify-content-center">
+                  <button class="btn btn-danger me-2 mb-2 mb-sm-0" type="button">
+                    <i class="fas fa-trash-alt"></i> Discard
+                  </button>
+                  <button class="btn btn-primary mb-2 mb-sm-0" type="submit">
+                    <i class="fas fa-check"></i> Publish product
+                  </button>
                 </div>
               </div>
+            </div>
             </div>
           </div>
         </div>
