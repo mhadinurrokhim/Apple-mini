@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class ProfilController extends Controller
@@ -49,16 +50,73 @@ class ProfilController extends Controller
      */
     public function update(Request $request, User $profil, $id)
     {
-        $profil = User::find($id);
-        $profil->update([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'telp' => $request->input('telp'),
-            'address' => $request->input('address')
-        ]);
+        // dd($request);
+        try {
+            $request->validate([
+                'name' => 'nullable',
+                'address' => 'nullable',
+                'telp' => 'nullable',
+                'profile' => 'nullable|image',
+            ], [
+                'profile.image' => 'Profil harus gambar',
+            ]);
 
-        return back()->with('success', 'Data berhasil di perbarui.');
-    }
+            // Perbarui data menggunakan metode update
+            $user = User::find($id);
+
+        if (!$user) {
+            // Handle jika pengguna tidak ditemukan
+            return redirect()->route('user.index')->with('error', 'Kesalahan, silahkan coba lagi');
+        }
+
+        // Perbarui data pengguna berdasarkan input yang ada
+        $userData = [];
+
+        if ($request->filled('name')) {
+            $userData['name'] = $request->input('name');
+        }
+
+        if ($request->filled('address')) {
+            $userData['address'] = $request->input('address');
+        }
+
+        if ($request->filled('telp')) {
+            $userData['telp'] = $request->input('telp');
+        }
+
+        if ($request->file('profile')) {
+            $userData['profile'] = $request->file('profile')->store('profil', 'public');
+
+            // Hapus foto lama setelah perbarui data
+            if ($user->profile) {
+                Storage::disk('public')->delete($user->profile);
+            }
+        }
+
+        // Update data pengguna
+        $user->update($userData);
+            return redirect('homeuser')->with('success', 'Berhasil memperbarui profil');
+        } catch (\Exception $e) {
+            return redirect('homeuser')->with('error', 'Kesalahan');
+
+
+
+
+            // Simpan path profil lama
+            $oldProfilPath = $user->profil;
+
+            // Perbarui data pengguna
+            $user->profil = $request->file('profile')->store('profil', 'public');
+            $user->save();
+
+            // Hapus foto lama setelah perbarui data
+            if ($oldProfilPath) {
+                Storage::disk('public')->delete($oldProfilPath);
+            }
+
+            return redirect()->route('user.homeuser')->with('success', 'Profil berhasil diperbarui');
+        }}
+
 
     /**
      * Remove the specified resource from storage.

@@ -349,12 +349,10 @@
         <footer class="footer position-absolute">
             <div class="row g-0 justify-content-between align-items-center h-100">
                 <div class="col-12 col-sm-auto text-center">
-                    <p class="mb-0 mt-2 mt-sm-0 text-900">Thank you for creating with iVibe<span
-                            class="d-none d-sm-inline-block"></span><span
-                            class="d-none d-sm-inline-block mx-1">|</span><br class="d-sm-none" />2023 &copy;</p>
+                    <p class="mb-0 mt-2 mt-sm-0 text-900">Copyright © iVibe<span class="d-none d-sm-inline-block"></span><span class="d-none d-sm-inline-block mx-1">|</span><br class="d-sm-none" />2023</p>
+
                 </div>
                 <div class="col-12 col-sm-auto text-center">
-                    <p class="mb-0 text-600">v1.13.0</p>
                 </div>
             </div>
         </footer>
@@ -422,9 +420,6 @@
                             class="fa-solid fa-paper-plane fs--1"></span></button>
                 </div>
             </div>
-        </div><button class="btn p-0 border border-200 btn-support-chat"><span
-                class="fs-0 btn-text text-primary text-nowrap">Chat demo</span><span
-                class="fa-solid fa-circle text-success fs--1 ms-2"></span><span
-                class="fa-solid fa-chevron-down text-primary fs-1"></span></button>
+        </div>
     </div>
 @endsection
