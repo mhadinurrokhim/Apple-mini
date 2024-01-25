@@ -16,7 +16,8 @@ class AuthController extends Controller
 {
     public function login()
     {
-        return view('auth.login');
+        $user = Auth::user();
+        return view('auth.login', compact('user'));
     }
 
     public function register()
