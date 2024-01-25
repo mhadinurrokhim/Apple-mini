@@ -16,7 +16,7 @@ class KeranjangController extends Controller
      */
     public function index()
     {
-        $pembayaran = Pembayaran::all()
+        $pembayaran = Pembayaran::all();
         $user = auth()->user();
         $pesanans = Detailpesanan::where('status', 'keranjang')->get();
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
@@ -32,6 +32,7 @@ class KeranjangController extends Controller
         $produk = Produk::findOrFail($id);
         $user = auth()->user();
         return view('user.checkout',compact('produk','user'));
+    }
 
     //     try {
 
