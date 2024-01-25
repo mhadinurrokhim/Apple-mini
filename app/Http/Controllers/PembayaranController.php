@@ -23,7 +23,8 @@ class PembayaranController extends Controller
     public function create()
     {
         $pembayaran = Pembayaran::all();
-        return view("admin.pembayaran.create", compact('pembayaran'));
+        $user = auth()->user();
+        return view("admin.pembayaran.create", compact('pembayaran','user'));
     }
 
     /**
@@ -57,7 +58,8 @@ class PembayaranController extends Controller
     public function edit(string $id)
     {
         $pembayaran = Pembayaran::find($id);
-        return view("admin.pembayaran.edit", compact('pembayaran'));
+        $user = auth()->user();
+        return view("admin.pembayaran.edit", compact('pembayaran','user'));
     }
 
     /**

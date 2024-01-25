@@ -22,7 +22,8 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view("admin.kategori.create");
+        $user = auth()->user();
+        return view("admin.kategori.create", compact('user'));
     }
 
     /**
@@ -56,7 +57,8 @@ class KategoriController extends Controller
     public function edit(string $id)
     {
         $kategori = Kategori::find($id);
-        return view("admin.kategori.edit", compact("kategori"));
+        $user = auth()->user();
+        return view("admin.kategori.edit", compact("kategori",'user'));
     }
 
     /**

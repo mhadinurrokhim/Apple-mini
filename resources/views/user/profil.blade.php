@@ -290,7 +290,7 @@
                     <label class="form-label text-1000 fs-0 ps-0 text-capitalize lh-sm" for="name" >Name</label>
                     <input class="form-control" id="name" name="name" type="text" placeholder="Full name" value="{{ old('name', $user->name) }}" />
                   </div>
-                  
+
                   <div class="col-12 col-lg-6">
                     <label class="form-label text-1000 fw-bold fs-0 ps-0 text-capitalize lh-sm" for="telp">Phone</label>
                     <input class="form-control" id="telp" name="telp" type="text" placeholder="Phone" value="{{ old('name', $user->telp) }}" />

@@ -28,7 +28,8 @@ class KeranjangController extends Controller
     public function keranjangcheckout(Request $request, $id)
     {
         $produk = Produk::findOrFail($id);
-        return view('user.checkout',compact('produk'));
+        $user = auth()->user();
+        return view('user.checkout',compact('produk','user'));
 
         try {
 

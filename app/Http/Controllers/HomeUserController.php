@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Detailpesanan;
 use Illuminate\Http\Request;
-use App\Models\Produk;
 use App\Models\Userbeli;
+use App\Models\Produk;
+use App\Models\CHeckout;
 use App\Models\Kategori;
 use App\Http\Middleware\user;
 
@@ -93,8 +94,9 @@ class HomeUserController extends Controller
     public function pembelian()
     {
 
+        $user = auth()->user();
         $beli = produk::all();
-        return view('user.beli',compact('beli'));
+        return view('user.beli',compact('beli','user'));
     }
 
     /**

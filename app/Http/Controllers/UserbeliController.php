@@ -13,7 +13,8 @@ class UserbeliController extends Controller
      */
     public function index()
     {
-        //
+        $user = auth()->user();
+        return view('',compact('user'));
     }
 
     /**
@@ -21,7 +22,8 @@ class UserbeliController extends Controller
      */
     public function create()
     {
-        //
+        $user = auth()->user();
+        return view('',compact('user'));
     }
 
     /**
@@ -45,7 +47,8 @@ class UserbeliController extends Controller
      */
     public function edit(Userbeli $userbeli)
     {
-        //
+        $user = auth()->user();
+        return view('',compact('user'));
     }
 
     /**

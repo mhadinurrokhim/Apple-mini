@@ -30,14 +30,16 @@ class ProdukController extends Controller
     {
         $produk = Produk::all();
         $kategori = Kategori::all();
-        return view("admin.produk.create", compact("produk", "kategori"));
+        $user = auth()->user();
+        return view("admin.produk.create", compact("produk", "kategori",'user'));
     }
 
     public function edit(Produk $produk, $id)
     {
         $produk = Produk::FindOrFail($id);
         $kategori = Kategori::all();
-        return view("admin.produk.edit", compact('produk','kategori'));
+        $user = auth()->user();
+        return view("admin.produk.edit", compact('produk','kategori','user'));
     }
 
     /**
