@@ -171,7 +171,7 @@
                             width="50%" height="50" style="object-fit: cover" class="mx-auto" />
                       </td>
                       <td class="ellipsis-text col-1">
-                        <p class="fw-semi-bold fs--1  line-clamp-3 mb-0">{{ $produks->nama_produk }}</p>
+                        <p class="fw-semi-bold fs--1  line-clamp-3 mb-0">{{Str::limit($produks->nama_produk, 10, $end = '...')  }}</p>
                       </td>
                       <td class="price align-middle white-space-nowrap text-end fw-bold fs--1  text-700 ps-4">
                         {{ 'Rp ' . number_format($produks->harga, 0, ',', '.') }}</td>
@@ -181,7 +181,7 @@
                       <td class="tags align-middle review pb-2 ps-3 fs--1 " style="width:200px;">{{ $produks->stok }}
                       </td>
 
-                      <td class="ellipsis-text col-1">{{ strip_tags($produks->deskripsi) }}</td>
+                      <td class="ellipsis-text col-1">{{ strip_tags (Str::limit($produks->deskripsi, 10, $end = '...')) }}</td>
                       <td class="align-middle review fs-0 text-center ps-4">
                         <a href="{{ route('produk.edit', $produks->id) }}"method="POST" enctype="multipart/form-data"
                           class="btn btn-primary">

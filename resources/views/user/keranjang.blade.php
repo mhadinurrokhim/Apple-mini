@@ -28,8 +28,8 @@
                                 </tr>
                                                 </thead>
                                                 <tbody class="list" id="cart-table-body">
-                                                    @if ($pesanans->count() > 0)
-                                                    @php
+                                             @if ($pesanans->count() > 0)
+                                             @php
                                             $subtotal = 0;
                                             $pesanan_id = [];
                                         @endphp

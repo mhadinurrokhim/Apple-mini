@@ -103,10 +103,10 @@ Route::middleware([UserMiddleware::class])->group(function () {
     // Route::post('/prosescheckout{id}', [CheckoutController::class, 'prosescheckout'])->name('prosescheckout');
     // Route::get('/produkdetail', [ProdukdetailController::class, 'produkdetail'])->name('produkdetail');
     Route::get('/ulasanproduk', [UlasanprodukController::class, 'ulasanproduk']);
-    Route::controller(CheckoutController::class)->prefix('checkout')->group(function () {
-        Route::get('/checkout/{id}', 'index')->name('checkout.index');
-        Route::get('/checkout', 'store')->name('checkout');
-    });
+    // Route::controller(CheckoutController::class)->prefix('checkout')->group(function () {
+    //     Route::get('/checkout/{id}', 'index')->name('checkout.index');
+    //     Route::get('/checkout', 'store')->name('checkout');
+    // });
     Route::controller(KeranjangController::class)->prefix('keranjang')->group(function () {
         Route::get('keranjang', 'index')->name('keranjang');
         Route::post('keranjang', 'update')->name('keranjang.update');

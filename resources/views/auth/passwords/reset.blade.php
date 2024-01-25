@@ -71,7 +71,7 @@
                 <div class="row align-items-center gx-0 gy-7">
                   <div class="col-auto bg-100 dark__bg-1100 rounded-3 position-relative overflow-hidden auth-title-box">
                     <div class="bg-holder auth-img-holder">
-                        <img src="{{ asset('assets/storage/photo.jpg') }}" class="auth-img" alt="Authentication Image">
+                        <img src="{{ asset('assets/storage/logo.png') }}" class="auth-img" alt="Authentication Image">
                     </div>
                     <!--/.bg-holder-->
                     <div class="position-relative px-4 px-lg-7 pt-7 pb-7 pb-sm-5 text-center text-md-start pb-lg-7">

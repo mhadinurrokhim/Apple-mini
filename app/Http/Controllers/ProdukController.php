@@ -101,10 +101,18 @@ class ProdukController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $produk = produk::find($id);
+        $produk = Produk::find($id);
         $existingimage = $produk->path_produk;
         $deskripsi = strip_tags($request->deskripsi);
+
+        $validator = $request->validate([
+            'nama_produk' => 'required',
+            'deskripsi' => 'required',
+            'harga' => 'required|numeric',
+            'stok' => 'required|numeric',
+            'kategori_id' => 'required',
+            'path_produk' => 'sometimes|image|mimes:jpeg,png,jpg,gif',
+        ]);
 
         $produk->update([
             'nama_produk' => $request->nama_produk,
@@ -114,27 +122,21 @@ class ProdukController extends Controller
             'kategori_id' => $request->kategori_id,
         ]);
 
-        if($request->hasFile('path_produk')){
-            $this->validate($request, [
-                'path_produk' => 'image|mimes:jpeg,png,jpg,gif',
-            ]);
-
+        if ($request->hasFile('path_produk')) {
             $file = $request->file('path_produk');
             $fileName = Str::random('10') .'.'. $file->getClientOriginalExtension();
-            $file->move(public_path('storage/product'),$fileName);
+            $file->move(public_path('storage/product'), $fileName);
 
-            $produk->update(['path_produk'=> $fileName]);
+            $produk->update(['path_produk' => $fileName]);
 
-            if($existingimage){
+            if ($existingimage) {
                 Storage::delete('path_produk/' . $existingimage);
-            }
-            if ($request->fails()) {
-                return redirect()->back()->withErrors($request)->withInput();
             }
         }
 
-        return redirect()->route('produk')->with("success", "Data produk berhasil diperbarui.");
+        return redirect('produk')->with("success", "Data produk berhasil diperbarui.");
     }
+
 
     /**
      * Remove the specified resource from storage.
