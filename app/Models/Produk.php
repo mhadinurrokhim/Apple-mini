@@ -12,8 +12,15 @@ class Produk extends Model
 
     protected $table = 'produk';
 
-    protected $guarded = [
-        'id',
+    protected $fillable = [
+        'produk_id',
+        'nama_produk',
+        'path_produk',
+        'harga',
+        'stok',
+        'deskripsi',
+        'kategori_id'
+
     ];
 
 
@@ -21,6 +28,12 @@ class Produk extends Model
     {
         return $this->belongsTo(Kategori::class, 'kategori_id');
     }
+    public function Userbeli()
+    {
+        return $this->hasMany(Userbeli::class);
+    }
+    
+
     public function scopeOrderByDefault($query)
     {
         return $query->orderBy('created_at', 'desc');

@@ -258,13 +258,6 @@
         }
     </script>
     <div class="content">
-        <nav class="mb-2" aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="#!">Page 1</a></li>
-                <li class="breadcrumb-item"><a href="#!">Page 2</a></li>
-                <li class="breadcrumb-item active">Default</li>
-            </ol>
-        </nav>
         <div class="mb-9">
             <div class="row g-3 mb-4">
                 <div class="col-auto">
@@ -272,8 +265,6 @@
                 </div>
             </div>
             <ul class="nav nav-links mb-3 mb-lg-2 mx-n3">
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#"><span>All
-                        </span><span class="text-700 fw-semi-bold">(68817)</span></a></li>
             </ul>
             <div id="products"
                 data-list='{"valueNames":["product","price","category","tags","vendor","time"],"page":10,"pagination":true}'>

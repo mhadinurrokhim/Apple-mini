@@ -115,7 +115,7 @@ class ProdukController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
 
         $this->validate($request,[
@@ -165,7 +165,7 @@ class ProdukController extends Controller
             }
         }
 
-        return redirect('/produk')->with("success", "Data produk berhasil diperbarui.");
+        return redirect()->route('produk')->with("success", "Data produk berhasil diperbarui.");
     }
 
     /**

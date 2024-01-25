@@ -154,7 +154,7 @@
                                             <div class="card-footer">
                                                 <div class="d-flex align-items-center mb-1">
                                                     <h3 class="text-1100 mb-0">Rp
-                                                        {{ number_format($pf->harga, 0, ',', '.') }}</h3>
+                                                        {{ number_format($pf->harga, 0, ',', '.') }} <i class="fas fa-shopping-cart ml-2"></i></h3>
                                                 </div>
                                             </div>
                                         </div>
