@@ -26,7 +26,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('produk.side') ? 'active' : '' }}"
+                    <a class="nav-link {{ str_starts_with(request()->route()->getName(), 'produk') ? 'active' : '' }}"
                         href="{{ route('produk.side') }}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
@@ -37,7 +37,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('order.side') ? 'active' : '' }}"
+                    <a class="nav-link {{ str_starts_with(request()->route()->getName(), 'order') ? 'active' : '' }}"
                         href="{{ route('order.side') }}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
@@ -48,7 +48,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('kategori.side') ? 'active' : '' }}"
+                    <a class="nav-link {{ str_starts_with(request()->route()->getName(), 'kategori') ? 'active' : '' }}"
                         href="{{ route('kategori.side') }}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
@@ -59,7 +59,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('pembayaran') ? 'active' : '' }}"
+                    <a class="nav-link {{ str_starts_with(request()->route()->getName(), 'pembayaran') ? 'active' : '' }}"
                         href="{{ route('pembayaran') }}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">

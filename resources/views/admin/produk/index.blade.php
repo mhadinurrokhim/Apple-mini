@@ -251,12 +251,10 @@
         <div class="mb-4">
           <div class="d-flex flex-wrap gap-3">
             <div class="search-box">
-              <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input
-                  class="form-control search-input search" type="search" placeholder="Search products"
-                  aria-label="Search" />
-                <span class="fas fa-search search-box-icon"></span>
-              </form>
-            </div>
+                <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input class="form-control search-input search" type="search" placeholder="Search products" aria-label="Search" />
+                  <span class="fas fa-search search-box-icon"></span>
+                </form>
+              </div>
             <div class="scrollbar overflow-hidden-y">
               <div class="btn-group position-static" role="group">
                 <div class="ms-xxl-auto">

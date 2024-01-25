@@ -65,7 +65,7 @@
                     <div class="ms-n2">
                       <div class="row align-items-center mb-2 g-3">
                         <div class="col-8 col-md-7 col-lg-8">
-                          <div class="d-flex align-items-center"><img class="me-2 ms-1" src="{{ asset('storage/Product/' . $checkout->->path_produk)}}" width="40" alt="" />
+                          <div class="d-flex align-items-center"><img class="me-2 ms-1" src="{{ asset('storage/Product/' . $checkout->path_produk)}}" width="40" alt="" />
                             <h6 class="fw-semi-bold text-1000 lh-base">{{ $checkout->user_id }}</h6>
                           </div>
                         </div>

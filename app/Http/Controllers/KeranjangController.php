@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pembayaran;
 use App\Models\Produk;
 use App\Models\Pesanan;
 use App\Models\Checkout;
@@ -15,41 +16,52 @@ class KeranjangController extends Controller
      */
     public function index()
     {
+        $pembayaran = Pembayaran::all();
         $pesanans = Detailpesanan::where('status', 'keranjang')->get();
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
         $order = Pesanan::where('user_id', auth()->user()->id)->whereNot('status', 'completed')->get()->count();
-        return view("user.keranjang", compact('pesanans', 'totalpesanan', 'order'));
+        return view("user.keranjang", compact('pesanans', 'totalpesanan', 'order', 'pembayaran'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function keranjangcheckout(Request $request, $id)
-    {
-        $produk = Produk::findOrFail($id);
-        return view('user.checkout',compact('produk'));
+    // public function keranjangcheckout(Request $request, $id)
+    // {
+    //     $produk = Produk::findOrFail($id);
+    //     return view('user.checkout',compact('produk'));
 
-        try {
+    //     try {
 
-            $beli = new Checkout();
-            $beli->user_id = $request->user_id;
-            $beli->produk_id = $request->produk_id;
-            $beli->jumlah = $request->jumlah;
-            $beli->total = $request->total;
-            $beli->save();
+    //         $beli = new Checkout();
+    //         $beli->user_id = $request->user_id;
+    //         $beli->produk_id = $request->produk_id;
+    //         $beli->jumlah = $request->jumlah;
+    //         $beli->total = $request->total;
+    //         $beli->save();
 
-        } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
-        }
+    //     } catch (\Exception $e) {
+    //         return response()->json(['error' => $e->getMessage()], 500);
+    //     }
 
-    }
+    // }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $pesanan = new Pesanan;
+        $pesanan->user_id = auth()->user()->id;
+        $pesanan->total = $request->total;
+        $pesanan->save();
+
+        $detailPesanan = $request->pesanan_id;
+        foreach ($detailPesanan as $value) {
+            Detailpesanan::findOrFail($value)->update(['pesanan_id' => $pesanan->id, 'status' => 'checkout']);
+        }
+
+        return redirect()->route('homeuser')->with("cart", "Pesanan berhasil dibuat. Terima kasih atas pembeliannya!");
     }
 
     /**
@@ -71,7 +83,7 @@ class KeranjangController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
         $quantities = json_decode($request->input('quantities'));
 
@@ -105,9 +117,9 @@ class KeranjangController extends Controller
                 $produk->stok -= $quantity - $oldQuantity;
                 $produk->save();
             }
-            return redirect()->route('cart')->with('update_success', 'Keranjang berhasil diperbarui.');
+            return redirect()->route('keranjang')->with('update_success', 'Keranjang berhasil diperbarui.');
         } catch (\Throwable $th) {
-            return redirect()->route('cart')->with('update_failed', 'Gagal memperbarui keranjang. Mohon coba lagi.');
+            return redirect()->route('keranjang')->with('update_failed', 'Gagal memperbarui keranjang. Mohon coba lagi.');
         }
         // $detailPesanan = $request->pesanan_id;
         // foreach ($detailPesanan as $value) {

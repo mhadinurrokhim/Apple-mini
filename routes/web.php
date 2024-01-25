@@ -65,10 +65,10 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 
     Route::controller(ProdukController::class)->prefix('produk')->group(function () {
         Route::get('', 'index')->name('produk.side');
-        Route::get('/tambahproduk', 'create')->name('tambah.produk');
-        Route::post('/create', 'store')->name('produk.store');
-        Route::get('/produkedit/{id}', 'edit')->name('produk.edit');
-        Route::put('/produkupdate/{id}', 'update')->name('produk.update');
+        Route::get('/create', 'create')->name('tambah.produk');
+        Route::post('/store', 'store')->name('produk.store');
+        Route::get('/edit/{id}', 'edit')->name('produk.edit');
+        Route::put('/edit/{id}', 'update')->name('produk.update');
     });
 
     Route::controller(KategoriController::class)->prefix('kategori')->group(function () {
@@ -93,12 +93,16 @@ Route::middleware([UserMiddleware::class])->group(function () {
     Route::get('/produkdetail/{id}', [ProdukfilterController::class, 'detail'])->name('produk.detail');
     Route::get('/wishlist', [WishlistController::class, 'wishlist'])->name('wishlist');
     Route::get('/tracking', [TrackingController::class, 'tracking'])->name('tracking');
-    Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
-    Route::patch('/checkout-keranjang', [CheckoutController::class, 'chekoutKeranjang'])->name('checkout-keranjang');
+    // Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+    // Route::patch('/checkout-keranjang', [CheckoutController::class, 'chekoutKeranjang'])->name('checkout-keranjang');
 
     // Route::post('/prosescheckout{id}', [CheckoutController::class, 'prosescheckout'])->name('prosescheckout');
     // Route::get('/produkdetail', [ProdukdetailController::class, 'produkdetail'])->name('produkdetail');
     Route::get('/ulasanproduk', [UlasanprodukController::class, 'ulasanproduk']);
+    Route::controller(CheckoutController::class)->prefix('checkout')->group(function () {
+        Route::get('/checkout/{id}', 'index')->name('checkout.index');
+        Route::get('/checkout', 'store')->name('checkout');
+    });
     Route::controller(KeranjangController::class)->prefix('keranjang')->group(function () {
         Route::get('keranjang', 'index')->name('keranjang');
         Route::post('keranjang', 'update')->name('keranjang.update');
@@ -108,6 +112,8 @@ Route::middleware([UserMiddleware::class])->group(function () {
     // Route::post('/beli{id}',[HomeuserController::class,'beliproduk']);
     // Route::get('/pembelian{id}',[HomeuserController::class,'pembelian'])->name('pembelian');
 
+    Route::post('/beli{id}',[HomeuserController::class,'beliproduk']);
+    Route::get('/pembelian{id}',[HomeuserController::class,'pembelian'])->name('pembelian');
 });
 Route::controller(PembayaranController::class)->prefix('pembayaran')->group(function () {
     Route::get('', 'index')->name('pembayaran');
