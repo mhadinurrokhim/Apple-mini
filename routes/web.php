@@ -13,6 +13,7 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeUserController;
+use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\WishlistController;
@@ -93,8 +94,11 @@ Route::middleware([UserMiddleware::class])->group(function () {
     Route::get('/produkdetail/{id}', [ProdukfilterController::class, 'detail'])->name('produk.detail');
     Route::get('/wishlist', [WishlistController::class, 'wishlist'])->name('wishlist');
     Route::get('/tracking', [TrackingController::class, 'tracking'])->name('tracking');
+    Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+    Route::patch('/checkout-keranjang', [CheckoutController::class, 'chekoutKeranjang'])->name('checkout-keranjang');
     // Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
     // Route::patch('/checkout-keranjang', [CheckoutController::class, 'chekoutKeranjang'])->name('checkout-keranjang');
+    Route::get('/navbar', [NavbarController::class, 'navbar'])->name('navbar');
 
     // Route::post('/prosescheckout{id}', [CheckoutController::class, 'prosescheckout'])->name('prosescheckout');
     // Route::get('/produkdetail', [ProdukdetailController::class, 'produkdetail'])->name('produkdetail');
@@ -114,6 +118,17 @@ Route::middleware([UserMiddleware::class])->group(function () {
 
     Route::post('/beli{id}',[HomeuserController::class,'beliproduk']);
     Route::get('/pembelian{id}',[HomeuserController::class,'pembelian'])->name('pembelian');
+    Route::post('/beli{id}',[HomeuserController::class,'beliproduk']);
+    Route::get('/pembelian{id}',[HomeuserController::class,'pembelian'])->name('pembelian');
+    Route::controller(ProfilController::class)->prefix('profil')->group(function () {
+        Route::get('', 'index')->name('profil');
+        Route::get('create', 'create')->name('profil.create');
+        Route::post('store', 'store')->name('profil.store');
+        Route::get('edit/{id}', 'edit')->name('profil.edit');
+        Route::put('edit/{id}', 'update')->name('profil.update');
+        Route::get('destroy/{id}', 'destroy')->name('profil.destroy');
+        // Route::delete('destroy/{id}', 'destroy')->name('pembayaran.destroy');
+    });
 });
 Route::controller(PembayaranController::class)->prefix('pembayaran')->group(function () {
     Route::get('', 'index')->name('pembayaran');
@@ -123,6 +138,7 @@ Route::controller(PembayaranController::class)->prefix('pembayaran')->group(func
     Route::put('edit/{id}', 'update')->name('pembayaran.update');
     Route::get('destroy/{id}', 'destroy')->name('pembayaran.destroy');
 });
+
 
 
 

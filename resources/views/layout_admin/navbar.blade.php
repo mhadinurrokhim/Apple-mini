@@ -73,10 +73,13 @@
                     <!-- label-->
                     <hr class="navbar-vertical-line" /><!-- parent pages-->
 
-          <div class="navbar-vertical-footer"><button
-              class="btn navbar-vertical-toggle border-0 fw-semi-bold w-100 white-space-nowrap d-flex align-items-center"><span
-                class="uil uil-left-arrow-to-left fs-0"></span><span class="uil uil-arrow-from-right fs-0"></span><span
-                class="navbar-vertical-footer-text ms-2">Collapsed View</span></button></div>
+          <div class="navbar-vertical-footer">
+            <button class="btn navbar-vertical-toggle border-0 fw-semi-bold w-100 white-space-nowrap d-flex align-items-center">
+                <span class="uil uil-left-arrow-to-left fs-0"></span>
+                <span class="uil uil-arrow-from-right fs-0">◉</span>
+                <span class="navbar-vertical-footer-text ms-0">◉</span>
+            </button>
+            </div>
 </nav>
 <nav class="navbar navbar-top fixed-top navbar-expand" id="navbarDefault" style="display:none;">
   <div class="collapse navbar-collapse justify-content-between">
@@ -87,9 +90,9 @@
             class="toggle-line"></span></span></button>
       <a class="navbar-brand me-1 me-sm-3" href="../../../index.html">
         <div class="d-flex align-items-center">
-          <div class="d-flex align-items-center"><img src="../../../assets/img/icons/logo.png" alt="phoenix"
+          <div class="d-flex align-items-center"><img src="../../../assets/img/logoapple.png" alt="phoenix"
               width="27" />
-            <p class="logo-text ms-2 d-none d-sm-block">phoenix</p>
+            <p class="logo-text ms-2 d-none d-sm-block">iVibe</p>
           </div>
         </div>
       </a>
@@ -863,12 +866,11 @@
             <div class="card-body p-0">
               <div class="text-center pt-4 pb-3">
                 <div class="avatar avatar-xl ">
-                  <img class="rounded-circle " src="../../../assets/img/team/72x72/57.webp" alt="" />
+                  <img class="rounded-circle " src="{{ asset('storage/' . $user->profile) }}" alt="" />
                 </div>
-                <h6 class="mt-2 text-black">Jerry Seinfield</h6>
-              </div>
-              <div class="mb-3 mx-3"><input class="form-control form-control-sm" id="statusUpdateInput"
-                  type="text" placeholder="Update your status" /></div>
+                <h6 class="mt-2 text-black">{{ Auth::user()->name }}</h6>
+            </div>
+
             </div>
             <div class="overflow-auto scrollbar" style="height: 10rem;">
               <ul class="nav d-flex flex-column mb-2 pb-1">
@@ -912,9 +914,9 @@
           class="toggle-line"></span></span></button>
     <a class="navbar-brand me-1 me-sm-3" href="../../../index.html">
       <div class="d-flex align-items-center">
-        <div class="d-flex align-items-center"><img src="../../../assets/img/icons/logo.png" alt="phoenix"
+        <div class="d-flex align-items-center"><img src="../../../assets/img/logoapple.png" alt="phoenix"
             width="27" />
-          <p class="logo-text ms-2 d-none d-sm-block">phoenix</p>
+          <p class="logo-text ms-2 d-none d-sm-block">iVibe</p>
         </div>
       </div>
     </a>
@@ -1880,12 +1882,11 @@
           <div class="card-body p-0">
             <div class="text-center pt-4 pb-3">
               <div class="avatar avatar-xl ">
-                <img class="rounded-circle " src="../../../assets/img/team/72x72/57.webp" alt="" />
+                <img class="rounded-circle " src="{{ asset('storage/' . $user->profile) }}" alt="" />
               </div>
-              <h6 class="mt-2 text-black">Jerry Seinfield</h6>
+              <h6 class="mt-2 text-black">{{ Auth::user()->name }}</h6>
             </div>
-            <div class="mb-3 mx-3"><input class="form-control form-control-sm" id="statusUpdateInput"
-                type="text" placeholder="Update your status" /></div>
+
           </div>
           <div class="overflow-auto scrollbar" style="height: 10rem;">
             <ul class="nav d-flex flex-column mb-2 pb-1">
@@ -2890,12 +2891,11 @@
           <div class="card-body p-0">
             <div class="text-center pt-4 pb-3">
               <div class="avatar avatar-xl ">
-                <img class="rounded-circle " src="../../../assets/img/team/72x72/57.webp" alt="" />
+                <img class="rounded-circle " src="{{ asset('storage/' . $user->profile) }}" alt="" />
               </div>
-              <h6 class="mt-2 text-black">Jerry Seinfield</h6>
+              <h6 class="mt-2 text-black">{{ Auth::user()->name }}</h6>
             </div>
-            <div class="mb-3 mx-3"><input class="form-control form-control-sm" id="statusUpdateInput"
-                type="text" placeholder="Update your status" /></div>
+
           </div>
           <div class="overflow-auto scrollbar" style="height: 10rem;">
             <ul class="nav d-flex flex-column mb-2 pb-1">
@@ -2939,9 +2939,9 @@
           class="toggle-line"></span></span></button>
     <a class="navbar-brand me-1 me-sm-3" href="../../../index.html">
       <div class="d-flex align-items-center">
-        <div class="d-flex align-items-center"><img src="../../../assets/img/icons/logo.png" alt="phoenix"
+        <div class="d-flex align-items-center"><img src="../../../assets/img/logoapple.png" alt="phoenix"
             width="27" />
-          <p class="logo-text ms-2 d-none d-sm-block">phoenix</p>
+          <p class="logo-text ms-2 d-none d-sm-block">iVibe</p>
         </div>
       </div>
     </a>
@@ -3907,12 +3907,11 @@
           <div class="card-body p-0">
             <div class="text-center pt-4 pb-3">
               <div class="avatar avatar-xl ">
-                <img class="rounded-circle " src="../../../assets/img/team/72x72/57.webp" alt="" />
+                <img class="rounded-circle " src="{{ asset('storage/' . $user->profile) }}" alt="" />
               </div>
-              <h6 class="mt-2 text-black">Jerry Seinfield</h6>
+              <h6 class="mt-2 text-black">{{ Auth::user()->name }}</h6>
             </div>
-            <div class="mb-3 mx-3"><input class="form-control form-control-sm" id="statusUpdateInput"
-                type="text" placeholder="Update your status" /></div>
+
           </div>
           <div class="overflow-auto scrollbar" style="height: 10rem;">
             <ul class="nav d-flex flex-column mb-2 pb-1">
@@ -4917,12 +4916,11 @@
           <div class="card-body p-0">
             <div class="text-center pt-4 pb-3">
               <div class="avatar avatar-xl ">
-                <img class="rounded-circle " src="../../../assets/img/team/72x72/57.webp" alt="" />
+                <img class="rounded-circle " src="{{ asset('storage/' . $user->profile) }}" alt="" />
               </div>
-              <h6 class="mt-2 text-black">Jerry Seinfield</h6>
+              <h6 class="mt-2 text-black">{{ Auth::user()->name }}</h6>
             </div>
-            <div class="mb-3 mx-3"><input class="form-control form-control-sm" id="statusUpdateInput"
-                type="text" placeholder="Update your status" /></div>
+
           </div>
           <div class="overflow-auto scrollbar" style="height: 10rem;">
             <ul class="nav d-flex flex-column mb-2 pb-1">
@@ -4967,9 +4965,9 @@
               class="toggle-line"></span></span></button>
         <a class="navbar-brand me-1 me-sm-3" href="../../../index.html">
           <div class="d-flex align-items-center">
-            <div class="d-flex align-items-center"><img src="../../../assets/img/icons/logo.png" alt="phoenix"
+            <div class="d-flex align-items-center"><img src="../../../assets/img/logoapple.png" alt="phoenix"
                 width="27" />
-              <p class="logo-text ms-2 d-none d-sm-block">phoenix</p>
+              <p class="logo-text ms-2 d-none d-sm-block">iVibe</p>
             </div>
           </div>
         </a>
@@ -5420,12 +5418,11 @@
               <div class="card-body p-0">
                 <div class="text-center pt-4 pb-3">
                   <div class="avatar avatar-xl ">
-                    <img class="rounded-circle " src="../../../assets/img/team/72x72/57.webp" alt="" />
+                    <img class="rounded-circle " src="{{ asset('storage/' . $user->profile) }}" alt="" />
                   </div>
-                  <h6 class="mt-2 text-black">Jerry Seinfield</h6>
+                  <h6 class="mt-2 text-black">Admin</h6>
                 </div>
-                <div class="mb-3 mx-3"><input class="form-control form-control-sm" id="statusUpdateInput"
-                    type="text" placeholder="Update your status" /></div>
+
               </div>
               <div class="overflow-auto scrollbar" style="height: 10rem;">
                 <ul class="nav d-flex flex-column mb-2 pb-1">
