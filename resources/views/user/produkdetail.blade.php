@@ -28,17 +28,52 @@
                 </div>
                 <div class="d-flex">
                     <form action="{{ route('shop.order', $detail->id) }}" method="POST" class="d-flex" style="margin-left: 160px">
-                    @csrf
-                    <div class="d-flex flex-between-center" data-quantity="data-quantity">
-                        <button type="button" class="btn btn-phoenix-primary px-3" data-type="minus"><span class="fas fa-minus"></span></button>
-                        <input class="form-control text-center input-spin-none bg-transparent border-0 outline-none" style="width:50px;" type="number" name="jumlah" min="1" value="1" />
-                        <button type="button" class="btn btn-phoenix-primary px-3" data-type="plus"><span class="fas fa-plus"></span></button>
-                    </div>
-                        <button class="btn btn-lg btn-primary rounded-pill w-100 fs--1 fs-sm-0 ms-5" @if ($detail->stok <= 0)@disabled(true) @endif>
+                        @csrf
+                        <div class="d-flex flex-between-center" data-quantity="data-quantity">
+                            <button type="button" class="btn btn-phoenix-primary px-3" data-type="minus"><span class="fas fa-minus"></span></button>
+                            <input class="form-control text-center input-spin-none bg-transparent border-0 outline-none" style="width:50px;" type="number" name="jumlah" min="1" value="1" id="quantityInput" />
+                            <button type="button" class="btn btn-phoenix-primary px-3" data-type="plus"><span class="fas fa-plus"></span></button>
+                        </div>
+                        <button class="btn btn-lg btn-primary rounded-pill w-100 fs--1 fs-sm-0 ms-5" onclick="addToCart()" @if ($detail->stok <= 0) disabled=true @endif>
                             <span class="fas fa-shopping-cart me-2"></span>Add to Cart
                         </button>
                     </form>
-                  </div>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script>
+                    function addToCart() {
+                        var quantityInput = document.getElementById('quantityInput');
+                        var maxStock = {{ $detail->stok }};
+
+                        if (quantityInput.value > maxStock) {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "You cannot add more items than the available stock",
+                            });
+                        } else {
+                            document.forms[0].submit();
+                        }
+                    }
+
+                    document.querySelector('[data-type="minus"]').addEventListener('click', function () {
+                        var quantityInput = document.getElementById('quantityInput');
+                        if (quantityInput.value > 1) {
+                            quantityInput.value = parseInt(quantityInput.value) - 1;
+                        }
+                    });
+
+                    document.querySelector('[data-type="plus"]').addEventListener('click', function () {
+                        var quantityInput = document.getElementById('quantityInput');
+                        var maxStock = {{ $detail->stok }};
+                        var currentQuantity = parseInt(quantityInput.value);
+
+                        // Check if the next quantity will be greater than the available stock
+                        if (currentQuantity < maxStock) {
+                            quantityInput.value = currentQuantity + 0;
+                        }
+                    });
+                </script>
               </div>
               <div class="col-12 col-lg-6">
                 <div class="d-flex flex-column justify-content-between h-100">
