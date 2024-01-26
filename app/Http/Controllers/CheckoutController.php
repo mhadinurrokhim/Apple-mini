@@ -16,6 +16,7 @@ class CheckoutController extends Controller
      */
     public function index($id)
     {
+
         $pesanan_id = $id;
         $pesanan = Detailpesanan::where('pesanan_id', $id)->get();
         // foreach($pesanan as $pesan) {
@@ -42,17 +43,23 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        $pesanan = new Pesanan;
-        $pesanan->user_id = auth()->user()->id;
-        $pesanan->total = $request->total;
-        $pesanan->save();
+        // $pesanan = new Pesanan;
+        // $pesanan->user_id = auth()->user()->id;
+        // $pesanan->total = $request->total;
+        // $pesanan->save();
 
-        $detailPesanan = $request->pesanan_id;
-        foreach ($detailPesanan as $value) {
-            Detailpesanan::findOrFail($value)->update(['pesanan_id' => $pesanan->id, 'status' => 'checkout']);
+        // $detailPesanan = $request->pesanan_id;
+        // foreach ($detailPesanan as $value) {
+        //     Detailpesanan::findOrFail($value)->update(['pesanan_id' => $pesanan->id, 'status' => 'checkout']);
+        // }
+        $id = Auth::user()->id;
+        $keranjang = Detailpesanan::where('user_id', $id)->get();
+        //    dd($keranjang);
+        foreach ($keranjang as $k) {
+            $k->status = 'checkout';
+            $k->save();
         }
-
-        return redirect()->route('homeuser')->with("cart", "Pesanan berhasil dibuat. Terima kasih atas pembeliannya!");
+        return redirect()->route('checkout')->with("cart", "Pesanan berhasil dibuat. Terima kasih atas pembeliannya!");
     }
 
     /**
@@ -105,7 +112,7 @@ class CheckoutController extends Controller
     {
         $id = Auth::user()->id;
         $keranjang = Detailpesanan::where('user_id', $id)->get();
-        //    dd($keranjang);
+           dd($keranjang);
         foreach ($keranjang as $k) {
             $k->status = 'checkout';
             $k->save();
