@@ -1,5 +1,6 @@
 @extends('layout_user.navbar')
 @section('content')
+@include('Asset.SweetAlert')
 @if (session('success'))
         <script>
             Swal.fire({

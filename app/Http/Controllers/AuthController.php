@@ -58,7 +58,7 @@ class AuthController extends Controller
 
         // event(new Registered($user));
         // Auth::login($user);
-        return redirect('/login')->with('success', 'cek gmail untuk verifikasi email');
+        return redirect('/login')->with('success', 'Your registration was successful');
     }
 
     public function proseslogin(Request $request)
@@ -85,11 +85,11 @@ class AuthController extends Controller
 
         if (auth()->attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
             if (auth()->user()->role == 'user'){
-                return redirect('/homeuser')->with('success', 'Berhasil login');
+                return redirect('/homeuser')->with('success', 'you have successfully logged in');
                 return redirect('/login')->with('error', 'Email atau password salah');
 
             }else if(auth()->user()->role == 'admin'){
-                return redirect('/AdminDashboard')->with('success', 'Berhasil login');
+                return redirect('/AdminDashboard')->with('success', 'you have successfully logged in');
                 return redirect('/login')->with('error', 'Email atau password salah');
             }
         }
@@ -102,6 +102,7 @@ class AuthController extends Controller
     public function logout(){
 
         Auth::logout();
+        
         return redirect('/')->with('success', 'Successfully logout');
     }
     public function changeAccount(){

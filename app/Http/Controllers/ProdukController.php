@@ -80,7 +80,7 @@ class ProdukController extends Controller
             "kategori_id"=> $request->kategori_id,
         ]);
 
-        return redirect('/produk')->with("success", "Data produk berhasil ditambahkan.");
+        return redirect('/produk')->with("success", "successfully added product");
     }
 
     /**

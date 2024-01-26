@@ -1,6 +1,7 @@
 @extends('layout_admin.app')
 
 @section('content')
+@include('Asset.SweetAlert')
   <div class="modal fade" id="searchBoxModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="true"
     data-phoenix-modal="data-phoenix-modal" style="--phoenix-backdrop-opacity: 1;">
     <div class="modal-dialog">

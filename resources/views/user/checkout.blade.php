@@ -1,5 +1,6 @@
 @extends('layout_user.navbar')
 @section('content')
+@include('Asset.SweetAlert')
       <section class="pt-5 pb-9">
         <div class="container-small">
           <h2 class="mb-5">Check out</h2>
