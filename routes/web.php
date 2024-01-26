@@ -94,9 +94,9 @@ Route::middleware([UserMiddleware::class])->group(function () {
     Route::get('/produkdetail/{id}', [ProdukfilterController::class, 'detail'])->name('produk.detail');
     Route::get('/wishlist', [WishlistController::class, 'wishlist'])->name('wishlist');
     Route::get('/tracking', [TrackingController::class, 'tracking'])->name('tracking');
-    // Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
-    // Route::patch('/checkout-keranjang', [CheckoutController::class, 'chekoutKeranjang'])->name('checkout-keranjang');
-    // Route::delete('produk-hapus/{id}', [CheckoutController::class, 'chekouthapus'])->name('checkout.hapus');
+    Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+    Route::patch('/checkout-keranjang', [CheckoutController::class, 'chekoutKeranjang'])->name('checkout-keranjang');
+    Route::delete('produk-hapus/{id}', [CheckoutController::class, 'chekouthapus'])->name('checkout.hapus');
 
     // Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
     // Route::patch('/checkout-keranjang', [CheckoutController::class, 'chekoutKeranjang'])->name('checkout-keranjang');

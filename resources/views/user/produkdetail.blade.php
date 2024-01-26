@@ -31,12 +31,15 @@
                         @csrf
                         <div class="d-flex flex-between-center" data-quantity="data-quantity">
                             <button type="button" class="btn btn-phoenix-primary px-3" data-type="minus"><span class="fas fa-minus"></span></button>
-                            <input class="form-control text-center input-spin-none bg-transparent border-0 outline-none" style="width:50px;" type="number" name="jumlah" min="1" value="1" id="quantityInput" />
+                            <input class="form-control text-center input-spin-none bg-transparent border-0 outline-none" style="width:50px;" type="number" name="jumlah" value="1" id="quantityInput" />
                             <button type="button" class="btn btn-phoenix-primary px-3" data-type="plus"><span class="fas fa-plus"></span></button>
                         </div>
                         <button class="btn btn-lg btn-primary rounded-pill w-100 fs--1 fs-sm-0 ms-5" onclick="addToCart()" @if ($detail->stok <= 0) disabled=true @endif>
                             <span class="fas fa-shopping-cart me-2"></span>Add to Cart
                         </button>
+                        {{-- @error('jumlah')
+                            <span class="text-danger text-sm">{{ $message }}</span>
+                        @enderror --}}
                     </form>
                 </div>
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -44,8 +47,15 @@
                     function addToCart() {
                         var quantityInput = document.getElementById('quantityInput');
                         var maxStock = {{ $detail->stok }};
+                        var currentQuantity = parseInt(quantityInput.value);
 
-                        if (quantityInput.value > maxStock) {
+                        if (currentQuantity <= 0) {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "Quantity must be greater than 0",
+                            });
+                        } else if (currentQuantity > maxStock) {
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops...",
@@ -68,9 +78,14 @@
                         var maxStock = {{ $detail->stok }};
                         var currentQuantity = parseInt(quantityInput.value);
 
-                        // Check if the next quantity will be greater than the available stock
                         if (currentQuantity < maxStock) {
-                            quantityInput.value = currentQuantity + 0;
+                            quantityInput.value = currentQuantity + 1;
+                        } else {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "You cannot add more items than the available stock",
+                            });
                         }
                     });
                 </script>
@@ -109,6 +124,4 @@
           </div>
         </section>
         @endforeach
-      <!-- ============================================-->
-
 @endsection
