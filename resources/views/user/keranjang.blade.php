@@ -1,6 +1,6 @@
 @extends('layout_user.navbar')
 @section('content')
-@include('Asset.SweetAlert')
+    @include('Asset.SweetAlert')
     <!-- ============================================-->
     <!-- <section> begin ============================-->
     <section class="pt-5 pb-9">
@@ -9,57 +9,58 @@
 
             </nav>
             <h2 class="mb-6">Cart</h2>
-            <a href="{{ route('produk.filter') }}">
-                <button class="btn btn-secondary mt-2">
-                    <span class="fas fa-chevron-left me-1"></span>
-                    Continue Shopping
-                </button>
-            </a>
             <div class="row g-5">
                 <div class="col-12 col-lg-8">
                     <div id="cartTable"
-                    data-list='{"valueNames":["products","color","size","price","quantity","total"],"page":10}'>
-                    <div class="table-responsive scrollbar mx-n1 px-1">
-                        <table class="table fs--1 mb-0 border-top border-200">
-                            <thead>
-                                <tr>
-                                    <th class="white-space-nowrap align-middle ps-4 fs--1 text-dark" style="width: 50px; padding-right: 10px;" data-sort="path_produk">IMAGE</th>
-                                    <th class="sort white-space-nowrap align-middle" scope="col" style="max-width: 100px; padding-right: 10px;">PRODUCTS</th>
-                                    <th class="sort align-middle" scope="col" style="width: 100px; padding-right: 10px;">CATEGORY</th>
-                                    <th class="sort align-middle text-end" scope="col" style="width: 200px; padding-right: 10px;">PRICE</th>
-                                    <th class="sort align-middle ps-5" scope="col" style="width: 100px;">QUANTITY</th>
-                                    <th class="sort align-middle text-end" scope="col" style="width: 150px;">TOTAL</th>
-                                    <th class="sort align-middle text-end" scope="col" style="width: 150px;">ACTION</th>
-                                    <th class="sort text-end align-middle pe-0" scope="col"></th>
-                                </tr>
-                                                </thead>
-                                                <tbody class="list" id="cart-table-body">
-                                             @if ($pesanans->count() > 0)
-                                             @php
-                                            $subtotal = 0;
-                                            $pesanan_id = [];
-                                        @endphp
+                        data-list='{"valueNames":["products","color","size","price","quantity","total"],"page":10}'>
+                        <div class="table-responsive scrollbar mx-n1 px-1">
+                            <table class="table fs--1 mb-0 border-top border-200">
+                                <thead>
+                                    <tr>
+                                        <th class="white-space-nowrap align-middle text-center ps-4 fs--1 text-dark"
+                                            style="width: 20%; padding-right: 10px;" data-sort="path_produk">IMAGE</th>
+                                        <th class="sort white-space-nowrap align-middle text-center" scope="col"
+                                            style="max-width: 10%; padding-right: 10px;">PRODUCTS</th>
+                                        <th class="sort align-middle text-center" scope="col"
+                                            style="width: 10%; padding-right: 10px;">CATEGORY</th>
+                                        <th class="sort align-middle text-center" scope="col"
+                                            style="width: 20%; padding-right: 10px;">PRICE</th>
+                                        <th class="sort align-middle text-center ps-5" scope="col" style="width: 10%;">QUANTITY
+                                        </th>
+                                        <th class="sort align-middle text-center" scope="col" style="width: 20%;">TOTAL
+                                        </th>
+                                        <th class="sort align-middle text-center" scope="col" style="width: 10%;">ACTION
+                                        </th>
+                                        <th class="sort align-middle text-center pe-0" scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="list" id="cart-table-body">
+                                    @php
+                                        $subtotal = 0;
+                                        $pesanan_id = [];
+                                    @endphp
+                                    @if ($pesanans->count() > 0)
                                         @foreach ($pesanans as $pesanan)
                                             @php
                                                 array_push($pesanan_id, $pesanan->id);
                                             @endphp
                                             <tr class="cart-table-row btn-reveal-trigger">
-                                                <td class="align-middle white-space-nowrap py-0"><a
+                                                <td class="align-middle text-center white-space-nowrap py-0"><a
                                                         class="d-block border rounded-2" href="#"><img
                                                             src="{{ asset('storage/Product/' . $pesanan->produk->path_produk) }}"
                                                             alt="" width="100" /></a></td>
-                                                <td class="products align-middle col-2" style="max-width: 50px;">
+                                                <td class="products align-middle text-center col-2" style="max-width: 50px;">
                                                     <a class="fw-semi-bold mb-0 text-truncate d-inline-block"
                                                         href="#">
                                                         {{ ucfirst(Str::limit($pesanan->produk->nama_produk, 10, $end = '...')) }}
                                                     </a>
                                                 </td>
-                                                <td class="color align-middle white-space-nowrap fs--1 text-900">
+                                                <td class="color align-middle text-center white-space-nowrap fs--1 text-900">
                                                     {{ ucfirst($pesanan->produk->kategori->nama_kategori) }}</td>
-                                                <td class="price align-middle text-900 fs--1 fw-semi-bold text-end">Rp.
+                                                <td class="price align-middle text-center text-900 fs--1 fw-semi-bold text-end">Rp.
                                                     {{ number_format($pesanan->produk->harga, 0, ',', '.') }}
                                                 </td>
-                                                <td class="quantity align-middle fs-0 ps-5">
+                                                <td class="quantity align-middle text-center fs-0 ps-5">
                                                     <div class="input-group input-group-sm flex-nowrap"
                                                         data-quantity="data-quantity"><button class="btn btn-sm px-2"
                                                             data-type="minus">-</button><input
@@ -69,10 +70,10 @@
                                                             aria-label="Amount (to the nearest dollar)" /><button
                                                             class="btn btn-sm px-2" data-type="plus">+</button></div>
                                                 </td>
-                                                <td class="total align-middle fw-bold text-1000 text-end">Rp.
-                                                    {{ number_format($pesanan->produk->harga * $pesanan->jumlah, 0, ',', '.') }}
+                                                <td class="total align-middle text-center fw-bold text-1000">
+                                                    Rp.{{ number_format($pesanan->produk->harga * $pesanan->jumlah, 0, ',', '.') }}
                                                 </td>
-                                                <td class="align-middle white-space-nowrap text-end pe-0 ps-3">
+                                                <td class="align-middle white-space-nowrap pe-0 ps-3">
                                                     <form action="{{ route('keranjang.destroy', $pesanan->id) }}"
                                                         method="POST">
                                                         @csrf
@@ -88,15 +89,29 @@
                                                 $subtotal += $pesanan->produk->harga * $pesanan->jumlah;
                                             @endphp
                                         @endforeach
-                                    @endif
+                                        @else
+                                            <tr>
+                                                <td colspan="8" class="text-center py-4">
+                                                    <h3 class="mb-0">There are no item in the cart</h3>
+                                                    <img src="{{ asset('assets/img/No data-amico.svg') }}" alt="" style="width: 200px; height: auto; max-width: 100%; display: block; margin: 0 auto;">
+                                                    <a href="{{ route('produk.filter') }}" class="btn btn-primary">Continue Shopping</a>
+                                                </td>
+                                            </tr>
+                                        @endif
                                 </tbody>
                             </table>
+                            @if ($pesanans->count() > 1)
                             <form id="updateCartForm" action="{{ route('keranjang.update') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="quantities" value="">
                                 <div class="d-flex justify-content-between">
                                     <div>
-
+                                        <a href="{{ route('produk.filter') }}">
+                                            <button class="btn btn-secondary mt-2">
+                                                <span class="fas fa-chevron-left me-1"></span>
+                                                Continue Shopping
+                                            </button>
+                                        </a>
                                     </div>
                                     <button class="btn btn-success mt-2 ml-auto" onclick="updateCart()">
                                         Update Cart
@@ -104,6 +119,8 @@
                                     </button>
                                 </div>
                             </form>
+                            @else
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -118,10 +135,13 @@
                                 <div class="d-flex flex-between-center mb-3">
                                     <h3 class="card-title mb-0">Summary</h3>
                                 </div>
-                                <select class="form-select mb-3 @error('metode_pembayaran') is-invalid @enderror" name="metode_pembayaran" value="{{ old('metode_pembayaran') }}" aria-label="delivery type">
+                                <select class="form-select mb-3 @error('metode_pembayaran') is-invalid @enderror"
+                                    name="metode_pembayaran" value="{{ old('metode_pembayaran') }}"
+                                    aria-label="delivery type">
                                     <option value="">Select payment metode</option>
                                     @foreach ($pembayaran as $pembayarans)
-                                    <option value="{{ $pembayarans->id }}">{{ $pembayarans->metode_pembayaran }}</option>
+                                        <option value="{{ $pembayarans->id }}">{{ $pembayarans->metode_pembayaran }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 <div>
@@ -129,10 +149,11 @@
                                         <p class="text-900 fw-semi-bold">Total Quantity :</p>
                                         <p class="text-1100 fw-semi-bold">{{ $pesanans->sum('jumlah') }}</p>
                                     </div>
-                                    {{-- <div class="d-flex justify-content-between">
+                                    <div class="d-flex justify-content-between">
                                         <p class="text-900 fw-semi-bold">Subtotal :</p>
-                                        <p class="text-1100 fw-semi-bold">Rp. {{ number_format($subtotal, 0, ',', '.') }}</p>
-                                    </div> --}}
+                                        <p class="text-1100 fw-semi-bold">Rp. {{ number_format($subtotal, 0, ',', '.') }}
+                                        </p>
+                                    </div>
                                 </div>
                                 <div>
                                 </div>

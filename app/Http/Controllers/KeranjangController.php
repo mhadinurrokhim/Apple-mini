@@ -21,7 +21,7 @@ class KeranjangController extends Controller
         $pesanans = Detailpesanan::where('status', 'keranjang')->get();
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
         $order = Pesanan::where('user_id', auth()->user()->id)->whereNot('status', 'completed')->get()->count();
-        return view("user.keranjang", compact('pesanans', 'totalpesanan', 'order', 'user', 'pembayaran'));
+        return view("user.keranjang", compact('pesanans', 'totalpesanan', 'order', 'user', 'pembayaran',));
     }
 
     /**
@@ -29,9 +29,10 @@ class KeranjangController extends Controller
      */
     public function keranjangcheckout(Request $request, $id)
     {
+        $items = Detailpesanan::where('status', 'checkout')->get();
         $produk = Produk::findOrFail($id);
         $user = auth()->user();
-        return view('user.checkout',compact('produk','user'));
+        return view('user.checkout',compact('produk','user', 'items'));
     }
 
     //     try {
