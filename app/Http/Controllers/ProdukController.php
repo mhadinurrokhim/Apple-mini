@@ -46,42 +46,46 @@ class ProdukController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+{
+    $deskripsi = strip_tags($request->deskripsi);
 
-        $this->validate($request,[
-            'nama_produk' => 'required',
-            'path_produk' => 'required',
-            'deskripsi' => 'required',
-            'harga' => 'required',
-            'stok' => 'required|gt:0',
-            'kategori_id' => 'required',
-        ],[
-            'nama_produk.required' => 'title please fill in',
-            'path_produk.required' => 'Please fill in the image',
-            'deskripsi.required'=> 'please fill in the description',
-            'kategori_id.required' => 'select category',
-            'stok.required' => 'stock must be filled',
-            'harga.required' => 'price must be filled in',
+    $this->validate($request, [
+        'nama_produk' => 'required',
+        'path_produk' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the allowed image formats and maximum size as needed
+        'deskripsi' => 'required|max:300',
+        'harga' => 'required|gt:0',
+        'stok' => 'required|gt:0',
+        'kategori_id' => 'required',
+    ], [
+        'nama_produk.required' => 'Please fill in the product title',
+        'path_produk.required' => 'Please fill in the image',
+        'path_produk.image' => 'The file must be an image',
+        'path_produk.mimes' => 'Allowed image formats: jpeg, png, jpg, gif',
+        'path_produk.max' => 'Image size should not exceed 2 MB',
+        'deskripsi.required' => 'Please fill in the description',
+        'deskripsi.max' => 'Descriptions cannot be more than :max characters',
+        'harga.required' => 'Please fill in the price',
+        'harga.gt' => 'The price entered is invalid',
+        'stock.required' => 'Please fill in the stock',
+        'stok.gt' => 'The stock entered is invalid',
+        'kategori.required' => 'Please fill in the category',
+    ]);
 
+    $file = $request->file('path_produk');
+    $fileName = Str::random(10) . '.' .  $file->getClientOriginalExtension();
+    $file->storeAs('public/Product', $fileName);
 
-        ]);
+    produk::create([
+        "path_produk" => $fileName,
+        "nama_produk" => $request->nama_produk,
+        "deskripsi"=> $deskripsi,
+        "harga"=> $request->harga,
+        "stok"=> $request->stok,
+        "kategori_id"=> $request->kategori_id,
+    ]);
 
-        $deskripsi = strip_tags($request->deskripsi);
-        $file = $request->file('path_produk');
-        $fileName = Str::random(10) . '.' .  $file->getClientOriginalExtension();
-        $file->storeAs('public/Product', $fileName);
-
-        produk::create([
-            "path_produk" => $fileName,
-            "nama_produk" => $request->nama_produk,
-            "deskripsi"=> $request->deskripsi,
-            "harga"=> $request->harga,
-            "stok"=> $request->stok,
-            "kategori_id"=> $request->kategori_id,
-        ]);
-
-        return redirect('/produk')->with("success", "successfully added product");
-    }
+    return redirect('/produk')->with("success", "Product data added successfully.");
+}
 
     /**
      * Display the specified resource.
