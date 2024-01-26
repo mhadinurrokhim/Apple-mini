@@ -39,7 +39,7 @@ class KategoriController extends Controller
         ]);
 
         Kategori::create($request->all());
-        return redirect('/kategori')->with("success", "Category data added successfully!");
+        return redirect()->route('kategori')->with("success", "Category data added successfully!");
     }
 
     /**
@@ -57,7 +57,7 @@ class KategoriController extends Controller
     {
         $kategori = Kategori::find($id);
         $user = auth()->user();
-        return view("admin.kategori.edit", compact("kategori",'user'));
+        return view("admin.kategori.edit", compact("kategori", "user"));
     }
 
     /**
@@ -67,7 +67,7 @@ class KategoriController extends Controller
     {
         $pembayaran = Kategori::find($id);
         $pembayaran->update($request->all());
-        return redirect()->route('kategori')->with("success", "Data kategori berhasil diperbarui.");
+        return redirect()->route('kategori')->with("success", "Category data updated successfully.");
     }
 
     /**
@@ -79,10 +79,10 @@ class KategoriController extends Controller
         try {
             //code...
             $kategori->delete();
-            return redirect()->route("kategori")->with("success", "Data kategori berhasil dihapus!");
+            return redirect()->route("kategori")->with("success", "Category data has been successfully deleted!");
         } catch (\Throwable $th) {
             //throw $th;
-            return redirect('kategori')->with("error", "Gagal menghapus karena data kategori sedang digunakan!");
+            return redirect('kategori')->with("error", "Failed to delete because category data is in use!");
         }
     }
 }

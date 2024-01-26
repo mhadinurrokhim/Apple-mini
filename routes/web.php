@@ -61,11 +61,11 @@ Route::controller(ResetPasswordController::class)->group(function () {
 // ADMIN
 Route::middleware([AdminMiddleware::class])->group(function () {
 
-    Route::get('/AdminDashboard', [AdmindashboardController::class, 'index'])->name('dashboard.side');
+    Route::get('/AdminDashboard', [AdmindashboardController::class, 'index'])->name('dashboard');
     Route::get('/adminorder', [AdminorderController::class, 'index'])->name('order.side');
 
     Route::controller(ProdukController::class)->prefix('produk')->group(function () {
-        Route::get('', 'index')->name('produk.side');
+        Route::get('', 'index')->name('produk');
         Route::get('/create', 'create')->name('tambah.produk');
         Route::post('/store', 'store')->name('produk.store');
         Route::get('/edit/{id}', 'edit')->name('produk.edit');
@@ -73,12 +73,12 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     });
 
     Route::controller(KategoriController::class)->prefix('kategori')->group(function () {
-        Route::get('', 'index')->name('kategori.side');
+        Route::get('', 'index')->name('kategori');
         Route::get('create', 'create')->name('kategori.create');
         Route::post('store', 'store')->name('kategori.store');
         Route::get('edit/{id}', 'edit')->name('kategori.edit');
         Route::put('edit/{id}', 'update')->name('kategori.update');
-        Route::get('destroy/{id}', 'destroy')->name('kategori.destroy');
+        Route::delete('destroy/{id}', 'destroy')->name('kategori.destroy');
     });
 });
 
@@ -94,9 +94,9 @@ Route::middleware([UserMiddleware::class])->group(function () {
     Route::get('/produkdetail/{id}', [ProdukfilterController::class, 'detail'])->name('produk.detail');
     Route::get('/wishlist', [WishlistController::class, 'wishlist'])->name('wishlist');
     Route::get('/tracking', [TrackingController::class, 'tracking'])->name('tracking');
-    Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
-    Route::patch('/checkout-keranjang', [CheckoutController::class, 'chekoutKeranjang'])->name('checkout-keranjang');
-    Route::delete('produk-hapus/{id}', [CheckoutController::class, 'chekouthapus'])->name('checkout.hapus');
+    // Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+    // Route::patch('/checkout-keranjang', [CheckoutController::class, 'chekoutKeranjang'])->name('checkout-keranjang');
+    // Route::delete('produk-hapus/{id}', [CheckoutController::class, 'chekouthapus'])->name('checkout.hapus');
 
     // Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
     // Route::patch('/checkout-keranjang', [CheckoutController::class, 'chekoutKeranjang'])->name('checkout-keranjang');
@@ -113,12 +113,12 @@ Route::middleware([UserMiddleware::class])->group(function () {
     //     Route::get('/checkout', 'store')->name('checkout');
     // });
 
-    Route::controller(CheckoutController::class)->prefix('checkout')->group(function () {
-        Route::get('/checkout/{id}', 'index')->name('checkout.index');
-        Route::get('/checkout', 'store')->name('checkout');
-        Route::get('/checkouttampil', 'checkout')->name('checkout.side');
-        Route::patch('/checkout-keranjang', 'checkoutkeranjang')->name('checkout.keranjang');
-    });
+    // Route::controller(CheckoutController::class)->prefix('checkout')->group(function () {
+    //     Route::get('/checkout/{id}', 'index')->name('checkout.index');
+    //     Route::get('/checkout', 'store')->name('checkout');
+    //     Route::get('/checkouttampil', 'checkout')->name('checkout.side');
+    //     Route::patch('/checkout-keranjang', 'checkoutkeranjang')->name('checkout.keranjang');
+    // });
 
     Route::controller(KeranjangController::class)->prefix('keranjang')->group(function () {
         Route::get('keranjang', 'index')->name('keranjang');

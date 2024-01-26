@@ -1,6 +1,26 @@
 @extends('layout_admin.app')
 
 @section('content')
+
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: "{{ session('success') }}"
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "{{ session('error') }}",
+            });
+        </script>
+    @endif
     <div class="modal fade" id="searchBoxModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="true"
         data-phoenix-modal="data-phoenix-modal" style="--phoenix-backdrop-opacity: 1;">
         <div class="modal-dialog">
@@ -277,8 +297,8 @@
                                 <span class="fas fa-search search-box-icon"></span>
                             </form>
                         </div>
-                        <div class="ms-xxl-auto"><a href="{{ route('kategori.create') }}"><button class="btn btn-primary" id="addBtn"><span
-                                    class="fas fa-plus me-2"></span>Add category</button></a></div>
+                        <div class="ms-xxl-auto"><a href="{{ route('kategori.create') }}"><button class="btn btn-primary"
+                                    id="addBtn"><span class="fas fa-plus me-2"></span>Add category</button></a></div>
                     </div>
                 </div>
                 <div
@@ -293,7 +313,8 @@
                                     <th class="sort text-center white-space-nowrap align-middle ps-4" scope="col"
                                         style="width:70%;">CATEGORY NAME</th>
 
-                                    <th class="sort text-end align-middle pe-0 ps-4" scope="col" style="width: 20%">ACTION</th>
+                                    <th class="sort text-end align-middle pe-0 ps-4" scope="col" style="width: 20%">
+                                        ACTION</th>
                                 </tr>
                             </thead>
                             <tbody class="list" id="products-table-body">
@@ -301,25 +322,30 @@
                                     @foreach ($kategori as $kategoris)
                                         <tr class="position-static">
                                             <td class="fs--1 align-middle"><span>{{ $loop->iteration }}</span></td>
-                                            <td class="text-center product align-middle ps-4"><span></span>{{ $kategoris->nama_kategori }}</td>
-                                            <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
+                                            <td class="text-center product align-middle ps-4">
+                                                <span></span>{{ $kategoris->nama_kategori }}
+                                            </td>
+                                            <td
+                                                class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
                                                 <div class="font-sans-serif btn-reveal-trigger position-static"><button
                                                         class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2"
                                                         type="button" data-bs-toggle="dropdown" data-boundary="window"
                                                         aria-haspopup="true" aria-expanded="false"
                                                         data-bs-reference="parent"><span
                                                             class="fas fa-ellipsis-h fs--2"></span></button>
-                                                    <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item"
+                                                    <div class="dropdown-menu dropdown-menu-end py-2"><a
+                                                            class="dropdown-item"
                                                             href="{{ route('kategori.edit', $kategoris->id) }}">Edit</a>
                                                         <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item text-danger" href="{{ route('kategori.destroy', $kategoris->id) }}">Remove</a>
-                                                        {{-- <form class="" action="{{ route('kategori.destroy', $kategoris->id) }}">
+                                                        {{-- <button type="submit" class="dropdown-item text-danger hapus"
+                                                            href="{{ route('kategori.destroy', $kategoris->id) }}">Remove</button> --}}
+                                                        <form action="{{ route('kategori.destroy', $kategoris->id) }}" method="POST" class="hapus-form">
                                                             @csrf
                                                             @method('delete')
-                                                            <button type="submit" class="btn btn-danger">
+                                                            <button type="button" class="dropdown-item text-danger hapus">
                                                                 Remove
                                                             </button>
-                                                        </form> --}}
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </td>
@@ -349,7 +375,9 @@
         <footer class="footer position-absolute">
             <div class="row g-0 justify-content-between align-items-center h-100">
                 <div class="col-12 col-sm-auto text-center">
-                    <p class="mb-0 mt-2 mt-sm-0 text-900">Copyright © iVibe<span class="d-none d-sm-inline-block"></span><span class="d-none d-sm-inline-block mx-1">|</span><br class="d-sm-none" />2023</p>
+                    <p class="mb-0 mt-2 mt-sm-0 text-900">Copyright © iVibe<span
+                            class="d-none d-sm-inline-block"></span><span
+                            class="d-none d-sm-inline-block mx-1">|</span><br class="d-sm-none" />2023</p>
 
                 </div>
                 <div class="col-12 col-sm-auto text-center">
@@ -422,4 +450,24 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $('.hapus').click(function() {
+            var form = $(this).closest('form');
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You will delete this product. This action cannot be undone!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, accept!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    </script>
 @endsection

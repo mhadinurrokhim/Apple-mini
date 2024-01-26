@@ -91,7 +91,7 @@ class CheckoutController extends Controller
      */
     public function chekouthapus(Request $request, $id)
     {
-         $detailPesanan = detailpesanan::findOrFail($id);
+        $detailPesanan = detailpesanan::findOrFail($id);
         $produk = Produk::find($detailPesanan->produk_id);
         $produk->stok += $detailPesanan->jumlah;
         $produk->save();
@@ -112,7 +112,6 @@ class CheckoutController extends Controller
     {
         $id = Auth::user()->id;
         $keranjang = Detailpesanan::where('user_id', $id)->get();
-           dd($keranjang);
         foreach ($keranjang as $k) {
             $k->status = 'checkout';
             $k->save();

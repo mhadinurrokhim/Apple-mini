@@ -15,8 +15,8 @@
                     </a>
                     <div class="nav-item-wrapper">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('dashboard.side') ? 'active' : '' }}"
-                        href="{{ route('dashboard.side') }}" data-bs-toggle="" aria-expanded="false">
+                    <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"
+                        href="{{ route('dashboard') }}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
                                 <span data-feather="pie-chart"></span>
@@ -26,8 +26,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('produk.side') ? 'active' : '' }}"
-                        href="{{ route('produk.side') }}" data-bs-toggle="" aria-expanded="false">
+                    <a class="nav-link {{ request()->routeIs('produk') ? 'active' : '' }}"
+                        href="{{ route('produk') }}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
                                 <span data-feather="package"></span>
@@ -48,8 +48,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('kategori.side') ? 'active' : '' }}"
-                        href="{{ route('kategori.side') }}" data-bs-toggle="" aria-expanded="false">
+                    <a class="nav-link {{ request()->routeIs('kategori') ? 'active' : '' }}"
+                        href="{{ route('kategori') }}" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
                                 <span data-feather="list"></span>

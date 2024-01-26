@@ -72,25 +72,25 @@ class HomeUserController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function beliproduk(Request $request)
-    {
-       $produk = Produk::findOrFail($id);
-        return view('user.checkout',compact('produk'));
+    // public function beliproduk(Request $request)
+    // {
+    //    $produk = Produk::findOrFail($id);
+    //     return view('user.checkout',compact('produk'));
 
-        try {
+    //     try {
 
-            $beli = new Checkout();
-            $beli->user_id = $request->user_id;
-            $beli->produk_id = $request->produk_id;
-            $beli->jumlah = $request->jumlah;
-            $beli->total = $request->total;
-            $beli->save();
+    //         $beli = new Checkout();
+    //         $beli->user_id = $request->user_id;
+    //         $beli->produk_id = $request->produk_id;
+    //         $beli->jumlah = $request->jumlah;
+    //         $beli->total = $request->total;
+    //         $beli->save();
 
-        } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
-        }
+    //     } catch (\Exception $e) {
+    //         return response()->json(['error' => $e->getMessage()], 500);
+    //     }
 
-    }
+    // }
     public function pembelian()
     {
 

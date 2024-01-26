@@ -100,7 +100,7 @@
                                         @endif
                                 </tbody>
                             </table>
-                            @if ($pesanans->count() > 1)
+                            @if ($pesanans->count() > 0)
                             <form id="updateCartForm" action="{{ route('keranjang.update') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="quantities" value="">
