@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produk;
 use App\Models\Pesanan;
 use App\Models\Pembayaran;
 use Illuminate\Http\Request;
@@ -81,10 +82,17 @@ class CheckoutController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function chekouthapus(Request $request, $id)
     {
-        //
+         $detailPesanan = detailpesanan::findOrFail($id);
+        $produk = Produk::find($detailPesanan->produk_id);
+        $produk->stok += $detailPesanan->jumlah;
+        $produk->save();
+        $detailPesanan->delete();
+        // return redirect()->back();
+        return response()->json(['status' => 'success', 'message' => 'Item berhasil dihapus']);
     }
+
     public function checkout()
     {
         $user = auth()->user();
@@ -103,6 +111,6 @@ class CheckoutController extends Controller
             $k->save();
         }
 
-        return redirect()->back();
+        return redirect('checkout');
     }
 }

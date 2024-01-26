@@ -58,28 +58,102 @@
               <div class="card mt-3 mt-lg-0">
                 <div class="card-body">
                   <div class="d-flex align-items-center justify-content-between">
-                      <h3 class="mb-0">Summary</h3><button class="btn btn-link pe-0"type="button">Edit cart</button>
+                      <h3 class="mb-0">Summary</h3>
+                      {{-- <button class="btn btn-link pe-0" type="button" data-bs-toggle="modal" data-bs-target="#editModal">
+                        Edit
+                    </button> --}}
                     </div>
                     @foreach ($items as $checkout )
                   <div class="border-dashed border-bottom mt-4">
                     <div class="ms-n2">
                       <div class="row align-items-center mb-2 g-3">
                         <div class="col-8 col-md-7 col-lg-8">
-                          <div class="d-flex align-items-center"><img class="me-2 ms-1" src="{{ asset('storage/Product/' . $checkout->path_produk)}}" width="40" alt="" />
-                            <h6 class="fw-semi-bold text-1000 lh-base">{{ $checkout->user_id }}</h6>
+                          <div class="d-flex align-items-center"><img class="me-2 ms-1" src="{{ asset('storage/Product/' . $checkout->produk->path_produk)}}" width="40" alt="" />
+                            <h6 class="fw-semi-bold text-1000 lh-base">{{ Str::limit($checkout->produk->nama_produk,20, $end ='...') }}</h6>
                           </div>
                         </div>
                         <div class="col-2 col-md-3 col-lg-2">
-                          <h6 class="fs--2 mb-0">x{{ $checkout->jumlah }}</h6>
+                          <h6 class="fs--2 mb-0">X {{ $checkout->jumlah }}</h6>
                         </div>
                         <div class="col-2 ps-0">
-                          <h5 class="fs--2 mb-0">Rp.{{ $checkout->total }}</h5>
+                          <h5 class="fs--2 mb-0">{{ 'Rp. ' . number_format($checkout->total, 0, ',', '.') }}</h5>
                         </div>
                     </div>
 
                 </div>
             </div>
             @endforeach
+          <!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit Item</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Nama Produk</th>
+                            <th>Stok</th>
+                            <th>Harga</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($items as $checkout)
+                            <tr>
+                                <td><img src="{{ asset('storage/Product/' . $checkout->produk->path_produk)}}" width="40" alt="" /></td>
+                                <td>{{ $checkout->produk->nama_produk }}</td>
+                                <td>{{ $checkout->produk->stok }}</td>
+                                <td>{{ 'Rp. ' . number_format($checkout->produk->harga, 0, ',', '.') }}</td>
+                                <td>
+                                    <form action="{{ route('checkout.hapus',$checkout->produk->id ) }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-danger btn-sm" onclick="hapusItem({{ $checkout->produk->id }})">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <!-- Tambahkan tombol atau form Edit sesuai kebutuhan -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Script untuk Menghapus Item -->
+<script>
+    function hapusItem(produkId) {
+        if (confirm('Apakah Anda yakin ingin menghapus item ini?')) {
+            $.ajax({
+                type: 'DELETE',
+                url: '/produk-hapus/' + produkId,
+                success: function (response) {
+                    $('#itemRow' + produkId).remove();
+
+                    alert(response.message);
+                },
+                error: function (error) {
+                    alert('Terjadi kesalahan saat menghapus item.');
+                }
+            });
+        }
+    }
+</script>
+
+
+<!-- Tambahan Script untuk Bootstrap Modal -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
                   {{-- <div class="border-dashed border-bottom mt-4">
                     <div class="d-flex justify-content-between mb-2">
                       <h5 class="text-900 fw-semi-bold">Items subtotal: </h5>
@@ -104,7 +178,7 @@
                   </div> --}}
                   <div class="d-flex justify-content-between border-dashed-y pt-3">
                     <h4 class="mb-0">Total Price:</h4>
-                    <h4 class="mb-0">Rp.{{ $checkout->total }}</h4>
+                    <h4 class="mb-0">{{ 'Rp. ' . number_format($checkout->total, 0, ',', '.') }}</h4>
                   </div>
                 </div>
               </div>

@@ -213,7 +213,7 @@
           <hr class="bg-200 mb-6 mt-4" />
           <div class="row flex-between-center mb-4 g-3">
             <div class="col-auto">
-              <h3>Total income: Rp 7.000.000</h3>
+              <h3>Total income: Rp.7000</h3>
             </div>
             <div class="echart-total-sales-chart" style="min-height:320px;width:100%"></div>
           </div>

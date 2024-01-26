@@ -138,7 +138,7 @@
                                                     <a href="{{ route('detail.produk', $pf->id) }}"
                                                         class="stretched-link"></a>
                                                     <h6 class="card-title mb-2 lh-sm line-clamp-3 product-name">
-                                                        {{ $pf->nama_produk }}</h6>
+                                                        {{ Str::limit($pf->nama_produk, 33, $end = '...') }}</h6>
                                                     </a>
                                                     <p class="fs--1 text-1000 fw-bold mb-2">Stock {{ $pf->stok }}</p>
                                                     <p class="fs--1">
@@ -153,7 +153,7 @@
                                             </div>
                                             <div class="card-footer">
                                                 <div class="d-flex align-items-center mb-1">
-                                                    <h3 class="text-1100 mb-0">Rp {{ number_format($pf->harga, 0, ',', '.') }}</h3>
+                                                    <h3 class="text-1100 mb-0">Rp.{{ number_format($pf->harga, 0, ',', '.') }}</h3>
                                                     <div class="flex-grow-1"></div>
                                                     <button class="fas fa-shopping-cart me-2 cart-icon"></button>
                                                 </div>

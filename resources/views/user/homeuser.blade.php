@@ -77,7 +77,7 @@
                 @endforeach
             </div>
             <div class="text-center mt-4">
-                <a href="{{ route('produkfilter') }}" class="btn btn-lg btn-primary rounded-pill">View All Product</a>
+                <a href="{{ route('produk.filter') }}" class="btn btn-lg btn-primary rounded-pill">View All Product</a>
             </div>
     </section>
 @endsection

@@ -352,8 +352,8 @@
       <ul class="navbar-nav mx-auto justify-content-end align-items-center">
         <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link {{ request()->routeIs('homeuser') ? 'active' : '' }}"
             href="{{ route('homeuser') }}">Home</a></li>
-        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link {{ request()->routeIs('produkfilter') ? 'active' : '' }}""
-            href="{{ route('produkfilter') }}">Products</a></li>
+        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link {{ request()->routeIs('produk.filter') ? 'active' : '' }}""
+            href="{{ route('produk.filter') }}">Products</a></li>
         <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link {{ request()->routeIs('wishlist') ? 'active' : '' }}""
             href="{{ route('wishlist') }}">Wishlist</a></li>
         <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link {{ request()->routeIs('tracking') ? 'active' : '' }}""

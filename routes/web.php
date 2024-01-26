@@ -90,12 +90,13 @@ Route::middleware([UserMiddleware::class])->group(function () {
     Route::get('/detailproduk{id}', [HomeUserController::class, 'detailproduk'])->name('detail.produk');
     Route::post('{produk_id}/order', [HomeUserController::class,'order'])->name('shop.order');
     Route::get('/profil', [ProfilController::class, 'index'])->name('profil')->name('profil');
-    Route::get('/produkfilter', [ProdukfilterController::class, 'produkfilter'])->name('produkfilter');
+    Route::get('/produkfilter', [ProdukfilterController::class, 'produkfilter'])->name('produk.filter');
     Route::get('/produkdetail/{id}', [ProdukfilterController::class, 'detail'])->name('produk.detail');
     Route::get('/wishlist', [WishlistController::class, 'wishlist'])->name('wishlist');
     Route::get('/tracking', [TrackingController::class, 'tracking'])->name('tracking');
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
-    // Route::patch('/checkout-keranjang', [CheckoutController::class, 'chekoutKeranjang'])->name('checkout-keranjang');
+    Route::patch('/checkout-keranjang', [CheckoutController::class, 'chekoutKeranjang'])->name('checkout-keranjang');
+    Route::delete('produk-hapus/{id}', [CheckoutController::class, 'chekouthapus'])->name('checkout.hapus');
     // Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
     // Route::patch('/checkout-keranjang', [CheckoutController::class, 'chekoutKeranjang'])->name('checkout-keranjang');
     Route::get('/navbar', [NavbarController::class, 'navbar'])->name('navbar');

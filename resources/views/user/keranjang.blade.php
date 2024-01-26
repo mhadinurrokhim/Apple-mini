@@ -9,6 +9,12 @@
 
             </nav>
             <h2 class="mb-6">Cart</h2>
+            <a href="{{ route('produk.filter') }}">
+                <button class="btn btn-secondary mt-2">
+                    <span class="fas fa-chevron-left me-1"></span>
+                    Continue Shopping
+                </button>
+            </a>
             <div class="row g-5">
                 <div class="col-12 col-lg-8">
                     <div id="cartTable"
@@ -90,12 +96,7 @@
                                 <input type="hidden" name="quantities" value="">
                                 <div class="d-flex justify-content-between">
                                     <div>
-                                        <a href="{{ route('produkfilter') }}">
-                                            <button class="btn btn-secondary mt-2">
-                                                <span class="fas fa-chevron-left me-1"></span>
-                                                Continue Shopping
-                                            </button>
-                                        </a>
+
                                     </div>
                                     <button class="btn btn-success mt-2 ml-auto" onclick="updateCart()">
                                         Update Cart
@@ -110,8 +111,9 @@
 
                 <div class="col-12 col-lg-4">
                     <div class="card">
-                        <form action="{{ route('checkout') }}" method="POST">
+                        <form action="{{ route('checkout-keranjang') }}" method="POST">
                             @csrf
+                            @method('patch')
                             <div class="card-body">
                                 <div class="d-flex flex-between-center mb-3">
                                     <h3 class="card-title mb-0">Summary</h3>
@@ -127,10 +129,10 @@
                                         <p class="text-900 fw-semi-bold">Total Quantity :</p>
                                         <p class="text-1100 fw-semi-bold">{{ $pesanans->sum('jumlah') }}</p>
                                     </div>
-                                    <div class="d-flex justify-content-between">
+                                    {{-- <div class="d-flex justify-content-between">
                                         <p class="text-900 fw-semi-bold">Subtotal :</p>
                                         <p class="text-1100 fw-semi-bold">Rp. {{ number_format($subtotal, 0, ',', '.') }}</p>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div>
                                 </div>
