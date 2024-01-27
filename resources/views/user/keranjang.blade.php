@@ -101,24 +101,22 @@
                                 </tbody>
                             </table>
                             @if ($pesanans->count() > 0)
-                            <form id="updateCartForm" action="{{ route('keranjang.update') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="quantities" value="">
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        <a href="{{ route('produk.filter') }}">
-                                            <button class="btn btn-secondary mt-2">
-                                                <span class="fas fa-chevron-left me-1"></span>
-                                                Continue Shopping
-                                            </button>
-                                        </a>
-                                    </div>
-                                    <button class="btn btn-success mt-2 ml-auto" onclick="updateCart()">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <a href="{{ route('produk.filter') }}" class="btn btn-secondary mt-2">
+                                        <span class="fas fa-chevron-left me-1"></span>
+                                        Continue Shopping
+                                    </a>
+                                </div>
+                                <form id="updateCartForm" action="{{ route('keranjang.update') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="quantities" value="">
+                                    <button type="submit" class="btn btn-success mt-2 ml-auto">
                                         Update Cart
                                         <span class="fas fa-undo ms-1 order-2"></span>
                                     </button>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                             @else
                             @endif
                         </div>

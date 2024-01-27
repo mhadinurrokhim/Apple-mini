@@ -17,7 +17,7 @@
                         </div><a class="btn px-0 d-block collapse-indicator" data-bs-toggle="collapse"
                             href="#collapseDevice" role="button" aria-expanded="true" aria-controls="collapseDevice">
                             <div class="d-flex align-items-center justify-content-between w-100">
-                                <div class="fs-0 text-1000">Device</div><span
+                                <div class="fs-0 text-1000">Category</div><span
                                     class="fa-solid fa-angle-down toggle-icon text-500"></span>
                             </div>
                         </a>
@@ -55,8 +55,8 @@
                         <div class="collapse show" id="collapsePriceRange">
                             <div class="d-flex justify-content-between mb-3">
                                 <div class="input-group me-2"><input class="form-control" type="text"
-                                        aria-label="First name" placeholder="Min"><input class="form-control" type="text"
-                                        aria-label="Last name" placeholder="Max"></div><button
+                                        aria-label="First name" placeholder="Min" name="min"><input class="form-control" type="text"
+                                        aria-label="Last name" placeholder="Max" name="max"></div><button
                                     class="btn btn-phoenix-primary border-300 px-3" type="button">Go</button>
                             </div>
                         </div><a class="btn px-0 y-4 d-block collapse-indicator" data-bs-toggle="collapse"
