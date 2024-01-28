@@ -27,6 +27,7 @@
                       <td class="py-2 ps-0">
                         <div class="d-flex"><span class="fs-5 me-2" data-feather="home" style="height:16px; width:16px;"> </span>
                           <h5 class="lh-sm me-4">Address</h5>
+                          {{ var_dump($user) }}
                         </div>
                       </td>
                       <td class="py-2 fw-bold lh-sm">:</td>

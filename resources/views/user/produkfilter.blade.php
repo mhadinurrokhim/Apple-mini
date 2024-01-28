@@ -1,6 +1,17 @@
 @extends('layout_user.navbar')
 @section('content')
 @include('Asset.SweetAlert')
+<style>
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input[type="number"] {
+        -moz-appearance: textfield;
+        appearance: textfield;
+    }
+</style>
     <!-- ============================================-->
     <!-- <section> begin ============================-->
     <section class="pt-5 pb-9">
@@ -9,110 +20,101 @@
                     class="fa-solid fa-filter me-2"></span>Filter</button>
             <div class="row">
                 <div class="col-lg-3 col-xxl-2 ps-2 ps-xxl-3">
-                    <div class="product-filter-offcanvas bg-soft scrollbar phoenix-offcanvas phoenix-offcanvas-fixed"
-                        id="productFilterColumn">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h3 class="mb-0">Filters</h3><button class="btn d-lg-none p-0"
-                                data-phoenix-dismiss="offcanvas"><span class="uil uil-times fs-0"></span></button>
-                        </div><a class="btn px-0 d-block collapse-indicator" data-bs-toggle="collapse"
-                            href="#collapseDevice" role="button" aria-expanded="true" aria-controls="collapseDevice">
-                            <div class="d-flex align-items-center justify-content-between w-100">
-                                <div class="fs-0 text-1000">Category</div><span
-                                    class="fa-solid fa-angle-down toggle-icon text-500"></span>
-                            </div>
-                        </a>
-                        <div class="collapse show" id="collapseDevice">
-                            <div class="mb-2">
-                                <div class="form-check mb-0"><input class="form-check-input mt-0" id="flexCheckBlackberry"
-                                        type="checkbox" name="device" checked><label
-                                        class="form-check-label d-block lh-sm fs-0 text-900 fw-normal mb-0"
-                                        for="flexCheckBlackberry">Handphone
-                                    </label></div>
-                                <div class="form-check mb-0"><input class="form-check-input mt-0" id="flexCheckApple"
-                                        type="checkbox" name="device"><label
-                                        class="form-check-label d-block lh-sm fs-0 text-900 fw-normal mb-0"
-                                        for="flexCheckApple">Laptop
-                                    </label></div>
-                                <div class="form-check mb-0"><input class="form-check-input mt-0" id="flexCheckNokia"
-                                        type="checkbox" name="device"><label
-                                        class="form-check-label d-block lh-sm fs-0 text-900 fw-normal mb-0"
-                                        for="flexCheckNokia">Tab
-                                    </label></div>
-                                <div class="form-check mb-0"><input class="form-check-input mt-0" id="flexCheckSony"
-                                        type="checkbox" name="device"><label
-                                        class="form-check-label d-block lh-sm fs-0 text-900 fw-normal mb-0"
-                                        for="flexCheckSony">Komputer
-                                    </label></div>
-                            </div>
-                        </div><a class="btn px-0 d-block collapse-indicator" data-bs-toggle="collapse"
-                            href="#collapsePriceRange" role="button" aria-expanded="true"
-                            aria-controls="collapsePriceRange">
-                            <div class="d-flex align-items-center justify-content-between w-100">
-                                <div class="fs-0 text-1000">Price range</div><span
-                                    class="fa-solid fa-angle-down toggle-icon text-500"></span>
-                            </div>
-                        </a>
-                        <div class="collapse show" id="collapsePriceRange">
-                            <div class="d-flex justify-content-between mb-3">
-                                <div class="input-group me-2"><input class="form-control" type="text"
-                                        aria-label="First name" placeholder="Min" name="min"><input class="form-control" type="text"
-                                        aria-label="Last name" placeholder="Max" name="max"></div><button
-                                    class="btn btn-phoenix-primary border-300 px-3" type="button">Go</button>
-                            </div>
-                        </div><a class="btn px-0 y-4 d-block collapse-indicator" data-bs-toggle="collapse"
-                            href="#collapseRating" role="button" aria-expanded="true" aria-controls="collapseRating">
-                            <div class="d-flex align-items-center justify-content-between w-100">
-                                <div class="fs-0 text-1000">Rating</div><span
-                                    class="fa-solid fa-angle-down toggle-icon text-500"></span>
-                            </div>
-                        </a>
-                        <div class="collapse show" id="collapseRating">
-                            <div class="d-flex align-items-center mb-1"><input class="form-check-input me-3" id="flexRadio1"
-                                    type="radio" name="flexRadio"><span
-                                    class="fa fa-star text-warning fs--1 me-1"></span><span
-                                    class="fa fa-star text-warning fs--1 me-1"></span><span
-                                    class="fa fa-star text-warning fs--1 me-1"></span><span
-                                    class="fa fa-star text-warning fs--1 me-1"></span><span
-                                    class="fa fa-star text-warning fs--1 me-1"></span></div>
-                            <div class="d-flex align-items-center mb-1"><input class="form-check-input me-3"
-                                    id="flexRadio2" type="radio" name="flexRadio"><span
-                                    class="fa fa-star text-warning fs--1 me-1"></span><span
-                                    class="fa fa-star text-warning fs--1 me-1"></span><span
-                                    class="fa fa-star text-warning fs--1 me-1"></span><span
-                                    class="fa fa-star text-warning fs--1 me-1"></span><span
-                                    class="fa-regular fa-star text-warning-300 fs--1 me-1"></span>
-                                <p class="ms-1 mb-0">&amp; above</p>
-                            </div>
-                            <div class="d-flex align-items-center mb-1"><input class="form-check-input me-3"
-                                    id="flexRadio3" type="radio" name="flexRadio"><span
-                                    class="fa fa-star text-warning fs--1 me-1"></span><span
-                                    class="fa fa-star text-warning fs--1 me-1"></span><span
-                                    class="fa fa-star text-warning fs--1 me-1"></span><span
-                                    class="fa-regular fa-star text-warning-300 fs--1 me-1"></span><span
-                                    class="fa-regular fa-star text-warning-300 fs--1 me-1"></span>
-                                <p class="ms-1 mb-0">&amp; above </p>
-                            </div>
-                            <div class="d-flex align-items-center mb-1"><input class="form-check-input me-3"
-                                    id="flexRadio4" type="radio" name="flexRadio"><span
-                                    class="fa fa-star text-warning fs--1 me-1"></span><span
-                                    class="fa fa-star text-warning fs--1 me-1"></span><span
-                                    class="fa-regular fa-star text-warning-300 fs--1 me-1"></span><span
-                                    class="fa-regular fa-star text-warning-300 fs--1 me-1"></span><span
-                                    class="fa-regular fa-star text-warning-300 fs--1 me-1"></span>
-                                <p class="ms-1 mb-0">&amp; above</p>
-                            </div>
-                            <div class="d-flex align-items-center mb-3"><input class="form-check-input me-3"
-                                    id="flexRadio5" type="radio" name="flexRadio"><span
-                                    class="fa fa-star text-warning fs--1 me-1"></span><span
-                                    class="fa-regular fa-star text-warning-300 fs--1 me-1"></span><span
-                                    class="fa-regular fa-star text-warning-300 fs--1 me-1"></span><span
-                                    class="fa-regular fa-star text-warning-300 fs--1 me-1"></span><span
-                                    class="fa-regular fa-star text-warning-300 fs--1 me-1"></span>
-                                <p class="ms-1 mb-0">&amp; above </p>
+                    <form action="">
+                        <div class="product-filter-offcanvas bg-soft scrollbar phoenix-offcanvas phoenix-offcanvas-fixed"
+                            id="productFilterColumn">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h3 class="mb-0">Filters</h3><button class="btn d-lg-none p-0"
+                                    data-phoenix-dismiss="offcanvas"><span class="uil uil-times fs-0"></span></button>
+                            </div><a class="btn px-0 d-block collapse-indicator" data-bs-toggle="collapse"
+                                href="#collapseDevice" role="button" aria-expanded="true" aria-controls="collapseDevice">
+                                <div class="d-flex align-items-center justify-content-between w-100">
+                                    <div class="fs-0 text-1000">Category</div><span
+                                        class="fa-solid fa-angle-down toggle-icon text-500"></span>
+                                </div>
+                            </a>
+                            <div class="collapse show" id="collapseDevice">
+                                <div class="mb-2">
+                                    @foreach ($kategori as $kategoris)
+                                    <div class="form-check mb-0">
+                                        <input class="form-check-input mt-0" id="flexCheck{{ $kategoris->id }}" type="checkbox" name="device[]" value="{{ $kategoris->id }}"
+                                            @if (in_array($kategoris->id, $devices)) checked @endif>
+                                        <label class="form-check-label d-block lh-sm fs-0 text-900 fw-normal mb-0" for="flexCheck{{ $kategoris->id }}">
+                                            {{ $kategoris->nama_kategori }}
+                                        </label>
+                                    </div>
+                                @endforeach
+                                </div>
+                            </div><a class="btn px-0 d-block collapse-indicator" data-bs-toggle="collapse"
+                                href="#collapsePriceRange" role="button" aria-expanded="true"
+                                aria-controls="collapsePriceRange">
+                                <div class="d-flex align-items-center justify-content-between w-100">
+                                    <div class="fs-0 text-1000">Price range</div><span
+                                        class="fa-solid fa-angle-down toggle-icon text-500"></span>
+                                </div>
+                            </a>
+                            <div class="collapse show" id="collapsePriceRange">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div class="input-group me-2"><input class="form-control" type="number"
+                                            aria-label="First name" placeholder="Min" name="min" value="{{ $minPrice }}"><input class="form-control" type="text"
+                                            aria-label="Last name" placeholder="Max" name="max" value="{{ $maxPrice }}"></div><button
+                                        class="btn btn-phoenix-primary border-300 px-3" type="submit ">Go</button>
+                                </div>
+                            </div><a class="btn px-0 y-4 d-block collapse-indicator" data-bs-toggle="collapse"
+                                href="#collapseRating" role="button" aria-expanded="true" aria-controls="collapseRating">
+                                <div class="d-flex align-items-center justify-content-between w-100">
+                                    <div class="fs-0 text-1000">Rating</div><span
+                                        class="fa-solid fa-angle-down toggle-icon text-500"></span>
+                                </div>
+                            </a>
+                            <div class="collapse show" id="collapseRating">
+                                <div class="d-flex align-items-center mb-1"><input class="form-check-input me-3" id="flexRadio1"
+                                        type="radio" name="flexRadio"><span
+                                        class="fa fa-star text-warning fs--1 me-1"></span><span
+                                        class="fa fa-star text-warning fs--1 me-1"></span><span
+                                        class="fa fa-star text-warning fs--1 me-1"></span><span
+                                        class="fa fa-star text-warning fs--1 me-1"></span><span
+                                        class="fa fa-star text-warning fs--1 me-1"></span></div>
+                                <div class="d-flex align-items-center mb-1"><input class="form-check-input me-3"
+                                        id="flexRadio2" type="radio" name="flexRadio"><span
+                                        class="fa fa-star text-warning fs--1 me-1"></span><span
+                                        class="fa fa-star text-warning fs--1 me-1"></span><span
+                                        class="fa fa-star text-warning fs--1 me-1"></span><span
+                                        class="fa fa-star text-warning fs--1 me-1"></span><span
+                                        class="fa-regular fa-star text-warning-300 fs--1 me-1"></span>
+                                    <p class="ms-1 mb-0">&amp; above</p>
+                                </div>
+                                <div class="d-flex align-items-center mb-1"><input class="form-check-input me-3"
+                                        id="flexRadio3" type="radio" name="flexRadio"><span
+                                        class="fa fa-star text-warning fs--1 me-1"></span><span
+                                        class="fa fa-star text-warning fs--1 me-1"></span><span
+                                        class="fa fa-star text-warning fs--1 me-1"></span><span
+                                        class="fa-regular fa-star text-warning-300 fs--1 me-1"></span><span
+                                        class="fa-regular fa-star text-warning-300 fs--1 me-1"></span>
+                                    <p class="ms-1 mb-0">&amp; above </p>
+                                </div>
+                                <div class="d-flex align-items-center mb-1"><input class="form-check-input me-3"
+                                        id="flexRadio4" type="radio" name="flexRadio"><span
+                                        class="fa fa-star text-warning fs--1 me-1"></span><span
+                                        class="fa fa-star text-warning fs--1 me-1"></span><span
+                                        class="fa-regular fa-star text-warning-300 fs--1 me-1"></span><span
+                                        class="fa-regular fa-star text-warning-300 fs--1 me-1"></span><span
+                                        class="fa-regular fa-star text-warning-300 fs--1 me-1"></span>
+                                    <p class="ms-1 mb-0">&amp; above</p>
+                                </div>
+                                <div class="d-flex align-items-center mb-3"><input class="form-check-input me-3"
+                                        id="flexRadio5" type="radio" name="flexRadio"><span
+                                        class="fa fa-star text-warning fs--1 me-1"></span><span
+                                        class="fa-regular fa-star text-warning-300 fs--1 me-1"></span><span
+                                        class="fa-regular fa-star text-warning-300 fs--1 me-1"></span><span
+                                        class="fa-regular fa-star text-warning-300 fs--1 me-1"></span><span
+                                        class="fa-regular fa-star text-warning-300 fs--1 me-1"></span>
+                                    <p class="ms-1 mb-0">&amp; above </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="phoenix-offcanvas-backdrop d-lg-none" data-phoenix-backdrop></div>
+                        <div class="phoenix-offcanvas-backdrop d-lg-none" data-phoenix-backdrop></div>
+                    </form>
                 </div>
                 <div class="col-lg-9 col-xxl-10">
                     <div class="row">

@@ -14,21 +14,24 @@ class HomeUserController extends Controller
 {
     public function homeuser()
     {
+        $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
         $produk = Produk::all();
         $user = auth()->user();
-        return view('user.homeuser', compact('produk', 'user'));
+        return view('user.homeuser', compact('produk', 'user', 'totalpesanan'));
     }
 
     public function detailproduk(Request $request, $id)
     {
+        $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
         // $user = produk::findOrFail($id);
         $user = auth()->user();
         $produk = produk::where('id', $id)->get();
-        return view('user.produkdetail',compact('produk','user'));
+        return view('user.produkdetail',compact('produk', 'user', 'totalpesanan'));
     }
 
     public function order(Request $request, $produk)
     {
+        $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
         $kategori = Kategori::all();
         $produk = Produk::findOrFail($produk);
         $request->validate(
@@ -66,7 +69,7 @@ class HomeUserController extends Controller
             $produk->stok -= $request->jumlah;
             $produk->save();
         }
-        return redirect()->route('keranjang');
+        return redirect()->route('keranjang', compact('totalpesanan'));
     }
 
     /**

@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\Request;
+use App\Models\Detailpesanan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\Request;
 
 class ProfilController extends Controller
 {
     public function index()
     {
+        $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
         $user = auth()->user();
-        return view('user.profil',compact('user'));
+        return view('user.profil',compact('user', 'totalpesanan'));
     }
 
 

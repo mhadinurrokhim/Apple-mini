@@ -99,7 +99,10 @@
                 </li>
                 <li class="nav-item"><a class="nav-link px-2 icon-indicator icon-indicator-primary" href="{{ route('keranjang') }}"
                     role="button"><span class="text-700" data-feather="shopping-cart"
-                      style="height:20px;width:20px;"></span><span class="icon-indicator-number">3</span></a></li>
+                      style="height:20px;width:20px;"></span><span class="icon-indicator-number">
+                    @if ($totalpesanan > 0)
+                        <span>{{ $totalpesanan }}</span>
+                    @endif</span></a></li>
                 <li class="nav-item dropdown"><a
                     class="nav-link px-2 icon-indicator icon-indicator-sm icon-indicator-danger"
                     id="navbarTopDropdownNotification" href="#" role="button" data-bs-toggle="dropdown"
