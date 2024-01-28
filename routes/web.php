@@ -63,6 +63,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 
     Route::get('/AdminDashboard', [AdmindashboardController::class, 'index'])->name('dashboard');
     Route::get('/adminorder', [AdminorderController::class, 'index'])->name('order.side');
+    Route::get('/getTaxData', [AdmindashboardController::class, 'getTaxData'])->name('getTaxData');
 
     Route::controller(ProdukController::class)->prefix('produk')->group(function () {
         Route::get('', 'index')->name('produk');
@@ -85,6 +86,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 
 // User
 Route::middleware([UserMiddleware::class])->group(function () {
+
+    // Route::resource('pembelianproduk',PembayaranController::class);
 
     Route::get('/homeuser', [HomeUserController::class, 'homeuser'])->name('homeuser');
     Route::get('/detailproduk{id}', [HomeUserController::class, 'detailproduk'])->name('detail.produk');
@@ -147,7 +150,7 @@ Route::controller(PembayaranController::class)->prefix('pembayaran')->group(func
     Route::post('store', 'store')->name('pembayaran.store');
     Route::get('edit/{id}', 'edit')->name('pembayaran.edit');
     Route::put('edit/{id}', 'update')->name('pembayaran.update');
-    Route::get('destroy/{id}', 'destroy')->name('pembayaran.destroy');
+    Route::delete('destroy/{id}', 'destroy')->name('pembayaran.destroy');
 });
 
 

@@ -34,14 +34,14 @@ class AuthController extends Controller
             'password' => 'required|min:8|confirmed',
             'password_confirmation' => 'required',
         ], [
-            'name.required' => 'Nama harus diisi.',
-            'email.required' => 'Alamat email harus diisi.',
-            'email.email' => 'Format alamat email tidak valid.',
-            'email.unique' => 'Alamat email sudah terdaftar. Gunakan alamat email lain.',
-            'password.required' => 'Kata sandi harus diisi.',
-            'password.min' => 'Kata sandi minimal harus terdiri dari 8 karakter.',
-            'password.confirmed' => 'Konfirmasi kata sandi tidak cocok.',
-            'password_confirmation.required' => 'Konfirmasi kata sandi harus diisi.',
+            'name.required' => 'Name is required.',
+            'email.required' => 'Email address is required.',
+            'email.email' => 'Invalid email address format.',
+            'email.unique' => 'Email address is already registered. Please use another email address.',
+            'password.required' => 'Password is required.',
+            'password.min' => 'Password must be at least 8 characters long.',
+            'password.confirmed' => 'Password confirmation does not match.',
+            'password_confirmation.required' => 'Password confirmation is required.',
         ]);
         if (User::where('email', $request->email)->exists()) {
             return redirect('/login')->with('error', 'Alamat email sudah terdaftar. Gunakan alamat email lain.');
@@ -102,7 +102,7 @@ class AuthController extends Controller
     public function logout(){
 
         Auth::logout();
-        
+
         return redirect('/')->with('success', 'Successfully logout');
     }
     public function changeAccount(){

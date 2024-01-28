@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bank;
+use App\Models\Ewallet;
 use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 
@@ -17,13 +19,16 @@ class PembayaranController extends Controller
         return view("admin.pembayaran.index", compact('pembayaran','user'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function metodepembayaran()
     {
         $pembayaran = Pembayaran::all();
+        return view('admin.pembayaran.create'.compact('pembayaran'));
+    }
+
+    public function create()
+    {
         $user = auth()->user();
+        $pembayaran = Pembayaran::all();
         return view("admin.pembayaran.create", compact('pembayaran','user'));
     }
 
@@ -32,17 +37,123 @@ class PembayaranController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'metode_pembayaran' => 'required|string|max:255',
-        ], [
-            'metode_pembayaran.required' => 'The Payment Method field is required.',
-            'metode_pembayaran.string' => 'The Payment Method must be a string.',
-            'metode_pembayaran.max' => 'The Payment Method must not be more than :max characters.',
 
-        ]);
+        // dd($request->all());
 
-        Pembayaran::create($request->all());
-        return redirect()->route('pembayaran')->with("success","Data pembayaran berhasil ditambahkan.");
+
+        if($request->keterangan_ewallet == null)
+        {
+            if($request->keterangan_bank == null)
+            {
+               return redirect('pembayaran');
+            }else{
+                Pembayaran::create([
+                    'metode_pembayaran' => $request->metode_pembayaran,
+                    'tujuan' => $request->tujuan_bank,
+                    'keterangan' => $request->keterangan_bank,
+                ]);
+            }
+        }else{
+            $namefile = $request->file('keterangan_ewallet');
+            $path = $namefile->hashName();
+            $namefile->storeAs('public/product', $path);
+            Pembayaran::create([
+                'metode_pembayaran' => $request->metode_pembayaran,
+                'tujuan' => $request->tujuan_ewallet,
+                'keterangan' => $path,
+            ]);
+
+        }
+
+        // $request->validate([
+        //     'metode_pembayaran' => 'required',
+        //     'tujuan' => 'required',
+        //     'keterangan' => [
+        //         'required',
+        //         function ($attribute, $value, $fail) use ($request) {
+        //             if ($request->input('metode_pembayaran') == 'bank') {
+        //                 if (!is_numeric($value)) {
+        //                     $fail('Keterangan untuk metode pembayaran bank harus berupa angka.');
+        //                 }
+        //                 $isUnique = Pembayaran::where('metode_pembayaran', 'bank')
+        //                     ->where('keterangan', $value)
+        //                     ->count();
+
+        //                 if ($isUnique > 0) {
+        //                     $fail('Keterangan untuk metode pembayaran bank sudah ada.');
+        //                 }
+        //             } elseif ($request->input('metode_pembayaran') == 'ewallet') {
+        //                 if (
+        //                     !$request->file('keterangan')->isValid() ||
+        //                     !in_array($request->file('keterangan')->getClientOriginalExtension(), ['jpeg', 'jpg', 'png'])
+        //                 ) {
+        //                     $fail('Keterangan untuk metode pembayaran e-wallet harus berupa file dengan format jpeg, jpg, atau png.');
+        //                 }
+        //                 if ($request->file('keterangan')->getSize() > 2048) {
+        //                     $fail('Ukuran maksimal Keterangan untuk metode pembayaran e-wallet adalah 2MB.');
+        //                 }
+        //             }
+        //         },
+        //     ],
+        // ], [
+        //     'metode_pembayaran.required' => 'Metode pembayaran wajib dipilih.',
+        //     'tujuan.required' => 'Tujuan wajib diisi.',
+        //     'keterangan-required' => 'keterangan harus di isi',
+        // ]);
+
+        // Pembayaran::create($request->all());
+        // return redirect()->route('pembayaran')->with("success","Data pembayaran berhasil ditambahkan.");
+        // $request->validate([
+        //     'metode_pembayaran' => 'required',
+        //     'tujuan' => 'required',
+        //     'keterangan' => [
+        //         'required',
+        //         function ($attribute, $value, $fail) use ($request) {
+        //             if ($request->input('metode_pembayaran') == 'bank') {
+        //                 if (!is_numeric($value)) {
+        //                     $fail('Keterangan untuk metode pembayaran bank harus berupa angka.');
+        //                 }
+        //                 // Selain validasi angka, tambahkan validasi keunikan untuk metode pembayaran 'bank'
+        //                 $isUnique = Pembayaran::where('metode_pembayaran', 'bank')
+        //                     ->where('keterangan', $value)
+        //                     ->count();
+
+        //                 if ($isUnique > 0) {
+        //                     $fail('Keterangan untuk metode pembayaran bank sudah ada.');
+        //                 }
+        //             } elseif ($request->input('metode_pembayaran') == 'ewallet') {
+        //                 if (
+        //                     !$request->file('keterangan')->isValid() ||
+        //                     !in_array($request->file('keterangan')->getClientOriginalExtension(), ['jpeg', 'jpg', 'png'])
+        //                 ) {
+        //                     $fail('Keterangan untuk metode pembayaran e-wallet harus berupa file dengan format jpeg, jpg, atau png.');
+        //                 }
+        //                 if ($request->file('keterangan')->getSize() > 2048) {
+        //                     $fail('Ukuran maksimal Keterangan untuk metode pembayaran e-wallet adalah 2MB.');
+        //                 }
+        //             }
+        //         },
+        //     ],
+        // ], [
+        //     'metode_pembayaran.required' => 'Metode pembayaran wajib dipilih.',
+        //     'tujuan.required' => 'Tujuan wajib diisi.',
+        //     'keterangan-required' => 'keterangan harus di isi',
+        // ]);
+
+
+        // $pembayaran = new Pembayaran();
+        // $pembayaran->metode_pembayaran = $request->metode_pembayaran;
+        // $pembayaran->tujuan = $request->tujuan;
+        // $pembayaran->keterangan = $request->input('keterangan');
+
+        // if ($request->file('keterangan')) {
+        //     $image = $request->file('keterangan');
+        //     $filename = $image->hashName();
+        //     $image->storeAs('public/product', $filename);
+        //     $pembayaran->keterangan = $filename;
+        // }
+        // $pembayaran->save();
+        return redirect('pembayaran')->with('success', 'Berhasil menambah kategori');
     }
 
     /**

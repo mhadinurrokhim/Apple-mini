@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Produk;
 use App\Models\admindashboard;
@@ -25,9 +26,35 @@ class AdmindashboardController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function getTaxData()
     {
-        //
+        $currentYear = date('Y');
+        $months = range(1, 12);
+
+        $taxData = collect($months)->map(function ($month) use ($currentYear) {
+            $date = Carbon::create($currentYear, $month, 1);
+
+            return [
+                'month' => $date->format('F Y'),
+                'total_tax' => $this->getTotalTaxForMonth($month, $currentYear)
+            ];
+        });
+
+        $allMonths = collect($months)->map(function ($month) use ($currentYear) {
+            $monthKey = Carbon::create($currentYear, $month, 1)->format('F Y');
+            return [
+                'month' => $monthKey,
+                'total_tax' => 0,
+            ];
+        });
+
+        $mergedData = $allMonths->map(function ($monthRecord) use ($taxData) {
+            $taxDataValue = $taxData->where('month', $monthRecord['month'])->first()['total_tax'] ?? null;
+
+            return array_merge($monthRecord, ['total_tax' => $taxDataValue ?? 0]);
+        });
+
+        return response()->json($mergedData);
     }
 
     /**

@@ -310,7 +310,7 @@
               </div>
               <div class="row gx-3">
                 <div class="col-12">
-                    <a href="{{ route('produk.side')}}"
+                    <a href="{{ route('produk')}}"
                     class="btn btn-warning me-2 mb-2 mb-sm-0" type="button">
                         Back
                 </a>

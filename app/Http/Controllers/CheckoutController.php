@@ -104,8 +104,7 @@ class CheckoutController extends Controller
     {
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
         $user = auth()->user();
-        $id = Auth::user()->id;
-        $items = DetailPesanan::where('status', 'checkout')->where('user_id', $id)->get();
+        $items = DetailPesanan::where('status', 'checkout')->where('user_id', $user->id)->get();
         return view('user.checkout', compact('items', 'user', 'totalpesanan'));
     }
 
