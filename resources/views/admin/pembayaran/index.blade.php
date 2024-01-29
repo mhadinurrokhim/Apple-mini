@@ -260,11 +260,6 @@
     </script>
     <div class="content">
         <nav class="mb-2" aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="#!">Page 1</a></li>
-                <li class="breadcrumb-item"><a href="#!">Page 2</a></li>
-                <li class="breadcrumb-item active">Default</li>
-            </ol>
         </nav>
         <div class="mb-9">
             <div class="row g-3 mb-4">
@@ -300,41 +295,75 @@
                                     <th class="white-space-nowrap fs--1 text-start align-middle ps-0" style="width: 10%">
                                         <span>NO</span>
                                     </th>
-                                    <th class="sort text-center white-space-nowrap align-middle ps-4" scope="col"
+                                    <th class="sort text-center white-space-nowrap fs--1 text-start align-middle ps-0" scope="col"
                                         style="width:70%;">PAYMENT NAME</th>
+                                    <th class="sort text-center white-space-nowrap fs--1 text-start align-middle ps-0" scope="col"
+                                        style="width:70%;">OBJECTIVE</th>
+                                    <th class="sort text-center white-space-nowrap fs--1 text-start align-middle ps-0" scope="col"
+                                        style="width:70%;">INFORMATION</th>
 
                                     <th class="sort text-end align-middle pe-0 ps-4" scope="col" style="width: 20%">ACTION</th>
                                 </tr>
                             </thead>
-                            <tbody class="list" id="products-table-body">
-                                @if ($pembayaran->count() > 0)
-                                    @foreach ($pembayaran as $pembayarans)
-                                        <tr class="position-static">
-                                            <td class="fs--1 align-middle"><span>{{ $loop->iteration }}</span></td>
-                                            <td class="text-center product align-middle ps-4"><span></span>{{ $pembayarans->metode_pembayaran }}</td>
-                                            <td class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
-                                                <div class="font-sans-serif btn-reveal-trigger position-static"><button
-                                                        class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2"
-                                                        type="button" data-bs-toggle="dropdown" data-boundary="window"
-                                                        aria-haspopup="true" aria-expanded="false"
-                                                        data-bs-reference="parent"><span
-                                                            class="fas fa-ellipsis-h fs--2"></span></button>
-                                                    <div class="dropdown-menu dropdown-menu-end py-2"><a class="dropdown-item"
-                                                            href="{{ route('pembayaran.edit', $pembayarans->id) }}">Edit</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item text-danger" href="{{ route('pembayaran.destroy', $pembayarans->id) }}">Remove</a>
-                                                        {{-- <form class="" action="{{ route('kategori.destroy', $kategoris->id) }}">
-                                                            @csrf
-                                                            @method('delete')
-                                                            <button type="submit" class="btn btn-danger">
-                                                                Remove
-                                                            </button>
-                                                        </form> --}}
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                            <tbody>
+                                @php
+                                    $no = 1;
+                                    @endphp
+                                    @if ($pembayaran->count() > 0)
+                            @foreach ($pembayaran as $a)
+                                    <tr>
+                                        <td>{{ $no++ }}</th>
+                                        <td>{{ $a->metode_pembayaran }}</td>
+                                        <td>{{ $a->tujuan }}</td>
+                                        @php
+                                            $long = strlen($a->keterangan);
+                                        @endphp
+                                        <td>
+                                            @if ($long >= 15)
+                                                <img src="{{ asset('storage/product/' . $a->keterangan) }}"
+                                                    width="120px" height="120px" alt="">
+                                            @else
+                                                {{ $a->keterangan }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <div class="d-flex">
+                                                <button style="margin-right: 10px;"
+                                                    class="btn btn-outline-warning edit-button"
+                                                    data-id="{{ $a->id }}"
+                                                    data-metode="{{ $a->metode_pembayaran }}"><i
+                                                        class="bi bi-pencil-square"></i>
+                                                </button>
+                                                <form action="{{ route('pembayaran.destroy', $a->id) }}" method="post"
+                                                    id="delete-form{{ $a->id }}">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="button" class="btn btn-outline-danger delete-btn"
+                                                        id="delete-button"
+                                                        onclick="deleteKategori({{ $a->id }})"><i class="bi bi-trash-fill"></i></button>
+                                                </form>
+                                                <script>
+                                                    function deleteKategori(id) {
+                                                        Swal.fire({
+                                                            title: 'Apakah Anda Yakin?',
+                                                            text: 'Data akan terhapus selamanya!',
+                                                            icon: 'question',
+                                                            showCancelButton: true,
+                                                            confirmButtonText: 'Ya, Hapus',
+                                                            cancelButtonText: 'Batal',
+                                                            reverseButtons: true
+                                                        }).then((result) => {
+                                                            if (result.isConfirmed) {
+                                                                document.getElementById('delete-form' + id).submit();
+                                                            }
+                                                        });
+                                                    }
+                                                </script>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 @endif
                             </tbody>
                         </table>
