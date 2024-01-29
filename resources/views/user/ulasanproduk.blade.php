@@ -3,6 +3,30 @@
     @include('Asset.SweetAlert')
     <!-- ============================================-->
     <!-- <section> begin ============================-->
+        <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .rating {
+      display: inline-block;
+    }
+
+    .rating input {
+      display: none;
+    }
+
+    .rating label {
+      font-size: 24px;
+      color: #ddd;
+      cursor: pointer;
+    }
+
+    .rating label:hover,
+    .rating label:hover ~ label,
+    .rating input:checked ~ label {
+      color: #ffcc00;
+    }
+  </style>
+
     <section class="py-0">
         <div class="container-small">
             <div class="row g-5 mb-5 mb-lg-8" data-product-details="data-product-details">
@@ -48,23 +72,37 @@
                                     <form method="POST" action="{{ route('ulasanproduk.store') }}">
                                         @csrf
                                         <div class="mb-3">
-                                            <label for="rating">Rating</label>
-                                            <select class="form-select" name="rating" id="">
-                                                <option value="1">★</option>
-                                                <option value="2">★★</option>
-                                                <option value="3">★★★</option>
-                                                <option value="4">★★★★</option>
-                                                <option value="5">★★★★★</option>
-                                            </select>
+                                            <div class="rating">
+                                                <input type="radio" name="rating" id="star1" value="1">
+                                                <label for="star1">&#9733;</label>
+                                                <input type="radio" name="rating" id="star2" value="2">
+                                                <label for="star2">&#9733;</label>
+                                                <input type="radio" name="rating" id="star3" value="3">
+                                                <label for="star3">&#9733;</label>
+                                                <input type="radio" name="rating" id="star4" value="4">
+                                                <label for="star4">&#9733;</label>
+                                                <input type="radio" name="rating" id="star5" value="5">
+                                                <label for="star5">&#9733;</label>
+                                              </div>
+
+                                              <script>
+                                                const ratingInputs = document.querySelectorAll('.rating input');
+
+                                                ratingInputs.forEach(input => {
+                                                  input.addEventListener('change', (event) =>
+                                                  );
+                                                });
+                                              </script>
+                                              <div>
                                             <label for="commentInput" class="">Your Comment</label>
                                             <textarea class="form-control" id="commentInput" rows="3" name="ulasan"></textarea>
                                             <input type="hidden" name="produk_id" value="{{ $produk->id }}">
                                             <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                              </div>
                                         </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Add</button>
+                                    <button type="submit" class="btn btn-primary">Send</button>
                                 </div>
                                 </form>
                             </div>
