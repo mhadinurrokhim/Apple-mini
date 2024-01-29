@@ -75,7 +75,7 @@
                             document.querySelector('[data-type="minus"]').addEventListener('click', function() {
                                 var quantityInput = document.getElementById('quantityInput');
                                 if (quantityInput.value > 1) {
-                                    quantityInput.value = parseInt(quantityInput.value) - 1;
+                                    quantityInput.value = parseInt(quantityInput.value) - 0;
                                 }
                             });
 
@@ -85,7 +85,7 @@
                                 var currentQuantity = parseInt(quantityInput.value);
 
                                 if (currentQuantity < maxStock) {
-                                    quantityInput.value = currentQuantity + 1;
+                                    quantityInput.value = currentQuantity + 0;
                                 } else {
                                     Swal.fire({
                                         icon: "error",
