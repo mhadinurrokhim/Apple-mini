@@ -10,9 +10,10 @@
                     <div class="row g-3 mb-3">
                         <div class="col-12 col-md-2 col-lg-12 col-xl-2">
                             <div class="swiper-products-thumb swiper swiper-container theme-slider overflow-visible"
-                                id="swiper-products-thumb"></div>
+                                id="swiper-products-thumb">
+                            </div>
                         </div>
-                        <div class="col-12 col-md-10 col-lg-12 col-xl-10">
+                        <div class="col-12 col-md-10 col-lg-12 col-xl-10" style="margin-top: 35px;">
                             <div class="d-flex align-items-center border rounded-3 text-center p-5 h-100">
                                 <div style="position: relative; width: 100%; height: 100%;">
                                     <img src="{{ asset('storage/Product/' . $produk->path_produk) }}" alt=""
@@ -28,7 +29,7 @@
                     <div class="d-flex">
                         <button class="btn btn-lg btn-outline-primary rounded-pill w-100 me-3 px-2 px-sm-4 fs--1 fs-sm-0"
                             data-bs-toggle="modal" data-bs-target="#commentModal">
-                            <span class="me-2 far fa-heart"></span>Add comment
+                            <span class="me-2 far fa-comment"></span>Add comment
                         </button>
                     </div>
 
@@ -49,11 +50,11 @@
                                         <div class="mb-3">
                                             <label for="rating">Rating</label>
                                             <select class="form-select" name="rating" id="">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
+                                                <option value="1">★</option>
+                                                <option value="2">★★</option>
+                                                <option value="3">★★★</option>
+                                                <option value="4">★★★★</option>
+                                                <option value="5">★★★★★</option>
                                             </select>
                                             <label for="commentInput" class="">Your Comment</label>
                                             <textarea class="form-control" id="commentInput" rows="3" name="ulasan"></textarea>
@@ -74,29 +75,31 @@
                 <div class="col-12 col-lg-6">
                     <div class="d-flex flex-column justify-content-between h-100">
                         <div>
-                            <div
-                                style="border: 1px solid #ccc; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-height: 486px; overflow-y: auto;">
-                                <div style="padding: 20px;">
-                                    <h3 style="margin-top: 0;">Ulasan</h3>
-                                    <hr>
-                                    @if (($ulasan->count() < 1))
-                                        <h4 class="text-center">There are no reviews</h4>
-                                    @endif
-                                    @foreach ($ulasan as $u)
-                                        <div style="color: #666;">
-                                            <h4 style="margin-top: 0;">{{ $u->name }}</h4>
-                                            <div style="display: flex; align-items: center;">
-                                                @for ($i = 1; $i <= $u->rating; $i++)
-                                                    <span style="color: #ffd700;">★</span>
-                                                @endfor
+                            <div style="margin-top: 20px;">
+                                <div style="border: 1px solid #ccc; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-height: 486px; overflow-y: auto;">
+                                    <div style="padding: 20px;">
+                                        <h3 style="margin-top: 0;">Ulasan</h3>
+                                        <hr>
+                                        @if ($ulasan->count() < 1)
+                                            <h4 class="text-center">There are no reviews</h4>
+                                        @endif
+                                        @foreach ($ulasan as $u)
+                                            <div style="color: #666;">
+                                                <h4 style="margin-top: 0;">{{ $u->name }}</h4>
+                                                <div style="display: flex; align-items: center;">
+                                                    @for ($i = 1; $i <= $u->rating; $i++)
+                                                        <span style="color: #ffd700;">★</span>
+                                                    @endfor
+                                                </div>
+                                                <span style="margin-right: 5px;">{{ $u->ulasan }}</span>
+                                                <hr>
                                             </div>
-                                            <span style="margin-right: 5px;">{{ $u->ulasan }}</span>
-                                            <hr>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                         <div><button class="btn btn-lg btn-primary w-100 fs--1 fs-sm-0" onclick="goBack()"><span
                                     class="fas fa-arrow-left me-2"></span>Kembali</button>
                             <script>
