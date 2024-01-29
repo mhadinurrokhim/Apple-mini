@@ -35,8 +35,8 @@
                                             class="fas fa-minus"></span></button>
                                     <input
                                         class="form-control text-center input-spin-none bg-transparent border-0 outline-none"
-                                        style="width:50px;" type="number" name="jumlah" value="1"
-                                        id="quantityInput" onkeyup="addToCart()" />
+                                        style="width:50px;" type="number" name="jumlah" value="1" id="quantityInput"
+                                        onkeyup="addToCart()" />
                                     <button type="button" class="btn btn-phoenix-primary px-3" data-type="plus"><span
                                             class="fas fa-plus"></span></button>
                                 </div>
@@ -100,13 +100,22 @@
                         <div class="d-flex flex-column justify-content-between h-100">
                             <div class="">
                                 <div class="d-flex flex-wrap">
-                                    <div class="me-2"><span class="fa fa-star text-warning"></span><span
-                                            class="fa fa-star text-warning"></span><span
-                                            class="fa fa-star text-warning"></span><span
-                                            class="fa fa-star text-warning"></span><span
-                                            class="fa fa-star text-warning"></span>
+                                    <div class="me-2">
+                                        @if (!is_null($detail->rating))
+                                            @if ($detail->rating - floor($detail->rating) < 0.5)
+                                                @for ($i = 0; $i < floor($detail->rating); $i++)
+                                                    <span class="fa fa-star text-warning"></span>
+                                                @endfor
+                                            @else
+                                                @for ($i = 0; $i < ceil($detail->rating); $i++)
+                                                    <span class="fa fa-star text-warning"></span>
+                                                @endfor
+                                            @endif
+                                            <span class="text-primary fw-semi-bold mb-2"> ({{ $detail->totalulasan }} people rated)</span>
+                                        @else
+                                            <h3 class="me-n2">There are no reviews</h3>
+                                        @endif
                                     </div>
-                                    <p class="text-primary fw-semi-bold mb-2"> People rated and reviewed </p>
                                 </div>
                                 <h3 style="display: block; overflow-wrap: break-word; word-wrap: break-word;"
                                     class="mb-3 lh-sm">{{ ucfirst($detail->nama_produk) }}</h3>

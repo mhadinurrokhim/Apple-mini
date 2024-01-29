@@ -78,8 +78,8 @@
                                                         method="POST">
                                                         @csrf
                                                         @method('delete')
-                                                        <button type="submit"
-                                                            class="btn btn-sm text-500 hover-text-600 me-2">
+                                                        <button type="button"
+                                                            class="btn btn-sm text-500 hover-text-600 me-2 hapus">
                                                             <span class="fas fa-trash"></span>
                                                         </button>
                                                     </form>
@@ -187,6 +187,25 @@
             // Submit the form
             $('#updateCartForm').submit();
         }
+    </script>
+    <script>
+        $('.hapus').click(function() {
+            var form = $(this).closest('form');
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You will delete this product. This action cannot be undone!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, accept!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
     </script>
     {{-- <script>
         document.addEventListener('DOMContentLoaded', function() {

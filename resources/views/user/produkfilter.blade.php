@@ -60,7 +60,7 @@
                                 <div class="d-flex justify-content-between mb-3">
                                     <div class="input-group me-2"><input class="form-control" type="number"
                                             aria-label="First name" placeholder="Min" name="min"
-                                            value="{{ $minPrice }}"><input class="form-control" type="text"
+                                            value="{{ $minPrice }}"><input class="form-control" type="number"
                                             aria-label="Last name" placeholder="Max" name="max"
                                             value="{{ $maxPrice }}"></div><button
                                         class="btn btn-phoenix-primary border-300 px-3" type="submit ">Go</button>
@@ -160,8 +160,12 @@
                                                                     <span class="fa fa-star text-warning"></span>
                                                                 @endfor
                                                             @endif
+                                                            <span
+                                                                class="text-500 fw-semi-bold ms-1">({{ $pf->totalulasan }}
+                                                                people rated)</span>
+                                                        @else
+                                                            <p>There are no reviews</p>
                                                         @endif
-                                                        <span class="text-500 fw-semi-bold ms-1">({{ is_null($pf->totalulasan)?0:$pf->totalulasan }} people rated)</span>
                                                     </p>
                                                 </div>
                                             </div>

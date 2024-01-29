@@ -30,7 +30,10 @@ class HomeUserController extends Controller
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
         // $user = produk::findOrFail($id);
         $user = auth()->user();
-        $produk = produk::where('id', $id)->get();
+        $produk = DB::table('produk')->leftJoin('ulasan', 'produk.id', '=', 'ulasan.produk_id')
+            ->select('produk.*', DB::raw('avg(rating) AS rating'), DB::raw('count(produk_id) AS totalulasan'))
+            ->groupBy('id')
+            ->get();
         return view('user.produkdetail', compact('produk', 'user', 'totalpesanan'));
     }
 
