@@ -292,17 +292,11 @@
                         <table class="table fs--1 mb-0">
                             <thead>
                                 <tr>
-                                    <th class="white-space-nowrap fs--1 text-start align-middle ps-0" style="width: 10%">
-                                        <span>NO</span>
-                                    </th>
-                                    <th class="sort text-center white-space-nowrap fs--1 text-start align-middle ps-0" scope="col"
-                                        style="width:70%;">PAYMENT NAME</th>
-                                    <th class="sort text-center white-space-nowrap fs--1 text-start align-middle ps-0" scope="col"
-                                        style="width:70%;">OBJECTIVE</th>
-                                    <th class="sort text-center white-space-nowrap fs--1 text-start align-middle ps-0" scope="col"
-                                        style="width:70%;">INFORMATION</th>
-
-                                    <th class="sort text-end align-middle pe-0 ps-4" scope="col" style="width: 20%">ACTION</th>
+                                    <th style="width: 5%;">NO</th>
+                                    <th style="width: 30%;">PAYMENT NAME</th>
+                                    <th style="width: 25%;">OBJECTIVE</th>
+                                    <th style="width: 25%;">INFORMATION</th>
+                                    <th style="width: 15%;">ACTION</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -338,9 +332,9 @@
                                                     id="delete-form{{ $a->id }}">
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button type="button" class="btn btn-outline-danger delete-btn"
+                                                    <button type="button" class="btn btn-danger delete-btn"
                                                         id="delete-button"
-                                                        onclick="deleteKategori({{ $a->id }})"><i class="bi bi-trash-fill"></i></button>
+                                                        onclick="deleteKategori({{ $a->id }})"><span class="me-2 far fa-trash-alt"></span></button>
                                                 </form>
                                                 <script>
                                                     function deleteKategori(id) {
