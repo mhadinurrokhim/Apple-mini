@@ -54,12 +54,18 @@
                                             </a>
                                             <p class="fs--1 text-1000 fw-bold ">Stock {{ $product->stok }}</p>
                                             <p class="fs--1">
-                                                <span class="fa fa-star text-warning"></span>
-                                                <span class="fa fa-star text-warning"></span>
-                                                <span class="fa fa-star text-warning"></span>
-                                                <span class="fa fa-star text-warning"></span>
-                                                <span class="fa fa-star text-warning"></span>
-                                                <span class="text-500 fw-semi-bold ms-1">(67 people rated)</span>
+                                                @if (!is_null($product->rating))
+                                                    @if ($product->rating - floor($product->rating) < 0.5)
+                                                        @for ($i = 0; $i < floor($product->rating); $i++)
+                                                        <span class="fa fa-star text-warning"></span>
+                                                        @endfor
+                                                    @else
+                                                        @for ($i = 0; $i < ceil($product->rating); $i++)
+                                                        <span class="fa fa-star text-warning"></span>
+                                                        @endfor
+                                                    @endif
+                                                @endif
+                                                <span class="text-500 fw-semi-bold ms-1">({{ is_null($product->totalulasan)?0:$product->totalulasan }} people rated)</span>
                                             </p>
                                         </div>
                                         <div class="card-footer">

@@ -181,7 +181,7 @@
                       <td class="tags align-middle review pb-2 ps-3 fs--1 " style="width:200px;">{{ $produks->stok }}
                       </td>
 
-                      <td class="ellipsis-text col-1">{{ strip_tags (Str::limit($produks->deskripsi, 10, $end = '...')) }}</td>
+                      <td class="ellipsis-text col-1">{{ strip_tags(Str::limit($produks->deskripsi, 10, $end = '...')) }}</td>
                       <td class="align-middle review fs-0 text-center ps-4">
                         <a href="{{ route('produk.edit', $produks->id) }}"method="POST" enctype="multipart/form-data"
                           class="btn btn-primary">

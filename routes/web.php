@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UlasanController;
 use App\Models\Adminorder;
 use App\Http\Controllers\Homeuser;
 use Illuminate\Support\Facades\Auth;
@@ -107,7 +108,6 @@ Route::middleware([UserMiddleware::class])->group(function () {
 
     // Route::post('/prosescheckout{id}', [CheckoutController::class, 'prosescheckout'])->name('prosescheckout');
     // Route::get('/produkdetail', [ProdukdetailController::class, 'produkdetail'])->name('produkdetail');
-    Route::get('/ulasanproduk', [UlasanprodukController::class, 'ulasanproduk']);
     // Route::controller(CheckoutController::class)->prefix('checkout')->group(function () {
     //     Route::get('/checkout/{id}', 'index')->name('checkout.index');
     //     Route::get('/checkout', 'store')->name('checkout');
@@ -119,6 +119,12 @@ Route::middleware([UserMiddleware::class])->group(function () {
     //     Route::get('/checkouttampil', 'checkout')->name('checkout.side');
     //     Route::patch('/checkout-keranjang', 'checkoutkeranjang')->name('checkout.keranjang');
     // });
+
+    Route::controller(UlasanController::class)->prefix('ulasanproduk')->group(function () {
+        Route::get('show/{id}', 'show')->name('ulasanproduk');
+        Route::post('store', 'store')->name('ulasanproduk.store');
+    });
+
 
     Route::controller(KeranjangController::class)->prefix('keranjang')->group(function () {
         Route::get('keranjang', 'index')->name('keranjang');

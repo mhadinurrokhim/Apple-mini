@@ -267,7 +267,8 @@
 
             #imagePreview img {
                 max-width: 100%;
-                max-height: 200px; /* Atur tinggi maksimum sesuai kebutuhan */
+                max-height: 200px;
+                /* Atur tinggi maksimum sesuai kebutuhan */
                 object-fit: contain;
                 margin-top: 10px;
             }
@@ -277,129 +278,133 @@
             }
         </style>
 
-       {{-- {{ TAMBAH }} --}}
-    <form class="mb-9" action="{{ route('produk.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="row g-5">
-            <div class="col-12 col-xl-8">
-                <!-- Konten form di sini -->
-                <h4 class="mb-3">Product Title</h4>
-                <input class="form-control mb-2 @error('nama_produk') is-invalid @enderror"
-                       type="text"
-                       name="nama_produk"
-                       placeholder="Write title here..." />
+        {{-- {{ TAMBAH }} --}}
+        <form class="mb-9" action="{{ route('produk.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="row g-5">
+                <div class="col-12 col-xl-8">
+                    <!-- Konten form di sini -->
+                    <h4 class="mb-3">Product Title</h4>
+                    <input class="form-control mb-2 @error('nama_produk') is-invalid @enderror" type="text"
+                        name="nama_produk" value="{{ old('nama_produk') }}" placeholder="Write title here..." />
 
-                @error('nama_produk')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-
-                <div class="mb-6">
-                    <h4 class="mb-3">Product Description</h4>
-                    <textarea class="tinymce @error('deskripsi') is-invalid @enderror"
-                              name="deskripsi"
-                              data-tinymce='{"height":"15rem","placeholder":"Write a description here...","plugins": "nonbreaking"}'></textarea>
-
-                    @error('deskripsi')
+                    @error('nama_produk')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
-                </div>
 
-                <h4 class="mb-3">Display images</h4>
+                    <div class="mb-6">
+                        <h4 class="mb-3">Product Description</h4>
+                        <textarea class="tinymce @error('deskripsi') is-invalid @enderror" name="deskripsi"
+                            data-tinymce='{"height":"15rem","placeholder":"Write a description here...","plugins": "nonbreaking"}'>
+                            {{ old('deskripsi') }}
+                        </textarea>
 
-                <div>
-                    <div id="imagePreview" class="mt-2"></div>
-                    @error('path_produk')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                    <br><br>
-                    <input type="file" name="path_produk" id="imageInput" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white @error('path_produk') is-invalid @enderror">
-                </div>
-                <script>
-                    function previewImage(input) {
-                        var preview = document.getElementById('imagePreview');
-                        preview.innerHTML = '';
+                        @error('deskripsi')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-                        if (input.files && input.files[0]) {
-                            var reader = new FileReader();
+                    <h4 class="mb-3">Display images</h4>
 
-                            reader.onload = function (e) {
-                                var img = document.createElement('img');
-                                img.src = e.target.result;
-                                img.className = 'rounded-lg max-w-xs';
-                                preview.appendChild(img);
-                            };
+                    <div>
+                        <div id="imagePreview" class="mt-2"></div>
+                        @error('path_produk')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        <br><br>
+                        <input type="file" name="path_produk" id="imageInput"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white @error('path_produk') is-invalid @enderror">
+                    </div>
+                    <script>
+                        function previewImage(input) {
+                            var preview = document.getElementById('imagePreview');
+                            preview.innerHTML = '';
 
-                            reader.readAsDataURL(input.files[0]);
+                            if (input.files && input.files[0]) {
+                                var reader = new FileReader();
+
+                                reader.onload = function(e) {
+                                    var img = document.createElement('img');
+                                    img.src = e.target.result;
+                                    img.className = 'rounded-lg max-w-xs';
+                                    preview.appendChild(img);
+                                };
+
+                                reader.readAsDataURL(input.files[0]);
+                            }
                         }
-                    }
 
-                    document.getElementById('imageInput').addEventListener('change', function () {
-                        previewImage(this);
-                    });
-                </script>
-            </div>
+                        document.getElementById('imageInput').addEventListener('change', function() {
+                            previewImage(this);
+                        });
+                    </script>
+                </div>
 
-            <div class="col-12 col-xl-4">
-                <div class="row g-2">
-                    <div class="col-12 col-xl-12 order-xl-first">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h4 class="card-title mb-4">Organize</h4>
-                                <div class="row gx-3">
-                                    <div class="col-12 col-sm-6 col-xl-12">
-                                      <div class="mb-4">
-                                        <div class="d-flex flex-wrap mb-2">
-                                          <h5 class="mb-0 text-1000 me-2">Category</h5><a class="fw-bold fs--1" href="#!"></a>
+                <div class="col-12 col-xl-4">
+                    <div class="row g-2">
+                        <div class="col-12 col-xl-12 order-xl-first">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h4 class="card-title mb-4">Organize</h4>
+                                    <div class="row gx-3">
+                                        <div class="col-12 col-sm-6 col-xl-12">
+                                            <div class="mb-4">
+                                                <div class="d-flex flex-wrap mb-2">
+                                                    <h5 class="mb-0 text-1000 me-2">Category</h5><a class="fw-bold fs--1"
+                                                        href="#!"></a>
+                                                </div>
+                                                <select
+                                                    class="form-select mb-3 @error('kategori_id') is-invalid @enderror"name="kategori_id"
+                                                    value="{{ old('kategori_id') }}"aria-label="category">
+                                                    @foreach ($kategori as $kategoris)
+                                                        <option value="{{ $kategoris->id }}">
+                                                            {{ $kategoris->nama_kategori }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
-                                        <select class="form-select mb-3 @error('kategori_id') is-invalid @enderror"name="kategori_id" value="{{ old('kategori_id') }}"aria-label="category">
-                                        @foreach ($kategori as $kategoris)
-                                            <option value="{{ $kategoris->id }}">
-                                                {{ $kategoris->nama_kategori }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                      </div>
+                                        <div class="col-12 col-sm-6 col-xl-12">
+                                            <div class="mb-4">
+                                                <h5 class="mb-2 text-1000">Stock</h5>
+                                                <input class="form-control mb-xl-3 @error('stok') is-invalid @enderror"
+                                                    type="number" name="stok" value="{{ old('stok') }}" placeholder="Stock" />
+
+                                                @error('stok')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-sm-6 col-xl-12">
+                                            <div class="mb-4">
+                                                <h5 class="mb-2 text-1000">Price</h5>
+                                                <input class="form-control mb-xl-3 @error('harga') is-invalid @enderror"
+                                                    type="number" name="harga" value="{{ old('harga') }}" placeholder="Price" />
+                                                @error('harga')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-12 col-sm-6 col-xl-12">
-                                      <div class="mb-4">
-                                          <h5 class="mb-2 text-1000">Stock</h5>
-                                          <input class="form-control mb-xl-3 @error('stok') is-invalid @enderror" type="number" name="stok" placeholder="Stock" />
-
-                                          @error('stok')
-                                              <div class="invalid-feedback">{{ $message }}</div>
-                                          @enderror
-                                      </div>
-                                  </div>
-
-                                  <div class="col-12 col-sm-6 col-xl-12">
-                                      <div class="mb-4">
-                                          <h5 class="mb-2 text-1000">Price</h5>
-                                          <input class="form-control mb-xl-3 @error('harga') is-invalid @enderror" type="number" name="harga" placeholder="Price" />
-                                          @error('harga')
-                                              <div class="invalid-feedback">{{ $message }}</div>
-                                          @enderror
-                                      </div>
-                                  </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row gx-3">
-                         <div class="col-12">
-                            <a href="{{ route('produk.side')}}" class="btn btn-warning me-2 mb-2 mb-sm-0" type="button">
-                                Back
-                            </a>
-                            <button class="btn btn-primary mb-2 mb-sm-0" type="submit">
-                                <i class="fas fa-check"></i> Save Change
-                            </button>
-                         </div>
+                            <div class="row gx-3">
+                                <div class="col-12">
+                                    <a href="{{ route('produk') }}" class="btn btn-warning me-2 mb-2 mb-sm-0"
+                                        type="button">
+                                        Back
+                                    </a>
+                                    <button class="btn btn-primary mb-2 mb-sm-0" type="submit">
+                                        <i class="fas fa-check"></i> Save Change
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
 
-    {{-- {{ TAMBAH }} --}}
-
-
-@endsection
+        {{-- {{ TAMBAH }} --}}
+    @endsection

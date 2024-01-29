@@ -2,21 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Detailpesanan;
-use Illuminate\Http\Request;
-use App\Models\Userbeli;
 use App\Models\Produk;
 use App\Models\CHeckout;
 use App\Models\Kategori;
+use App\Models\Userbeli;
+use Illuminate\Http\Request;
 use App\Http\Middleware\user;
+use App\Models\Detailpesanan;
+use Illuminate\Support\Facades\DB;
 
 class HomeUserController extends Controller
 {
     public function homeuser()
     {
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
-        $produk = Produk::all();
+        $produk = DB::table('produk')->leftJoin('ulasan', 'produk.id', '=', 'ulasan.produk_id')
+            ->select('produk.*', DB::raw('avg(rating) AS rating'), DB::raw('count(produk_id) AS totalulasan'))
+            ->groupBy('id')
+            ->get();
         $user = auth()->user();
+        // dd($produk);
         return view('user.homeuser', compact('produk', 'user', 'totalpesanan'));
     }
 
@@ -26,7 +31,7 @@ class HomeUserController extends Controller
         // $user = produk::findOrFail($id);
         $user = auth()->user();
         $produk = produk::where('id', $id)->get();
-        return view('user.produkdetail',compact('produk', 'user', 'totalpesanan'));
+        return view('user.produkdetail', compact('produk', 'user', 'totalpesanan'));
     }
 
     public function order(Request $request, $produk)
@@ -99,7 +104,7 @@ class HomeUserController extends Controller
 
         $user = auth()->user();
         $beli = produk::all();
-        return view('user.beli',compact('beli','user'));
+        return view('user.beli', compact('beli', 'user'));
     }
 
     /**

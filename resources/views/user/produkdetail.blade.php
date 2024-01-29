@@ -24,7 +24,6 @@
                                         data-products-swiper='{"slidesPerView":1,"spaceBetween":16,"thumbsEl":".swiper-products-thumb"}'>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         <div class="d-flex">
@@ -107,7 +106,7 @@
                                             class="fa fa-star text-warning"></span><span
                                             class="fa fa-star text-warning"></span>
                                     </div>
-                                    <p class="text-primary fw-semi-bold mb-2">6548 People rated and reviewed </p>
+                                    <p class="text-primary fw-semi-bold mb-2"> People rated and reviewed </p>
                                 </div>
                                 <h3 style="display: block; overflow-wrap: break-word; word-wrap: break-word;"
                                     class="mb-3 lh-sm">{{ ucfirst($detail->nama_produk) }}</h3>
@@ -126,7 +125,7 @@
                                     </strong>
                                 </p>
                                 </p>
-                                <a class="fw-bold" href="ulasanproduk">Ulasan-></a>
+                                <a class="fw-bold" href="{{ route('ulasanproduk', $detail->id) }}">Ulasan-></a>
                             </div>
                             <div>
                             </div>

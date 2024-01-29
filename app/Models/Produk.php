@@ -37,9 +37,8 @@ class Produk extends Model
     {
         return $this->hasMany(Checkout::class);
     }
-    public function scopeOrderByDefault($query)
+    public function Ulasan()
     {
-        return $query->orderBy('created_at', 'desc');
+        return $this->hasMany(Ulasan::class);
     }
-
 }

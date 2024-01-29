@@ -51,7 +51,7 @@ class ProdukController extends Controller
 
     $this->validate($request, [
         'nama_produk' => 'required',
-        'path_produk' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the allowed image formats and maximum size as needed
+        'path_produk' => 'required|image|mimes:jpeg,png,jpg,gif|max:50024', // Adjust the allowed image formats and maximum size as needed
         'deskripsi' => 'required|max:300',
         'harga' => 'required|gt:0',
         'stok' => 'required|gt:0',
@@ -84,7 +84,7 @@ class ProdukController extends Controller
         "kategori_id"=> $request->kategori_id,
     ]);
 
-    return redirect('/produk')->with("success", "Product data added successfully.");
+    return redirect()->route('produk')->with("success", "Product data added successfully.");
 }
 
     /**
@@ -138,7 +138,7 @@ class ProdukController extends Controller
             }
         }
 
-        return redirect('produk')->with("success", "Data produk berhasil diperbarui.");
+        return redirect()->route('produk')->with("success", "Data produk berhasil diperbarui.");
     }
 
 

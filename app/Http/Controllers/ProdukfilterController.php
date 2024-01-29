@@ -23,7 +23,11 @@ class ProdukfilterController extends Controller
         // Lakukan filter data dengan menggunakan nilai-nilai yang diperoleh dari form
         // Misalnya, jika Anda memiliki model 'Product' dan ingin menerapkan filter pada query
         // DB::enableQueryLog();
-        $query = Produk::query();
+        // $query = Produk::query();
+
+        $query = DB::table('produk')->leftJoin('ulasan', 'produk.id', '=', 'ulasan.produk_id')
+        ->select('produk.*', DB::raw('avg(rating) AS rating'), DB::raw('count(produk_id) AS totalulasan'))
+        ->groupBy('id');
 
         if (!empty($devices)) {
             $query->whereIn('kategori_id', $devices);
@@ -33,8 +37,11 @@ class ProdukfilterController extends Controller
 
         if (!empty($minPrice) && !empty($maxPrice)) {
             $query->whereBetween('harga', [intval($minPrice), intval($maxPrice)]);
-        }else {
+        }
+        if (empty($minPrice)) {
             $minPrice = null;
+        }
+        if (empty($maxPrice)) {
             $maxPrice = null;
         }
 
