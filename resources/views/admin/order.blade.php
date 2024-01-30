@@ -260,25 +260,22 @@
                     <th class="white-space-nowrap align-middle fs--1 ps-4 text-dark" style="width:50px;" data-sort="action">ACTION</th>
                 </tr>
               </thead>
-              <tbody class="list" id="products-table-body text-center">
+              <tbody class="list" id="products-table-body">
                 <tr class="position-static text-center">
-                  <td class="align-middle review fs-0 text-center ps-4">
-
-                  </td>
-                  <td class="align-middle white-space-nowrap mx-auto text-center py-0">
-                    <td class="price align-middle white-space-nowrap text-end fw-bold fs--1  text-700 ps-4"></td>
-                </td>
-                  <td class="produks align-middle ps-4">
-                    <a class="fw-semi-bold fs--1  line-clamp-3 mb-0" href="../landing/produks-details.html"></a>
-                </td>
-                  <td class="price align-middle white-space-nowrap text-end fw-bold fs--1  text-700 ps-4"></td>
-                  <td class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold"></td>
-                  <td class="tags align-middle review pb-2 ps-3 fs--1 "  style="width:200px;"></td>
-                  <td class="align-middle review fs-0 text-center  ps-4 text-truncate" style="max-width: 6px" ></td>
-                  <td class="align-middle review fs-0 text-center ps-4">
-                  </td>
+                    <td class="align-middle review fs-0 text-center ps-4"></td>
+                    <td class="align-middle white-space-nowrap mx-auto text-center py-0"></td>
+                    <td class="align-middle white-space-nowrap text-center py-0"></td>
+                    <td class="produks align-middle ps-4">
+                        <a class="fw-semi-bold fs--1 line-clamp-3 mb-0" href="../landing/produks-details.html"></a>
+                    </td>
+                    <td class="price align-middle white-space-nowrap text-end fw-bold fs--1 text-700 ps-4"></td>
+                    <td class="tags align-middle review pb-2 ps-3 fs--1" style="width: 200px;">
+                        <span class="badge bg-primary"></span>
+                        <span class="badge bg-secondary"></span>
+                    </td>
                 </tr>
-              </tbody>
+                <!-- Add more rows as needed -->
+            </tbody>
             </table>
           </div>
       </div>
