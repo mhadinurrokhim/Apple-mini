@@ -30,12 +30,18 @@
                   <div class="border-bottom border-dashed border-300 pb-4">
                     <div class="row align-items-center g-3 g-sm-5 text-center text-sm-start">
 
-                      <div class="col-12 col-sm-auto">
-                        <input class="d-none" id="avatarFile" type="file" name="profile" accept="image/*" onchange="previewImage()" />
-                        <label class="cursor-pointer avatar avatar-5xl" for="avatarFile">
-                            <img class="rounded-circle" id="avatarPreview" src="{{ asset('storage/' . $user->profile) }}" alt="" />
-                        </label>
-                    </div>
+                        <div class="col-12 col-sm-auto">
+                            <input class="d-none" id="avatarFile" type="file" name="profile" accept="image/*" onchange="previewImage()" />
+                            <label class="cursor-pointer avatar avatar-5xl" for="avatarFile">
+                                @if ($user->profile)
+                                    <img class="rounded-circle" id="avatarPreview" src="{{ asset('storage/' . $user->profile) }}" alt="" />
+                                @else
+                                    <!-- Tampilkan foto default jika tidak ada foto profil -->
+                                    <img class="rounded-circle" id="avatarPreview" src="{{ asset('assets/storage/apple.jpg') }}" alt="Default Avatar" />
+                                @endif
+                            </label>
+                        </div>
+
                       <div class="col-12 col-sm-auto flex-1">
                         <h3>{{ Auth::user()->name }}</h3>
                         <p class="text-800">{{ Auth::user()->created_at }}</p>

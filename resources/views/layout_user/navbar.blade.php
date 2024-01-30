@@ -295,8 +295,12 @@
                       <div class="card-body p-0">
                         <div class="text-center pt-4 pb-3">
                           <div class="avatar avatar-xl ">
-                            <img class="rounded-circle " src="{{ asset('storage/' . $user->profile) }}"
-                              alt="" />
+                            @if ($user->profile)
+                                    <img class="rounded-circle" id="avatarPreview" src="{{ asset('storage/' . $user->profile) }}" alt="" />
+                                @else
+                                    <!-- Tampilkan foto default jika tidak ada foto profil -->
+                                    <img class="rounded-circle" id="avatarPreview" src="{{ asset('assets/storage/apple.jpg') }}" alt="Default Avatar" />
+                                @endif
                           </div>
                           <h6 class="mt-2 text-black">{{ Auth::user()->name }}</h6>
                         </div>
@@ -306,24 +310,9 @@
                         <ul class="nav d-flex flex-column mb-2 pb-1">
                           <li class="nav-item"><a class="nav-link px-3" href="profil"> <span class="me-2 text-900"
                                 data-feather="user"></span><span>Profile</span></a></li>
-                          <li class="nav-item"><a class="nav-link px-3" href="#!"><span class="me-2 text-900"
-                                data-feather="pie-chart"></span>Dashboard</a></li>
-                          <li class="nav-item"><a class="nav-link px-3" href="#!"> <span class="me-2 text-900"
-                                data-feather="lock"></span>Posts &amp; Activity</a></li>
-                          <li class="nav-item"><a class="nav-link px-3" href="#!"> <span class="me-2 text-900"
-                                data-feather="settings"></span>Settings &amp; Privacy </a>
-                          </li>
-                          <li class="nav-item"><a class="nav-link px-3" href="#!"> <span class="me-2 text-900"
-                                data-feather="help-circle"></span>Help Center</a></li>
-                          <li class="nav-item"><a class="nav-link px-3" href="#!"> <span class="me-2 text-900"
-                                data-feather="globe"></span>Language</a></li>
                         </ul>
                       </div>
-                      <div class="card-footer p-0 border-top">
-                        <ul class="nav d-flex flex-column my-3">
-                          <li class="nav-item"><a class="nav-link px-3" href="#!"> <span class="me-2 text-900"
-                                data-feather="user-plus"></span>Add another account</a></li>
-                        </ul>
+
                         <hr />
                         <div class="px-3"> <a class="btn btn-phoenix-secondary d-flex flex-center w-100"
                             href="/logout"><span class="me-2" data-feather="log-out"> </span>Sign out</a></div>
@@ -359,8 +348,6 @@
             href="{{ route('produk.filter') }}">Products</a></li>
         <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link {{ request()->routeIs('wishlist') ? 'active' : '' }}""
             href="{{ route('wishlist') }}">Wishlist</a></li>
-        <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link {{ request()->routeIs('tracking') ? 'active' : '' }}""
-            href="{{ route('tracking') }}">Track order</a></li>
         <li class="nav-item" data-nav-item="data-nav-item"><a class="nav-link {{ request()->routeIs('checkout') ? 'active' : '' }}""
             href="{{ route('checkout') }}">Checkout</a>
         </li>
@@ -421,6 +408,66 @@
   <script src="../../../vendors/dayjs/dayjs.min.js"></script>
   <script src="../../../assets/js/phoenix.js"></script>
   <script src="../../../vendors/swiper/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    // Temukan semua tombol wishlist menggunakan class selector
+    var wishlistButtons = document.querySelectorAll('.btn-wish');
+
+    // Ambil daftar ID produk dari localStorage (jika ada)
+    var wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+    // Tandai tombol wishlist yang sudah ada di wishlistItems
+    wishlistButtons.forEach(function (wishlistButton) {
+        var productId = wishlistButton.getAttribute('data-product-id');
+
+        // Tambahkan pesan konsol untuk memeriksa nilai productId
+        console.log('Product ID:', productId);
+
+        if (wishlistItems.includes(productId)) {
+            wishlistButton.classList.add('active');
+        }
+
+        wishlistButton.addEventListener('click', function () {
+            // Dapatkan ID produk dari data attribute
+            var productId = wishlistButton.getAttribute('data-product-id');
+
+            // Tambahkan pesan konsol untuk memeriksa nilai productId setelah tombol diklik
+            console.log('Clicked Product ID:', productId);
+
+            // Toggle class 'active' pada tombol wishlist
+            wishlistButton.classList.toggle('active');
+
+            // Tambahkan atau hapus ID produk dari wishlistItems
+            if (wishlistItems.includes(productId)) {
+                wishlistItems = wishlistItems.filter(item => item !== productId);
+            } else {
+                wishlistItems.push(productId);
+            }
+
+            // Simpan wishlistItems ke localStorage
+            localStorage.setItem('wishlist', JSON.stringify(wishlistItems));
+
+            // Kirim permintaan AJAX untuk menambahkan produk ke wishlist
+            $.ajax({
+                type: 'POST',
+                url: '/wishlist/add/' + productId,
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function (response) {
+                    // Tambahkan logika atau respons setelah berhasil ditambahkan ke wishlist
+                    console.log('Product added to wishlist successfully');
+                },
+                error: function (error) {
+                    console.error('Failed to add product to wishlist');
+                }
+            });
+        });
+    });
+});
+
+
+  </script>
 </body>
 
 
