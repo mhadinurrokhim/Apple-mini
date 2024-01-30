@@ -1,7 +1,7 @@
 @extends('layout_admin.app')
 
 @section('content')
-@include('Asset.SweetAlert')
+    @include('Asset.SweetAlert')
     <div class="modal fade" id="searchBoxModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="true"
         data-phoenix-modal="data-phoenix-modal" style="--phoenix-backdrop-opacity: 1;">
         <div class="modal-dialog">
@@ -269,7 +269,13 @@
             </div>
             <ul class="nav nav-links mb-3 mb-lg-2 mx-n3">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="#"><span>All
-                        </span><span class="text-700 fw-semi-bold">(68817)</span></a></li>
+                        </span><span class="text-700 fw-semi-bold">
+                            @if ($pembayaran->count() > 0)
+                                <span>({{ $pembayaran->count() }})</span>
+                            @endif
+                        </span>
+                    </a>
+                </li>
             </ul>
             <div id="products"
                 data-list='{"valueNames":["product","price","category","tags","vendor","time"],"page":10,"pagination":true}'>
@@ -282,8 +288,9 @@
                                 <span class="fas fa-search search-box-icon"></span>
                             </form>
                         </div>
-                        <div class="ms-xxl-auto"><a href="{{ route('pembayaran.create') }}"><button class="btn btn-primary" id="addBtn"><span
-                                    class="fas fa-plus me-2"></span>Add payment</button></a></div>
+                        <div class="ms-xxl-auto"><a href="{{ route('pembayaran.create') }}"><button
+                                    class="btn btn-primary" id="addBtn"><span class="fas fa-plus me-2"></span>Add
+                                    payment</button></a></div>
                     </div>
                 </div>
                 <div
@@ -302,62 +309,63 @@
                             <tbody>
                                 @php
                                     $no = 1;
-                                    @endphp
-                                    @if ($pembayaran->count() > 0)
-                            @foreach ($pembayaran as $a)
-                                    <tr>
-                                        <td>{{ $no++ }}</th>
-                                        <td>{{ $a->metode_pembayaran }}</td>
-                                        <td>{{ $a->tujuan }}</td>
-                                        @php
-                                            $long = strlen($a->keterangan);
-                                        @endphp
-                                        <td>
-                                            @if ($long >= 15)
-                                                <img src="{{ asset('storage/product/' . $a->keterangan) }}"
-                                                    width="120px" height="120px" alt="">
-                                            @else
-                                                {{ $a->keterangan }}
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <div class="d-flex">
-                                                <button style="margin-right: 10px;"
-                                                    class="btn btn-outline-warning edit-button"
-                                                    data-id="{{ $a->id }}"
-                                                    data-metode="{{ $a->metode_pembayaran }}"><i
-                                                        class="bi bi-pencil-square"></i>
-                                                </button>
-                                                <form action="{{ route('pembayaran.destroy', $a->id) }}" method="post"
-                                                    id="delete-form{{ $a->id }}">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button type="button" class="btn btn-danger delete-btn"
-                                                        id="delete-button"
-                                                        onclick="deleteKategori({{ $a->id }})"><span class="me-2 far fa-trash-alt"></span></button>
-                                                </form>
-                                                <script>
-                                                    function deleteKategori(id) {
-                                                        Swal.fire({
-                                                            title: 'Apakah Anda Yakin?',
-                                                            text: 'Data akan terhapus selamanya!',
-                                                            icon: 'question',
-                                                            showCancelButton: true,
-                                                            confirmButtonText: 'Ya, Hapus',
-                                                            cancelButtonText: 'Batal',
-                                                            reverseButtons: true
-                                                        }).then((result) => {
-                                                            if (result.isConfirmed) {
-                                                                document.getElementById('delete-form' + id).submit();
-                                                            }
-                                                        });
-                                                    }
-                                                </script>
+                                @endphp
+                                @if ($pembayaran->count() > 0)
+                                    @foreach ($pembayaran as $a)
+                                        <tr>
+                                            <td>{{ $no++ }}</th>
+                                            <td>{{ $a->metode_pembayaran }}</td>
+                                            <td>{{ $a->tujuan }}</td>
+                                            @php
+                                                $long = strlen($a->keterangan);
+                                            @endphp
+                                            <td>
+                                                @if ($long >= 15)
+                                                    <img src="{{ asset('storage/product/' . $a->keterangan) }}"
+                                                        width="120px" height="120px" alt="">
+                                                @else
+                                                    {{ $a->keterangan }}
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <button style="margin-right: 10px;"
+                                                        class="btn btn-outline-warning edit-button"
+                                                        data-id="{{ $a->id }}"
+                                                        data-metode="{{ $a->metode_pembayaran }}"><i
+                                                            class="bi bi-pencil-square"></i>
+                                                    </button>
+                                                    <form action="{{ route('pembayaran.destroy', $a->id) }}"
+                                                        method="post" id="delete-form{{ $a->id }}">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button type="button" class="btn btn-danger delete-btn"
+                                                            id="delete-button"
+                                                            onclick="deleteKategori({{ $a->id }})"><span
+                                                                class="me-2 far fa-trash-alt"></span></button>
+                                                    </form>
+                                                    <script>
+                                                        function deleteKategori(id) {
+                                                            Swal.fire({
+                                                                title: 'Apakah Anda Yakin?',
+                                                                text: 'Data akan terhapus selamanya!',
+                                                                icon: 'question',
+                                                                showCancelButton: true,
+                                                                confirmButtonText: 'Ya, Hapus',
+                                                                cancelButtonText: 'Batal',
+                                                                reverseButtons: true
+                                                            }).then((result) => {
+                                                                if (result.isConfirmed) {
+                                                                    document.getElementById('delete-form' + id).submit();
+                                                                }
+                                                            });
+                                                        }
+                                                    </script>
 
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 @endif
                             </tbody>
                         </table>
@@ -382,7 +390,9 @@
         <footer class="footer position-absolute">
             <div class="row g-0 justify-content-between align-items-center h-100">
                 <div class="col-12 col-sm-auto text-center">
-                    <p class="mb-0 mt-2 mt-sm-0 text-900">Copyright © iVibe<span class="d-none d-sm-inline-block"></span><span class="d-none d-sm-inline-block mx-1">|</span><br class="d-sm-none" />2023</p>
+                    <p class="mb-0 mt-2 mt-sm-0 text-900">Copyright © iVibe<span
+                            class="d-none d-sm-inline-block"></span><span
+                            class="d-none d-sm-inline-block mx-1">|</span><br class="d-sm-none" />2023</p>
 
                 </div>
                 <div class="col-12 col-sm-auto text-center">

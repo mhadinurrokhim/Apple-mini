@@ -234,7 +234,9 @@
                                         class="fa-stack-1x fa-solid fa-xmark text-danger "
                                         data-fa-transform="shrink-2 up-8 right-6"></span></span>
                                 <div class="ms-3">
-                                    <h4 class="mb-0">15 products</h4>
+                                    <h4 class="mb-0">
+                                        {{ $produk->count() }} Products
+                                    </h4>
                                     <p class="text-800 fs--1 mb-0">Out of stock</p>
                                 </div>
                             </div>
@@ -249,7 +251,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <footer class="footer position-absolute">
                 <div class="row g-0 justify-content-between align-items-center h-100">
                     <div class="col-12 col-sm-auto text-center">

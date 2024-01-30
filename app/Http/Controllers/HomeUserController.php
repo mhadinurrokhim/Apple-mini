@@ -34,12 +34,13 @@ class HomeUserController extends Controller
     public function detailproduk(Request $request, $id)
     {
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
-        // $user = produk::findOrFail($id);
         $user = auth()->user();
-        $produk = DB::table('produk')->leftJoin('ulasan', 'produk.id', '=', 'ulasan.produk_id')
-            ->select('produk.*', DB::raw('avg(rating) AS rating'), DB::raw('count(produk_id) AS totalulasan'))
-            ->groupBy('id')
-            ->get();
+        $produk = DB::table('produk')
+        ->leftJoin('ulasan', 'produk.id', '=', 'ulasan.produk_id')
+        ->select('produk.*', DB::raw('avg(rating) AS rating'), DB::raw('count(produk_id) AS totalulasan'))
+        ->where('produk.id', $id)
+        ->groupBy('produk.id')
+        ->get();
         return view('user.produkdetail', compact('produk', 'user', 'totalpesanan'));
     }
 

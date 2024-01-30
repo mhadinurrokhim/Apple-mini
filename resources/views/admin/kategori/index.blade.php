@@ -285,6 +285,13 @@
                 </div>
             </div>
             <ul class="nav nav-links mb-3 mb-lg-2 mx-n3">
+                <li class="nav-item">
+                    <p class="nav-link active my-n2" aria-current="page"><span>All </span><span class="text-700 fw-semi-bold">
+                            @if ($kategori->count() > 0)
+                                <span>({{ $kategori->count() }})</span>
+                            @endif
+                        </span></p>
+                </li>
             </ul>
             <div id="products"
                 data-list='{"valueNames":["product","price","category","tags","vendor","time"],"page":10,"pagination":true}'>

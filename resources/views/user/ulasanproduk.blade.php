@@ -3,29 +3,29 @@
     @include('Asset.SweetAlert')
     <!-- ============================================-->
     <!-- <section> begin ============================-->
-        <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    .rating {
-      display: inline-block;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .rating {
+            display: inline-block;
+        }
 
-    .rating input {
-      display: none;
-    }
+        .rating input {
+            display: none;
+        }
 
-    .rating label {
-      font-size: 24px;
-      color: #ddd;
-      cursor: pointer;
-    }
+        .rating label {
+            font-size: 24px;
+            color: #ddd;
+            cursor: pointer;
+        }
 
-    .rating label:hover,
-    .rating label:hover ~ label,
-    .rating input:checked ~ label {
-      color: #ffcc00;
-    }
-  </style>
+        .rating label:hover,
+        .rating label:hover~label,
+        .rating input:checked~label {
+            color: #ffcc00;
+        }
+    </style>
 
     <section class="py-0">
         <div class="container-small">
@@ -83,22 +83,21 @@
                                                 <label for="star2">&#9733;</label>
                                                 <input type="radio" name="rating" id="star1" value="1">
                                                 <label for="star1">&#9733;</label>
-                                              </div>
+                                            </div>
 
-                                              <script>
+                                            <script>
                                                 const ratingInputs = document.querySelectorAll('.rating input');
 
                                                 ratingInputs.forEach(input => {
-                                                  input.addEventListener('change', (event) =>
-                                                  );
+                                                    input.addEventListener('change', (event) => );
                                                 });
-                                              </script>
-                                              <div>
-                                            <label for="commentInput" class="">Your Comment</label>
-                                            <textarea class="form-control" id="commentInput" rows="3" name="ulasan"></textarea>
-                                            <input type="hidden" name="produk_id" value="{{ $produk->id }}">
-                                            <input type="hidden" name="user_id" value="{{ $user->id }}">
-                                              </div>
+                                            </script>
+                                            <div>
+                                                <label for="commentInput" class="">Your Comment</label>
+                                                <textarea class="form-control" id="commentInput" rows="3" name="ulasan"></textarea>
+                                                <input type="hidden" name="produk_id" value="{{ $produk->id }}">
+                                                <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                            </div>
                                         </div>
                                 </div>
                                 <div class="modal-footer">
@@ -114,7 +113,8 @@
                     <div class="d-flex flex-column justify-content-between h-100">
                         <div>
                             <div style="margin-top: 20px;">
-                                <div style="border: 1px solid #ccc; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-height: 486px; overflow-y: auto;">
+                                <div
+                                    style="border: 1px solid #ccc; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-height: 486px; overflow-y: auto;">
                                     <div style="padding: 20px;">
                                         <h3 style="margin-top: 0;">Ulasan</h3>
                                         <hr>
