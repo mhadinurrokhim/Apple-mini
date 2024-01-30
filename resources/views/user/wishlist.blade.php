@@ -20,7 +20,10 @@
                   </tr>
                 </thead>
                 <tbody class="list" id="profile-wishlist-table-body">
-                    @foreach ($productsInWishlist as $produk)
+                    @foreach ($productsInWishlist as $item)
+                    @php
+                      $produk = $item->product
+                    @endphp
                         <tr class="hover-actions-trigger btn-reveal-trigger position-static">
                             <td class="align-middle white-space-nowrap ps-0 py-0">
                                 <a class="border rounded-2 d-inline-block" href="product-details.html">
@@ -34,8 +37,9 @@
                             <td class="size align-middle white-space-nowrap text-700 fs--1 fw-semi-bold">{{ $produk->stok }}</td>
                             <td class="price align-middle text-900 fs--1 fw-semi-bold text-end">Rp.{{ $produk->harga }}</td>
                             <td class="total align-middle fw-bold text-1000 text-end text-nowrap pe-0">
-                                <form action="{{ route('shop.order', $produk->id) }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('wishlist.delete', $produk->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
+                                    @method('DELETE')
                                     <button class="btn btn-sm text-500 hover-text-600 me-2" @if ($produk->stok <= 0) disabled @endif>
                                         <span class="fas fa-trash"></span>
                                     </button>
