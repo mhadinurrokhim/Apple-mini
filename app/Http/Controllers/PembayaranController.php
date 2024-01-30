@@ -197,11 +197,14 @@ class PembayaranController extends Controller
      */
     public function destroy(string $id)
     {
+        $pembayaran = Pembayaran::find($id);
         try {
-            Pembayaran::find($id)->delete();
-            return redirect()->route('pembayaran')->with("success", "Data pembayaran berhasil dihapus!");
+            //code...
+            $pembayaran->delete();
+            return redirect()->route("pembayaran")->with("success", "Category data has been successfully deleted!");
         } catch (\Throwable $th) {
-            return redirect()->route('pembayaran')->with("error", "Gagal menghapus karena data pembayaran sedang digunakan!");
+            //throw $th;
+            return redirect('pembayaran')->with("error", "Failed to delete because category data is in use!");
         }
     }
 }

@@ -303,7 +303,7 @@
                                     <th style="width: 30%;">PAYMENT NAME</th>
                                     <th style="width: 25%;">OBJECTIVE</th>
                                     <th style="width: 25%;">INFORMATION</th>
-                                    <th style="width: 15%;">ACTION</th>
+                                    <th class="text-end" style="width: 15%;">ACTION</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -327,41 +327,26 @@
                                                     {{ $a->keterangan }}
                                                 @endif
                                             </td>
-                                            <td>
-                                                <div class="d-flex">
-                                                    <button style="margin-right: 10px;"
-                                                        class="btn btn-outline-warning edit-button"
-                                                        data-id="{{ $a->id }}"
-                                                        data-metode="{{ $a->metode_pembayaran }}"><i
-                                                            class="bi bi-pencil-square"></i>
-                                                    </button>
-                                                    <form action="{{ route('pembayaran.destroy', $a->id) }}"
-                                                        method="post" id="delete-form{{ $a->id }}">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <button type="button" class="btn btn-danger delete-btn"
-                                                            id="delete-button"
-                                                            onclick="deleteKategori({{ $a->id }})"><span
-                                                                class="me-2 far fa-trash-alt"></span></button>
-                                                    </form>
-                                                    <script>
-                                                        function deleteKategori(id) {
-                                                            Swal.fire({
-                                                                title: 'Apakah Anda Yakin?',
-                                                                text: 'Data akan terhapus selamanya!',
-                                                                icon: 'question',
-                                                                showCancelButton: true,
-                                                                confirmButtonText: 'Ya, Hapus',
-                                                                cancelButtonText: 'Batal',
-                                                                reverseButtons: true
-                                                            }).then((result) => {
-                                                                if (result.isConfirmed) {
-                                                                    document.getElementById('delete-form' + id).submit();
-                                                                }
-                                                            });
-                                                        }
-                                                    </script>
-
+                                            <td
+                                                class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
+                                                <div class="font-sans-serif btn-reveal-trigger position-static"><button
+                                                        class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal fs--2"
+                                                        type="button" data-bs-toggle="dropdown" data-boundary="window"
+                                                        aria-haspopup="true" aria-expanded="false"
+                                                        data-bs-reference="parent"><span
+                                                            class="fas fa-ellipsis-h fs--2"></span></button>
+                                                    <div class="dropdown-menu dropdown-menu-end py-2"><a
+                                                            class="dropdown-item"
+                                                            href="{{ route('pembayaran.edit', $a->id) }}">Edit</a>
+                                                        <div class="dropdown-divider"></div>
+                                                        <form action="{{ route('pembayaran.destroy', $a->id) }}" method="POST" class="hapus-form">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit" class="dropdown-item text-danger hapus">
+                                                                Remove
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </td>
                                         </tr>
