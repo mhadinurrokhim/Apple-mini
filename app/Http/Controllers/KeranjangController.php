@@ -82,7 +82,7 @@ class KeranjangController extends Controller
                 $pesanan = detailpesanan::find($orderId);
                 if (intval(substr($quantity, 0, 1))  === 0) {
                     // return dd($quantity);
-                    return redirect()->back()->with('update_failed', 'nominal amount is invalid');
+                    return redirect()->back()->with('update_failed', 'Invalid quantity value. Please enter a valid number.');
                 }
                 $oldQuantity = $pesanan->jumlah;
                 // return dd($quantity);
@@ -105,9 +105,9 @@ class KeranjangController extends Controller
                 $produk->stok -= $quantity - $oldQuantity;
                 $produk->save();
             }
-            return redirect()->route('keranjang')->with('update_success', 'Cart updated successfully.');
+            return redirect()->route('keranjang')->with('update_success', 'Your cart has been successfully updated.');
         } catch (\Throwable $th) {
-            return redirect()->route('keranjang')->with('update_failed', 'Failed to update cart. Please try again.');
+            return redirect()->route('keranjang')->with('update_failed', 'Failed to update the cart. Please try again.');
         }
         // $detailPesanan = $request->pesanan_id;
         // foreach ($detailPesanan as $value) {

@@ -84,7 +84,7 @@ class ProdukController extends Controller
         "kategori_id"=> $request->kategori_id,
     ]);
 
-    return redirect()->route('produk')->with("success", "Product data added successfully.");
+    return redirect()->route('produk')->with("success", "Product data added successfully!");
 }
 
     /**

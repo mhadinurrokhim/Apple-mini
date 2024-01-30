@@ -25,7 +25,8 @@
                                             style="width: 10%; padding-right: 10px;">CATEGORY</th>
                                         <th class="sort align-middle text-center" scope="col"
                                             style="width: 20%; padding-right: 10px;">PRICE</th>
-                                        <th class="sort align-middle text-center ps-5" scope="col" style="width: 10%;">QUANTITY
+                                        <th class="sort align-middle text-center ps-5" scope="col" style="width: 10%;">
+                                            QUANTITY
                                         </th>
                                         <th class="sort align-middle text-center" scope="col" style="width: 20%;">TOTAL
                                         </th>
@@ -49,15 +50,19 @@
                                                         class="d-block border rounded-2" href="#"><img
                                                             src="{{ asset('storage/Product/' . $pesanan->produk->path_produk) }}"
                                                             alt="" width="100" /></a></td>
-                                                <td class="products align-middle text-center col-2" style="max-width: 50px;">
+                                                <td class="products align-middle text-center col-2"
+                                                    style="max-width: 50px;">
                                                     <a class="fw-semi-bold mb-0 text-truncate d-inline-block"
                                                         href="#">
                                                         {{ ucfirst(Str::limit($pesanan->produk->nama_produk, 10, $end = '...')) }}
                                                     </a>
                                                 </td>
-                                                <td class="color align-middle text-center white-space-nowrap fs--1 text-900">
+                                                <td
+                                                    class="color align-middle text-center white-space-nowrap fs--1 text-900">
                                                     {{ ucfirst($pesanan->produk->kategori->nama_kategori) }}</td>
-                                                <td class="price align-middle text-center text-900 fs--1 fw-semi-bold text-end">Rp.
+                                                <td
+                                                    class="price align-middle text-center text-900 fs--1 fw-semi-bold text-end">
+                                                    Rp.
                                                     {{ number_format($pesanan->produk->harga, 0, ',', '.') }}
                                                 </td>
                                                 <td class="quantity align-middle text-center fs-0 ps-5">
@@ -89,34 +94,36 @@
                                                 $subtotal += $pesanan->produk->harga * $pesanan->jumlah;
                                             @endphp
                                         @endforeach
-                                        @else
-                                            <tr>
-                                                <td colspan="8" class="text-center py-4">
-                                                    <h3 class="mb-0">There are no item in the cart</h3>
-                                                    <img src="{{ asset('assets/img/No data-amico.svg') }}" alt="" style="width: 200px; height: auto; max-width: 100%; display: block; margin: 0 auto;">
-                                                    <a href="{{ route('produk.filter') }}" class="btn btn-primary">Continue Shopping</a>
-                                                </td>
-                                            </tr>
-                                        @endif
+                                    @else
+                                        <tr>
+                                            <td colspan="8" class="text-center py-4">
+                                                <h3 class="mb-0">There are no item in the cart</h3>
+                                                <img src="{{ asset('assets/img/No data-amico.svg') }}" alt=""
+                                                    style="width: 200px; height: auto; max-width: 100%; display: block; margin: 0 auto;">
+                                                <a href="{{ route('produk.filter') }}" class="btn btn-primary">Continue
+                                                    Shopping</a>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 </tbody>
                             </table>
                             @if ($pesanans->count() > 0)
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <a href="{{ route('produk.filter') }}" class="btn btn-secondary mt-2">
-                                        <span class="fas fa-chevron-left me-1"></span>
-                                        Continue Shopping
-                                    </a>
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <a href="{{ route('produk.filter') }}" class="btn btn-secondary mt-2">
+                                            <span class="fas fa-chevron-left me-1"></span>
+                                            Continue Shopping
+                                        </a>
+                                    </div>
+                                    <form id="updateCartForm" action="{{ route('keranjang.update') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="quantities" value="">
+                                        <button type="submit" class="btn btn-success mt-2 ml-auto" onclick="updateCart()">
+                                            Update Cart
+                                            <span class="fas fa-undo ms-1 order-2"></span>
+                                        </button>
+                                    </form>
                                 </div>
-                                <form id="updateCartForm" action="{{ route('keranjang.update') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="quantities" value="">
-                                    <button type="submit" class="btn btn-success mt-2 ml-auto">
-                                        Update Cart
-                                        <span class="fas fa-undo ms-1 order-2"></span>
-                                    </button>
-                                </form>
-                            </div>
                             @else
                             @endif
                         </div>
@@ -170,6 +177,23 @@
         </div>
     </section>
 
+    @if (session('update_success'))
+        <script>
+            Swal.fire({
+                title: "Success!",
+                text: "{{ session('update_success') }}",
+                icon: "success"
+            });
+        </script>
+    @elseif (session('update_failed'))
+        <script>
+            Swal.fire({
+                title: "Error!",
+                text: "{{ session('update_failed') }}",
+                icon: "error"
+            });
+        </script>
+    @endif
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         function updateCart() {
@@ -244,7 +268,4 @@
             updateTotals();
         });
     </script> --}}
-
-
-
 @endsection
