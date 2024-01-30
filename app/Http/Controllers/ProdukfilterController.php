@@ -21,42 +21,54 @@ class ProdukfilterController extends Controller
         $rating = $request->input('flexRadio');
 
         // Lakukan filter data dengan menggunakan nilai-nilai yang diperoleh dari form
-        // Misalnya, jika Anda memiliki model 'Product' dan ingin menerapkan filter pada query
-        // DB::enableQueryLog();
-        // $query = Produk::query();
-
-        $query = DB::table('produk')->leftJoin('ulasan', 'produk.id', '=', 'ulasan.produk_id')
-        ->select('produk.*', DB::raw('avg(rating) AS rating'), DB::raw('count(produk_id) AS totalulasan'))
-        ->groupBy('id');
+        $query = DB::table('produk')
+            ->leftJoin('ulasan', 'produk.id', '=', 'ulasan.produk_id')
+            ->select(
+                'produk.id',
+                'produk.nama_produk',
+                'produk.path_produk',
+                'produk.harga',
+                'produk.stok',
+                'produk.deskripsi',
+                DB::raw('avg(rating) AS rating'),
+                DB::raw('count(ulasan.produk_id) AS totalulasan')
+            )
+            ->groupBy(
+                'produk.id',
+                'produk.nama_produk',
+                'produk.path_produk',
+                'produk.harga',
+                'produk.stok',
+                'produk.deskripsi'
+            );
 
         if (!empty($devices)) {
             $query->whereIn('kategori_id', $devices);
-        }else {
+        } else {
             $devices = [0];
         }
 
         if (!empty($minPrice) && !empty($maxPrice)) {
             $query->whereBetween('harga', [intval($minPrice), intval($maxPrice)]);
         }
+
         if (empty($minPrice)) {
             $minPrice = null;
         }
+
         if (empty($maxPrice)) {
             $maxPrice = null;
         }
 
-        // if (!empty($rating)) {
-        //     $query->where('rating', '>=', $rating);
-        // }
+        // Tambahkan filter untuk rating
+        if (!empty($rating)) {
+            $query->havingRaw('avg(rating) >= ?', [$rating]);
+        }
 
         // Eksekusi query untuk mendapatkan hasil filter
         $produk = $query->get();
-        // $test = DB::getQueryLog();
-        // DB::disableQueryLog();
-        // dd($test);
 
         // Lakukan tindakan lainnya, seperti menampilkan data pada view atau mengembalikan respons JSON
-
         return view('user.produkfilter', compact('produk', 'user', 'kategori', 'devices', 'minPrice', 'maxPrice', 'totalpesanan'));
     }
     public function detail(Request $request, $id)

@@ -16,10 +16,6 @@ class HomeUserController extends Controller
     public function homeuser()
     {
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
-        // $produk = DB::table('produk')->leftJoin('ulasan', 'produk.id', '=', 'ulasan.produk_id')
-        //     ->select('produk.*', DB::raw('avg(rating) AS rating'), DB::raw('count(produk_id) AS totalulasan'))
-        //     ->groupBy('id')
-        //     ->get();
         $produk = DB::table('produk')
         ->leftJoin('ulasan', 'produk.id', '=', 'ulasan.produk_id')
         ->select('produk.id', 'produk.nama_produk','produk.path_produk','produk.harga','produk.stok','produk.deskripsi', // sertakan semua kolom non-agregasi di sini
@@ -27,19 +23,20 @@ class HomeUserController extends Controller
         ->groupBy('produk.id', 'produk.nama_produk','produk.path_produk','produk.harga','produk.stok','produk.deskripsi',) // sertakan semua kolom non-agregasi di sini
         ->get();
         $user = auth()->user();
-        // dd($produk);
         return view('user.homeuser', compact('produk', 'user', 'totalpesanan'));
     }
 
     public function detailproduk(Request $request, $id)
     {
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
+        // $produk = produk::where('id', $id)->get();
         $user = auth()->user();
         $produk = DB::table('produk')
         ->leftJoin('ulasan', 'produk.id', '=', 'ulasan.produk_id')
-        ->select('produk.*', DB::raw('avg(rating) AS rating'), DB::raw('count(produk_id) AS totalulasan'))
+        ->select('produk.id', 'produk.nama_produk','produk.path_produk','produk.harga','produk.stok','produk.deskripsi', // sertakan semua kolom non-agregasi di sini
+        DB::raw('avg(rating) AS rating'), DB::raw('count(ulasan.produk_id) AS totalulasan'))
         ->where('produk.id', $id)
-        ->groupBy('produk.id')
+        ->groupBy('produk.id', 'produk.nama_produk','produk.path_produk','produk.harga','produk.stok','produk.deskripsi',) // sertakan semua kolom non-agregasi di sini
         ->get();
         return view('user.produkdetail', compact('produk', 'user', 'totalpesanan'));
     }
