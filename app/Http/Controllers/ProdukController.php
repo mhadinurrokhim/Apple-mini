@@ -52,7 +52,7 @@ class ProdukController extends Controller
     $this->validate($request, [
         'nama_produk' => 'required',
         'path_produk' => 'required|image|mimes:jpeg,png,jpg,gif|max:50024', // Adjust the allowed image formats and maximum size as needed
-        'deskripsi' => 'required|max:300',
+        'deskripsi' => 'required|max:500',
         'harga' => 'required|gt:0',
         'stok' => 'required|gt:0',
         'kategori_id' => 'required',

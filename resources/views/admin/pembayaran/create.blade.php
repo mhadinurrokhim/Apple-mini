@@ -288,7 +288,7 @@
             </div>
 
             <div class="form-section" id="bankInput" style="display: none;">
-                <!-- Bank Form -->
+                <!-- Bank Form -->  
                 <div class="mb-3">
                     <label for="" class="form-label fw-bold">Bank</label>
                     <input type="text" name="tujuan_bank" id="tujuan_bank" class="form-control"

@@ -22,7 +22,7 @@ class KeranjangController extends Controller
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
         $order = Pesanan::where('user_id', auth()->user()->id)->whereNot('status', 'completed')->get()->count();
         return view("user.keranjang", compact('pesanans', 'totalpesanan', 'order', 'user', 'pembayaran',));
-    }
+}
 
     /**
      * Show the form for creating a new resource.
@@ -32,27 +32,11 @@ class KeranjangController extends Controller
         $items = Detailpesanan::where('status', 'checkout')->get();
         $produk = Produk::findOrFail($id);
         $user = auth()->user();
-        return view('user.checkout',compact('produk','user', 'items'));
+        $bank = pembayaran::where('metode_pembayaran', 'bank')->get();
+        $wallet = pembayaran::where('metode_pembayaran', 'e-wallet')->get();
+        return view('user.checkout',compact('produk','user', 'items','bank','e-wallet'));
     }
 
-    //     try {
-
-    //         $beli = new Checkout();
-    //         $beli->user_id = $request->user_id;
-    //         $beli->produk_id = $request->produk_id;
-    //         $beli->jumlah = $request->jumlah;
-    //         $beli->total = $request->total;
-    //         $beli->save();
-
-    //     } catch (\Exception $e) {
-    //         return response()->json(['error' => $e->getMessage()], 500);
-    //     }
-
-    // }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $pesanan = new Pesanan;

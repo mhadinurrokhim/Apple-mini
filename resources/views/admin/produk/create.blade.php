@@ -305,16 +305,14 @@
                     </div>
 
                     <h4 class="mb-3">Display images</h4>
-
-                    <div>
-                        <div id="imagePreview" class="mt-2"></div>
-                        @error('path_produk')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                        <br><br>
-                        <input type="file" name="path_produk" id="imageInput"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white @error('path_produk') is-invalid @enderror">
-                    </div>
+                        <div class="mb-3">
+                            <div id="imagePreview" class="mt-2"></div>
+                            <input type="file" name="path_produk" id="imageInput" class="form-control"
+                                value="{{ old('path_produk') }}"  @error('path_produk') is-invalid @enderror>
+                                @error('path_produk')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                        </div>
                     <script>
                         function previewImage(input) {
                             var preview = document.getElementById('imagePreview');
@@ -408,3 +406,4 @@
 
         {{-- {{ TAMBAH }} --}}
     @endsection
+

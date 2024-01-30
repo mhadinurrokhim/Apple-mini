@@ -243,12 +243,117 @@
                         </div>
                     </div>
                     <hr class="bg-200 mb-6 mt-4" />
-                    <div class="row flex-between-center mb-4 g-3">
-                        <div class="col-auto">
-                            <h3>Total income: Rp.7000</h3>
+                    <div class="row bg-tax">
+                        <div class="col-md-12 col-lg-12">
+                          <div class="card card-tax">
+                            <div class="tax-title d-flex justify-content-between px-4 pt-3">
+                              <p> Income</p>
+                              <i class="fi fi-sr-chart-line-up"></i>
+                            </div>
+                            <canvas id="ChartTax"></canvas>
+                          </div>
                         </div>
-                        <div class="echart-total-sales-chart" style="min-height:320px;width:100%"></div>
-                    </div>
+                      </div>
+
+                      <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                          const fetchData = async () => {
+                            try {
+                              // Mengambil data dari server melalui endpoint '/getTaxData'
+                              const response = await fetch('/getTaxData');
+                              const data = await response.json();
+                              console.log(data);
+
+                              data.forEach(entry => {
+                                entry.total_tax = parseInt(entry.total_tax);
+                              });
+
+                              // Mengambil data yang diperlukan untuk labels dan dataset dari respons JSON
+                              const months = data.map(entry => entry.month);
+
+                              // Mengambil elemen canvas dengan id 'ChartTax'
+                              const ctx = document.getElementById('ChartTax').getContext('2d');
+
+                              // Membuat gradient untuk warna chart
+                              var gradientStroke1 = ctx.createLinearGradient(0, 230, 0, 50);
+                              gradientStroke1.addColorStop(1, 'rgba(81, 100, 255, 0.5)');
+                              gradientStroke1.addColorStop(0.2, 'rgba(81, 100, 255, 0.2)');
+                              gradientStroke1.addColorStop(0, 'rgba(81, 100, 255, 0.1)');
+
+                              // Membuat objek Chart menggunakan data yang diambil dari server
+                              const myChart = new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                  labels: data.map(entry => entry.month),
+                                  datasets: [{
+                                    label: 'Total Tax (Rp)',
+                                    data: data.map(entry => entry.total_tax),
+                                    backgroundColor: gradientStroke1,
+                                    borderColor: '#5164FF',
+                                    borderWidth: 3,
+                                    fill: true,
+                                  }]
+                                },
+                                options: {
+                                  onComplete: function() {
+                                    console.log('Chart rendered:', this);
+                                  },
+                                  responsive: true,
+                                  scales: {
+                                    y: {
+                                      beginAtZero: true,
+                                      grid: {
+                                        drawBorder: false,
+                                        display: true,
+                                        drawOnChartArea: true,
+                                        drawTicks: false,
+                                        borderDash: [5, 5]
+                                      },
+                                      ticks: {
+                                        display: true,
+                                        padding: 10,
+                                        color: '#000000',
+                                        font: {
+                                          size: 11,
+                                          family: "Poppins",
+                                          style: 'normal',
+                                          lineHeight: 2
+                                        },
+                                      }
+                                    },
+                                    x: {
+                                      grid: {
+                                        drawBorder: false,
+                                        display: false,
+                                        drawOnChartArea: false,
+                                        drawTicks: false,
+                                        borderDash: [5, 5]
+                                      },
+                                      ticks: {
+                                        display: true,
+                                        color: '#000000',
+                                        padding: 20,
+                                        font: {
+                                          size: 11,
+                                          family: "Poppins",
+                                          style: 'normal',
+                                          lineHeight: 2
+                                        },
+                                      }
+                                    },
+                                  },
+                                },
+                              });
+                            } catch (error) {
+                              // Tangani kesalahan saat mengambil atau mengolah data
+                              console.error('Error fetching data:', error);
+                            }
+                          };
+
+                          // Panggil fungsi fetchData setelah DOM sepenuhnya dimuat
+                          fetchData();
+                        });
+                      </script>
                 </div>
             </div>
 

@@ -39,8 +39,7 @@
                                     @foreach ($kategori as $kategoris)
                                         <div class="form-check mb-0">
                                             <input class="form-check-input mt-0" id="flexCheck{{ $kategoris->id }}"
-                                                type="checkbox" name="device[]" value="{{ $kategoris->id }}"
-                                                @if (in_array($kategoris->id, $devices)) checked @endif>
+                                                type="checkbox" name="device[]" value="{{ $kategoris->id }}">
                                             <label class="form-check-label d-block lh-sm fs-0 text-900 fw-normal mb-0"
                                                 for="flexCheck{{ $kategoris->id }}">
                                                 {{ $kategoris->nama_kategori }}

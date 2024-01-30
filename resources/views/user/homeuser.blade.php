@@ -44,6 +44,7 @@
                                                     class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary"
                                                     data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="Add to wishlist">
+
                                                     <span class="fas fa-heart d-block-hover"></span>
                                                     <span class="far fa-heart d-none-hover"></span>
                                                 </button>

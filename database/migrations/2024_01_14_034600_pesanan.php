@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->restrictOnDelete();
             $table->integer('total');
-            $table->enum('status', ['pending', 'accepted', 'paid', 'waiting payment', 'rejected', 'shipped', 'delivered', 'completed'])->default('pending');
+            $table->enum('status', ['pending','shipped', 'delivered', 'completed'])->default('pending');
             $table->string('pesan_tolak')->default('');
+
             $table->string('metode_pembayaran')->default('');
             $table->timestamps();
         });

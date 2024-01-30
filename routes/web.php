@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\UlasanController;
 use App\Models\Adminorder;
 use App\Http\Controllers\Homeuser;
 use Illuminate\Support\Facades\Auth;
@@ -8,24 +7,26 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\UserMiddleware;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LikeController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\UlasanController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeUserController;
-use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\AdminorderController;
 use App\Http\Controllers\PembayaranController;
-use App\Http\Controllers\ProdukfilterController;
-use App\Http\Controllers\AdmindashboardController;
-use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\ProdukdetailController;
-use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\ProdukfilterController;
 use App\Http\Controllers\UlasanprodukController;
+use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\AdmindashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,8 +89,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 // User
 Route::middleware([UserMiddleware::class])->group(function () {
 
-    // Route::resource('pembelianproduk',PembayaranController::class);
 
+    Route::post('menu/massUpdate', [checkoutController::class, 'massUpdate'])->name('menu.massUpdate');
     Route::get('/homeuser', [HomeUserController::class, 'homeuser'])->name('homeuser');
     Route::get('/detailproduk{id}', [HomeUserController::class, 'detailproduk'])->name('detail.produk');
     Route::post('{produk_id}/order', [HomeUserController::class,'order'])->name('shop.order');
@@ -127,7 +128,6 @@ Route::middleware([UserMiddleware::class])->group(function () {
         Route::get('show/{id}', 'show')->name('ulasanproduk');
         Route::post('store', 'store')->name('ulasanproduk.store');
     });
-
 
     Route::controller(KeranjangController::class)->prefix('keranjang')->group(function () {
         Route::get('keranjang', 'index')->name('keranjang');

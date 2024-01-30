@@ -11,10 +11,14 @@ class Userbeli extends Model
     use HasFactory;
     protected $fillable =[
         'jumlah',
-        'metodepembayaran',
+        'foto',
+        'metode_pembayaran',
         'totalharga',
         'user_id',
-        'produk_id'
+        'produk_id',
+        'keterangan',
+        'adminstatus',
+        'pembelianstatus'
     ];
     public function User(): BelongsTo
     {

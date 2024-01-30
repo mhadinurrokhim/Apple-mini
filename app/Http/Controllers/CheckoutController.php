@@ -7,6 +7,7 @@ use App\Models\Pesanan;
 use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 use App\Models\Detailpesanan;
+use App\Models\Userbeli;
 use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
@@ -26,21 +27,103 @@ class CheckoutController extends Controller
         $order = Detailpesanan::where('status', 'checkout')->get()->count();
         $payments = Pembayaran::all();
 
-        // return dd($pesanan);
-        return view('user.checkout', compact('pesanan', 'totalpesanan', 'order', 'payments', 'pesanan_id'));
+        $bank = Pembayaran::all();
+        $wallet = Pembayaran::all();
+
+        return view('user.checkout', compact('pesanan','bank','e-wallet', 'totalpesanan', 'order', 'payments', 'pesanan_id'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function massUpdate()
     {
-        //
+        // try {
+        //     $user_id = Auth::id();
+        //     $itemIds = $request->input('ids');
+
+        //     foreach ($itemIds as $orderId) {
+        //         // Validasi input untuk setiap pesanan
+        //         $validatedData = $request->validate([
+        //             "jumlah_$orderId" => 'required|integer|min:1',
+        //             "catatan" => 'nullable|string|max:255',
+        //             "foto" => 'required|image|max:2048', // Ubah sesuai dengan aturan validasi foto
+        //             "barangpenjual_id_$orderId" => 'required|exists:barangpenjuals,id',
+        //             "toko_id_$orderId" => 'required|exists:users,id',
+        //             "user_id_$orderId" => 'required|exists:users,id',
+        //             "metodepembayaran" => 'required|in:e-wallet,bank', // Sesuaikan dengan metode pembayaran yang valid
+        //         ], [
+        //             "jumlah_$orderId.required" => 'Jumlah harus diisi untuk pesanan ini.',
+        //             "jumlah_$orderId.integer" => 'Jumlah harus berupa angka.',
+        //             "jumlah_$orderId.min" => 'Jumlah minimal 1.',
+        //             "catatan.max" => 'Catatan maksimal 255 karakter.',
+        //             "foto.required" => 'Ukuran foto terlalu besar, maksimal 2MB.',
+        //             "foto.max" => 'Ukuran foto terlalu besar, maksimal 2MB.',
+        //             "foto.image" => 'File harus berupa gambar.',
+        //             "barangpenjual_id_$orderId.required" => 'Barang penjual tidak valid.',
+        //             "toko_id_$orderId.required" => 'Toko tidak valid.',
+        //             "user_id_$orderId.required" => 'User tidak valid.',
+        //             "metodepembayaran.required" => 'Metode pembayaran harus dipilih.',
+        //             "metodepembayaran.in" => 'Metode pembayaran tidak valid.',
+        //         ]);
+
+        //         $order = userOrder::find($orderId);
+
+        //         if ($order) {
+        //             $order->barangpenjual_id = $validatedData["barangpenjual_id_$orderId"];
+        //             $order->adminstatus = 'notapprove';
+        //             $order->pembelianstatus = 'menunggu konfirmasi';
+        //             $order->jumlah = $validatedData["jumlah_$orderId"];
+        //             $order->catatan = $validatedData["catatan"];
+        //             $order->toko_id = $validatedData["toko_id_$orderId"];
+        //             $order->user_id = $validatedData["user_id_$orderId"];
+        //             $order->metodepembayaran = $validatedData["metodepembayaran"];
+
+        //             if ($request->hasFile('foto')) {
+        //                 $filePath = Storage::disk('public')->put('pembeli/bukti_pembayaran', $request->file('foto'));
+        //                 $order->foto = $filePath;
+        //             }
+
+        //             $order->save();
+        //         }
+        //     }
+
+        //     // Iterasi melalui item pembelian
+        //     foreach ($itemIds as $orderId) {
+        //         $jumlah = $request->input('jumlah_' . $orderId);
+
+        //         // Mengurangkan stok di barangpenjual
+        //         $barangPenjual = BarangPenjual::find($request->input('barangpenjual_id_' . $orderId));
+        //         $barangPenjual->stok -= $jumlah;
+        //         $barangPenjual->save();
+        //     }
+
+        //     $adminNotification = new adminnotifikasi();
+        //     $adminNotification->keterangan_admin = 'Ada pesanan masuk!';
+        //     $adminNotification->isi_admin = 'Cek halaman pembelian untuk konfirmasi';
+        //     $adminNotification->save();
+
+        //     // Kirim notifikasi kepada user
+        //     $userNotification = new notifikasi();
+        //     $userNotification->keterangan = 'Anda berhasil membuat pesanan!';
+        //     $userNotification->isi = 'Lihat pesanan Anda di halaman pesanan';
+        //     $userNotification->user_id_notifikasi = $validatedData["user_id_$orderId"];
+        //     $userNotification->save();
+
+        //     // Tambahkan respons yang sesuai
+        //     return response()->json(['message' => 'Pembaruan massal berhasil.']);
+        // } catch (ValidationException $e) {
+        //     return response()->json(['errors' => $e->errors()], 422);
+        // } catch (\Exception $e) {
+        //     return response()->json(['message' => 'Terjadi kesalahan: ' . $e->getMessage()], 500);
+        // }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    public function Beli()
+    {
+
+    }
+
     public function store(Request $request)
     {
         // $pesanan = new Pesanan;

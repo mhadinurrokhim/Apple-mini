@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('userbelis', function (Blueprint $table) {
             $table->id();
             $table->string('jumlah');
-            $table->string('metodepembayaran');
-            $table->string('totalharga');
+            $table->string('metode_pembayaran');
+            $table->string('total');
+            $table->string('foto');
             $table->foreignId('produk_id');
             $table->foreignId('user_id');
             $table->timestamps();

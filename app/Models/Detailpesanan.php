@@ -22,4 +22,8 @@ class Detailpesanan extends Model
     {
         return $this->belongsTo(Produk::class);
     }
+    public function pembayaran(): BelongsTo
+    {
+        return $this->belongsTo(Pembayaran::class);
+    }
 }
