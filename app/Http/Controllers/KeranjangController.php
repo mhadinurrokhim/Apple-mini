@@ -98,16 +98,16 @@ class KeranjangController extends Controller
                 $pesanan = detailpesanan::find($orderId);
                 if (intval(substr($quantity, 0, 1))  === 0) {
                     // return dd($quantity);
-                    return redirect()->back()->with('update_failed', 'nominal jumlah tidak valid');
+                    return redirect()->back()->with('update_failed', 'nominal amount is invalid');
                 }
                 $oldQuantity = $pesanan->jumlah;
                 // return dd($quantity);
 
                 if ($quantity - $oldQuantity > $pesanan->produk->stok) {
-                    return redirect()->back()->with('update_failed', "Jumlah yang diminta melebihi stok yang tersedia untuk produk ini.");
+                    return redirect()->back()->with('update_failed', "Quantity requested exceeds available stock for this product.");
                 }
                 if ($quantity <= 0) {
-                    return redirect()->back()->with('update_failed', "Jumlah yang diminta harus lebih dari nol.");
+                    return redirect()->back()->with('update_failed', "The amount requested must be more than zero.");
                 }
                 $harga = $pesanan->produk->harga;
                 $pesanan->jumlah = $quantity;
@@ -121,9 +121,9 @@ class KeranjangController extends Controller
                 $produk->stok -= $quantity - $oldQuantity;
                 $produk->save();
             }
-            return redirect()->route('keranjang')->with('update_success', 'Keranjang berhasil diperbarui.');
+            return redirect()->route('keranjang')->with('update_success', 'Cart updated successfully.');
         } catch (\Throwable $th) {
-            return redirect()->route('keranjang')->with('update_failed', 'Gagal memperbarui keranjang. Mohon coba lagi.');
+            return redirect()->route('keranjang')->with('update_failed', 'Failed to update cart. Please try again.');
         }
         // $detailPesanan = $request->pesanan_id;
         // foreach ($detailPesanan as $value) {

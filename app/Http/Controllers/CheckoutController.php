@@ -59,7 +59,7 @@ class CheckoutController extends Controller
             $k->status = 'checkout';
             $k->save();
         }
-        return redirect()->route('checkout')->with("cart", "Pesanan berhasil dibuat. Terima kasih atas pembeliannya!");
+        return redirect()->route('checkout')->with("cart", "Order placed successfully. Thank you for the purchase!");
     }
 
     /**
@@ -97,7 +97,7 @@ class CheckoutController extends Controller
         $produk->save();
         $detailPesanan->delete();
         // return redirect()->back();
-        return response()->json(['status' => 'success', 'message' => 'Item berhasil dihapus']);
+        return response()->json(['status' => 'success', 'message' => 'Item deleted successfully']);
     }
 
     public function checkout()

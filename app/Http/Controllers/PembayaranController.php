@@ -182,14 +182,14 @@ class PembayaranController extends Controller
         $request->validate([
             'metode_pembayaran' => 'required|string|max:255',
         ], [
-            'metode_pembayaran.required' => 'Kolom Metode Pembayaran wajib diisi.',
-            'metode_pembayaran.string' => 'Metode Pembayaran harus berupa teks.',
-            'metode_pembayaran.max' => 'Metode Pembayaran tidak boleh lebih dari :max karakter.',
+            'metode_pembayaran.required' => 'The Payment Method column is mandatory.',
+            'metode_pembayaran.string' => 'Payment Method must be text.',
+            'metode_pembayaran.max' => 'Payment Method must have no more than :max characters.',
         ]);
 
         $pembayaran = Pembayaran::find($id);
         $pembayaran->update($request->all());
-        return redirect()->route('pembayaran')->with("success", "Data pembayaran berhasil diperbarui.");
+        return redirect()->route('pembayaran')->with("success", "Payment data updated successfully.");
     }
 
     /**

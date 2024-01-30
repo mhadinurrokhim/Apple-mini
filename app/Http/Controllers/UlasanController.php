@@ -42,7 +42,7 @@ class UlasanController extends Controller
         // ]);
 
         Ulasan::create($request->all());
-        return redirect()->route('ulasanproduk', $request->input('produk_id'))->with("success", "Category data added successfully!");
+        return redirect()->route('ulasanproduk', $request->input('produk_id'))->with("success", "Review data added successfully!");
     }
 
     /**

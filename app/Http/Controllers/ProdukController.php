@@ -138,7 +138,7 @@ class ProdukController extends Controller
             }
         }
 
-        return redirect()->route('produk')->with("success", "Data produk berhasil diperbarui.");
+        return redirect()->route('produk')->with("success", "Product data updated successfully.");
     }
 
 

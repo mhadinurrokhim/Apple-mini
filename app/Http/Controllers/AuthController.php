@@ -44,7 +44,7 @@ class AuthController extends Controller
             'password_confirmation.required' => 'Password confirmation is required.',
         ]);
         if (User::where('email', $request->email)->exists()) {
-            return redirect('/login')->with('error', 'Alamat email sudah terdaftar. Gunakan alamat email lain.');
+            return redirect('/login')->with('error', 'The email address is registered. Use another email address.');
         }
         $data = [
             'name' => $request->name,
