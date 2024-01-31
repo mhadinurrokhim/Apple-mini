@@ -23,6 +23,7 @@ class HomeUserController extends Controller
         ->groupBy('produk.id', 'produk.nama_produk','produk.path_produk','produk.harga','produk.stok','produk.deskripsi',) // sertakan semua kolom non-agregasi di sini
         ->get();
         $user = auth()->user();
+        $productsInWishlist = $user->wishlists;
         return view('user.homeuser', compact('produk', 'user', 'totalpesanan'));
     }
 

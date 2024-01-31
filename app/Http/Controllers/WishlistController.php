@@ -13,14 +13,15 @@ class WishlistController extends Controller
 {
     public function index()
     {
+    $produk = Produk::all();
     $totalpesanan = Detailpesanan::where('status', 'keranjang')->count();
     $user = auth()->user();
     // $wishlist = session('wishlist', []);
     // $productsInWishlist = Wishlist::with('product')->get();
-    
+
     $productsInWishlist = $user->wishlists;
 
-    return view('user.wishlist', compact('user', 'totalpesanan', 'productsInWishlist'));
+    return view('user.wishlist', compact('user', 'totalpesanan', 'productsInWishlist', 'produk'));
     }
 
     public function addToWishlist($productId)
@@ -45,12 +46,14 @@ class WishlistController extends Controller
     } else {
         return redirect()->back()->with('error', 'The product is already on the wishlist');
     }
-    
+
     // return redirect()->back();
 }
 
-public function delete($id) {
-    Wishlist::find($id)->delete();
+public function destroy(String $id) {
+    $Wishlist = Wishlist::find($id);
+    // dd($Wishlist);
+    $Wishlist->delete();
     return redirect()->back()->with('success', 'product successfully deleted from wishlist');
     }
 }

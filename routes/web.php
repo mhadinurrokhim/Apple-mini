@@ -162,6 +162,6 @@ Route::controller(PembayaranController::class)->prefix('pembayaran')->group(func
 
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
 Route::get('/wishlist/add/{id}', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
-Route::delete('/wishlist/delete/{id}', [WishlistController::class, 'delete'])->name('wishlist.delete');
+Route::delete('/wishlist/delete/{id}', [WishlistController::class, 'destroy'])->name('wishlist.delete');
 
 

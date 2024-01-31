@@ -10,6 +10,8 @@ class ProdukdetailController extends Controller
 {
 //     public function produkdetail($id)
 //     {
+
+
 //         $detail = Produk::all();
 //         return view('user.produkdetail',compact( 'detail'));
 //     }
