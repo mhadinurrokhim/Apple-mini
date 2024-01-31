@@ -81,7 +81,6 @@
                                                     <h3 class="text-1100 mb-0">
                                                         Rp.{{ number_format($product->harga, 0, ',', '.') }}</h3>
                                                     <div class="flex-grow-1"></div>
-                                                    <button class="fas fa-shopping-cart me-2 cart-icon"></button>
                                                 </div>
                                             </div>
                                         </div>

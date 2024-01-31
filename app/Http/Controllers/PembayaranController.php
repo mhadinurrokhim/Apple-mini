@@ -111,10 +111,10 @@ class PembayaranController extends Controller
         try {
             //code...
             $pembayaran->delete();
-            return redirect()->route("pembayaran")->with("success", "Category data has been successfully deleted!");
+            return redirect()->route("pembayaran")->with("success", "Payment data has been successfully deleted!");
         } catch (\Throwable $th) {
             //throw $th;
-            return redirect('pembayaran')->with("error", "Failed to delete because category data is in use!");
+            return redirect('pembayaran')->with("error", "Failed to delete because payment data is in use!");
         }
     }
 }

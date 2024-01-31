@@ -129,7 +129,7 @@
                                         <div class="d-flex flex-column justify-content-between h-100">
                                             <div>
                                                 <div class="border border-1 rounded-3 position-relative mb-3">
-                                                    <a href="{{ route('wishlist.add', $pf->id) }}" 
+                                                    <a href="{{ route('wishlist.add', $pf->id) }}"
                                                         class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary"
                                                         {{-- data-bs-toggle="tooltip" data-bs-placement="top" --}}
                                                         title="Add to wishlist">
@@ -173,7 +173,6 @@
                                                     <h3 class="text-1100 mb-0">
                                                         Rp.{{ number_format($pf->harga, 0, ',', '.') }}</h3>
                                                     <div class="flex-grow-1"></div>
-                                                    <button class="fas fa-shopping-cart me-2 cart-icon"></button>
                                                 </div>
                                             </div>
                                         </div>
