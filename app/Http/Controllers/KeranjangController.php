@@ -49,7 +49,7 @@ class KeranjangController extends Controller
             Detailpesanan::findOrFail($value)->update(['pesanan_id' => $pesanan->id, 'status' => 'checkout']);
         }
 
-        return redirect()->route('homeuser')->with("cart", "Pesanan berhasil dibuat. Terima kasih atas pembeliannya!");
+        return redirect()->route('homeuser')->with("cart", "Order placed successfully. Thank you for the purchase!");
     }
 
     /**

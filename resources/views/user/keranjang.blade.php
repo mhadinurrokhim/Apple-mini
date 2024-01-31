@@ -1,8 +1,6 @@
 @extends('layout_user.navbar')
 @section('content')
     @include('Asset.SweetAlert')
-    <!-- ============================================-->
-    <!-- <section> begin ============================-->
     <section class="pt-5 pb-9">
         <div class="container-small cart">
             <nav class="mb-2" aria-label="breadcrumb">

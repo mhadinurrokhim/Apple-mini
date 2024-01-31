@@ -82,7 +82,7 @@ class HomeUserController extends Controller
             $produk->stok -= $request->jumlah;
             $produk->save();
         }
-        return redirect()->route('keranjang', compact('totalpesanan'));
+        return redirect()->route('keranjang', compact('totalpesanan'))->with('success', 'Item has been added to the cart.');
     }
 
     /**
