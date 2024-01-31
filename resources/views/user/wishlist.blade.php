@@ -19,8 +19,7 @@
                         <thead>
                             <tr>
                                 <th class="sort white-space-nowrap align-middle fs--2" scope="col" style="width:7%;"></th>
-                                <th class="sort white-space-nowrap align-middle"
-                                    scope="col"style="width:30%; min-width:250px;">PRODUCTS</th>
+                                <th class="sort white-space-nowrap align-middle" scope="col"style="width:30%; min-width:250px;">PRODUCTS</th>
                                 <th class="sort align-middle" scope="col" style="width:16%;">CATEGORY</th>
                                 <th class="sort align-middle" scope="col" style="width:10%;">STOK</th>
                                 <th class="sort align-middle text-center" scope="col" style="width:10%;">PRICE</th>
