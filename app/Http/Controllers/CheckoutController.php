@@ -50,7 +50,7 @@ class CheckoutController extends Controller
                     "jumlah_$orderId" => 'required|integer|min:1',
                     "catatan" => 'nullable|string|max:255',
                     "foto" => 'required|image|max:2048', // Ubah sesuai dengan aturan validasi foto
-                    "barangpenjual_id_$orderId" => 'required|exists:barangpenjuals,id',
+                    "prod_id_$orderId" => 'required|exists:barangpenjuals,id',
                     "toko_id_$orderId" => 'required|exists:users,id',
                     "user_id_$orderId" => 'required|exists:users,id',
                     "metodepembayaran" => 'required|in:e-wallet,bank', // Sesuaikan dengan metode pembayaran yang valid
@@ -199,7 +199,7 @@ class CheckoutController extends Controller
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
         $user = auth()->user();
         $items = DetailPesanan::where('status', 'checkout')->where('user_id', $user->id)->get();
-    
+
         return view('user.checkout', compact('items', 'user', 'totalpesanan', 'wallet', 'bank'));
     }
 

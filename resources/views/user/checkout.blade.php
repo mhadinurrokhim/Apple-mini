@@ -74,7 +74,7 @@
                   <select name="tujuan_bank" id="tujuan_bank" class="form-control">
                     <option value="" disabled selected>Pilih</option>
                     @forelse ($bank as $data)
-                      <option value="{{ $data->tujuan }}"   data="{{ $data->keterangan }}">{{ $data->tujuan }}</option>
+                      <option value="{{ $data->tujuan }}" data="{{ $data->keterangan }}">{{ $data->tujuan }}</option>
                     @empty
                       <option value=""disabled selected>Data No Rekening empty</option>
                     @endforelse
@@ -88,8 +88,8 @@
                   @endphp
                   @if ($hadi >= 20)
                   @else --}}
-                    <input type="text" name="keterangan_bank" value="{{ $data->keterangan}}"
-                      id="{{ $data->tujuan }}" class="form-control" readonly disabled>
+                    <input type="text" name="keterangan_bank" value="{{ $data->keterangan }}" id="{{ $data->tujuan }}"
+                      class="form-control" readonly disabled>
                     {{-- @endif --}}
                   @endforeach
                 </div>
@@ -165,7 +165,9 @@
     </div><!-- end of .container-->
   </section>
   {{-- Script Pembayaran --}}
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
   <script>
     const selectElement = document.querySelector('#selectMetode');
@@ -187,23 +189,6 @@
         bankInput.style.display = 'none';
       }
     });
-
-    // tujuanEwalletSelect.addEventListener('change', function () {
-    //     const selectedTujuan = tujuanEwalletSelect.value;
-    //     alert(selectedTujuan);
-    //     const ewalletImages = document.querySelectorAll('.ewallet-image');
-
-    //     // Hide all images
-    //     ewalletImages.forEach(function (image) {
-    //         image.style.display = 'none';
-    //     });
-
-    //     // Show the selected image
-    //     const selectedImage = document.querySelector(`#${selectedTujuan}`);
-    //     if (selectedImage) {
-    //         selectedImage.style.display = 'block';
-    //     }
-    // });
   </script>
   <script>
     $(document).ready(function() {
@@ -231,18 +216,89 @@
       });
     });
   </script>
-
-  {{-- <script>
-    $(document).ready(function () {
-        $('#tujuan_ewallet').on('change', function () {
-            var selectedTujuan = $(this).val();
-
-            // Hide all images
-            $('.ewallet-image').hide();
-
-            // Show the selected image
-            $('#' + selectedTujuan).show();
+  <script>
+    $(document).ready(function() {
+      $("#bayar").click(function() {
+        var itemIds = [];
+        var selectedMetode = $("#selectMetode")
+          .val(); // Mengambil nilai metode pembayaran yang dipilih
+        var foto = $('#foto')[0].files[0];
+        var catatan = $("#catatan").val();
+        $(".item-element").each(function() {
+          var orderId = $(this).data("order-id");
+          itemIds.push(orderId);
         });
+
+        // Inisialisasi objek data
+        var formData = new FormData();
+
+        // Loop melalui itemIds
+        for (var i = 0; i < itemIds.length; i++) {
+          var orderId = itemIds[i];
+          var jumlah = $("input[name='jumlah_" + orderId + "']")
+            .val(); // Ambil nilai jumlah dinamis
+          var barangpenjual_id = $("input[name='barangpenjual_id_" + orderId + "']")
+            .val(); // Ambil nilai barangpenjual_id dinamis
+          var toko_id = $("input[name='toko_id_" + orderId + "']")
+            .val(); // Ambil nilai toko_id dinamis
+          var user_id = $("input[name='user_id_" + orderId + "']")
+            .val(); // Ambil nilai user_id dinamis
+
+          // Tambahkan data ke objek formData
+          formData.append('ids[]', orderId);
+          formData.append('jumlah_' + orderId, jumlah);
+          formData.append('barangpenjual_id_' + orderId, barangpenjual_id);
+          formData.append('toko_id_' + orderId, toko_id);
+          formData.append('user_id_' + orderId, user_id);
+          formData.append('foto', foto);
+          formData.append('catatan', catatan);
+        }
+
+        formData.append('metodepembayaran', selectedMetode);
+
+        // Tampilkan SweetAlert konfirmasi
+        Swal.fire({
+          title: 'Apakah Anda yakin?',
+          text: 'Anda akan melakukan pembayaran.',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'OK',
+          cancelButtonText: 'Batal'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // Kirim permintaan Ajax dengan formData jika pengguna mengonfirmasi
+            var csrfToken = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+              url: "{{ route('menu.massUpdate') }}",
+              type: "POST",
+              data: formData,
+              processData: false, // Hindari pemrosesan otomatis data
+              contentType: false, // Hindari penambahan header otomatis
+              headers: {
+                'X-CSRF-TOKEN': csrfToken // Sertakan token CSRF dalam header
+              },
+              success: function(data) {
+                // Handle respons dari server jika diperlukan
+                Swal.fire('Sukses',
+                  'Pembayaran berhasil dilakukan, silahkan tunggu verifikasi admin.',
+                  'success');
+                // Redirect atau lakukan tindakan lain sesuai kebutuhan Anda
+                setTimeout(function() {
+                  window.location.href =
+                    "";
+                }, 3000);
+              },
+              error: function(response) {
+                console.log(response);
+                // Handle kesalahan jika terjadi
+                Swal.fire('Peringatan',
+                  'Tolong lengkapi pengisian data anda.',
+                  'warning');
+              }
+            });
+          }
+        });
+      });
     });
-</script> --}}
+  </script>
 @endsection
