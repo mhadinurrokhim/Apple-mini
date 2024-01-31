@@ -254,7 +254,7 @@
                           </div>
                         </div>
                       </div>
-
+                      <div class="echart-area-line-chart-example" style="min-height:300px"></div>
                       <script>
                         document.addEventListener('DOMContentLoaded', function() {
                           const fetchData = async () => {

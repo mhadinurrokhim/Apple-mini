@@ -7,7 +7,9 @@
         <div class="container-small cart">
             <h2 class="mb-5">Wishlist
                 <span class="text-700 fw-normal ms-2">
-                    <span>({{ $productsInWishlist->count() }})</span>
+                    @if ($productsInWishlist->count() > 0)
+                        <span>({{ $productsInWishlist->count() }})</span>
+                    @endif
                 </span>
             </h2>
             <div class="border-y" id="productWishlistTable"
@@ -17,7 +19,8 @@
                         <thead>
                             <tr>
                                 <th class="sort white-space-nowrap align-middle fs--2" scope="col" style="width:7%;"></th>
-                                <th class="sort white-space-nowrap align-middle" scope="col"style="width:30%; min-width:250px;">PRODUCTS</th>
+                                <th class="sort white-space-nowrap align-middle"
+                                    scope="col"style="width:30%; min-width:250px;">PRODUCTS</th>
                                 <th class="sort align-middle" scope="col" style="width:16%;">CATEGORY</th>
                                 <th class="sort align-middle" scope="col" style="width:10%;">STOK</th>
                                 <th class="sort align-middle text-center" scope="col" style="width:10%;">PRICE</th>
@@ -49,16 +52,19 @@
                                         Rp. {{ number_format($produk->harga, 0, ',', '.') }}</td>
                                     <td class="total align-middle fw-bold text-1000 text-end text-nowrap pe-0">
                                         <div class="d-flex align-items- justify-content-end">
-                                            <form action="{{ route('wishlist.delete', $produk->id) }}" method="POST" enctype="multipart/form-data" class="me-2">
+                                            <form action="{{ route('wishlist.delete', $produk->id) }}" method="POST"
+                                                enctype="multipart/form-data" class="me-2">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-sm text-500 hover-text-600">
                                                     <span class="fas fa-trash"></span>
                                                 </button>
                                             </form>
-                                            <form action="{{ route('shop.order', $produk->id) }}" method="POST" enctype="multipart/form-data">
+                                            <form action="{{ route('shop.order', $produk->id) }}" method="POST"
+                                                enctype="multipart/form-data">
                                                 @csrf
-                                                <button class="btn btn-primary fs--2" @if ($produk->stok <= 0) disabled @endif>
+                                                <button class="btn btn-primary fs--2"
+                                                    @if ($produk->stok <= 0) disabled @endif>
                                                     <span class="fas fa-shopping-cart me-1 fs--2"></span>Add to cart
                                                 </button>
                                             </form>
