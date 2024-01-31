@@ -260,9 +260,9 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label for="" class="form-label fw-bold">metode pembayaran</label>
+                <label for="" class="form-label fw-bold">PAYMENT METHOD</label>
                 <select name="metode_pembayaran" id="selectMetode" class="form-control">
-                    <option value="" class="dropdown-menu" disabled selected>Pilih Metode Pembayaran</option>
+                    <option value="" class="dropdown-menu" disabled selected>Select Payment Method</option>
                     <option value="e-wallet" data-target="ewalletInput">E-Wallet</option>
                     <option value="bank" data-target="bankInput">Bank</option>
                 </select>
@@ -271,7 +271,7 @@
             <div class="form-section" value="e-wallet" id="ewalletInput" style="display: none;">
                 <!-- E-Wallet Form -->
                 <div class="mb-3">
-                    <label for="" class="form-label fw-bold">Tujuan</label>
+                    <label for="" class="form-label fw-bold">Objective</label>
                     <input type="text" name="tujuan_ewallet" class="form-control" value="{{ old('tujuan_ewallet') }}">
                     @if ($errors->has('tujuan_ewallet'))
                         <span class="text-danger">{{ $errors->first('tujuan_ewallet') }}</span>
@@ -288,7 +288,7 @@
             </div>
 
             <div class="form-section" id="bankInput" style="display: none;">
-                <!-- Bank Form -->  
+                <!-- Bank Form -->
                 <div class="mb-3">
                     <label for="" class="form-label fw-bold">Bank</label>
                     <input type="text" name="tujuan_bank" id="tujuan_bank" class="form-control"
@@ -298,7 +298,7 @@
                     @endif
                 </div>
                 <div class="mb-3">
-                    <label for="" class="form-label fw-bold">Nomor Rekening</label>
+                    <label for="" class="form-label fw-bold">Account Number</label>
                     <input type="number" name="keterangan_bank" id="keterangan_bank" class="form-control"
                         value="{{ old('keterangan_bank') }}">
                     @if ($errors->has('keterangan_bank'))

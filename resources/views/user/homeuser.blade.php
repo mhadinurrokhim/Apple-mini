@@ -33,6 +33,7 @@
 
 
                 <div class="row">
+                    @if(count($produk) > 0)
                     @foreach ($produk as $product)
                         <div class="col-12 col-sm-6 col-md-4 col-xxl-2">
                             <div class="product-card-container h-100">
@@ -81,7 +82,6 @@
                                                     <h3 class="text-1100 mb-0">
                                                         Rp.{{ number_format($product->harga, 0, ',', '.') }}</h3>
                                                     <div class="flex-grow-1"></div>
-                                                    <button class="fas fa-shopping-cart me-2 cart-icon"></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -90,6 +90,16 @@
                             </div>
                         </div>
                     @endforeach
+                    @else
+                        <tr>
+                            <td colspan="8" class="text-center py-4">
+                                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 70%;">
+                                    <img src="{{ asset('assets/img/No data-amico.svg') }}" alt="" style="width: 300px; height: auto; max-width: 100%; display: block; margin: 0 auto;">
+                                    <h3 class="mb-3">There are no products added by admin yet. Please check back later.</h3>
+                                </div>
+                            </td>
+                        </tr>
+                    @endif
                 </div>
                 <div class="text-center mt-4">
                     <a href="{{ route('produk.filter') }}" class="btn btn-lg btn-primary rounded-pill">View All Product</a>

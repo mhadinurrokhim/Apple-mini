@@ -122,6 +122,7 @@
                 </div>
                 <div class="col-lg-9 col-xxl-10">
                     <div class="row">
+                        @if(count($produk) > 0)
                         @foreach ($produk as $pf)
                             <div class="col-12 col-xl-4 mt-2">
                                 <div class="card mr-3">
@@ -129,7 +130,7 @@
                                         <div class="d-flex flex-column justify-content-between h-100">
                                             <div>
                                                 <div class="border border-1 rounded-3 position-relative mb-3">
-                                                    <a href="{{ route('wishlist.add', $pf->id) }}" 
+                                                    <a href="{{ route('wishlist.add', $pf->id) }}"
                                                         class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary"
                                                         {{-- data-bs-toggle="tooltip" data-bs-placement="top" --}}
                                                         title="Add to wishlist">
@@ -173,7 +174,6 @@
                                                     <h3 class="text-1100 mb-0">
                                                         Rp.{{ number_format($pf->harga, 0, ',', '.') }}</h3>
                                                     <div class="flex-grow-1"></div>
-                                                    <button class="fas fa-shopping-cart me-2 cart-icon"></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -181,6 +181,16 @@
                                 </div>
                             </div>
                         @endforeach
+                        @else
+                            <tr>
+                                <td colspan="8" class="text-center py-4">
+                                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 70%;">
+                                        <img src="{{ asset('assets/img/No data-amico.svg') }}" alt="" style="width: 300px; height: auto; max-width: 100%; display: block; margin: 0 auto;">
+                                        <h3 class="mb-3">There are no products added by admin yet. Please check back later.</h3>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endif
                     </div>
                 </div>
             </div>
