@@ -64,14 +64,15 @@
                                             value="{{ $maxPrice }}"></div><button
                                         class="btn btn-phoenix-primary border-300 px-3" type="submit ">Go</button>
                                 </div>
-                            </div><a class="btn px-0 y-4 d-block collapse-indicator" data-bs-toggle="collapse"
+                            </div>
+                            <a class="btn px-0 y-4 d-block collapse-indicator" data-bs-toggle="collapse"
                                 href="#collapseRating" role="button" aria-expanded="true" aria-controls="collapseRating">
-                                <div class="d-flex align-items-center justify-content-between w-100">
+                                {{-- <div class="d-flex align-items-center justify-content-between w-100">
                                     <div class="fs-0 text-1000">Rating</div><span
                                         class="fa-solid fa-angle-down toggle-icon text-500"></span>
-                                </div>
+                                </div> --}}
                             </a>
-                            <div class="collapse show" id="collapseRating">
+                            {{-- <div class="collapse show" id="collapseRating">
                                 <div class="d-flex align-items-center mb-1"><input class="form-check-input me-3"
                                         id="flexRadio1" type="radio" name="flexRadio"><span
                                         class="fa fa-star text-warning fs--1 me-1"></span><span
@@ -115,7 +116,7 @@
                                         class="fa-regular fa-star text-warning-300 fs--1 me-1"></span>
                                     <p class="ms-1 mb-0">&amp; above </p>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="phoenix-offcanvas-backdrop d-lg-none" data-phoenix-backdrop></div>
                     </form>

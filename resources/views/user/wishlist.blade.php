@@ -1,8 +1,6 @@
 @extends('layout_user.navbar')
 @section('content')
     @include('Asset.SweetAlert')
-    <!-- ============================================-->
-    <!-- <section> begin ============================-->
     <section class="pt-5 pb-9">
         <div class="container-small cart">
             <h2 class="mb-5">Wishlist
@@ -19,9 +17,10 @@
                         <thead>
                             <tr>
                                 <th class="sort white-space-nowrap align-middle fs--2" scope="col" style="width:7%;"></th>
-                                <th class="sort white-space-nowrap align-middle" scope="col"style="width:30%; min-width:250px;">PRODUCTS</th>
-                                <th class="sort align-middle" scope="col" style="width:16%;">CATEGORY</th>
-                                <th class="sort align-middle" scope="col" style="width:10%;">STOK</th>
+                                <th class="sort white-space-nowrap align-middle"
+                                    scope="col"style="width:30%; min-width:250px;">PRODUCTS</th>
+                                <th class="sort align-middle text-center" scope="col" style="width:16%;">CATEGORY</th>
+                                <th class="sort align-middle text-center" scope="col" style="width:10%;">STOK</th>
                                 <th class="sort align-middle text-center" scope="col" style="width:10%;">PRICE</th>
                                 <th class="sort align-middle text-end pe-0" scope="col" style="width:35%;"> </th>
                             </tr>
@@ -32,25 +31,27 @@
                                     $produk = $item->product;
                                 @endphp
                                 <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                    <td class="align-middle white-space-nowrap ps-0 py-0">
-                                        <a class="border rounded-2 d-inline-block" href="product-details.html">
+                                    <td class="align-middle white-space-nowrap text-center ps-0 py-0">
+                                        <a class="border rounded-2 d-inline-block"
+                                            href="{{ route('detail.produk', $produk->id) }}">
                                             <img src="{{ asset('storage/Product/' . $produk->path_produk) }}" alt=""
                                                 width="53" />
                                         </a>
                                     </td>
-                                    <td class="products align-middle pe-11">
+                                    <td class="products align-middle">
                                         <a class="fw-semi-bold mb-0 line-clamp-1"
                                             href="{{ route('detail.produk', $produk->id) }}">{{ $produk->nama_produk }}</a>
                                     </td>
-                                    <td class="color align-middle white-space-nowrap fs--1 text-900">
+                                    <td class="color align-middle white-space-nowrap text-center fs--1 text-900">
                                         {{ $produk->kategori ? $produk->kategori->nama_kategori : 'Tidak Ada Kategori' }}
                                     </td>
-                                    <td class="size align-middle white-space-nowrap text-700 fs--1 fw-semi-bold">
+                                    <td
+                                        class="size align-middle white-space-nowrap text-center text-700 fs--1 fw-semi-bold">
                                         {{ $produk->stok }}</td>
                                     <td class="price align-middle text-900 fs--1 fw-semi-bold text-end">
                                         Rp. {{ number_format($produk->harga, 0, ',', '.') }}</td>
                                     <td class="total align-middle fw-bold text-1000 text-end text-nowrap pe-0">
-                                        <div class="d-flex align-items- justify-content-end">
+                                        <div class="d-flex justify-content-end ms-2">
                                             <form action="{{ route('wishlist.delete', $produk->id) }}" method="POST"
                                                 enctype="multipart/form-data" class="me-2">
                                                 @csrf
@@ -62,14 +63,48 @@
                                             <form action="{{ route('shop.order', $produk->id) }}" method="POST"
                                                 enctype="multipart/form-data">
                                                 @csrf
-                                                <button class="btn btn-primary fs--2"
-                                                    @if ($produk->stok <= 0) disabled @endif>
-                                                    <span class="fas fa-shopping-cart me-1 fs--2"></span>Add to cart
-                                                </button>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="input-group input-group-sm flex-nowrap"
+                                                        data-quantity="data-quantity"><button class="btn btn-sm px-2 me-3"
+                                                            data-type="minus">-</button><input
+                                                            class="form-control text-center input-spin-none bg-transparent border-0 px-0"
+                                                            type="number" min="1" value="1"
+                                                            name="jumlah"
+                                                            aria-label="Amount (to the nearest dollar)" /><button
+                                                            class="btn btn-sm px-2 me-3" data-type="plus">+</button></div>
+                                                    <button class="btn btn-primary fs--2"
+                                                        @if ($produk->stok <= 0) disabled @endif>
+                                                        <span class="fas fa-shopping-cart me-1 fs--2"></span>Add to cart
+                                                    </button>
+                                                </div>
                                             </form>
                                         </div>
                                     </td>
                                 </tr>
+                                <script>
+                                    function addToCart() {
+                                        var quantityInput = document.getElementById('quantityInput');
+                                        var maxStock = {{ $produk->stok }};
+                                        var currentQuantity = parseInt(quantityInput.value);
+
+                                        if (currentQuantity <= 0) {
+                                            Swal.fire({
+                                                icon: "error",
+                                                title: "Oops...",
+                                                text: "Quantity must be greater than 0",
+                                            });
+                                        } else if (currentQuantity >= maxStock) {
+                                            Swal.fire({
+                                                icon: "error",
+                                                title: "Oops...",
+                                                text: "You cannot add more items than the available stock",
+                                            });
+                                        } else {
+                                            quantityInput.value = currentQuantity + 0;
+                                        }
+                                    }
+                                </script>
+                                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                             @endforeach
                         </tbody>
                     </table>
