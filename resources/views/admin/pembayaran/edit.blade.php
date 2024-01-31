@@ -1,7 +1,15 @@
 @extends('layout_admin.app')
 
 @section('content')
-@include('Asset.SweetAlert')
+@if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: "{{ session('success') }}"
+            });
+        </script>
+    @endif
     <div class="modal fade" id="searchBoxModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="true" data-phoenix-modal="data-phoenix-modal" style="--phoenix-backdrop-opacity: 1;">
       <div class="modal-dialog">
         <div class="modal-content mt-15 rounded-pill">

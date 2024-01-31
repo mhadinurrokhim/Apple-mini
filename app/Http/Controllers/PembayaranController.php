@@ -63,7 +63,7 @@ class PembayaranController extends Controller
                 'keterangan' => $path,
             ]);
         }
-        return redirect('pembayaran')->with('success', 'Berhasil menambah kategori');
+        return redirect('pembayaran')->with('success', 'Successfully added payment');
     }
 
     /**
