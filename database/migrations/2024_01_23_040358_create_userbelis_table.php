@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('metode_pembayaran');
             $table->string('total');
             $table->string('foto');
+            $table->string('keterangan');
+            $table->string('adminstatus');
+            $table->string('pembelianstatus');
             $table->foreignId('produk_id');
             $table->foreignId('user_id');
             $table->timestamps();

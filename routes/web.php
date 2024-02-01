@@ -90,7 +90,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 Route::middleware([UserMiddleware::class])->group(function () {
 
 
-    Route::post('menu/massUpdate', [checkoutController::class, 'massUpdate'])->name('menu.massUpdate');
+    Route::post('/beli', [checkoutController::class, 'beli'])->name('beli');
     Route::get('/homeuser', [HomeUserController::class, 'homeuser'])->name('homeuser');
     Route::get('/detailproduk{id}', [HomeUserController::class, 'detailproduk'])->name('detail.produk');
     Route::post('{produk_id}/order', [HomeUserController::class,'order'])->name('shop.order');
@@ -148,15 +148,15 @@ Route::middleware([UserMiddleware::class])->group(function () {
         Route::get('destroy/{id}', 'destroy')->name('profil.destroy');
         // Route::delete('destroy/{id}', 'destroy')->name('pembayaran.destroy');
     });
+    Route::controller(PembayaranController::class)->prefix('pembayaran')->group(function () {
+        Route::get('', 'index')->name('pembayaran');
+        Route::get('create', 'create')->name('pembayaran.create');
+        Route::post('store', 'store')->name('pembayaran.store');
+        Route::get('edit/{id}', 'edit')->name('pembayaran.edit');
+        Route::put('edit/{id}', 'update')->name('pembayaran.update');
+        Route::delete('destroy/{id}', 'destroy')->name('pembayaran.destroy');
+    });
 
-});
-Route::controller(PembayaranController::class)->prefix('pembayaran')->group(function () {
-    Route::get('', 'index')->name('pembayaran');
-    Route::get('create', 'create')->name('pembayaran.create');
-    Route::post('store', 'store')->name('pembayaran.store');
-    Route::get('edit/{id}', 'edit')->name('pembayaran.edit');
-    Route::put('edit/{id}', 'update')->name('pembayaran.update');
-    Route::delete('destroy/{id}', 'destroy')->name('pembayaran.destroy');
 });
 
 

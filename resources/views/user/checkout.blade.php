@@ -72,7 +72,7 @@
                     <p class="text-bold">choose Bank</p>
                   </div>
                   <select name="tujuan_bank" id="tujuan_bank" class="form-control">
-                    <option value="" disabled selected>Pilih</option>
+                    <option value="" disabled selected>Choose</option>
                     @forelse ($bank as $data)
                       <option value="{{ $data->tujuan }}" data="{{ $data->keterangan }}">{{ $data->tujuan }}</option>
                     @empty
@@ -88,7 +88,7 @@
                   @endphp
                   @if ($hadi >= 20)
                   @else --}}
-                    <input type="text" name="keterangan_bank" value="{{ $data->keterangan }}" id="{{ $data->tujuan }}"
+                    <input type="text" name="keterangan_bank" value="{{ $data->keterangan }}" id="{{ $data->keterrngan }}"
                       class="form-control" readonly disabled>
                     {{-- @endif --}}
                   @endforeach
@@ -101,7 +101,11 @@
                 </div>
                 <div class="row g-2 mb-5 mb-lg-0">
                   <div class="col-md-8 col-lg-12 d-grid">
-                    <button class="btn btn-primary mt-3" type="submit" id="bayar">Pay</button>
+                    {{-- <form action="{{ route('menu.massUpdate') }}">
+                        @csrf
+                        @method('POST') --}}
+                        <button class="btn btn-primary mt-3" type="submit" id="bayar">Pay</button>
+                    {{-- </form> --}}
                   </div>
                 </div>
               </div>
@@ -216,89 +220,83 @@
       });
     });
   </script>
-  <script>
+<script>
     $(document).ready(function() {
-      $("#bayar").click(function() {
-        var itemIds = [];
-        var selectedMetode = $("#selectMetode")
-          .val(); // Mengambil nilai metode pembayaran yang dipilih
-        var foto = $('#foto')[0].files[0];
-        var catatan = $("#catatan").val();
-        $(".item-element").each(function() {
-          var orderId = $(this).data("order-id");
-          itemIds.push(orderId);
-        });
-
-        // Inisialisasi objek data
-        var formData = new FormData();
-
-        // Loop melalui itemIds
-        for (var i = 0; i < itemIds.length; i++) {
-          var orderId = itemIds[i];
-          var jumlah = $("input[name='jumlah_" + orderId + "']")
-            .val(); // Ambil nilai jumlah dinamis
-          var barangpenjual_id = $("input[name='barangpenjual_id_" + orderId + "']")
-            .val(); // Ambil nilai barangpenjual_id dinamis
-          var toko_id = $("input[name='toko_id_" + orderId + "']")
-            .val(); // Ambil nilai toko_id dinamis
-          var user_id = $("input[name='user_id_" + orderId + "']")
-            .val(); // Ambil nilai user_id dinamis
-
-          // Tambahkan data ke objek formData
-          formData.append('ids[]', orderId);
-          formData.append('jumlah_' + orderId, jumlah);
-          formData.append('barangpenjual_id_' + orderId, barangpenjual_id);
-          formData.append('toko_id_' + orderId, toko_id);
-          formData.append('user_id_' + orderId, user_id);
-          formData.append('foto', foto);
-          formData.append('catatan', catatan);
-        }
-
-        formData.append('metodepembayaran', selectedMetode);
-
-        // Tampilkan SweetAlert konfirmasi
-        Swal.fire({
-          title: 'Apakah Anda yakin?',
-          text: 'Anda akan melakukan pembayaran.',
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonText: 'OK',
-          cancelButtonText: 'Batal'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            // Kirim permintaan Ajax dengan formData jika pengguna mengonfirmasi
-            var csrfToken = $('meta[name="csrf-token"]').attr('content');
-            $.ajax({
-              url: "{{ route('menu.massUpdate') }}",
-              type: "POST",
-              data: formData,
-              processData: false, // Hindari pemrosesan otomatis data
-              contentType: false, // Hindari penambahan header otomatis
-              headers: {
-                'X-CSRF-TOKEN': csrfToken // Sertakan token CSRF dalam header
-              },
-              success: function(data) {
-                // Handle respons dari server jika diperlukan
-                Swal.fire('Sukses',
-                  'Pembayaran berhasil dilakukan, silahkan tunggu verifikasi admin.',
-                  'success');
-                // Redirect atau lakukan tindakan lain sesuai kebutuhan Anda
-                setTimeout(function() {
-                  window.location.href =
-                    "";
-                }, 3000);
-              },
-              error: function(response) {
-                console.log(response);
-                // Handle kesalahan jika terjadi
-                Swal.fire('Peringatan',
-                  'Tolong lengkapi pengisian data anda.',
-                  'warning');
-              }
+        $("#bayar").click(function() {
+            var itemIds = [];
+            var selectedMetode = $("#selectMetode").val();
+            var foto = $('#foto')[0].files[0];
+            var catatan = $("#catatan").val();
+            $(".item-element").each(function() {
+                var orderId = $(this).data("order-id");
+                itemIds.push(orderId);
             });
-          }
+
+            var formData = new FormData();
+
+            for (var i = 0; i < itemIds.length; i++) {
+                var orderId = itemIds[i];
+                var jumlah = $("input[name='jumlah_" + orderId + "']").val();
+                var keterangan = $("input[name='keterangan_" + orderId + "']").val();
+                var produk_id = $("input[name='produk_id_" + orderId + "']").val();
+                var user_id = $("input[name='user_id_" + orderId + "']").val();
+
+                formData.append('ids[]', orderId);
+                formData.append('jumlah_' + orderId, jumlah);
+                formData.append('produk_id_' + orderId, produk_id);
+                formData.append('user_id_' + orderId, user_id);
+                formData.append('foto', foto);
+                formData.append('keterangan', keterangan);
+            }
+
+            formData.append('metodepembayaran', selectedMetode);
+
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: 'Anda akan melakukan pembayaran.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'OK',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+                    $.ajax({
+                        url: "{{ route('pembayaran.store') }}",
+                        type: "POST",
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        },
+                        success: function(data) {
+                            Swal.fire({
+                                title: 'Berhasil',
+                                text: 'Anda Berhasil melakukan pembayaran.',
+                                icon: 'success',
+                                showCancelButton: true,
+                                confirmButtonText: 'OK',
+                                cancelButtonText: 'Batal'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    // Reload the page to clear all data
+                                    location.reload(true);
+                                }
+                            });
+                        },
+                        error: function(response) {
+                            console.log(response);
+                            Swal.fire('Peringatan',
+                                'Tolong lengkapi pengisian data anda.',
+                                'warning');
+                        }
+                    });
+                }
+            });
         });
-      });
     });
-  </script>
+</script>
+
+
 @endsection
