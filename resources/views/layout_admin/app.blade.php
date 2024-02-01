@@ -82,6 +82,7 @@
   <main class="main" id="top">
     @include('layout_admin.navbar')
     @yield('content')
+    @yield('js')
   </main><!-- ===============================================-->
   <!--    End of Main Content-->
   <!-- ===============================================-->

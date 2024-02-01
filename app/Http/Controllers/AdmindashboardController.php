@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Charts\TotalIncomeChart;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Produk;
@@ -14,14 +16,15 @@ class AdmindashboardController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(TotalIncomeChart $chart)
     {
+        $data['chart'] = $chart->build();
         $user = auth()->user();
         $totalUser = User::where('role', 'user')->count();
         $totalProduct = Produk::count();
         $produk = Produk::where('stok', '<=', 0)->get();
         $user = auth()->user();
-        return view('admin.dashboard', compact('totalUser', 'totalProduct', 'user', 'produk'));
+        return view('admin.dashboard', ['chart' => $chart->build()], compact('totalUser', 'totalProduct', 'user', 'produk'));
     }
 
     /**

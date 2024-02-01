@@ -76,7 +76,7 @@
                     @forelse ($bank as $data)
                       <option value="{{ $data->tujuan }}" data="{{ $data->keterangan }}">{{ $data->tujuan }}</option>
                     @empty
-                      <option value=""disabled selected>Data No Rekening empty</option>
+                      <option value=""disabled selected>No account number available</option>
                     @endforelse
                   </select>
                   <div class="mt-3">

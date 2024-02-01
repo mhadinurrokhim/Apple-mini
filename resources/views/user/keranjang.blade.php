@@ -15,21 +15,13 @@
                             <table class="table fs--1 mb-0 border-top border-200">
                                 <thead>
                                     <tr>
-                                        <th class="white-space-nowrap align-middle text-center ps-4 fs--1 text-dark"
-                                            style="width: 20%; padding-right: 10px;" data-sort="path_produk">IMAGE</th>
-                                        <th class="sort white-space-nowrap align-middle text-center" scope="col"
-                                            style="max-width: 10%; padding-right: 10px;">PRODUCTS</th>
-                                        <th class="sort align-middle text-center" scope="col"
-                                            style="width: 10%; padding-right: 10px;">CATEGORY</th>
-                                        <th class="sort align-middle text-center" scope="col"
-                                            style="width: 20%; padding-right: 10px;">PRICE</th>
-                                        <th class="sort align-middle text-center ps-5" scope="col" style="width: 10%;">
-                                            QUANTITY
-                                        </th>
-                                        <th class="sort align-middle text-center" scope="col" style="width: 20%;">TOTAL
-                                        </th>
-                                        <th class="sort align-middle text-center" scope="col" style="width: 10%;">ACTION
-                                        </th>
+                                        <th class="white-space-nowrap align-middle text-center ps-4 fs--1 text-dark"style="width: 20%; padding-right: 10px;" data-sort="path_produk">IMAGE</th>
+                                        <th class="sort white-space-nowrap align-middle text-center" scope="col"style="max-width: 10%; padding-right: 10px;">PRODUCTS</th>
+                                        <th class="sort align-middle text-center" scope="col"style="width: 10%; padding-right: 10px;">CATEGORY</th>
+                                        <th class="sort align-middle text-center" scope="col"style="width: 20%; padding-right: 10px;">PRICE</th>
+                                        <th class="sort align-middle text-center ps-5" scope="col" style="width: 10%;">QUANTITY</th>
+                                        <th class="sort align-middle text-center" scope="col" style="width: 20%;">TOTAL</th>
+                                        <th class="sort align-middle text-center" scope="col" style="width: 10%;">ACTION</th>
                                         <th class="sort align-middle text-center pe-0" scope="col"></th>
                                     </tr>
                                 </thead>
