@@ -101,8 +101,10 @@
                         </tr>
                     @endif
                 </div>
-                <div class="text-center mt-4">
-                    <a href="{{ route('produk.filter') }}" class="btn btn-lg btn-primary rounded-pill">View All Product</a>
-                </div>
+                @if(count($produk) > 0)
+                    <div class="text-center mt-4">
+                        <a href="{{ route('produk.filter') }}" class="btn btn-lg btn-primary rounded-pill">View All Product</a>
+                    </div>
+                @endif
     </section>
 @endsection

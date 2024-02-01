@@ -103,7 +103,7 @@
                     @if ($totalpesanan > 0)
                         <span>{{ $totalpesanan }}</span>
                     @endif</span></a></li>
-                <li class="nav-item dropdown"><a
+                {{-- <li class="nav-item dropdown"><a
                     class="nav-link px-2 icon-indicator icon-indicator-sm icon-indicator-danger"
                     id="navbarTopDropdownNotification" href="#" role="button" data-bs-toggle="dropdown"
                     data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false"><span class="text-700"
@@ -283,7 +283,7 @@
                       </div>
                     </div>
                   </div>
-                </li>
+                </li> --}}
                 <li class="nav-item dropdown"><a class="nav-link px-2" id="navbarDropdownUser" href="#"
                     role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true"
                     aria-expanded="false"><span class="text-700" data-feather="user"

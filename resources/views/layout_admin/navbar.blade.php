@@ -235,7 +235,7 @@
             data-bs-toggle="tooltip" data-bs-placement="left" title="Switch theme"><span class="icon"
               data-feather="sun"></span></label></div>
       </li>
-      <li class="nav-item dropdown">
+      {{-- <li class="nav-item dropdown">
         <a class="nav-link" href="#" style="min-width: 2.5rem" role="button" data-bs-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false" data-bs-auto-close="outside"><span data-feather="bell"
             style="height:20px;width:20px;"></span></a>
@@ -404,7 +404,7 @@
             </div>
           </div>
         </div>
-      </li>
+      </li> --}}
       <li class="nav-item dropdown"><a class="nav-link lh-1 pe-0" id="navbarDropdownUser" href="#!"
           role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true"
           aria-expanded="false"><span class="text-700" data-feather="user"
