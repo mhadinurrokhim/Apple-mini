@@ -38,8 +38,9 @@
                                 <div class="mb-2">
                                     @foreach ($kategori as $kategoris)
                                         <div class="form-check mb-0">
-                                            <input class="form-check-input mt-0" id="flexCheck{{ $kategoris->id }}"
-                                                type="checkbox" name="device[]" value="{{ $kategoris->id }}">
+                                            <input class="form-check-input mt-0" id="flexCheck{{ $kategoris->id }}" type="checkbox"
+                                                name="device[]" value="{{ $kategoris->id }}"
+                                                {{ in_array($kategoris->id, $devices) ? 'checked' : '' }}>
                                             <label class="form-check-label d-block lh-sm fs-0 text-900 fw-normal mb-0"
                                                 for="flexCheck{{ $kategoris->id }}">
                                                 {{ $kategoris->nama_kategori }}
@@ -47,22 +48,23 @@
                                         </div>
                                     @endforeach
                                 </div>
-                            </div><a class="btn px-0 d-block collapse-indicator" data-bs-toggle="collapse"
-                                href="#collapsePriceRange" role="button" aria-expanded="true"
-                                aria-controls="collapsePriceRange">
+                            </div>
+                            <a class="btn px-0 d-block collapse-indicator" data-bs-toggle="collapse" href="#collapsePriceRange"
+                                role="button" aria-expanded="true" aria-controls="collapsePriceRange">
                                 <div class="d-flex align-items-center justify-content-between w-100">
-                                    <div class="fs-0 text-1000">Price range</div><span
-                                        class="fa-solid fa-angle-down toggle-icon text-500"></span>
+                                    <div class="fs-0 text-1000">Price range</div>
+                                    <span class="fa-solid fa-angle-down toggle-icon text-500"></span>
                                 </div>
                             </a>
                             <div class="collapse show" id="collapsePriceRange">
                                 <div class="d-flex justify-content-between mb-3">
-                                    <div class="input-group me-2"><input class="form-control" type="number"
-                                            aria-label="First name" placeholder="Min" name="min"
-                                            value="{{ $minPrice }}"><input class="form-control" type="number"
-                                            aria-label="Last name" placeholder="Max" name="max"
-                                            value="{{ $maxPrice }}"></div><button
-                                        class="btn btn-phoenix-primary border-300 px-3" type="submit ">Go</button>
+                                    <div class="input-group me-2">
+                                        <input class="form-control" type="number" aria-label="First name" placeholder="Min" name="min"
+                                            value="{{ old('min', $minPrice) }}">
+                                        <input class="form-control" type="number" aria-label="Last name" placeholder="Max" name="max"
+                                            value="{{ old('max', $maxPrice) }}">
+                                    </div>
+                                    <button class="btn btn-phoenix-primary border-300 px-3" type="submit">Go</button>
                                 </div>
                             </div>
                             <a class="btn px-0 y-4 d-block collapse-indicator" data-bs-toggle="collapse"

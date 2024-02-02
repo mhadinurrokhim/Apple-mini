@@ -33,7 +33,7 @@ class TotalIncomeChart
         return $this->chart->lineChart()
             ->setTitle('Total Produk Overview')
             ->setSubtitle('Comparison between different products created each month.')
-            ->addData('Total Produk', $datatotalproduk)
+            ->addData('Product Total', $datatotalproduk)
             ->setHeight(500)
             ->setWidth(950)
             ->setXAxis($databulan);

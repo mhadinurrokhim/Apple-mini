@@ -255,7 +255,7 @@
                     <h2 class="mb-2">Add a payment</h2>
                 </div>
                 <div class="col-auto">
-                    <button class="btn btn-phoenix-secondary me-2 mb-2 mb-sm-0" type="button">back</button>
+                    <a class="btn btn-phoenix-secondary me-2 mb-2 mb-sm-0" href="{{ route('pembayaran') }}">Discard</a>
                     <button class="btn btn-primary mb-2 mb-sm-0" type="submit">add Payment</button>
                 </div>
             </div>
