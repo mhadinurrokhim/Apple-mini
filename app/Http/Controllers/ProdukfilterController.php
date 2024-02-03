@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Produk;
 use App\Models\Kategori;
 use App\Models\Produkfilter;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use App\Models\Detailpesanan;
 use Illuminate\Support\Facades\DB;
@@ -19,6 +20,7 @@ class ProdukfilterController extends Controller
         $minPrice = $request->input('min');
         $maxPrice = $request->input('max');
         $rating = $request->input('flexRadio');
+        $wishlist = Wishlist::where('user_id', $user->id)->get();
 
         // Lakukan filter data dengan menggunakan nilai-nilai yang diperoleh dari form
         $query = DB::table('produk')
@@ -68,8 +70,9 @@ class ProdukfilterController extends Controller
         // Eksekusi query untuk mendapatkan hasil filter
         $produk = $query->get();
 
+        // dd($wishlist);
         // Lakukan tindakan lainnya, seperti menampilkan data pada view atau mengembalikan respons JSON
-        return view('user.produkfilter', compact('produk', 'user', 'kategori', 'devices', 'minPrice', 'maxPrice', 'totalpesanan'));
+        return view('user.produkfilter', compact('produk', 'user', 'kategori', 'devices', 'minPrice', 'maxPrice', 'totalpesanan', 'wishlist'));
     }
     public function detail(Request $request, $id)
     {

@@ -31,65 +31,73 @@
                     </div>
                 </div>
 
-
                 <div class="row">
+                    @php
+                        $inwsihlist = [];
+                    @endphp
                     @if(count($produk) > 0)
-                    @foreach ($produk as $product)
-                        <div class="col-12 col-sm-6 col-md-4 col-xxl-2">
-                            <div class="product-card-container h-100">
-                                <div class="position-relative text-decoration-none product-card h-100">
-                                    <div class="card mb-3" style="width: 300px; height: 470px;">
-                                        <div class="position-relative text-decoration-none product-card">
-                                            <div class="border border-1 rounded-3 position-relative">
-                                                <a href="{{ route('wishlist.add', $product->id) }}"
-                                                    class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary"
-                                                    data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Add to wishlist">
-
-                                                    <span class="fas fa-heart d-block-hover"></span>
-                                                    <span class="far fa-heart d-none-hover"></span>
-                                                </a>
-                                                <img class=""
-                                                    src="{{ asset('storage/Product/' . $product->path_produk) }}"
-                                                    alt="{{ $product->nama_produk }}"
-                                                    style="width: 298px; height: 200px; border-radius: 6px; object-fit: cover" />
-                                            </div>
-                                            <div class="card-body">
-                                                <a href="{{ route('detail.produk', $product->id) }}" class="stretched-link">
-                                                    <h6 class="card-title mb-2 lh-sm line-clamp-3 product-name">
-                                                        {{ $product->nama_produk }}</h6>
-                                                </a>
-                                                <p class="fs--1 text-1000 fw-bold ">Stock {{ $product->stok }}</p>
-                                                <p class="fs--1">
-                                                    @if (!is_null($product->rating))
-                                                        @if ($product->rating - floor($product->rating) < 0.5)
-                                                            @for ($i = 0; $i < floor($product->rating); $i++)
-                                                                <span class="fa fa-star text-warning"></span>
-                                                            @endfor
-                                                        @else
-                                                            @for ($i = 0; $i < ceil($product->rating); $i++)
-                                                                <span class="fa fa-star text-warning"></span>
-                                                            @endfor
-                                                        @endif
-                                                        <span class="text-500 fw-semi-bold ms-1">({{ $product->totalulasan }} people rated)</span>
-                                                    @else
-                                                        <p>There are no reviews</p>
+                    @php
+                        foreach ($wishlist as $value) {
+                            array_push($inwsihlist, $value->product_id);
+                        }
+                    @endphp
+                        @foreach ($produk as $product)
+                            <div class="col-12 col-sm-6 col-md-4 col-xxl-2">
+                                <div class="product-card-container h-100">
+                                    <div class="position-relative text-decoration-none product-card h-100">
+                                        <div class="card mb-3" style="width: 300px; height: 470px;">
+                                            <div class="position-relative text-decoration-none product-card">
+                                                <div class="border border-1 rounded-3 position-relative">
+                                                    @if(!in_array($product->id, $inwsihlist))
+                                                        <a href="{{ route('wishlist.add', $product->id) }}"
+                                                            class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            title="Add to wishlist">
+                                                            <span class="fas fa-heart d-block-hover"></span>
+                                                            <span class="far fa-heart d-none-hover"></span>
+                                                        </a>
                                                     @endif
-                                                </p>
-                                            </div>
-                                            <div class="card-footer">
-                                                <div class="d-flex align-items-center mb-1">
-                                                    <h3 class="text-1100 mb-0">
-                                                        Rp.{{ number_format($product->harga, 0, ',', '.') }}</h3>
-                                                    <div class="flex-grow-1"></div>
+                                                    <img class=""
+                                                        src="{{ asset('storage/Product/' . $product->path_produk) }}"
+                                                        alt="{{ $product->nama_produk }}"
+                                                        style="width: 298px; height: 200px; border-radius: 6px; object-fit: cover" />
+                                                </div>
+                                                <div class="card-body">
+                                                    <a href="{{ route('detail.produk', $product->id) }}" class="stretched-link">
+                                                        <h6 class="card-title mb-2 lh-sm line-clamp-3 product-name">
+                                                            {{ $product->nama_produk }}</h6>
+                                                    </a>
+                                                    <p class="fs--1 text-1000 fw-bold ">Stock {{ $product->stok }}</p>
+                                                    <p class="fs--1">
+                                                        @if (!is_null($product->rating))
+                                                            @if ($product->rating - floor($product->rating) < 0.5)
+                                                                @for ($i = 0; $i < floor($product->rating); $i++)
+                                                                    <span class="fa fa-star text-warning"></span>
+                                                                @endfor
+                                                            @else
+                                                                @for ($i = 0; $i < ceil($product->rating); $i++)
+                                                                    <span class="fa fa-star text-warning"></span>
+                                                                @endfor
+                                                            @endif
+                                                            <span class="text-500 fw-semi-bold ms-1">({{ $product->totalulasan }} people rated)</span>
+                                                        @else
+                                                            <p>There are no reviews</p>
+                                                        @endif
+                                                    </p>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <div class="d-flex align-items-center mb-1">
+                                                        <h3 class="text-1100 mb-0">
+                                                            Rp.{{ number_format($product->harga, 0, ',', '.') }}</h3>
+                                                        <div class="flex-grow-1"></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
                     @else
                         <tr>
                             <td colspan="8" class="text-center py-4">

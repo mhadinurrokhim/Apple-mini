@@ -6,6 +6,7 @@ use App\Models\Produk;
 use App\Models\CHeckout;
 use App\Models\Kategori;
 use App\Models\Userbeli;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use App\Http\Middleware\user;
 use App\Models\Detailpesanan;
@@ -23,8 +24,9 @@ class HomeUserController extends Controller
         ->groupBy('produk.id', 'produk.nama_produk','produk.path_produk','produk.harga','produk.stok','produk.deskripsi',) // sertakan semua kolom non-agregasi di sini
         ->get();
         $user = auth()->user();
+        $wishlist = Wishlist::where('user_id', $user->id)->get();
         // $productsInWishlist = $user->wishlists;
-        return view('user.homeuser', compact('produk', 'user', 'totalpesanan'));
+        return view('user.homeuser', compact('produk', 'user', 'totalpesanan', 'wishlist'));
     }
 
     public function detailproduk(Request $request, $id)

@@ -16,12 +16,13 @@ class WishlistController extends Controller
     $produk = Produk::all();
     $totalpesanan = Detailpesanan::where('status', 'keranjang')->count();
     $user = auth()->user();
+    $wishlist = Wishlist::all();
     // $wishlist = session('wishlist', []);
     // $productsInWishlist = Wishlist::with('product')->get();
 
     $productsInWishlist = $user->wishlists;
-
-    return view('user.wishlist', compact('user', 'totalpesanan', 'productsInWishlist', 'produk'));
+    // dd($productsInWishlist);
+    return view('user.wishlist', compact('user', 'totalpesanan', 'productsInWishlist', 'produk', 'wishlist'));
     }
 
     public function addToWishlist($productId)
@@ -42,6 +43,7 @@ class WishlistController extends Controller
             'user_id' => auth()->user()->id,
             'product_id' => $productId
         ]);
+        // dd($wishlist);
         return redirect()->back()->with('success', 'product successfully added to wishlist');
     } else {
         return redirect()->back()->with('error', 'The product is already on the wishlist');
@@ -51,6 +53,7 @@ class WishlistController extends Controller
 }
 
 public function destroy(String $id) {
+    // dd($id);
     $Wishlist = Wishlist::find($id);
     // dd($Wishlist);
     $Wishlist->delete();

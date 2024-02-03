@@ -10,8 +10,7 @@
                     @endif
                 </span>
             </h2>
-            <div class="border-y" id="productWishlistTable"
-                data-list='{"valueNames":["products","color","size","price","quantity","total"],"page":5,"pagination":true}'>
+            <div class="border-y" id="productWishlistTable" data-list='{"valueNames":["products","color","size","price","quantity","total"],"page":5,"pagination":true}'>
                 <div class="table-responsive scrollbar">
                     <table class="table fs--1 mb-0">
                         <thead>
@@ -52,7 +51,7 @@
                                         Rp. {{ number_format($produk->harga, 0, ',', '.') }}</td>
                                     <td class="total align-middle fw-bold text-1000 text-end text-nowrap pe-0">
                                         <div class="d-flex justify-content-end ms-2">
-                                            <form action="{{ route('wishlist.delete', $produk->id) }}" method="POST"
+                                            <form action="{{ route('wishlist.delete', $item->id) }}" method="POST"
                                                 enctype="multipart/form-data" class="me-2">
                                                 @csrf
                                                 @method('DELETE')
@@ -60,20 +59,15 @@
                                                     <span class="fas fa-trash"></span>
                                                 </button>
                                             </form>
-                                            <form action="{{ route('shop.order', $produk->id) }}" method="POST"
-                                                enctype="multipart/form-data">
+                                            <form action="{{ route('shop.order', $produk->id) }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="d-flex align-items-center">
-                                                    <div class="input-group input-group-sm flex-nowrap"
-                                                        data-quantity="data-quantity"><button class="btn btn-sm px-2 me-3"
-                                                            data-type="minus">-</button><input
-                                                            class="form-control text-center input-spin-none bg-transparent border-0 px-0"
-                                                            type="number" min="1" value="1"
-                                                            name="jumlah"
-                                                            aria-label="Amount (to the nearest dollar)" /><button
-                                                            class="btn btn-sm px-2 me-3" data-type="plus">+</button></div>
-                                                    <button class="btn btn-primary fs--2"
-                                                        @if ($produk->stok <= 0) disabled @endif>
+                                                    <div class="input-group input-group-sm flex-nowrap me-3" data-quantity="data-quantity">
+                                                        <button type="button" class="btn btn-sm px-2" data-type="minus">-</button>
+                                                        <input class="form-control text-center input-spin-none bg-transparent border-0 px-0 pe-3" type="number" min="1" value="1" name="jumlah" aria-label="Amount (to the nearest dollar)" />
+                                                        <button type="button" class="btn btn-sm px-2" data-type="plus">+</button>
+                                                    </div>
+                                                    <button class="btn btn-primary fs--2" @if ($produk->stok <= 0) disabled @endif>
                                                         <span class="fas fa-shopping-cart me-1 fs--2"></span>Add to cart
                                                     </button>
                                                 </div>
@@ -81,7 +75,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <script>
+                                {{-- <script>
                                     function addToCart() {
                                         var quantityInput = document.getElementById('quantityInput');
                                         var maxStock = {{ $produk->stok }};
@@ -103,27 +97,27 @@
                                             quantityInput.value = currentQuantity + 0;
                                         }
                                     }
-                                </script>
-                                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                            @endforeach
-                        </tbody>
+                                </script> --}}
+                                @endforeach
+                            </tbody>
                     </table>
                 </div>
                 <div class="row align-items-center justify-content-between py-2 pe-0 fs--1">
                     <div class="col-auto d-flex">
                         <p class="mb-0 d-none d-sm-block me-3 fw-semi-bold text-900" data-list-info="data-list-info"></p><a
-                            class="fw-semi-bold" href="#!" data-list-view="*">View all<span
-                                class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a
-                            class="fw-semi-bold d-none" href="#!" data-list-view="less">View Less<span
-                                class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
+                        class="fw-semi-bold" href="#!" data-list-view="*">View all<span
+                        class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a
+                        class="fw-semi-bold d-none" href="#!" data-list-view="less">View Less<span
+                        class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
                     </div>
                     <div class="col-auto d-flex"><button class="page-link" data-list-pagination="prev"><span
                                 class="fas fa-chevron-left"></span></button>
-                        <ul class="mb-0 pagination"></ul><button class="page-link pe-0" data-list-pagination="next"><span
-                                class="fas fa-chevron-right"></span></button>
-                    </div>
-                </div>
+                                <ul class="mb-0 pagination"></ul><button class="page-link pe-0" data-list-pagination="next"><span
+                                    class="fas fa-chevron-right"></span></button>
+                                </div>
+                            </div>
             </div>
         </div><!-- end of .container-->
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection
