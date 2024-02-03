@@ -147,14 +147,21 @@
                                             <div class="d-flex flex-column justify-content-between h-100">
                                                 <div>
                                                     <div class="border border-1 rounded-3 position-relative mb-3">
-                                                        @if(!in_array($pf->id, $inwsihlist))
+                                                        {{-- @if(!in_array($pf->id, $inwsihlist))
                                                             <a href="{{ route('wishlist.add', $pf->id) }}"
                                                                 class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary"
-                                                                {{-- data-bs-toggle="tooltip" data-bs-placement="top" --}} title="Add to wishlist">
+                                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Add to wishlist">
                                                                 <span class="fas fa-heart d-block-hover"></span>
                                                                 <span class="far fa-heart d-none-hover"></span>
                                                             </a>
-                                                        @endif
+                                                        @endif --}}
+                                                        <button data-product-id="{{ $pf->id }}"
+                                                            class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            title="Add to wishlist">
+                                                            <span class="fas fa-heart d-block-hover"></span>
+                                                            <span class="far fa-heart d-none-hover"></span>
+                                                        </button>
                                                         <img class="card-img-top img-fluid"
                                                             src="{{ asset('storage/Product/' . $pf->path_produk) }}"
                                                             alt="{{ $pf->nama_produk }}"

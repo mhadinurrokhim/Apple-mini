@@ -55,3 +55,42 @@
     color: rgb(78, 151, 78);
   }
 </style>
+
+<script>
+  function add(message) {
+    setTimeout(function() {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 4000,
+        customClass: {
+          title: 'green-sweet',
+        },
+      })
+
+      Toast.fire({
+        icon: 'success',
+        title: message
+      });
+    }, 1000);
+  }
+  function remove(message) {
+    setTimeout(function() {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 4000,
+        customClass: {
+          title: 'green-sweet',
+        },
+      })
+
+      Toast.fire({
+        icon: 'green',
+        title: message
+      });
+    }, 1000);
+  }
+</script>

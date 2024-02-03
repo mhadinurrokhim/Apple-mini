@@ -48,15 +48,15 @@
                                         <div class="card mb-3" style="width: 300px; height: 470px;">
                                             <div class="position-relative text-decoration-none product-card">
                                                 <div class="border border-1 rounded-3 position-relative">
-                                                    @if(!in_array($product->id, $inwsihlist))
-                                                        <a href="{{ route('wishlist.add', $product->id) }}"
+                                                    {{-- @if(!in_array($product->id, $inwsihlist)) --}}
+                                                        <button data-product-id="{{ $product->id }}"
                                                             class="btn rounded-circle p-0 d-flex flex-center btn-wish z-index-2 d-toggle-container btn-outline-primary"
                                                             data-bs-toggle="tooltip" data-bs-placement="top"
                                                             title="Add to wishlist">
                                                             <span class="fas fa-heart d-block-hover"></span>
                                                             <span class="far fa-heart d-none-hover"></span>
-                                                        </a>
-                                                    @endif
+                                                        </button>
+                                                    {{-- @endif --}}
                                                     <img class=""
                                                         src="{{ asset('storage/Product/' . $product->path_produk) }}"
                                                         alt="{{ $product->nama_produk }}"

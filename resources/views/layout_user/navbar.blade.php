@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
 
-
 <!-- Mirrored from prium.github.io/phoenix/v1.13.0/apps/e-commerce/landing/homepage.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Nov 2023 12:13:49 GMT -->
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
@@ -299,8 +298,9 @@
                                     <img class="rounded-circle" id="avatarPreview" src="{{ asset('storage/' . $user->profile) }}" alt="" />
                                 @else
                                     <!-- Tampilkan foto default jika tidak ada foto profil -->
-                                    <img class="rounded-circle" id="avatarPreview" src="{{ asset('assets/storage/apple.jpg') }}" alt="Default Avatar" />
-                                @endif
+                              <img class="rounded-circle" id="avatarPreview"
+                                src="{{ asset('assets/storage/apple.jpg') }}" alt="Default Avatar" />
+                            @endif
                           </div>
                           <h6 class="mt-2 text-black">{{ Auth::user()->name }}</h6>
                         </div>
@@ -408,65 +408,101 @@
   <script src="../../../vendors/dayjs/dayjs.min.js"></script>
   <script src="../../../assets/js/phoenix.js"></script>
   <script src="../../../vendors/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-    // Temukan semua tombol wishlist menggunakan class selector
-    var wishlistButtons = document.querySelectorAll('.btn-wish');
+    $(document).ready(function() {
+      // Temukan semua tombol wishlist menggunakan class selector
+      var wishlistButtons = document.querySelectorAll('.btn-wish');
 
-    // Ambil daftar ID produk dari localStorage (jika ada)
-    var wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];
+      // Ambil daftar ID produk dari localStorage (jika ada)
+      var wishlistItems;
+      // console.log(wishlistItems);
 
-    // Tandai tombol wishlist yang sudah ada di wishlistItems
-    wishlistButtons.forEach(function (wishlistButton) {
-        var productId = wishlistButton.getAttribute('data-product-id');
-
-        // Tambahkan pesan konsol untuk memeriksa nilai productId
-        console.log('Product ID:', productId);
-
-        if (wishlistItems.includes(productId)) {
-            wishlistButton.classList.add('active');
-        }
-
-        wishlistButton.addEventListener('click', function () {
-            // Dapatkan ID produk dari data attribute
+      $.ajax({
+        type: 'POST',
+        url: '/wishlist/products',
+        data: {
+          _token: '{{ csrf_token() }}'
+        },
+        success: function(response) {
+          // Tambahkan logika atau respons setelah berhasil ditambahkan ke wishlist
+          // wishlistItems = JSON.parse(response);
+          wishlistItems = response;
+          console.log(wishlistItems);
+          wishlistButtons.forEach(function(wishlistButton) {
             var productId = wishlistButton.getAttribute('data-product-id');
-
-            // Tambahkan pesan konsol untuk memeriksa nilai productId setelah tombol diklik
-            console.log('Clicked Product ID:', productId);
-
-            // Toggle class 'active' pada tombol wishlist
-            wishlistButton.classList.toggle('active');
-
-            // Tambahkan atau hapus ID produk dari wishlistItems
+            
+            // Tambahkan pesan konsol untuk memeriksa nilai productId
+            console.log('Product ID:', productId);
+            
+            console.log((wishlistItems.includes(productId)));
             if (wishlistItems.includes(productId)) {
-                wishlistItems = wishlistItems.filter(item => item !== productId);
-            } else {
-                wishlistItems.push(productId);
+              wishlistButton.classList.add('active');
             }
 
-            // Simpan wishlistItems ke localStorage
-            localStorage.setItem('wishlist', JSON.stringify(wishlistItems));
+            wishlistButton.addEventListener('click', function() {
+              // Dapatkan ID produk dari data attribute
+              var productId = wishlistButton.getAttribute('data-product-id');
 
-            // Kirim permintaan AJAX untuk menambahkan produk ke wishlist
-            $.ajax({
+              // Tambahkan pesan konsol untuk memeriksa nilai productId setelah tombol diklik
+              console.log('Clicked Product ID:', productId);
+
+              // Toggle class 'active' pada tombol wishlist
+              wishlistButton.classList.toggle('active');
+
+              // Tambahkan atau hapus ID produk dari wishlistItems
+              if (wishlistItems.includes(productId)) {
+                // Kirim permintaan AJAX untuk menghapus produk ke wishlist
+              $.ajax({
+                type: 'DELETE',
+                url: '/wishlist/delete/product/' + productId,
+                data: {
+                  _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                  // Tambahkan logika atau respons setelah berhasil ditambahkan ke wishlist
+                  if(response.remove) remove('Product removed from wishlist successfully');
+                  console.log('Product removed from wishlist successfully');
+                },
+                error: function(error) {
+                  console.error('Failed to add product to wishlist');
+                }
+              });
+                wishlistItems = wishlistItems.filter(item => item !== productId);
+              } else {
+                // Kirim permintaan AJAX untuk menambahkan produk ke wishlist
+              $.ajax({
                 type: 'POST',
                 url: '/wishlist/add/' + productId,
                 data: {
-                    _token: '{{ csrf_token() }}'
+                  _token: '{{ csrf_token() }}'
                 },
-                success: function (response) {
-                    // Tambahkan logika atau respons setelah berhasil ditambahkan ke wishlist
-                    console.log('Product added to wishlist successfully');
+                success: function(response) {
+                  // Tambahkan logika atau respons setelah berhasil ditambahkan ke wishlist
+                  if(response.success) remove('Product added to wishlist successfully');
+                  console.log('Product added to wishlist successfully');
                 },
-                error: function (error) {
-                    console.error('Failed to add product to wishlist');
+                error: function(error) {
+                  console.error('Failed to add product to wishlist');
                 }
+              });
+                wishlistItems.push(productId);
+              }
+
+              // Simpan wishlistItems ke localStorage
+              localStorage.setItem('wishlist', JSON.stringify(wishlistItems));
             });
-        });
+          });
+        },
+        error: function(error) {
+          console.error('Failed to add product to wishlist');
+        }
+      });
+
+      // Tandai tombol wishlist yang sudah ada di wishlistItems
     });
-});
-
-
   </script>
 </body>
 

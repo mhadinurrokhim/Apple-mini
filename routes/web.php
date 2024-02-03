@@ -161,7 +161,9 @@ Route::middleware([UserMiddleware::class])->group(function () {
 
 
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
-Route::get('/wishlist/add/{id}', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
+Route::post('/wishlist/add/{id}', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
+Route::post('/wishlist/products', [WishlistController::class, 'products'])->name('wishlist.products');
 Route::delete('/wishlist/delete/{id}', [WishlistController::class, 'destroy'])->name('wishlist.delete');
+Route::delete('/wishlist/delete/product/{id}', [WishlistController::class, 'destroyWithProduct'])->name('wishlist.delete-with-product');
 
 

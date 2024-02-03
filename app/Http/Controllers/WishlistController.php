@@ -43,20 +43,34 @@ class WishlistController extends Controller
             'user_id' => auth()->user()->id,
             'product_id' => $productId
         ]);
-        // dd($wishlist);
-        return redirect()->back()->with('success', 'product successfully added to wishlist');
+        return response()->json(['success' => 'product successfully added to wishlist']);
     } else {
-        return redirect()->back()->with('error', 'The product is already on the wishlist');
+        return response()->json(['remove' => 'The product is already on the wishlist']);   
     }
 
     // return redirect()->back();
-}
-
-public function destroy(String $id) {
-    // dd($id);
-    $Wishlist = Wishlist::find($id);
-    // dd($Wishlist);
-    $Wishlist->delete();
-    return redirect()->back()->with('success', 'product successfully deleted from wishlist');
     }
-}
+    public function products() {
+        $wishlists = Auth::user()->wishlists()->with('product')->get();
+        $productId = [];
+        foreach ($wishlists as $wishlist) {
+            // array_push($productId, json_encode([$wishlist->id => strval($wishlist->product_id)]));
+            array_push($productId, strval($wishlist->product_id ));
+        }
+        return response()->json($productId);
+    }
+    public function destroy(String $id) {
+        // dd($id);
+        $Wishlist = Wishlist::find($id);
+        // dd($Wishlist);
+        $Wishlist->delete();
+        return redirect()->back()->with('success', 'product successfully deleted from wishlist');
+    }
+    public function destroyWithProduct(String $id) {
+        // dd($id);
+        $wishlist = Auth::user()->wishlists()->where('product_id', $id)->first();
+        if($wishlist->delete())
+        return response(['remove' => 'removed from wishlist successfully']);
+        }
+    }
+
