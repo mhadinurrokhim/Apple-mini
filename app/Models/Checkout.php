@@ -16,10 +16,6 @@ class Checkout extends Model
     ];
     public function User()
     {
-        return $this->belongsTo(User::class,'user_id');
-    }
-    public function Produk()
-    {
-        return $this->belongsTo(Produk::class,'produk_id');
+        return $this->belongsTo(User::class);
     }
 }

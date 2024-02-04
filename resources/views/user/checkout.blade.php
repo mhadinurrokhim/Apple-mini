@@ -8,6 +8,53 @@
         <div class="row justify-content-between">
           <div class="col-lg-7 col-xl-7">
             <div class="card col-md-12">
+                <div class="card-body">
+                  <div class="mb-3">
+                    <div class="d-flex align-items-end">
+                        <h3 class="mb-0 me-3">Shipping Details</h3><a href="{{ route('profil') }}" class="btn btn-link p-0" type="button">Edit</a>
+                      </div>
+                      <table class="table table-borderless mt-4">
+                        <tbody>
+                          <tr>
+                            <td class="py-2 ps-0">
+                              <div class="d-flex"><span class="fs-5 me-2" data-feather="user" style="height:16px; width:16px;"> </span>
+                                <h5 class="lh-sm me-4">Name</h5>
+                              </div>
+                            </td>
+                            <td class="py-2 fw-bold lh-sm">:</td>
+                            <td class="py-2 px-3">
+                              <h5 class="lh-sm fw-normal text-800">{{ $user->name }}</h5>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="py-2 ps-0">
+                              <div class="d-flex"><span class="fs-5 me-2" data-feather="home" style="height:16px; width:16px;"> </span>
+                                <h5 class="lh-sm me-4">Address</h5>
+                              </div>
+                            </td>
+                            <td class="py-2 fw-bold lh-sm">:</td>
+                            <td class="py-2 px-3">
+                              <h5 class="lh-lg fw-normal text-800">{{ $user->address }}</h5>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="py-2 ps-0">
+                              <div class="d-flex"><span class="fs-5 me-2" data-feather="phone" style="height:16px; width:16px;"> </span>
+                                <h5 class="lh-sm me-4">Phone</h5>
+                              </div>
+                            </td>
+                            <td class="py-2 fw-bold lh-sm">: </td>
+                            <td class="py-2 px-3">
+                              <h5 class="lh-sm fw-normal text-800">+{{ $user->telp }}</h5>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                </div>
+            </div>
+            <p>&nbsp;</p>
+            <div class="card col-md-12">
               <div class="card-body">
                 <div class="mb-3">
                   {{-- <div>
@@ -19,18 +66,19 @@
                 </div> --}}
                 </div>
 
-                <div class="container m-0 p-0 d-flex justify-content-between">
-                  <div class="">
+                <form action="{{ route('bayar') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('POST')
                     <h5 class="text-bold">Payment method</h5><br>
-                    <select class="form-select form-select-lg mb-3" name="metode_pembayaran"
-                      style="width: 300px; height: 50px; font-size: 18px;" aria-label=".form-select-lg example"
-                      id="selectMetode">
-                      <option selected class="dropdown-menu" disabled>Select Payment</option>
-                      <option value="e-wallet" data-target="ewalletInput">E-Wallet</option>
-                      <option value="bank" data-target="bankInput">Bank</option>
-                    </select>
-                  </div>
-                </div>
+                    <select class="form-select mb-3 @error('metode_pembayaran') is-invalid @enderror" name="metode_pembayaran" aria-label=".form-select-lg example" id="selectMetode">
+                    <option selected disabled>Select Payment</option>
+                    <option value="e-wallet" data-target="ewalletInput">E-Wallet</option>
+                    <option value="bank" data-target="bankInput">Bank</option>
+                </select>
+                @error('metode_pembayaran')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+                {{-- </form> --}}
                 {{-- @php
                 $wallet = $wallet ?? [];
               @endphp --}}
@@ -60,7 +108,6 @@
                     </a>
                   </p>
                 </div>
-
 
                 {{-- @php
                   $bank = $bank ?? [];
@@ -97,22 +144,31 @@
                   <p class="text-bold">Enter your Proof of Payment</p>
                 </div>
                 <div class="mt-3">
-                  <input type="file" name="foto" class="form-control" id="foto">
+                    <input type="file" name="foto" class="form-control @error('foto') is-invalid @enderror" id="foto">
+                    @error('foto')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mt-3">
+                    <h5 class="text-bold">Shipping method</h5><br>
+                    <select class="form-select mb-3 @error('metode_pengiriman') is-invalid @enderror" name="metode_pengiriman">
+                        <option selected disabled>Select Shipper</option>
+                        <option value="JNT">JNT</option>
+                        <option value="JNE">JNE</option>
+                        <option value="Ninja Express">Ninja Express</option>
+                    </select>
+                    @error('metode_pengiriman')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="row g-2 mb-5 mb-lg-0">
                   <div class="col-md-8 col-lg-12 d-grid">
-                    {{-- <form action="{{ route('menu.massUpdate') }}">
-                        @csrf
-                        @method('POST') --}}
-                        <button class="btn btn-primary mt-3" type="submit" id="bayar">Pay</button>
-                    {{-- </form> --}}
+                        <button class="btn btn-primary mt-3" type="submit">Pay</button>
                   </div>
                 </div>
               </div>
             </div>
-
-
-
           </div>
           <div class="col-lg-5 col-xl-5">
             <div class="card mt-3 mt-lg-0">
@@ -129,8 +185,9 @@
                               src="{{ asset('storage/Product/' . $checkout->produk->path_produk) }}" width="40"
                               alt="" />
                             <h6 class="fw-semi-bold text-1000 lh-base">
-                              {{ Str::limit($checkout->produk->nama_produk, 20, $end = '...') }}</h6>
-                          </div>
+                                <input type="hidden" name="detail_pesanan[]" value="{{ $checkout->id }}">
+                                {{ Str::limit($checkout->produk->nama_produk, 20, $end = '...') }}</h6>
+                            </div>
                         </div>
                         <div class="col-2 col-md-3 col-lg-2">
                           <h6 class="fs--2 mb-0">X {{ $checkout->jumlah }}</h6>
@@ -142,10 +199,11 @@
 
                     </div>
                   </div>
-                @endforeach
-                @php
+                  @endforeach
+                  @php
                   $totalPrice = collect($items)->sum('total');
-                @endphp
+                  @endphp
+                  <input type="hidden" name="total" value="{{ $totalPrice }}">
 
                 <div class="d-flex justify-content-between border-dashed-y pt-3">
                   <h4 class="mb-0">Total Price:</h4>

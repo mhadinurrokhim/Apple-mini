@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Detailpesanan;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Checkout;
 
 class ProfilController extends Controller
 {
@@ -14,7 +16,42 @@ class ProfilController extends Controller
     {
         $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
         $user = auth()->user();
-        return view('user.profil',compact('user', 'totalpesanan'));
+        $totalorder = Checkout::where('user_id', $user->id)->get()->count();
+        $totalpembayaran = DB::table('checkouts')
+        ->select(
+            DB::raw('sum(total) AS total'),
+        )
+        ->where('user_id', $user->id)->get();
+        $lastorder = Checkout::where('user_id', $user->id)->orderBy('created_at', 'desc')->take(1)->get();
+        $order = DB::table('checkouts')
+        ->leftJoin('detail_pesanan', 'checkouts.id', '=', 'detail_pesanan.checkout_id')
+        ->leftJoin('users', 'detail_pesanan.user_id','=','users.id')
+        ->leftJoin('produk', 'detail_pesanan.produk_id','=','produk.id')
+        ->select(
+            'checkouts.id',
+            'checkouts.invoice',
+            'checkouts.total',
+            'checkouts.metode_pembayaran',
+            'checkouts.metode_pengiriman',
+            'checkouts.status',
+            'checkouts.tanggal_pengiriman',
+            'checkouts.tanggal_menerima',
+            'detail_pesanan.jumlah',
+            'detail_pesanan.total',
+            DB::raw('detail_pesanan.id AS detail_id'),
+            DB::raw('users.id AS user_id'),
+            'users.name',
+            'users.email',
+            'users.telp',
+            'users.address',
+            'produk.nama_produk',
+            'produk.path_produk',
+            'produk.harga',
+            )
+        ->where('detail_pesanan.user_id', $user->id)
+        ->orderBy('checkouts.status','asc')->get();
+        // dd($totalorder);
+        return view('user.profil',compact('user', 'totalpesanan', 'order', 'lastorder', 'totalpembayaran', 'totalorder'));
     }
 
 
@@ -52,7 +89,6 @@ class ProfilController extends Controller
      */
     public function update(Request $request, User $profil, $id)
     {
-        // dd($request);
         try {
             $request->validate([
                 'name' => 'nullable',
@@ -60,64 +96,45 @@ class ProfilController extends Controller
                 'telp' => 'nullable',
                 'profile' => 'nullable|image',
             ], [
-                'profile.image' => 'Profil harus gambar',
+                'profile.image' => 'The profile must be an image.',
             ]);
 
-            // Perbarui data menggunakan metode update
             $user = User::find($id);
 
-        if (!$user) {
-            // Handle jika pengguna tidak ditemukan
-            return redirect()->route('user.index')->with('error', 'Kesalahan, silahkan coba lagi');
-        }
-
-        // Perbarui data pengguna berdasarkan input yang ada
-        $userData = [];
-
-        if ($request->filled('name')) {
-            $userData['name'] = $request->input('name');
-        }
-
-        if ($request->filled('address')) {
-            $userData['address'] = $request->input('address');
-        }
-
-        if ($request->filled('telp')) {
-            $userData['telp'] = $request->input('telp');
-        }
-
-        if ($request->file('profile')) {
-            $userData['profile'] = $request->file('profile')->store('profil', 'public');
-
-            // Hapus foto lama setelah perbarui data
-            if ($user->profile) {
-                Storage::disk('public')->delete($user->profile);
+            if (!$user) {
+                return redirect()->route('user.index')->with('error', 'Error, please try again');
             }
-        }
 
-        // Update data pengguna
-        $user->update($userData);
+            $userData = [];
+
+            if ($request->filled('name')) {
+                $userData['name'] = $request->input('name');
+            }
+
+            if ($request->filled('address')) {
+                $userData['address'] = $request->input('address');
+            }
+
+            if ($request->filled('telp')) {
+                $userData['telp'] = $request->input('telp');
+            }
+
+            if ($request->file('profile')) {
+                $userData['profile'] = $request->file('profile')->store('profil', 'public');
+
+                if ($user->profile) {
+                    Storage::disk('public')->delete($user->profile);
+                }
+            }
+
+            $user->update($userData);
+
             return redirect()->route('profil')->with('success', 'Successfully updated profile');
         } catch (\Exception $e) {
-            return redirect()->route('profil')->with('error', 'Kesalahan');
+            return redirect()->route('profil')->with('error', 'Error');
+        }
+    }
 
-
-
-
-            // Simpan path profil lama
-            $oldProfilPath = $user->profil;
-
-            // Perbarui data pengguna
-            $user->profil = $request->file('profile')->store('profil', 'public');
-            $user->save();
-
-            // Hapus foto lama setelah perbarui data
-            if ($oldProfilPath) {
-                Storage::disk('public')->delete($oldProfilPath);
-            }
-
-            return redirect()->route('profil')->with('success', 'Profile updated successfully');
-        }}
 
 
     /**

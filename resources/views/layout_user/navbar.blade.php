@@ -308,7 +308,7 @@
                       </div>
                       <div class="overflow-auto scrollbar" style="height: 2rem;">
                         <ul class="nav d-flex flex-column mb-2 pb-1">
-                          <li class="nav-item"><a class="nav-link px-3" href="profil"> <span class="me-2 text-900"
+                          <li class="nav-item"><a class="nav-link px-3" href="{{ route('profil') }}"> <span class="me-2 text-900"
                                 data-feather="user"></span><span>Profile</span></a></li>
                         </ul>
                       </div>

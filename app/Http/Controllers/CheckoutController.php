@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Checkout;
 use Exception;
 use App\Models\User;
 use App\Models\Produk;
@@ -10,8 +11,10 @@ use App\Models\Userbeli;
 use App\Models\userOrder;
 use App\Models\notifikasi;
 use App\Models\Pembayaran;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Detailpesanan;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -22,22 +25,22 @@ class CheckoutController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($id)
-    {
+    // public function index($id)
+    // {
 
-        $pesanan_id = $id;
-        $pesanan = Detailpesanan::where('pesanan_id', $id)->get();
-        $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
-        dd($totalpesanan);
-        $order = Detailpesanan::where('status', 'checkout')->get()->count();
-        $payments = Pembayaran::all();
+    //     $pesanan_id = $id;
+    //     $pesanan = Detailpesanan::where('pesanan_id', $id)->get();
+    //     $totalpesanan = Detailpesanan::where('status', 'checkout')->get()->count();
+    //     $order = Detailpesanan::where('status', 'checkout')->get()->count();
+    //     $payments = Pembayaran::all();
 
-        $bank = Pembayaran::where('metode_pembayaran', 'bank')->get();
-        $wallet = Pembayaran::where('metode_pembayaran', 'wallet')->get();
+    //     $bank = Pembayaran::where('metode_pembayaran', 'bank')->get();
+    //     $wallet = Pembayaran::where('metode_pembayaran', 'wallet')->get();
 
+    //     // dd($pesanan);
 
-        return view('user.checkout', compact('pesanan','bank','wallet', 'totalpesanan', 'order', 'payments', 'pesanan_id'));
-    }
+    //     return view('user.checkout', compact('pesanan','bank','wallet', 'totalpesanan', 'order', 'payments', 'pesanan_id'));
+    // }
 
 
     // public function Beli(Request $request)
@@ -150,26 +153,78 @@ class CheckoutController extends Controller
         // $pesanan_id = $id;
         // $pesanan = Detailpesanan::where('pesanan_id', $id)->get();
         // $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
-        $order = Detailpesanan::where('status', 'checkout')->get()->count();
-        $payments = Pembayaran::all();
-        $bank = Pembayaran::where('metode_pembayaran', 'bank')->get();
-        $wallet = Pembayaran::where('metode_pembayaran', 'e-wallet')->get();
-        $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
+        // $order = Detailpesanan::where('status', 'checkout')->get()->count();
         $user = auth()->user();
-        $items = DetailPesanan::where('status', 'checkout')->where('user_id', $user->id)->get();
-
-        return view('user.checkout', compact('items', 'user', 'totalpesanan', 'wallet', 'bank'));
+        if (is_null($user->address) and is_null($user->telp)) {
+            return redirect()->route('profil');
+        }else {
+            $payments = Pembayaran::all();
+            $bank = Pembayaran::where('metode_pembayaran', 'bank')->get();
+            $wallet = Pembayaran::where('metode_pembayaran', 'e-wallet')->get();
+            $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
+            $items = DetailPesanan::where('status', 'checkout')->where('user_id', $user->id)->get();
+    // dd($items);
+            return view('user.checkout', compact('items', 'user', 'totalpesanan', 'wallet', 'bank'));
+        }
     }
 
     public function chekoutKeranjang()
     {
         $id = Auth::user()->id;
-        $keranjang = Detailpesanan::where('user_id', $id)->get();
+        $keranjang = Detailpesanan::where('user_id', $id)
+        ->where('status', 'keranjang')
+        ->get();
         foreach ($keranjang as $k) {
             $k->status = 'checkout';
             $k->save();
         }
 
         return redirect('checkout');
+    }
+
+    public function bayar(Request $request)
+    {
+        $request->validate([
+            'metode_pembayaran' => 'required|string',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'metode_pengiriman' => 'required|string',
+        ], [
+            'metode_pembayaran.required' => 'The payment method field is required.',
+            'foto.required' => 'The photo field is required.',
+            'foto.image' => 'The photo must be an image.',
+            'foto.mimes' => 'The photo must be a file of type: jpeg, png, jpg, gif.',
+            'foto.max' => 'The photo may not be greater than 2048 kilobytes.',
+            'metode_pengiriman.required' => 'The shipping method field is required.',
+        ]);
+
+        $totalcheckout = $request->total;
+        $detailpesanan = $request->detail_pesanan;
+        $file = $request->file('foto');;
+        $metodepembayaran = $request->metode_pembayaran;
+        $metodepengiriman = $request->metode_pengiriman;
+        // dd($detailpesanan);
+        $buktipembayaran = Str::random(10) . '.' .  $file->getClientOriginalExtension();
+        $file->storeAs('public/invoice', $buktipembayaran);
+        $checkout = new Checkout;
+        $checkout->metode_pembayaran = $metodepembayaran;
+        $checkout->metode_pengiriman = $metodepengiriman;
+        $checkout->invoice = $buktipembayaran;
+        $checkout->total = $totalcheckout;
+        $checkout->status = 'pending';
+        $checkout->user_id = auth()->user()->id;
+        $checkout->save();
+
+        foreach ($detailpesanan as $value) {
+            Detailpesanan::findOrFail($value)->update(['checkout_id' => $checkout->id, 'status' => 'pay']);
+        }
+
+        return redirect()->route('profil');
+    }
+    public function diterima(Request $request, string $id)
+    {
+        $status = $request->status;
+        $order = DB::table('checkouts')->where('id', $id)->update(['status'=> 'delivered', 'tanggal_menerima'=> Carbon::now()]);
+        return redirect()->route('profil')->with("success", "Item received successfully.");
+        // echo $id;
     }
 }

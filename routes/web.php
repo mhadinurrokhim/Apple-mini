@@ -65,6 +65,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 
     Route::get('/AdminDashboard', [AdmindashboardController::class, 'index'])->name('dashboard');
     Route::get('/adminorder', [AdminorderController::class, 'index'])->name('order.side');
+    Route::put('/adminorder/{id}', [AdminorderController::class, 'update'])->name('order.update');
     Route::get('/getTaxData', [AdmindashboardController::class, 'getTaxData'])->name('getTaxData');
 
     Route::controller(ProdukController::class)->prefix('produk')->group(function () {
@@ -83,6 +84,14 @@ Route::middleware([AdminMiddleware::class])->group(function () {
         Route::put('edit/{id}', 'update')->name('kategori.update');
         Route::delete('destroy/{id}', 'destroy')->name('kategori.destroy');
     });
+    Route::controller(PembayaranController::class)->prefix('pembayaran')->group(function () {
+        Route::get('', 'index')->name('pembayaran');
+        Route::get('create', 'create')->name('pembayaran.create');
+        Route::post('store', 'store')->name('pembayaran.store');
+        Route::get('edit/{id}', 'edit')->name('pembayaran.edit');
+        Route::put('edit/{id}', 'update')->name('pembayaran.update');
+        Route::delete('destroy/{id}', 'destroy')->name('pembayaran.destroy');
+    });
 });
 
 
@@ -90,7 +99,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 Route::middleware([UserMiddleware::class])->group(function () {
 
 
-    Route::post('/beli', [checkoutController::class, 'beli'])->name('beli');
+    Route::post('/beli', [CheckoutController::class, 'beli'])->name('beli');
     Route::get('/homeuser', [HomeUserController::class, 'homeuser'])->name('homeuser');
     Route::get('/detailproduk{id}', [HomeUserController::class, 'detailproduk'])->name('detail.produk');
     Route::post('{produk_id}/order', [HomeUserController::class,'order'])->name('shop.order');
@@ -100,6 +109,8 @@ Route::middleware([UserMiddleware::class])->group(function () {
     Route::get('/wishlist', [WishlistController::class, 'wishlist'])->name('wishlist');
     Route::get('/tracking', [TrackingController::class, 'tracking'])->name('tracking');
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+    Route::post('/bayar', [CheckoutController::class, 'bayar'])->name('bayar');
+    Route::get('/diterima/{id}', [CheckoutController::class, 'diterima'])->name('diterima');
     Route::patch('/checkout-keranjang', [CheckoutController::class, 'chekoutKeranjang'])->name('checkout-keranjang');
     Route::delete('produk-hapus/{id}', [CheckoutController::class, 'chekouthapus'])->name('checkout.hapus');
 
@@ -147,14 +158,6 @@ Route::middleware([UserMiddleware::class])->group(function () {
         Route::put('edit/{id}', 'update')->name('profil.update');
         Route::get('destroy/{id}', 'destroy')->name('profil.destroy');
         // Route::delete('destroy/{id}', 'destroy')->name('pembayaran.destroy');
-    });
-    Route::controller(PembayaranController::class)->prefix('pembayaran')->group(function () {
-        Route::get('', 'index')->name('pembayaran');
-        Route::get('create', 'create')->name('pembayaran.create');
-        Route::post('store', 'store')->name('pembayaran.store');
-        Route::get('edit/{id}', 'edit')->name('pembayaran.edit');
-        Route::put('edit/{id}', 'update')->name('pembayaran.update');
-        Route::delete('destroy/{id}', 'destroy')->name('pembayaran.destroy');
     });
 
 });

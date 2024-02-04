@@ -183,7 +183,7 @@
                                                     class="mx-auto" />
                                             </td>
                                             <td class="ellipsis-text col-1">
-                                                <p class="fw-semi-bold fs--1  line-clamp-3 mb-0">
+                                                <p class="fw-semi-bold fs--1 line-clamp-3 mb-0">
                                                     {{ Str::limit($produks->nama_produk, 10, $end = '...') }}</p>
                                             </td>
                                             <td

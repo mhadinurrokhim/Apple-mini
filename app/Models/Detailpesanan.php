@@ -14,9 +14,9 @@ class Detailpesanan extends Model
         'id'
     ];
 
-    public function pesanan(): BelongsTo
+    public function checkout(): BelongsTo
     {
-        return $this->belongsTo(Pesanan::class);
+        return $this->belongsTo(Checkout::class);
     }
     public function produk(): BelongsTo
     {
