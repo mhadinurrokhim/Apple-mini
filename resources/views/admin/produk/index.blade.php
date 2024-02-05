@@ -126,7 +126,7 @@
                 </li>
             </ul>
             <div id="products"
-                data-list='{"valueNames":["product","price","category","tags","vendor","time"],"page":10,"pagination":true}'>
+                data-list='{"valueNames":["product","price","category","tags","vendor","time"],"page":5,"pagination":true}'>
                 <div class="mb-4">
                     <div class="d-flex flex-wrap gap-3">
                         <div class="search-box">
@@ -182,7 +182,7 @@
                                                     alt="" width="50%" height="50" style="object-fit: cover"
                                                     class="mx-auto" />
                                             </td>
-                                            <td class="ellipsis-text col-1">
+                                            <td class="category ellipsis-text col-1">
                                                 <p class="fw-semi-bold fs--1 line-clamp-3 mb-0">
                                                     {{ Str::limit($produks->nama_produk, 10, $end = '...') }}</p>
                                             </td>
@@ -191,7 +191,7 @@
                                                 {{ 'Rp ' . number_format($produks->harga, 0, ',', '.') }}</td>
 
                                             <td
-                                                class="category align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold">
+                                                class="align-middle white-space-nowrap text-600 fs--1 ps-4 fw-semi-bold">
                                                 {{ $produks->kategori ? $produks->kategori->nama_kategori : 'Tidak Ada Kategori' }}
                                             </td>
                                             <td class="tags align-middle review pb-2 ps-3 fs--1 " style="width:200px;">
@@ -212,7 +212,26 @@
                             </table>
                         </div>
                     </div>
+                    <div class="row align-items-center justify-content-between py-2 pe-0 fs--1">
+                        <div class="col-auto d-flex">
+                            <p class="mb-0 d-none d-sm-block me-3 fw-semi-bold text-900" data-list-info="data-list-info"></p><a
+                            class="fw-semi-bold" href="#!" data-list-view="*">View all<span
+                            class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a
+                            class="fw-semi-bold d-none" href="#!" data-list-view="less">View Less<span
+                            class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
+                        </div>
+                        <div class="col-auto d-flex"><button class="page-link" data-list-pagination="prev"><span
+                                    class="fas fa-chevron-left"></span></button>
+                                    <ul class="mb-0 pagination"></ul><button class="page-link pe-0" data-list-pagination="next"><span
+                                        class="fas fa-chevron-right"></span></button>
+                                    </div>
+                                </div>
+                                <hr class="hr">
+
                     <style>
+                        .hr {
+                            margin-top: -2px;
+                        }
                         .ellipsis-text {
                             max-width: 200px;
                             /* Sesuaikan dengan lebar maksimum yang diinginkan */

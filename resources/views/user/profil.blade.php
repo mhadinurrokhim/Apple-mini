@@ -19,7 +19,7 @@
         <section class="pt-5 pb-9">
             <div class="container-small">
                 @if (is_null($user->address) and is_null($user->telp))
-                <h3 class="text-danger">Silahkan isi informasi pribadi anda</h3>
+                    <h3 class="text-danger">Silahkan isi informasi pribadi anda</h3>
                 @endif
                 <div class="row align-items-center justify-content-between g-3 mb-4">
                     <div class="col-auto">
@@ -48,36 +48,42 @@
                                                 @endif
                                             </label>
                                         </div>
-
                                         <div class="col-12 col-sm-auto flex-1">
                                             <h3>{{ Auth::user()->name }}</h3>
-                                           Since date : @isset(Auth::user()->created_at)
-                                            {{ Auth::user()->created_at->translatedFormat('d F Y') }}
-                                        @endisset
+                                            <p>
+                                                @if (Auth::check())
+                                                    {{ Carbon\Carbon::now()->diffInDays(Auth::user()->created_at) }} Days
+                                                    Ago
+                                                @else
+                                                    <p></p>
+                                                @endif
+                                            </p>
                                         </div>
+
                                     </div>
                                 </div>
-                                <div class="d-flex flex-between-center pt-1">
+                                <div class="d-flex flex-between-center pt-4">
                                     <div>
                                         <h6 class="mb-2 text-800">Total Spent</h6>
                                         <h4 class="fs-1 text-1000 mb-0">Rp.
                                             {{ number_format($totalpembayaran[0]->total, 0, ',', '.') }}</h4>
                                     </div>
+                                    @php
+                                        use Carbon\Carbon;
+                                    @endphp
                                     <div class="text-end">
-                                        @php
-                                            use Carbon\Carbon;
-                                        @endphp
                                         <h6 class="mb-2 text-800 text-center">Last Order</h6>
                                         <h4 class="fs-1 text-1000 mb-0 text-center">
                                             @if ($lastorder->count() > 0)
-                                                {{ Carbon::now()->diffInDays($lastorder[0]->created_at) }} Days Ago</h4>
-                                            @else
-                                                <h4 class="fs-1 text-1000 mb-0">User has never placed an order.</h4>
-                                            @endif
+                                                {{ Carbon::now()->diffInDays($lastorder[0]->created_at) }} Days Ago
+                                        </h4>
+                                    @else
+                                        <h4 class="fs-1 text-1000 mb-0">User has never placed an order.</h4>
+                                        @endif
                                     </div>
                                     <div class="text-end">
                                         <h6 class="mb-2 text-800">Total Orders</h6>
-                                        <h4 class="fs-1 text-1000 mb-0">{{ $totalorder }}</h4>
+                                        <h4 class="fs-1 text-1000 mb-2">{{ $totalorder }}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -87,8 +93,7 @@
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="border-bottom border-dashed border-300">
-                                    <h4 class="mb-3 lh-sm lh-xl-1">Default Address<button class="btn btn-link p-0"
-                                            type="button"> <span class="fas fa-edit fs--1 ms-3 text-500"></span></button>
+                                    <h4 class="mb-3 lh-sm lh-xl-1">Default Address<span class="fas fa-edit fs--1 ms-3 text-500"></span>
                                     </h4>
                                 </div>
                                 <div class="pt-4 mb-7 mb-lg-4 mb-xl-7">
@@ -113,7 +118,8 @@
                                         <div class="col-auto">
                                             <h5 class="text-1000 mb-0">Phone</h5>
                                         </div>
-                                        <div class="col-auto"><a href="https://wa.me/{{ $user->telp }}/">{{ $user->telp }}</a></div>
+                                        <div class="col-auto"><a
+                                                href="https://wa.me/{{ $user->telp }}/">{{ $user->telp }}</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -507,7 +513,7 @@
         if (file) {
             const reader = new FileReader();
 
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 imagePreview.style.backgroundImage = `url(${e.target.result})`;
                 imagePreview.style.backgroundSize = 'cover';
                 imagePreview.style.backgroundPosition = 'center';

@@ -50,7 +50,7 @@ class ProfilController extends Controller
             )
         ->where('detail_pesanan.user_id', $user->id)
         ->orderBy('checkouts.status','asc')->get();
-        // dd($totalorder);
+        // dd($user);
         return view('user.profil',compact('user', 'totalpesanan', 'order', 'lastorder', 'totalpembayaran', 'totalorder'));
     }
 

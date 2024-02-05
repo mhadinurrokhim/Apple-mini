@@ -294,12 +294,12 @@
                 </li>
             </ul>
             <div id="products"
-                data-list='{"valueNames":["product","price","category","tags","vendor","time"],"page":10,"pagination":true}'>
+                data-list='{"valueNames":["product","price","category","tags","vendor","time"],"page":5 ,"pagination":true}'>
                 <div class="mb-4">
                     <div class="d-flex flex-wrap gap-3">
                         <div class="search-box">
                             <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input
-                                    class="form-control search-input search" type="search" placeholder="Search products"
+                                    class="form-control search-input search" type="search" placeholder="Search category"
                                     aria-label="Search" />
                                 <span class="fas fa-search search-box-icon"></span>
                             </form>
@@ -329,7 +329,7 @@
                                     @foreach ($kategori as $kategoris)
                                         <tr class="position-static">
                                             <td class="fs--1 align-middle"><span>{{ $loop->iteration }}</span></td>
-                                            <td class="text-center product align-middle ps-4">
+                                            <td class="text-center category align-middle ps-4">
                                                 <span></span>{{ $kategoris->nama_kategori }}
                                             </td>
                                             <td

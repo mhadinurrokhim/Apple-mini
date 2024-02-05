@@ -273,13 +273,13 @@
                 data-list='{"valueNames":["product","price","category","tags","vendor","time"],"page":10,"pagination":true}'>
                 <div class="mb-4">
                     <div class="d-flex flex-wrap gap-3">
-                        {{-- <div class="search-box">
+                        <div class="search-box">
                             <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input
-                                    class="form-control search-input search" type="search" placeholder="Search products"
+                                    class="form-control search-input search" type="search" placeholder="Search customer"
                                     aria-label="Search" />
                                 <span class="fas fa-search search-box-icon"></span>
                             </form>
-                        </div> --}}
+                        </div>
                         <div class="scrollbar overflow-hidden-y">
                             <div class="btn-group position-static" role="group">
                                 <div class="ms-xxl-auto">
@@ -331,14 +331,15 @@
                                                         {{ $no }}</td>
                                                     <td class="align-middle review fs-0 text-center ps-4">
                                                         <img src="{{ asset('storage/Invoice/' . $orders->invoice) }}"
-                                                        alt="" width="50%" height="50" style="object-fit: cover"
-                                                        class="mx-auto" /></td>
+                                                            alt="" width="50%" height="50"
+                                                            style="object-fit: cover" class="mx-auto" />
+                                                    </td>
                                                     <td class="align-middle white-space-nowrap mx-auto py-0">
                                                         <button type="button" class="btn btn-link primary"
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#useridModal{{ $orders->user_id }}">
                                                             <span
-                                                                class="fw-semi-bold fs--1  line-clamp-3 mb-0">{{ $orders->name }}</span>
+                                                                class="category fw-semi-bold fs--1  line-clamp-3 mb-0">{{ $orders->name }}</span>
                                                         </button>
                                                     </td>
                                                     <td class="align-middle white-space-nowrap py-0">
@@ -379,9 +380,9 @@
                                                                 <button type="submit"
                                                                     class="btn btn-link dropdown-item text-primary">
                                                                     @if ($orders->status == 'pending')
-                                                                    Set Shipping
+                                                                        Set Shipping
                                                                     @else
-                                                                    Completed
+                                                                        Completed
                                                                     @endif
                                                                 </button>
                                                             </form>
@@ -396,6 +397,29 @@
                                         @endforeach
                                 </tbody>
                             </table>
+                            <div class="row align-items-center justify-content-between py-2 pe-0 fs--1">
+                                <div class="col-auto d-flex">
+                                    <p class="mb-0 d-none d-sm-block me-3 fw-semi-bold text-900"
+                                        data-list-info="data-list-info"></p><a class="fw-semi-bold" href="#!"
+                                        data-list-view="*">View all<span class="fas fa-angle-right ms-1"
+                                            data-fa-transform="down-1"></span></a><a class="fw-semi-bold d-none"
+                                        href="#!" data-list-view="less">View Less<span
+                                            class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
+                                </div>
+                                <div class="col-auto d-flex"><button class="page-link" data-list-pagination="prev"><span
+                                            class="fas fa-chevron-left"></span></button>
+                                    <ul class="mb-0 pagination"></ul><button class="page-link pe-0"
+                                        data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
+                                </div>
+                            </div>
+                            <hr class="hr">
+                            <style>
+                                .hr {
+                                    margin-top: -2px;
+                                }
+
+                                y
+                            </style>
 
                             @php
                                 $detail = '';
@@ -540,10 +564,14 @@
                                                             </thead>
                                                             <tbody class="list" id="products-table-body">
                                                                 <tr>
-                                                                    <td class="text-center product align-middle ps-4">{{ $orders->name }}</td>
-                                                                    <td class="text-center product align-middle ps-4">{{ $orders->email }}</td>
-                                                                    <td class="text-center product align-middle ps-4">{{ $orders->address }}</td>
-                                                                    <td class="text-center product align-middle ps-4">{{ $orders->telp }}</td>
+                                                                    <td class="text-center product align-middle ps-4">
+                                                                        {{ $orders->name }}</td>
+                                                                    <td class="text-center product align-middle ps-4">
+                                                                        {{ $orders->email }}</td>
+                                                                    <td class="text-center product align-middle ps-4">
+                                                                        {{ $orders->address }}</td>
+                                                                    <td class="text-center product align-middle ps-4">
+                                                                        {{ $orders->telp }}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
