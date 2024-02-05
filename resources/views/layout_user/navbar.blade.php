@@ -412,6 +412,27 @@
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
+    const fileInput = document.getElementById('profil');
+    const imagePreview = document.getElementById('imagePreview');
+
+    function imagePreview() {
+        const file = fileInput.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                imagePreview.style.backgroundImage = `url(${e.target.result})`;
+                imagePreview.style.backgroundSize = 'cover';
+                imagePreview.style.backgroundPosition = 'center';
+            };
+
+            reader.readAsDataURL(file);
+        } else {
+            // Clear the image preview if no file is selected
+            imagePreview.style.backgroundImage = 'none';
+        }
+    }
     $(document).ready(function() {
       // Temukan semua tombol wishlist menggunakan class selector
       var wishlistButtons = document.querySelectorAll('.btn-wish');
@@ -433,10 +454,10 @@
           console.log(wishlistItems);
           wishlistButtons.forEach(function(wishlistButton) {
             var productId = wishlistButton.getAttribute('data-product-id');
-            
+
             // Tambahkan pesan konsol untuk memeriksa nilai productId
             console.log('Product ID:', productId);
-            
+
             console.log((wishlistItems.includes(productId)));
             if (wishlistItems.includes(productId)) {
               wishlistButton.classList.add('active');

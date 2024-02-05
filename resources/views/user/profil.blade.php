@@ -51,7 +51,9 @@
 
                                         <div class="col-12 col-sm-auto flex-1">
                                             <h3>{{ Auth::user()->name }}</h3>
-                                            {{-- <p class="text-800">{{ Auth::user()->created_at }}</p> --}}
+                                           Since date : @isset(Auth::user()->created_at)
+                                            {{ Auth::user()->created_at->translatedFormat('d F Y') }}
+                                        @endisset
                                         </div>
                                     </div>
                                 </div>
@@ -496,22 +498,25 @@
 @endsection
 
 <script>
-    function previewImage() {
-        var input = document.getElementById('avatarFile');
-        var preview = document.getElementById('avatarPreview');
+    const fileInput = document.getElementById('profil');
+    const imagePreview = document.getElementById('imagePreview');
 
-        if (input.files.length > 0) {
-            var file = input.files[0];
-            var reader = new FileReader();
+    function imagePreview() {
+        const file = fileInput.files[0];
 
-            reader.onloadend = function() {
-                preview.src = reader.result;
-            }
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                imagePreview.style.backgroundImage = `url(${e.target.result})`;
+                imagePreview.style.backgroundSize = 'cover';
+                imagePreview.style.backgroundPosition = 'center';
+            };
 
             reader.readAsDataURL(file);
-            console.log(file);
         } else {
-            preview.src = '{{ asset('assets/img/profile.jpg') }}';
+            // Clear the image preview if no file is selected
+            imagePreview.style.backgroundImage = 'none';
         }
     }
     // const previewImage = (event)={
