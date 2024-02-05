@@ -218,7 +218,7 @@ class CheckoutController extends Controller
             Detailpesanan::findOrFail($value)->update(['checkout_id' => $checkout->id, 'status' => 'pay']);
         }
 
-        return redirect()->route('profil');
+        return redirect()->route('profil')->with('success', 'Payment completed, waiting for admin to send the item.');
     }
     public function diterima(Request $request, string $id)
     {

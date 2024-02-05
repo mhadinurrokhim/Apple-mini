@@ -35,7 +35,7 @@
 
                                         <div class="col-12 col-sm-auto">
                                             <input class="d-none" id="avatarFile" type="file" name="profile"
-                                                accept="image/*" onchange="previewImage(event)" />
+                                                accept="image/*" onchange="previewImage()" />
                                             <label class="cursor-pointer avatar avatar-5xl" for="avatarFile">
                                                 @if ($user->profile)
                                                     <img class="rounded-circle" id="avatarPreview"
@@ -93,7 +93,8 @@
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="border-bottom border-dashed border-300">
-                                    <h4 class="mb-3 lh-sm lh-xl-1">Default Address<span class="fas fa-edit fs--1 ms-3 text-500"></span>
+                                    <h4 class="mb-3 lh-sm lh-xl-1">Default Address<span
+                                            class="fas fa-edit fs--1 ms-3 text-500"></span>
                                     </h4>
                                 </div>
                                 <div class="pt-4 mb-7 mb-lg-4 mb-xl-7">
@@ -119,7 +120,7 @@
                                             <h5 class="text-1000 mb-0">Phone</h5>
                                         </div>
                                         <div class="col-auto"><a
-                                                href="https://wa.me/{{ $user->telp }}/">{{ $user->telp }}</a></div>
+                                                href="https://wa.me/{{ $user->telp }}/">+{{ $user->telp }}</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -504,35 +505,23 @@
 @endsection
 
 <script>
-    const fileInput = document.getElementById('profil');
-    const imagePreview = document.getElementById('imagePreview');
+    function previewImage() {
+        var input = document.getElementById('avatarFile');
+        var preview = document.getElementById('avatarPreview');
 
-    function imagePreview() {
-        const file = fileInput.files[0];
+        if (input.files.length > 0) {
+            var file = input.files[0];
+            var reader = new FileReader();
 
-        if (file) {
-            const reader = new FileReader();
-
-            reader.onload = function(e) {
-                imagePreview.style.backgroundImage = `url(${e.target.result})`;
-                imagePreview.style.backgroundSize = 'cover';
-                imagePreview.style.backgroundPosition = 'center';
-            };
+            reader.onloadend = function() {
+                preview.src = reader.result;
+            }
 
             reader.readAsDataURL(file);
+
         } else {
-            // Clear the image preview if no file is selected
-            imagePreview.style.backgroundImage = 'none';
+            // Jika tidak ada file yang dipilih, tampilkan gambar placeholder atau default
+            preview.src = '{{ asset('assets/img/profile.jpg') }}';
         }
     }
-    // const previewImage = (event)={
-    //     const imagefile = event.target.files;
-    //     const imagefilelength = imagefile.length;
-    //     if (imagefilelength > 0) {
-    //         const imagesrc = URL.createObjectURL(imagefile[0]);
-    //         const imagepriview = document.querySelector('#avatarPreview');
-    //         imagepriview.src = imagesrc;
-    //         imagepriview.style.display = 'block';
-    //     }
-    // }
 </script>

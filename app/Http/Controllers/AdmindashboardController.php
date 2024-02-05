@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Charts\TotalIncomeChart;
+use App\Models\Checkout;
+use App\Models\Detailpesanan;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Produk;
@@ -23,8 +25,9 @@ class AdmindashboardController extends Controller
         $totalUser = User::where('role', 'user')->count();
         $totalProduct = Produk::count();
         $produk = Produk::where('stok', '<=', 0)->get();
+        $produkpending = Checkout::where('status', 'pending')->get();
         $user = auth()->user();
-        return view('admin.dashboard', ['chart' => $chart->build()], compact('totalUser', 'totalProduct', 'user', 'produk'));
+        return view('admin.dashboard', ['chart' => $chart->build()], compact('totalUser', 'totalProduct', 'user', 'produk', 'produkpending'));
     }
 
     /**

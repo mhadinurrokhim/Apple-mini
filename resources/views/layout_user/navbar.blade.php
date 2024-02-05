@@ -60,12 +60,7 @@
       userLinkRTL.setAttribute('disabled', true);
     }
 
-    <
-    style >
-      .swiper - slide {
-        margin - right: 20 px!important;
-      } <
-      /style>
+
   </script>
   <link href="../../../vendors/swiper/swiper-bundle.min.css" rel="stylesheet">
 </head>
@@ -412,27 +407,6 @@
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
-    const fileInput = document.getElementById('profil');
-    const imagePreview = document.getElementById('imagePreview');
-
-    function imagePreview() {
-        const file = fileInput.files[0];
-
-        if (file) {
-            const reader = new FileReader();
-
-            reader.onload = function (e) {
-                imagePreview.style.backgroundImage = `url(${e.target.result})`;
-                imagePreview.style.backgroundSize = 'cover';
-                imagePreview.style.backgroundPosition = 'center';
-            };
-
-            reader.readAsDataURL(file);
-        } else {
-            // Clear the image preview if no file is selected
-            imagePreview.style.backgroundImage = 'none';
-        }
-    }
     $(document).ready(function() {
       // Temukan semua tombol wishlist menggunakan class selector
       var wishlistButtons = document.querySelectorAll('.btn-wish');
@@ -526,8 +500,5 @@
     });
   </script>
 </body>
-
-
-<!-- Mirrored from prium.github.io/phoenix/v1.13.0/apps/e-commerce/landing/homepage.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Nov 2023 12:13:56 GMT -->
 
 </html>

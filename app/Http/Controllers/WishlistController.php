@@ -45,7 +45,7 @@ class WishlistController extends Controller
         ]);
         return response()->json(['success' => 'product successfully added to wishlist']);
     } else {
-        return response()->json(['remove' => 'The product is already on the wishlist']);   
+        return response()->json(['remove' => 'The product is already on the wishlist']);
     }
 
     // return redirect()->back();
@@ -73,4 +73,3 @@ class WishlistController extends Controller
         return response(['remove' => 'removed from wishlist successfully']);
         }
     }
-
