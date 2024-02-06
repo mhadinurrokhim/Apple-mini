@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->restrictOnDelete();
             $table->string('metode_pembayaran')->default('');
             $table->string('metode_pengiriman')->default('');
-            $table->enum('status', ['pending', 'shipped', 'delivered', 'completed'])->default('pending');
+            $table->enum('status', ['pending', 'shipped', 'delivered', 'completed', 'reject'])->default('pending');
             $table->date('tanggal_pengiriman')->nullable()->default(null);
             $table->date('tanggal_menerima')->nullable()->default(null);
             $table->timestamps();

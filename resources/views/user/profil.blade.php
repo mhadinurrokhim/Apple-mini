@@ -19,7 +19,7 @@
         <section class="pt-5 pb-9">
             <div class="container-small">
                 @if (is_null($user->address) and is_null($user->telp))
-                    <h3 class="text-danger">Silahkan isi informasi pribadi anda</h3>
+                    <h3 class="text-danger">Please fill in your personal information first</h3>
                 @endif
                 <div class="row align-items-center justify-content-between g-3 mb-4">
                     <div class="col-auto">
@@ -52,7 +52,8 @@
                                             <h3>{{ Auth::user()->name }}</h3>
                                             <p>
                                                 @if (Auth::check())
-                                                    {{ Carbon\Carbon::now()->diffInDays(Auth::user()->created_at) }} Days
+                                                    Joined {{ Carbon\Carbon::now()->diffInDays(Auth::user()->created_at) }}
+                                                    Days
                                                     Ago
                                                 @else
                                                     <p></p>
@@ -143,14 +144,16 @@
                             <div class="tab-pane fade show active" id="tab-orders" role="tabpanel"
                                 aria-labelledby="orders-tab">
                                 <div class="border-top border-bottom border-200" id="profileOrdersTable"
-                                    data-list='{"valueNames":["order","status","delivery","date","total"],"page":6,"pagination":true}'>
+                                    data-list='{"valueNames":["order","status","delivery","date","total"],"page":5,"pagination":true}'>
                                     <div class="table-responsive scrollbar">
                                         <table class="table fs--1 mb-0">
                                             <thead>
                                                 <tr>
                                                     <th class="sort white-space-nowrap align-middle text-center pe-3 ps-0"
                                                         scope="col" style="width:15%; min-width:140px">NO</th>
-                                                    <th class="sort align-middle pe-3 text-center" scope="col"
+                                                    <th class="sort white-space-nowrap align-middle text-center pe-3 ps-0"
+                                                        scope="col" style="width:15%; min-width:140px">MY ORDER</th>
+                                                    <th class="sort align-middle pe-0 text-center" scope="col"
                                                         style="width:15%; min-width:180px">STATUS</th>
                                                     <th class="sort align-middle text-center" scope="col"
                                                         style="width:20%; min-width:160px">DELIVERY METHOD</th>
@@ -160,7 +163,7 @@
                                                         style="width:15%; min-width:160px">RECEIVED DATE</th>
                                                     <th class="sort align-middle text-center" scope="col"
                                                         style="width:15%; min-width:160px">TOTAL</th>
-                                                    <th class="align-middle pe-0 text-center" scope="col"
+                                                    <th class="align-middle pe-5 text-center" scope="col"
                                                         style="width:15%;">ACTION</th>
                                                 </tr>
                                             </thead>
@@ -169,19 +172,26 @@
                                                     @php
                                                         $detail_pesananid = 0;
                                                         $no = 0;
-                                                        // $totalproduktiappesanan = [];
+                                                        $totalproduktiappesanan = [];
                                                     @endphp
                                                     @foreach ($order as $orders)
                                                         @if ($orders->id != $detail_pesananid)
                                                             @php
                                                                 $detail_pesananid = $orders->id;
                                                                 $no += 1;
-                                                                // $totalproduktiappesanan[$orders->id] = 1;
+                                                                $totalproduktiappesanan[$orders->id] = 1;
                                                             @endphp
                                                             <tr class="position-static text-center">
                                                                 <td class="align-middle review fs-0 text-center ps-4">
                                                                     {{ $no }}</td>
-                                                                <td class="align-middle white-space-nowrap mx-auto py-0">
+                                                                <td class="align-middle review fs-0 text-center ps-0">
+                                                                    <button type="button" class="btn btn-link primary"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#productDetailModal{{ $orders->id }}">
+                                                                        Detail
+                                                                    </button>
+                                                                </td>
+                                                                <td class="align-middle white-space-nowrap py-0">
                                                                     <span
                                                                         class="badge badge-phoenix fs--2
                                                                 @if ($orders->status == 'pending') badge-phoenix-warning
@@ -190,7 +200,9 @@
                                                                 @elseif($orders->status == 'delivered')
                                                                     badge-phoenix-success
                                                                 @elseif($orders->status == 'completed')
-                                                                badge-phoenix-success @endif
+                                                                badge-phoenix-success
+                                                                @elseif($orders->status == 'reject')
+                                                                badge-phoenix-danger @endif
                                                                 ">
                                                                         {{ $orders->status }}
                                                                     </span>
@@ -224,227 +236,32 @@
                                                                         </form> --}}
                                                                         <a class="btn btn-link dropdown-item text-primary"
                                                                             href="{{ route('diterima', $orders->id) }}">Accepted</a>
+                                                                            @elseif ($orders->status == 'reject')
+                                                                            <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#show-reject-message">Reject Message</button>
+                                                                            <div class="modal fade" id="show-reject-message" tabindex="-1" aria-labelledby="rejectMessageModalLabel" aria-hidden="true">
+                                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                                    <div class="modal-content">
+                                                                                        <div class="modal-header">
+                                                                                            <h5 class="modal-title" id="rejectMessageModalLabel">Reject Message</h5>
+                                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                        </div>
+                                                                                        <div class="modal-body">
+                                                                                            <div class="w-100 fs-2">{{ $orders->reject_message }}</div>
+                                                                                        </div>
+                                                                                        <div class="modal-footer">
+                                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                            <!-- Tambahkan tombol untuk menolak pesan di sini jika diperlukan -->
+                                                                                            <!-- <button type="button" class="btn btn-danger">Reject</button> -->
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                     @endif
                                                                 </td>
                                                             </tr>
-                                                        @else
-                                                            {{-- @php
-                                                                $totalproduktiappesanan[$orders->id] += 1;
-                                                            @endphp --}}
                                                         @endif
                                                     @endforeach
                                                 @endif
-                                                {{-- <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                    <td class="order align-middle white-space-nowrap py-2 ps-0"><a
-                                                            class="fw-semi-bold text-primary" href="#!">#2453</a>
-                                                    </td>
-                                                    <td
-                                                        class="status align-middle white-space-nowrap text-start fw-bold text-700 py-2">
-                                                        <span class="badge badge-phoenix fs--2 badge-phoenix-success"><span
-                                                                class="badge-label">Shipped</span><span class="ms-1"
-                                                                data-feather="check"
-                                                                style="height:12.8px;width:12.8px;"></span></span>
-                                                    </td>
-                                                    <td class="delivery align-middle white-space-nowrap text-900 py-2">Cash
-                                                        on delivery</td>
-                                                    <td class="total align-middle text-700 text-end py-2">Dec 12, 12:56 PM
-                                                    </td>
-                                                    <td class="date align-middle fw-semi-bold text-end py-2 text-1000">$87
-                                                    </td>
-                                                    <td class="align-middle text-end white-space-nowrap pe-0 action py-2">
-                                                        <div class="font-sans-serif btn-reveal-trigger position-static">
-                                                            <button
-                                                                class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal"
-                                                                type="button" data-bs-toggle="dropdown"
-                                                                data-boundary="window" aria-haspopup="true"
-                                                                aria-expanded="false" data-bs-reference="parent"><span
-                                                                    class="fas fa-ellipsis-h fs--2"></span></button>
-                                                            <div class="dropdown-menu dropdown-menu-end py-2"><a
-                                                                    class="dropdown-item" href="#!">View</a><a
-                                                                    class="dropdown-item" href="#!">Export</a>
-                                                                <div class="dropdown-divider"></div><a
-                                                                    class="dropdown-item text-danger"
-                                                                    href="#!">Remove</a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                    <td class="order align-middle white-space-nowrap py-2 ps-0"><a
-                                                            class="fw-semi-bold text-primary" href="#!">#2452</a>
-                                                    </td>
-                                                    <td
-                                                        class="status align-middle white-space-nowrap text-start fw-bold text-700 py-2">
-                                                        <span class="badge badge-phoenix fs--2 badge-phoenix-info"><span
-                                                                class="badge-label">Ready to pickup</span><span
-                                                                class="ms-1" data-feather="info"
-                                                                style="height:12.8px;width:12.8px;"></span></span>
-                                                    </td>
-                                                    <td class="delivery align-middle white-space-nowrap text-900 py-2">Free
-                                                        shipping</td>
-                                                    <td class="total align-middle text-700 text-end py-2">Dec 9, 2:28PM
-                                                    </td>
-                                                    <td class="date align-middle fw-semi-bold text-end py-2 text-1000">
-                                                        $7264</td>
-                                                    <td class="align-middle text-end white-space-nowrap pe-0 action py-2">
-                                                        <div class="font-sans-serif btn-reveal-trigger position-static">
-                                                            <button
-                                                                class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal"
-                                                                type="button" data-bs-toggle="dropdown"
-                                                                data-boundary="window" aria-haspopup="true"
-                                                                aria-expanded="false" data-bs-reference="parent"><span
-                                                                    class="fas fa-ellipsis-h fs--2"></span></button>
-                                                            <div class="dropdown-menu dropdown-menu-end py-2"><a
-                                                                    class="dropdown-item" href="#!">View</a><a
-                                                                    class="dropdown-item" href="#!">Export</a>
-                                                                <div class="dropdown-divider"></div><a
-                                                                    class="dropdown-item text-danger"
-                                                                    href="#!">Remove</a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                    <td class="order align-middle white-space-nowrap py-2 ps-0"><a
-                                                            class="fw-semi-bold text-primary" href="#!">#2451</a>
-                                                    </td>
-                                                    <td
-                                                        class="status align-middle white-space-nowrap text-start fw-bold text-700 py-2">
-                                                        <span class="badge badge-phoenix fs--2 badge-phoenix-warning"><span
-                                                                class="badge-label">Partially fulfilled</span><span
-                                                                class="ms-1" data-feather="clock"
-                                                                style="height:12.8px;width:12.8px;"></span></span>
-                                                    </td>
-                                                    <td class="delivery align-middle white-space-nowrap text-900 py-2">
-                                                        Local pickup</td>
-                                                    <td class="total align-middle text-700 text-end py-2">Dec 4, 12:56 PM
-                                                    </td>
-                                                    <td class="date align-middle fw-semi-bold text-end py-2 text-1000">$375
-                                                    </td>
-                                                    <td class="align-middle text-end white-space-nowrap pe-0 action py-2">
-                                                        <div class="font-sans-serif btn-reveal-trigger position-static">
-                                                            <button
-                                                                class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal"
-                                                                type="button" data-bs-toggle="dropdown"
-                                                                data-boundary="window" aria-haspopup="true"
-                                                                aria-expanded="false" data-bs-reference="parent"><span
-                                                                    class="fas fa-ellipsis-h fs--2"></span></button>
-                                                            <div class="dropdown-menu dropdown-menu-end py-2"><a
-                                                                    class="dropdown-item" href="#!">View</a><a
-                                                                    class="dropdown-item" href="#!">Export</a>
-                                                                <div class="dropdown-divider"></div><a
-                                                                    class="dropdown-item text-danger"
-                                                                    href="#!">Remove</a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                    <td class="order align-middle white-space-nowrap py-2 ps-0"><a
-                                                            class="fw-semi-bold text-primary" href="#!">#2450</a>
-                                                    </td>
-                                                    <td
-                                                        class="status align-middle white-space-nowrap text-start fw-bold text-700 py-2">
-                                                        <span
-                                                            class="badge badge-phoenix fs--2 badge-phoenix-secondary"><span
-                                                                class="badge-label">Canceled</span><span class="ms-1"
-                                                                data-feather="x"
-                                                                style="height:12.8px;width:12.8px;"></span></span>
-                                                    </td>
-                                                    <td class="delivery align-middle white-space-nowrap text-900 py-2">
-                                                        Standard shipping</td>
-                                                    <td class="total align-middle text-700 text-end py-2">Dec 1, 4:07 AM
-                                                    </td>
-                                                    <td class="date align-middle fw-semi-bold text-end py-2 text-1000">$657
-                                                    </td>
-                                                    <td class="align-middle text-end white-space-nowrap pe-0 action py-2">
-                                                        <div class="font-sans-serif btn-reveal-trigger position-static">
-                                                            <button
-                                                                class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal"
-                                                                type="button" data-bs-toggle="dropdown"
-                                                                data-boundary="window" aria-haspopup="true"
-                                                                aria-expanded="false" data-bs-reference="parent"><span
-                                                                    class="fas fa-ellipsis-h fs--2"></span></button>
-                                                            <div class="dropdown-menu dropdown-menu-end py-2"><a
-                                                                    class="dropdown-item" href="#!">View</a><a
-                                                                    class="dropdown-item" href="#!">Export</a>
-                                                                <div class="dropdown-divider"></div><a
-                                                                    class="dropdown-item text-danger"
-                                                                    href="#!">Remove</a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                    <td class="order align-middle white-space-nowrap py-2 ps-0"><a
-                                                            class="fw-semi-bold text-primary" href="#!">#2449</a>
-                                                    </td>
-                                                    <td
-                                                        class="status align-middle white-space-nowrap text-start fw-bold text-700 py-2">
-                                                        <span class="badge badge-phoenix fs--2 badge-phoenix-success"><span
-                                                                class="badge-label">fulfilled</span><span class="ms-1"
-                                                                data-feather="check"
-                                                                style="height:12.8px;width:12.8px;"></span></span>
-                                                    </td>
-                                                    <td class="delivery align-middle white-space-nowrap text-900 py-2">
-                                                        Express</td>
-                                                    <td class="total align-middle text-700 text-end py-2">Nov 28, 7:28 PM
-                                                    </td>
-                                                    <td class="date align-middle fw-semi-bold text-end py-2 text-1000">
-                                                        $9562</td>
-                                                    <td class="align-middle text-end white-space-nowrap pe-0 action py-2">
-                                                        <div class="font-sans-serif btn-reveal-trigger position-static">
-                                                            <button
-                                                                class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal"
-                                                                type="button" data-bs-toggle="dropdown"
-                                                                data-boundary="window" aria-haspopup="true"
-                                                                aria-expanded="false" data-bs-reference="parent"><span
-                                                                    class="fas fa-ellipsis-h fs--2"></span></button>
-                                                            <div class="dropdown-menu dropdown-menu-end py-2"><a
-                                                                    class="dropdown-item" href="#!">View</a><a
-                                                                    class="dropdown-item" href="#!">Export</a>
-                                                                <div class="dropdown-divider"></div><a
-                                                                    class="dropdown-item text-danger"
-                                                                    href="#!">Remove</a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                                                    <td class="order align-middle white-space-nowrap py-2 ps-0"><a
-                                                            class="fw-semi-bold text-primary" href="#!">#2448</a>
-                                                    </td>
-                                                    <td
-                                                        class="status align-middle white-space-nowrap text-start fw-bold text-700 py-2">
-                                                        <span class="badge badge-phoenix fs--2 badge-phoenix-danger"><span
-                                                                class="badge-label">Unfulfilled</span><span class="ms-1"
-                                                                data-feather="check"
-                                                                style="height:12.8px;width:12.8px;"></span></span>
-                                                    </td>
-                                                    <td class="delivery align-middle white-space-nowrap text-900 py-2">
-                                                        Local delivery</td>
-                                                    <td class="total align-middle text-700 text-end py-2">Nov 24, 10:16 AM
-                                                    </td>
-                                                    <td class="date align-middle fw-semi-bold text-end py-2 text-1000">$256
-                                                    </td>
-                                                    <td class="align-middle text-end white-space-nowrap pe-0 action py-2">
-                                                        <div class="font-sans-serif btn-reveal-trigger position-static">
-                                                            <button
-                                                                class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal"
-                                                                type="button" data-bs-toggle="dropdown"
-                                                                data-boundary="window" aria-haspopup="true"
-                                                                aria-expanded="false" data-bs-reference="parent"><span
-                                                                    class="fas fa-ellipsis-h fs--2"></span></button>
-                                                            <div class="dropdown-menu dropdown-menu-end py-2"><a
-                                                                    class="dropdown-item" href="#!">View</a><a
-                                                                    class="dropdown-item" href="#!">Export</a>
-                                                                <div class="dropdown-divider"></div><a
-                                                                    class="dropdown-item text-danger"
-                                                                    href="#!">Remove</a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr> --}}
                                             </tbody>
                                         </table>
                                     </div>
@@ -468,6 +285,108 @@
                                     </div>
                                 </div>
                             </div>
+                            @php
+                            $detail = '';
+                            $counter = 1;
+                        @endphp
+
+                        @foreach ($order as $orders)
+                            @if ($counter < $totalproduktiappesanan[$orders->id])
+                                @php
+                                    $detail .=
+                                        '<tr><td class="text-center product align-middle ps-4">' .
+                                        $counter .
+                                        '</td><td class="text-center product align-middle ps-4">' .
+                                        '<img src="' .
+                                        asset('storage/Product/' . $orders->path_produk) .
+                                        '"
+                                                            alt="" width="50%" height="50%"
+                                                            style="object-fit: cover" class="mx-auto" />' .
+                                        '</td><td class="text-center product align-middle ps-4">' .
+                                        $orders->nama_produk .
+                                        '</td><td class="text-center product align-middle ps-4">' .
+                                        $orders->jumlah .
+                                        '</td><td class="text-center product align-middle ps-4">' .
+                                        'Rp. ' . number_format($orders->total, 0, ',', '.') .
+                                        '</td></tr>';
+                                    $counter += 1;
+                                @endphp
+                            @else
+                                @php
+                                    $detail .=
+                                        '<tr><td class="text-center product align-middle ps-4">' .
+                                        $counter .
+                                        '</td><td class="text-center product align-middle ps-4">' .
+                                        '<img src="' .
+                                        asset('storage/Product/' . $orders->path_produk) .
+                                        '"
+                                                            alt="" width="50%" height="50%"
+                                                            style="object-fit: cover" class="mx-auto" />' .
+                                        '</td><td class="text-center product align-middle ps-4">' .
+                                        $orders->nama_produk .
+                                        '</td><td class="text-center product align-middle ps-4">' .
+                                        $orders->jumlah .
+                                        '</td><td class="text-center product align-middle ps-4">' .
+                                        'Rp. ' . number_format($orders->total, 0, ',', '.') .
+                                        '</td></tr>';
+                                    $counter = 1;
+                                @endphp
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="productDetailModal{{ $orders->id }}" tabindex="-1"
+                                    aria-labelledby="productDetailModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-xl">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="productDetailModalLabel">
+                                                    Product Detail</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div>
+                                                    <table class="table fs--1 mb-0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="sort text-center white-space-nowrap align-middle ps-4"
+                                                                    style="width: 250px">
+                                                                    <span>NO</span>
+                                                                </th>
+                                                                <th class="sort text-center white-space-nowrap align-middle ps-4"
+                                                                    scope="col" style="width:350px;">
+                                                                </th>
+                                                                <th class="sort text-center white-space-nowrap align-middle ps-4"
+                                                                    scope="col" style="width:350px;">
+                                                                    PRODUCT NAME</th>
+                                                                <th class="sort text-center white-space-nowrap align-middle ps-4"
+                                                                    scope="col" style="width:250px;">
+                                                                    JUMLAH</th>
+                                                                <th class="sort text-center white-space-nowrap align-middle ps-4"
+                                                                    scope="col" style="width:350px;">
+                                                                    TOTAL HARGA</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="list" id="products-table-body">
+                                                            @php
+                                                                echo $detail;
+                                                            @endphp
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <!-- Jika diperlukan, tambahkan tombol lain di sini -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @php
+                                    $detail = '';
+                                @endphp
+                            @endif
+                        @endforeach
                             <div class="tab-pane fade" id="tab-personal-info" role="tabpanel"
                                 aria-labelledby="personal-info-tab">
                                 <div class="row g-3 mb-5">

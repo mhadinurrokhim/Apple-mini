@@ -55,7 +55,7 @@ class HomeUserController extends Controller
             ],
             [
                 'jumlah.max' => "Quantity exceeds available stock",
-                'jumlah.min' => "The stock amount cannot be minus"
+                'jumlah.min' => "The stock amount cannot be less then zero"
             ]
         );
 

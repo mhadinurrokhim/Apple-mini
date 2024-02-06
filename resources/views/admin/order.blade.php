@@ -282,12 +282,12 @@
                         </div>
                         <div class="scrollbar overflow-hidden-y">
                             <div class="btn-group position-static" role="group">
-                                <div class="ms-xxl-auto">
+                                {{-- <div class="ms-xxl-auto">
                                     <button class="btn btn-link text-900 me-4 px-0"></button>
                                     <a href="{{ route('tambah.produk') }}" class="btn btn-primary" id="addBtn">
                                         <span class="fas fa-plus me-2"></span>Add order
                                     </a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
 
@@ -394,37 +394,39 @@
                                                                 <div class="modal-dialog modal-dialog-centered">
                                                                   <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                      <h5 class="modal-title">Modal title</h5>
+                                                                      <h5 class="modal-title">Input reject message</h5>
                                                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
                                                                     <form action="{{ route('order.reject', $orders->id) }}" method="POST">
                                                                         @csrf
                                                                         @method("PATCH")
                                                                         <div class="modal-body">
-                                                                            <textarea type="text" name="reject_message" rows="10" class="w-100 fs-2"></textarea>
+                                                                            <textarea class="form-control" rows="3" name="reject_message"></textarea>
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                                             <button type="submit" class="btn btn-primary">Submit</button>
                                                                         </div>
-                                                                    </form> 
+                                                                    </form>
                                                                   </div>
                                                                 </div>
                                                               </div>
                                                         @elseif ($orders->status == 'reject')
-                                                        <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#show-reject-message">Reject Message</button>
-                                                        <div class="modal" tabindex="-1" id="show-reject-message">
-                                                                <div class="modal-dialog modal-dialog-centered">
-                                                                  <div class="modal-content">
+                                                        <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#show-reject-message{{ $orders->id }}">Reject Message</button>
+                                                        <div class="modal fade" id="show-reject-message" tabindex="-1" aria-labelledby="rejectMessageModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                      <h5 class="modal-title">Modal title</h5>
-                                                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        <h5 class="modal-title" id="rejectMessageModalLabel{{ $orders->id }}">Reject Message</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">
                                                                         <div class="w-100 fs-2">{{ $orders->reject_message }}</div>
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                        <!-- Tambahkan tombol untuk menolak pesan di sini jika diperlukan -->
+                                                                        <!-- <button type="button" class="btn btn-danger">Reject</button> -->
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -460,8 +462,6 @@
                                 .hr {
                                     margin-top: -2px;
                                 }
-
-                                y
                             </style>
 
                             @php
@@ -486,7 +486,7 @@
                                             '</td><td class="text-center product align-middle ps-4">' .
                                             $orders->jumlah .
                                             '</td><td class="text-center product align-middle ps-4">' .
-                                            $orders->total .
+                                            'Rp. ' . number_format($orders->total, 0, ',', '.') .
                                             '</td></tr>';
                                         $counter += 1;
                                     @endphp
@@ -506,7 +506,7 @@
                                             '</td><td class="text-center product align-middle ps-4">' .
                                             $orders->jumlah .
                                             '</td><td class="text-center product align-middle ps-4">' .
-                                            $orders->total .
+                                            'Rp. ' . number_format($orders->total, 0, ',', '.') .
                                             '</td></tr>';
                                         $counter = 1;
                                     @endphp

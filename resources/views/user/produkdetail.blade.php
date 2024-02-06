@@ -104,29 +104,47 @@
             </div>
             </div>
             </div>
-        </section>
-        <script>
-            function addToCart() {
-                var quantityInput = document.getElementById('quantityInput');
-                var maxStock = {{ $detail->stok }};
-                var currentQuantity = parseInt(quantityInput.value);
+            <script>
+                function addToCart() {
+                    var quantityInput = document.getElementById('quantityInput');
+                    var maxStock = {{ $detail->stok }};
+                    var currentQuantity = parseInt(quantityInput.value);
 
-                if (currentQuantity <= 0) {
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: "Quantity must be greater than 0",
-                    });
-                } else if (currentQuantity >= maxStock) {
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: "You cannot add more items than the available stock",
-                    });
-                } else {
-                    quantityInput.value = currentQuantity + 1;
+                    if (currentQuantity <= 0) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Quantity must be greater than 0",
+                        });
+                        // Set input value to 1
+                        quantityInput.value = 1;
+                    } else if (currentQuantity >= maxStock) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "You cannot add more items than the available stock",
+                        });
+                        quantityInput.value = 1;
+                    } else {
+                    }
                 }
-            }
-        </script>
-    @endforeach
-@endsection
+            </script>
+            <script>
+                function increaseQuantity() {
+                    var quantityInput = document.getElementById('quantityInput');
+                    var maxStock = {{ $detail->stok }};
+                    var currentQuantity = parseInt(quantityInput.value);
+
+                    // Periksa apakah nilai melebihi batas stok
+                    if (currentQuantity >= maxStock) {
+                        // Reset nilai ke 1
+                        quantityInput.value = 0;
+                    } else {
+                        // Tambahkan nilai jika masih dalam batas stok
+                        quantityInput.value = currentQuantity + 0;
+                    }
+                }
+            </script>
+            @endforeach
+        @endsection
+        </section>

@@ -36,6 +36,7 @@ class ProfilController extends Controller
             'checkouts.status',
             'checkouts.tanggal_pengiriman',
             'checkouts.tanggal_menerima',
+            'checkouts.reject_message',
             'detail_pesanan.jumlah',
             'detail_pesanan.total',
             DB::raw('detail_pesanan.id AS detail_id'),
