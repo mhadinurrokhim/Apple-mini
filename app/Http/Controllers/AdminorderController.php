@@ -32,6 +32,7 @@ class AdminorderController extends Controller
             'checkouts.status',
             'checkouts.tanggal_pengiriman',
             'checkouts.tanggal_menerima',
+            'checkouts.reject_message',
             'detail_pesanan.jumlah',
             'detail_pesanan.total',
             DB::raw('detail_pesanan.id AS detail_id'),
@@ -96,6 +97,20 @@ class AdminorderController extends Controller
             $order = DB::table('checkouts')->where('id', $id)->update(['status' => $delivered]);
             return redirect()->route('order.side')->with("success", "Product has been marked as completed successfully.");
         }
+    }
+    public function reject(Request $request, string $id)
+    {
+        $checkout = Checkout::find($id);
+        $validated = $request->validate([
+            'reject_message' => 'required'
+        ]);
+        $reject_message = $validated['reject_message'];
+        $checkout->update([
+            'status' => 'reject',
+            'reject_message' => $reject_message
+        ]);
+
+        return redirect()->back();
     }
 
     /**

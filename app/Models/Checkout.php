@@ -12,7 +12,9 @@ class Checkout extends Model
         'user_id',
         'produk_id',
         'jumlah',
-        'total'
+        'total',
+        'status',
+        'reject_message'
     ];
     public function User()
     {

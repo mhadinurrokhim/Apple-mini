@@ -66,6 +66,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/AdminDashboard', [AdmindashboardController::class, 'index'])->name('dashboard');
     Route::get('/adminorder', [AdminorderController::class, 'index'])->name('order.side');
     Route::put('/adminorder/{id}', [AdminorderController::class, 'update'])->name('order.update');
+    Route::Patch('/adminorder/reject/{id}', [AdminorderController::class, 'reject'])->name('order.reject');
     Route::get('/getTaxData', [AdmindashboardController::class, 'getTaxData'])->name('getTaxData');
 
     Route::controller(ProdukController::class)->prefix('produk')->group(function () {
@@ -112,6 +113,7 @@ Route::middleware([UserMiddleware::class])->group(function () {
     Route::post('/bayar', [CheckoutController::class, 'bayar'])->name('bayar');
     Route::get('/diterima/{id}', [CheckoutController::class, 'diterima'])->name('diterima');
     Route::patch('/checkout-keranjang', [CheckoutController::class, 'chekoutKeranjang'])->name('checkout-keranjang');
+    Route::delete('produk-hapus/{id}', [CheckoutController::class, 'chekouthapus'])->name('checkout.hapus');
     Route::delete('produk-hapus/{id}', [CheckoutController::class, 'chekouthapus'])->name('checkout.hapus');
 
     // Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');

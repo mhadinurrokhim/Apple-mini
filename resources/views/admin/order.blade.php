@@ -363,7 +363,9 @@
                                                         @elseif($orders->status == 'delivered')
                                                             badge-phoenix-success
                                                         @elseif($orders->status == 'completed')
-                                                        badge-phoenix-success @endif
+                                                        badge-phoenix-success
+                                                        @elseif($orders->status == 'reject')
+                                                        badge-phoenix-danger @endif
                                                         ">
                                                             {{ $orders->status }}
                                                         </span>
@@ -386,6 +388,47 @@
                                                                     @endif
                                                                 </button>
                                                             </form>
+                                                            @csrf
+                                                            <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#reject-message">Reject</button>
+                                                            <div class="modal" tabindex="-1" id="reject-message">
+                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                  <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                      <h5 class="modal-title">Modal title</h5>
+                                                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <form action="{{ route('order.reject', $orders->id) }}" method="POST">
+                                                                        @csrf
+                                                                        @method("PATCH")
+                                                                        <div class="modal-body">
+                                                                            <textarea type="text" name="reject_message" rows="10" class="w-100 fs-2"></textarea>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                                                        </div>
+                                                                    </form> 
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                        @elseif ($orders->status == 'reject')
+                                                        <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#show-reject-message">Reject Message</button>
+                                                        <div class="modal" tabindex="-1" id="show-reject-message">
+                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                  <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                      <h5 class="modal-title">Modal title</h5>
+                                                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="w-100 fs-2">{{ $orders->reject_message }}</div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         @endif
                                                     </td>
                                                 </tr>
