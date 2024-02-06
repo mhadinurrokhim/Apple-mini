@@ -7,7 +7,7 @@
                 <span class="text-700 fw-normal ms-2">
                     @if ($productsInWishlist->count() > 0)
                         <span>({{ $productsInWishlist->count() }})</span>
-                    @endif
+
                 </span>
             </h2>
             <div class="border-y" id="productWishlistTable" data-list='{"valueNames":["products","color","size","price","quantity","total"],"page":5,"pagination":true}'>
@@ -64,10 +64,10 @@
                                                 <div class="d-flex align-items-center">
                                                     <div class="input-group input-group-sm flex-nowrap me-3" data-quantity="data-quantity">
                                                         <button type="button" class="btn btn-sm px-2" data-type="minus">-</button>
-                                                        <input class="form-control text-center input-spin-none bg-transparent border-0 px-0 pe-3" type="number" min="1" value="1" name="jumlah" aria-label="Amount (to the nearest dollar)" />
+                                                        <input class="form-control text-center input-spin-none bg-transparent border-0 px-0 pe-3" type="number" value="1" name="jumlah" aria-label="Amount (to the nearest dollar)" />
                                                         <button type="button" class="btn btn-sm px-2" data-type="plus">+</button>
                                                     </div>
-                                                    <button class="btn btn-primary fs--2" @if ($produk->stok <= 0) disabled @endif>
+                                                    <button type="submit" class="btn btn-primary fs--2" @if ($produk->stok <= 0) disabled @endif>
                                                         <span class="fas fa-shopping-cart me-1 fs--2"></span>Add to cart
                                                     </button>
                                                 </div>
@@ -99,6 +99,30 @@
                                     }
                                 </script> --}}
                                 @endforeach
+                                @else
+                                <div class="border-y" id="productWishlistTable" data-list='{"valueNames":["products","color","size","price","quantity","total"],"page":5,"pagination":true}'>
+                                    <div class="table-responsive scrollbar">
+                                        <table class="table fs--1 mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="sort white-space-nowrap align-middle fs--2" scope="col" style="width:7%;"></th>
+                                                    <th class="sort white-space-nowrap align-middle"
+                                                        scope="col"style="width:30%; min-width:250px;">PRODUCTS</th>
+                                                    <th class="sort align-middle text-center" scope="col" style="width:16%;">CATEGORY</th>
+                                                    <th class="sort align-middle text-center" scope="col" style="width:10%;">STOK</th>
+                                                    <th class="sort align-middle text-center" scope="col" style="width:10%;">PRICE</th>
+                                                    <th class="sort align-middle text-end pe-0" scope="col" style="width:35%;"> </th>
+                                                </tr>
+                                            </thead>
+                                <tr>
+                                    <td colspan="6" class="text-center py-4">
+                                        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 50%;">
+                                            <img src="{{ asset('assets/img/No data-amico.svg') }}" alt="" style="width: 200px; height: auto; max-width: 100%; display: block; margin: 0 auto;">
+                                            <h3 class="mb-3">Your wishlist is empty. Start adding products now!</h3>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endif
                             </tbody>
                     </table>
                 </div>
@@ -121,3 +145,5 @@
     </section>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection
+
+

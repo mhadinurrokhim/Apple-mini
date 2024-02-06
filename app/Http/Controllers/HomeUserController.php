@@ -54,7 +54,8 @@ class HomeUserController extends Controller
                 'jumlah' => 'numeric|min:1|max:' . $produk->stok
             ],
             [
-                'jumlah.max' => "Jumlah melebihi stok yang tersedia"
+                'jumlah.max' => "Quantity exceeds available stock",
+                'jumlah.min' => "The stock amount cannot be minus"
             ]
         );
 
