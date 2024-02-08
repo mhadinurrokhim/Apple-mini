@@ -72,7 +72,7 @@
       <div class="ecommerce-topbar">
         <nav class="navbar navbar-expand-lg navbar-light px-0">
           <div class="row gx-0 gy-2 w-100 flex-between-center">
-            <div class="col-auto"><a class="text-decoration-none" href="">
+            <div class="col-auto"><a class="text-decoration-none" href="#">
                 <div class="d-flex align-items-center"><img src="{{ asset('assets/storage/logo.png') }}" alt="phoenix"
                     width="27" />
                   <p class="logo-text ms-2">iVibe</p>

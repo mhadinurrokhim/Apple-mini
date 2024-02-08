@@ -1,6 +1,16 @@
 @extends('layout_user.navbar')
 @section('content')
     @include('Asset.SweetAlert')
+
+    @error('jumlah')
+        <script>
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "{{ $message  }}",
+            });
+        </script>
+    @enderror
     <section class="pt-5 pb-9">
         <div class="container-small cart">
             <h2 class="mb-5">Wishlist
@@ -60,6 +70,10 @@
                                                     <span class="fas fa-trash"></span>
                                                 </button>
                                             </form>
+                                            @php
+                                                // $stokid = $produk->id;
+                                                $order = $produk->stok;
+                                            @endphp
                                             <form action="{{ route('shop.order', $produk->id) }}" method="POST"
                                                 enctype="multipart/form-data">
                                                 @csrf
@@ -72,9 +86,9 @@
                                                             class="form-control text-center input-spin-none bg-transparent border-0 px-0 pe-3"
                                                             type="number" value="1" name="jumlah"
                                                             aria-label="Amount (to the nearest dollar)" id="quantityInput"
-                                                            onkeyup="addToCart()" />
+                                                            onkeyup="addToCart({{ $order }})" />
                                                         <button type="button" class="btn btn-sm px-2" data-type="plus"
-                                                            onclick="increaseQuantity()">+</button>
+                                                            onclick="increaseQuantity({{ $order }})">+</button>
                                                     </div>
                                                     <button type="submit" class="btn btn-primary fs--2"
                                                         @if ($produk->stok <= 0) disabled @endif>
@@ -146,44 +160,45 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @if ($productsInWishlist->count() > 0)
         <script>
-            function addToCart() {
-                var quantityInput = document.getElementById('quantityInput');
-                var maxStock = {{ $produk->stok }};
-                var currentQuantity = parseInt(quantityInput.value);
+            // function addToCart() {
+            //     var quantityInput = document.getElementById('quantityInput');
+            //     var maxStock = {{ $produk->stok }};
+            //     var currentQuantity = parseInt(quantityInput.value);
 
-                if (currentQuantity <= 0) {
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: "Quantity must be greater than 0",
-                    });
-                    // Set input value to 1
-                    quantityInput.value = 1;
-                } else if (currentQuantity >= maxStock) {
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: "You cannot add more items than the available stock",
-                    });
-                    quantityInput.value = 1;
-                } else {}
-            }
+            //     console.log(currentQuantity);
+            //     if (currentQuantity <= 0) {
+            //         Swal.fire({
+            //             icon: "error",
+            //             title: "Oops...",
+            //             text: "Quantity must be greater than 0",
+            //         });
+            //         // Set input value to 1
+            //         quantityInput.value = 1;
+            //     } else if (currentQuantity >= maxStock) {
+            //         Swal.fire({
+            //             icon: "error",
+            //             title: "Oops...",
+            //             text: "You cannot add more items than the available stock",
+            //         });
+            //         quantityInput.value = 1;
+            //     } else {}
+            // }
         </script>
         <script>
-            function increaseQuantity() {
-                var quantityInput = document.getElementById('quantityInput');
-                var maxStock = {{ $produk->stok }};
-                var currentQuantity = parseInt(quantityInput.value);
-
-                // Periksa apakah nilai melebihi batas stok
-                if (currentQuantity >= maxStock) {
-                    // Reset nilai ke 1
-                    quantityInput.value = 0;
-                } else {
-                    // Tambahkan nilai jika masih dalam batas stok
-                    quantityInput.value = currentQuantity + 0;
-                }
-            }
+            // function increaseQuantity() {
+            //     var quantityInput = document.getElementById('quantityInput');
+            //     var maxStock = {{ $produk->stok }};
+            //     var currentQuantity = parseInt(quantityInput.value);
+            //     // console.log(maxStock);
+            //     // Periksa apakah nilai melebihi batas stok
+            //     if (currentQuantity >= maxStock) {
+            //         // Reset nilai ke 1
+            //         quantityInput.value = 0;
+            //     } else {
+            //         // Tambahkan nilai jika masih dalam batas stok
+            //         quantityInput.value = currentQuantity + 0;
+            //     }
+            // }
         </script>
     @endif
 @endsection

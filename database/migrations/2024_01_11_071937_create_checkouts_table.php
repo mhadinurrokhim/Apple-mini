@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('invoice');
             $table->integer('total');
+            $table->integer('jumlah');
             $table->foreignId('user_id')->constrained('users')->restrictOnDelete();
             $table->string('metode_pembayaran')->default('');
             $table->string('metode_pengiriman')->default('');

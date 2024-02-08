@@ -63,7 +63,7 @@ class HomeUserController extends Controller
 
         if ($detailPesanan) {
             if ($detailPesanan->jumlah > $produk->stok) {
-                return redirect()->back()->withErrors('jumlah', "Jumlah melebihi stok yang tersedia");
+                return redirect()->back()->withErrors('jumlah', "You cannot add more items than the available stock");
             } else {
                 $detailPesanan->jumlah += $request->jumlah;
                 $detailPesanan->total = $produk->harga * $request->jumlah;

@@ -303,8 +303,8 @@
             <ul class="nav nav-links mb-3 mb-lg-2 mx-n3">
                 <li class="nav-item">
                     <p class="nav-link active my-n2" aria-current="page"><span>All </span><span class="text-700 fw-semi-bold">
-                            @if ($kategori->count() > 0)
-                                <span>({{ $kategori->count() }})</span>
+                            @if ($pengiriman->count() > 0)
+                                <span>({{ $pengiriman->count() }})</span>
                             @endif
                         </span></p>
                 </li>
@@ -320,7 +320,7 @@
                                 <span class="fas fa-search search-box-icon"></span>
                             </form>
                         </div>
-                        <div class="ms-xxl-auto"><a href="{{ route('kategori.create') }}"><button class="btn btn-primary"
+                        <div class="ms-xxl-auto"><a href="{{ route('pengiriman.create') }}"><button class="btn btn-primary"
                                     id="addBtn"><span class="fas fa-plus me-2"></span>Add category</button></a></div>
                     </div>
                 </div>
@@ -334,19 +334,19 @@
                                         <span>NO</span>
                                     </th>
                                     <th class="sort text-center white-space-nowrap align-middle ps-4" scope="col"
-                                        style="width:70%;">CATEGORY NAME</th>
+                                        style="width:70%;">SHIPPING METHOD</th>
 
                                     <th class="sort text-end align-middle pe-0 ps-4" scope="col" style="width: 20%">
                                         ACTION</th>
                                 </tr>
                             </thead>
                             <tbody class="list" id="products-table-body">
-                                @if ($kategori->count() > 0)
-                                    @foreach ($kategori as $kategoris)
+                                @if ($pengiriman->count() > 0)
+                                    @foreach ($pengiriman as $pengirimans)
                                         <tr class="position-static">
                                             <td class="fs--1 align-middle"><span>{{ $loop->iteration }}</span></td>
                                             <td class="text-center category align-middle ps-4">
-                                                <span></span>{{ $kategoris->nama_kategori }}
+                                                <span></span>{{ $pengirimans->nama_kurir }}
                                             </td>
                                             <td
                                                 class="align-middle white-space-nowrap text-end pe-0 ps-4 btn-reveal-trigger">
@@ -358,11 +358,11 @@
                                                             class="fas fa-ellipsis-h fs--2"></span></button>
                                                     <div class="dropdown-menu dropdown-menu-end py-2"><a
                                                             class="dropdown-item"
-                                                            href="{{ route('kategori.edit', $kategoris->id) }}">Edit</a>
+                                                            href="{{ route('pengiriman.edit', $pengirimans->id) }}">Edit</a>
                                                         <div class="dropdown-divider"></div>
                                                         {{-- <button type="submit" class="dropdown-item text-danger hapus"
-                                                            href="{{ route('kategori.destroy', $kategoris->id) }}">Remove</button> --}}
-                                                        <form action="{{ route('kategori.destroy', $kategoris->id) }}" method="POST" class="hapus-form">
+                                                            href="{{ route('pengiriman.destroy', $pengirimans->id) }}">Remove</button> --}}
+                                                        <form action="{{ route('pengiriman.destroy', $pengirimans->id) }}" method="POST" class="hapus-form">
                                                             @csrf
                                                             @method('delete')
                                                             <button type="button" class="dropdown-item text-danger hapus">

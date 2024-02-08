@@ -130,15 +130,6 @@
                                 <div class="d-flex flex-between-center mb-3">
                                     <h3 class="card-title mb-0">Summary</h3>
                                 </div>
-                                {{-- <select class="form-select mb-3 @error('metode_pembayaran') is-invalid @enderror"
-                                    name="metode_pembayaran" value="{{ old('metode_pembayaran') }}"
-                                    aria-label="delivery type">
-                                    <option value="">Select payment metode</option>
-                                    @foreach ($pembayaran as $pembayarans)
-                                        <option value="{{ $pembayarans->id }}">{{ $pembayarans->metode_pembayaran }}
-                                        </option>
-                                    @endforeach
-                                </select> --}}
                                 <div>
                                     <div class="d-flex justify-content-between">
                                         <p class="text-900 fw-semi-bold">Total Quantity :</p>

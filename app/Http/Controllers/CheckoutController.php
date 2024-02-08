@@ -14,6 +14,7 @@ use App\Models\Pembayaran;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Detailpesanan;
+use App\Models\Metodepengiriman;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -159,12 +160,13 @@ class CheckoutController extends Controller
             return redirect()->route('profil');
         }else {
             $payments = Pembayaran::all();
+            $pengiriman = Metodepengiriman::all();
             $bank = Pembayaran::where('metode_pembayaran', 'bank')->get();
             $wallet = Pembayaran::where('metode_pembayaran', 'e-wallet')->get();
             $totalpesanan = Detailpesanan::where('status', 'keranjang')->get()->count();
             $items = DetailPesanan::where('status', 'checkout')->where('user_id', $user->id)->get();
     // dd($items);
-            return view('user.checkout', compact('items', 'user', 'totalpesanan', 'wallet', 'bank'));
+            return view('user.checkout', compact('items', 'user', 'totalpesanan', 'wallet', 'bank', 'pengiriman'));
         }
     }
 
@@ -205,6 +207,17 @@ class CheckoutController extends Controller
         // dd($detailpesanan);
         $buktipembayaran = Str::random(10) . '.' .  $file->getClientOriginalExtension();
         $file->storeAs('public/invoice', $buktipembayaran);
+
+        $order = DB::table('detail_pesanan')
+        ->select(
+            'detail_pesanan.jumlah',
+            )
+        ->whereIn('detail_pesanan.id', $detailpesanan)->get();
+        $jumlah = 0;
+        foreach ($order as $value) {
+            $jumlah += $value->jumlah;
+        }
+        // dd($order);
         $checkout = new Checkout;
         $checkout->metode_pembayaran = $metodepembayaran;
         $checkout->metode_pengiriman = $metodepengiriman;
@@ -212,8 +225,10 @@ class CheckoutController extends Controller
         $checkout->total = $totalcheckout;
         $checkout->status = 'pending';
         $checkout->user_id = auth()->user()->id;
+        $checkout->jumlah = $jumlah;
         $checkout->save();
 
+        // dd($checkout);
         foreach ($detailpesanan as $value) {
             Detailpesanan::findOrFail($value)->update(['checkout_id' => $checkout->id, 'status' => 'pay']);
         }

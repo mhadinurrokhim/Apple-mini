@@ -12,6 +12,10 @@
             -moz-appearance: textfield;
             appearance: textfield;
         }
+
+        ::-webkit-scrollbar {
+        display: none;
+        }
     </style>
     <form action="{{ route('profil.update', ['id' => $user->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -148,43 +152,43 @@
                                     <div class="table-responsive scrollbar">
                                         <table class="table fs--1 mb-0">
                                             <thead>
-                                                <tr>
-                                                    <th class="sort white-space-nowrap align-middle text-center pe-3 ps-0"
-                                                        scope="col" style="width:15%; min-width:140px">NO</th>
-                                                    <th class="sort white-space-nowrap align-middle text-center pe-3 ps-0"
+                                                <tr class="">
+                                                    <th class="sort white-space-nowrap align-middle text-center  "
+                                                        scope="col" style="width:15%; min-width:120px">NO</th>
+                                                    <th class="sort white-space-nowrap align-middle text-center  "
                                                         scope="col" style="width:15%; min-width:140px">MY ORDER</th>
-                                                    <th class="sort align-middle pe-0 text-center" scope="col"
+                                                    <th class="sort align-middle  text-center" scope="col"
                                                         style="width:15%; min-width:180px">STATUS</th>
                                                     <th class="sort align-middle text-center" scope="col"
                                                         style="width:20%; min-width:160px">DELIVERY METHOD</th>
-                                                    <th class="sort align-middle pe-0 text-center" scope="col"
+                                                    <th class="sort align-middle  text-center" scope="col"
                                                         style="width:15%; min-width:160px">SHIPPED DATE</th>
-                                                    <th class="sort align-middle pe-0 text-center" scope="col"
+                                                    <th class="sort align-middle  text-center" scope="col"
                                                         style="width:15%; min-width:160px">RECEIVED DATE</th>
                                                     <th class="sort align-middle text-center" scope="col"
                                                         style="width:15%; min-width:160px">TOTAL</th>
-                                                    <th class="align-middle pe-5 text-center" scope="col"
+                                                    <th class="align-middle text-center" scope="col"
                                                         style="width:15%;">ACTION</th>
                                                 </tr>
                                             </thead>
-                                            <tbody class="list" id="profile-order-table-body">
+                                            <tbody class="list" id="profile-order-table-body text-center">
                                                 @if ($order->count() > 0)
                                                     @php
-                                                        $detail_pesananid = 0;
+                                                        $checkout_id = 0;
                                                         $no = 0;
                                                         $totalproduktiappesanan = [];
                                                     @endphp
                                                     @foreach ($order as $orders)
-                                                        @if ($orders->id != $detail_pesananid)
+                                                        @if ($orders->id != $checkout_id)
                                                             @php
-                                                                $detail_pesananid = $orders->id;
+                                                                $checkout_id = $orders->id;
                                                                 $no += 1;
                                                                 $totalproduktiappesanan[$orders->id] = 1;
                                                             @endphp
                                                             <tr class="position-static text-center">
-                                                                <td class="align-middle review fs-0 text-center ps-4">
+                                                                <td class="align-middle review fs-0 mx-auto text-center">
                                                                     {{ $no }}</td>
-                                                                <td class="align-middle review fs-0 text-center ps-0">
+                                                                <td class="align-middle review fs-0 text-center mx-auto">
                                                                     <button type="button" class="btn btn-link primary"
                                                                         data-bs-toggle="modal"
                                                                         data-bs-target="#productDetailModal{{ $orders->id }}">
@@ -219,11 +223,11 @@
                                                                     <span
                                                                         class="fw-semi-bold fs--1 line-clamp-3 mb-0">{{ is_null($orders->tanggal_menerima) ? '-' : date('d F Y', strtotime($orders->tanggal_menerima)) }}</span>
                                                                 </td>
-                                                                <td class="produks align-middle ps-4">
+                                                                <td class="produks align-middle">
                                                                     <span class="fw-semi-bold fs--1 line-clamp-3 mb-0">Rp.
                                                                         {{ number_format($orders->total, 0, ',', '.') }}</span>
                                                                 </td>
-                                                                <td class="produks align-middle ps-4">
+                                                                <td class="produks align-middle ">
                                                                     @if ($orders->status == 'shipped')
                                                                         {{-- <form action="{{ route('diterima', $orders->id) }}">
                                                                             @csrf
@@ -259,6 +263,10 @@
                                                                     @endif
                                                                 </td>
                                                             </tr>
+                                                        @else
+                                                        @php
+                                                            $totalproduktiappesanan[$orders->id] += 1;
+                                                        @endphp
                                                         @endif
                                                     @endforeach
                                                 @endif
@@ -288,6 +296,7 @@
                             @php
                             $detail = '';
                             $counter = 1;
+                            // print_r($totalproduktiappesanan);
                         @endphp
 
                         @foreach ($order as $orders)
@@ -307,7 +316,7 @@
                                         '</td><td class="text-center product align-middle ps-4">' .
                                         $orders->jumlah .
                                         '</td><td class="text-center product align-middle ps-4">' .
-                                        'Rp. ' . number_format($orders->total, 0, ',', '.') .
+                                        'Rp. ' . number_format($orders->detail_total, 0, ',', '.') .
                                         '</td></tr>';
                                     $counter += 1;
                                 @endphp
@@ -327,7 +336,7 @@
                                         '</td><td class="text-center product align-middle ps-4">' .
                                         $orders->jumlah .
                                         '</td><td class="text-center product align-middle ps-4">' .
-                                        'Rp. ' . number_format($orders->total, 0, ',', '.') .
+                                        'Rp. ' . number_format($orders->detail_total, 0, ',', '.') .
                                         '</td></tr>';
                                     $counter = 1;
                                 @endphp

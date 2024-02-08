@@ -38,7 +38,7 @@ class ProfilController extends Controller
             'checkouts.tanggal_menerima',
             'checkouts.reject_message',
             'detail_pesanan.jumlah',
-            'detail_pesanan.total',
+            DB::raw('detail_pesanan.total AS detail_total'),
             DB::raw('detail_pesanan.id AS detail_id'),
             DB::raw('users.id AS user_id'),
             'users.name',
@@ -50,8 +50,9 @@ class ProfilController extends Controller
             'produk.harga',
             )
         ->where('detail_pesanan.user_id', $user->id)
-        ->orderBy('checkouts.status','asc')->get();
-        // dd($user);
+        ->orderBy('checkouts.status','asc')
+        ->orderBy('checkouts.updated_at','desc')->get();
+        // dd($order);
         return view('user.profil',compact('user', 'totalpesanan', 'order', 'lastorder', 'totalpembayaran', 'totalorder'));
     }
 

@@ -6,6 +6,25 @@
 @endsection
 @section('content')
     @include('Asset.SweetAlert')
+    <style>
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+
+        ::-webkit-scrollbar {
+        display: none;
+
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        }
+    </style>
     <div class="modal fade" id="searchBoxModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="true"
         data-phoenix-modal="data-phoenix-modal" style="--phoenix-backdrop-opacity: 1;">
         <div class="modal-dialog">

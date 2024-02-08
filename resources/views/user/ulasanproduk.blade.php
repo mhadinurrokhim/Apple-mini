@@ -138,8 +138,8 @@
                             </div>
                         </div>
 
-                        <div><button class="btn btn-lg btn-primary w-100 fs--1 fs-sm-0" onclick="goBack()"><span
-                                    class="fas fa-arrow-left me-2"></span>Kembali</button>
+                        <div><a href="{{ route('produk.detail', $produk->id) }}" class="btn btn-lg btn-primary w-100 fs--1 fs-sm-0" ><span
+                                    class="fas fa-arrow-left me-2"></span>Kembali</a>
                             <script>
                                 function goBack() {
                                     window.history.back();

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PengirimanController;
 use App\Models\Adminorder;
 use App\Http\Controllers\Homeuser;
 use Illuminate\Support\Facades\Auth;
@@ -92,6 +93,14 @@ Route::middleware([AdminMiddleware::class])->group(function () {
         Route::get('edit/{id}', 'edit')->name('pembayaran.edit');
         Route::put('edit/{id}', 'update')->name('pembayaran.update');
         Route::delete('destroy/{id}', 'destroy')->name('pembayaran.destroy');
+    });
+    Route::controller(PengirimanController::class)->prefix('pengiriman')->group(function () {
+        Route::get('', 'index')->name('pengiriman');
+        Route::get('create', 'create')->name('pengiriman.create');
+        Route::post('store', 'store')->name('pengiriman.store');
+        Route::get('edit/{id}', 'edit')->name('pengiriman.edit');
+        Route::put('edit/{id}', 'update')->name('pengiriman.update');
+        Route::delete('destroy/{id}', 'destroy')->name('pengiriman.destroy');
     });
 });
 

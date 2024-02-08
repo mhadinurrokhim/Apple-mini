@@ -2,6 +2,22 @@
 
 @section('content')
     @include('Asset.SweetAlert')
+    <style>
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+
+        ::-webkit-scrollbar {
+        display: none;
+        }
+    </style>
     <div class="modal fade" id="searchBoxModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="true"
         data-phoenix-modal="data-phoenix-modal" style="--phoenix-backdrop-opacity: 1;">
         <div class="modal-dialog">
@@ -309,6 +325,10 @@
                                         <th class="white-space-nowrap align-middle fs--1 ps-4 text-dark"
                                             style="width:150px;" data-sort="status">STATUS</th>
                                         <th class="white-space-nowrap align-middle fs--1 ps-4 text-dark"
+                                            style="width:150px;" data-sort="status">TOTAL</th>
+                                        <th class="white-space-nowrap align-middle fs--1 ps-4 text-dark"
+                                            style="width:150px;" data-sort="status">ORDER TOTAL</th>
+                                        <th class="white-space-nowrap align-middle fs--1 ps-4 text-dark"
                                             style="width:50px;" data-sort="action">ACTION</th>
                                     </tr>
                                 </thead>
@@ -370,6 +390,14 @@
                                                             {{ $orders->status }}
                                                         </span>
                                                     </td>
+                                                    <td class="align-middle white-space-nowrap py-0">
+                                                        <span
+                                                            class="fw-semi-bold fs--1 line-clamp-3 mb-0">Rp. {{ number_format($orders->total, 0, ',', '.') }}</span>
+                                                    </td>
+                                                    <td class="align-middle white-space-nowrap py-0">
+                                                        <span
+                                                            class="fw-semi-bold fs--1 line-clamp-3 mb-0">{{ $orders->jumlah_order }}</span>
+                                                    </td>
                                                     <td class="tags align-middle review pb-2 ps-3 fs--1"
                                                         style="width: 200px;">
                                                         @if ($orders->status == 'pending' or $orders->status == 'delivered')
@@ -389,7 +417,9 @@
                                                                 </button>
                                                             </form>
                                                             @csrf
+                                                            @if ($orders->status == 'pending')
                                                             <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#reject-message">Reject</button>
+                                                            @endif
                                                             <div class="modal" tabindex="-1" id="reject-message">
                                                                 <div class="modal-dialog modal-dialog-centered">
                                                                   <div class="modal-content">
@@ -417,7 +447,7 @@
                                                             <div class="modal-dialog modal-dialog-centered">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title" id="rejectMessageModalLabel{{ $orders->id }}">Reject Message</h5>
+                                                                        <h5 class="modal-title" id="rejectMessageModalLabel">Reject Message</h5>
                                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">
@@ -486,7 +516,7 @@
                                             '</td><td class="text-center product align-middle ps-4">' .
                                             $orders->jumlah .
                                             '</td><td class="text-center product align-middle ps-4">' .
-                                            'Rp. ' . number_format($orders->total, 0, ',', '.') .
+                                            'Rp. ' . number_format($orders->detail_total, 0, ',', '.') .
                                             '</td></tr>';
                                         $counter += 1;
                                     @endphp
@@ -506,7 +536,7 @@
                                             '</td><td class="text-center product align-middle ps-4">' .
                                             $orders->jumlah .
                                             '</td><td class="text-center product align-middle ps-4">' .
-                                            'Rp. ' . number_format($orders->total, 0, ',', '.') .
+                                            'Rp. ' . number_format($orders->detail_total, 0, ',', '.') .
                                             '</td></tr>';
                                         $counter = 1;
                                     @endphp
@@ -632,8 +662,5 @@
                             @endforeach
                             @endif
                         </div>
-                        {{-- @php
-                            print_r($totalproduktiappesanan);
-                        @endphp --}}
                     </div>
                 @endsection
