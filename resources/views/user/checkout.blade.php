@@ -76,11 +76,12 @@
                                     @error('metode_pembayaran')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
-                                    <div class="mb-3" id="ewalletInput" style="display: none;">
+                                    <div class="mb-3" id="ewalletInput" style="
+                                    @error('tujuan_ewallet') block @else none; @enderror">
                                         <div>
                                             <p class="text-bold">Type QR</p>
                                         </div>
-                                        <select name="tujuan_ewallet" id="tujuan_ewallet" class="form-control">
+                                        <select name="tujuan_ewallet" id="tujuan_ewallet" class="form-control @error('tujuan_ewallet') is-invalid @enderror">
                                             <option value="" disabled selected>Choose</option>
                                             @forelse ($wallet as $data)
                                                 <option value="{{ $data->tujuan }}" data-foto="{{ $data->keterangan }}">
@@ -89,6 +90,9 @@
                                                 <option value="" disabled selected>No Data E-wallet</option>
                                             @endforelse
                                         </select>
+                                        @error('tujuan_ewallet')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
 
                                         <div class="mt-3">
                                             <p class="text-bold">Kode QR</p>

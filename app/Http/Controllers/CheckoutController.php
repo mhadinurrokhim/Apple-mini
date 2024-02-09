@@ -190,9 +190,11 @@ class CheckoutController extends Controller
             'metode_pembayaran' => 'required|string',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'metode_pengiriman' => 'required|string',
+            'tujuan_ewallet' => 'required',
         ], [
             'metode_pembayaran.required' => 'The payment method field is required.',
             'foto.required' => 'The photo field is required.',
+            'tujuan_ewallet.required' => 'The Type QR field is required.',
             'foto.image' => 'The photo must be an image.',
             'foto.mimes' => 'The photo must be a file of type: jpeg, png, jpg, gif.',
             'foto.max' => 'The photo may not be greater than 2048 kilobytes.',
