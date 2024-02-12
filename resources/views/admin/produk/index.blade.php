@@ -159,7 +159,7 @@
                                             style="width:350px;" data-sort="path_produk">IMAGE</th>
                                         <th class="white-space-nowrap align-middle ps-4 fs--1 text-dark"
                                             style="width:350px;" data-sort="path_nama">PRODUCT NAME</th>
-                                        <th class="white-space-nowrap align-middle text-end fs--1 ps-4 text-dark"
+                                        <th class="white-space-nowrap align-middle text-center fs--1 ps-4 text-dark"
                                             style="width:150px;" data-sort="harga">PRICE</th>
                                         <th class="white-space-nowrap align-middle fs--1 ps-4 text-dark"
                                             style="width:150px;" data-sort="categori">CATEGORY</th>
@@ -179,7 +179,7 @@
                                             </td>
                                             <td class="align-middle white-space-nowrap mx-auto text-center py-0">
                                                 <img src="{{ asset('storage/Product/' . $produks->path_produk) }}"
-                                                    alt="" width="50%" height="50" style="object-fit: cover"
+                                                    alt="" width="50%" height="50" style="object-fit: cover; min-width: 50px;"
                                                     class="mx-auto" />
                                             </td>
                                             <td class="category ellipsis-text col-1">

@@ -86,7 +86,7 @@
         ::-webkit-scrollbar {
         display: none;
         }
-  </style>
+</style>
 
 
 <body>

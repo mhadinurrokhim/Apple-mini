@@ -246,7 +246,6 @@
   <div class="content">
     <nav class="mb-2" aria-label="breadcrumb">
     </nav>
-    {{-- {{ EDIT }} --}}
     <form action="{{ route('produk.update', $produk->id) }}"method="POST" enctype="multipart/form-data">
       @csrf
       @method('PUT')
@@ -260,16 +259,6 @@
               data-tinymce='{"height":"15rem","placeholder":"Write a description here...","plugins": "nonbreaking"}'>{{ old('description', $produk->deskripsi) }}</textarea>
           </div>
           <h4 class="mb-3">Display images</h4>
-          {{-- <div>
-            @if($produk->path_produk)
-                <img src="{{ asset('storage/product/' . $produk->path_produk) }}" alt="Product Image" width="100" height="100">
-            @else
-            @endif
-            <br><br>
-            <div>
-                <input type="file" name="path_produk" id="path_produk" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
-            </div>
-        </div> --}}
         <div class="mb-3">
             <div id="imagePreview" class="mt-2"></div>
             <input type="file" name="path_produk" id="imageInput" class="form-control"

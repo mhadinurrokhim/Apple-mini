@@ -352,7 +352,7 @@
                                                     <td class="align-middle review fs-0 text-center ps-4">
                                                         <img src="{{ asset('storage/Invoice/' . $orders->invoice) }}"
                                                             alt="" width="50%" height="50"
-                                                            style="object-fit: cover" class="mx-auto" />
+                                                            style="object-fit: cover; min-width: 50px;" class="mx-auto" />
                                                     </td>
                                                     <td class="align-middle white-space-nowrap mx-auto py-0">
                                                         <button type="button" class="btn btn-link primary"
@@ -420,27 +420,28 @@
                                                             @if ($orders->status == 'pending')
                                                             <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#reject-message">Reject</button>
                                                             @endif
-                                                            <div class="modal" tabindex="-1" id="reject-message">
+                                                            <div class="modal fade" tabindex="-1" id="reject-message">
                                                                 <div class="modal-dialog modal-dialog-centered">
-                                                                  <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                      <h5 class="modal-title">Input reject message</h5>
-                                                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title">Input reject message</h5>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <form action="{{ route('order.reject', $orders->id) }}" method="POST">
+                                                                            @csrf
+                                                                            @method("PATCH")
+                                                                            <div class="modal-body">
+                                                                                <textarea class="form-control" rows="3" name="reject_message"></textarea>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                                            </div>
+                                                                        </form>
                                                                     </div>
-                                                                    <form action="{{ route('order.reject', $orders->id) }}" method="POST">
-                                                                        @csrf
-                                                                        @method("PATCH")
-                                                                        <div class="modal-body">
-                                                                            <textarea class="form-control" rows="3" name="reject_message"></textarea>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                                                        </div>
-                                                                    </form>
-                                                                  </div>
                                                                 </div>
-                                                              </div>
+                                                            </div>
+
                                                         @elseif ($orders->status == 'reject')
                                                         <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#show-reject-message{{ $orders->id }}">Reject Message</button>
                                                         <div class="modal fade" id="show-reject-message{{ $orders->id }}" tabindex="-1" aria-labelledby="rejectMessageModalLabel" aria-hidden="true">
@@ -663,4 +664,18 @@
                             @endif
                         </div>
                     </div>
+                    <script>
+                        document.querySelectorAll('.form-check-input').forEach(function(starInput) {
+                            starInput.addEventListener('change', function() {
+                                // Ambil nilai rating yang dipilih
+                                let rating = this.value;
+
+                                // Lakukan sesuatu dengan nilai rating, misalnya kirim ke controller menggunakan AJAX
+                                console.log('Rating yang dipilih:', rating);
+
+                                // Selain console.log di atas, Anda bisa melakukan sesuatu yang sesuai dengan kebutuhan aplikasi Anda
+                            });
+                        });
+                    </script>
+
                 @endsection
