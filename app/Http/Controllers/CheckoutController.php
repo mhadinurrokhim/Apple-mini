@@ -186,20 +186,27 @@ class CheckoutController extends Controller
 
     public function bayar(Request $request)
     {
-        $request->validate([
+        $rules = [
             'metode_pembayaran' => 'required|string',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'metode_pengiriman' => 'required|string',
-            'tujuan_ewallet' => 'required',
-        ], [
+        ];
+        $message = [
             'metode_pembayaran.required' => 'The payment method field is required.',
             'foto.required' => 'The photo field is required.',
-            'tujuan_ewallet.required' => 'The Type QR field is required.',
             'foto.image' => 'The photo must be an image.',
             'foto.mimes' => 'The photo must be a file of type: jpeg, png, jpg, gif.',
             'foto.max' => 'The photo may not be greater than 2048 kilobytes.',
             'metode_pengiriman.required' => 'The shipping method field is required.',
-        ]);
+        ];
+
+        if($request->metode_pembayaran == 'bank') {
+            $rules['tujuan_bank'] = 'required';
+        } else if($request->metode_pembayaran == 'e-wallet') {
+            $rules['tujuan_ewallet'] = 'required';
+        }
+
+        $request->validate($rules, $message);
 
         $totalcheckout = $request->total;
         $detailpesanan = $request->detail_pesanan;

@@ -76,8 +76,7 @@
                                     @error('metode_pembayaran')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
-                                    <div class="mb-3" id="ewalletInput" style="
-                                    @error('tujuan_ewallet') block @else none; @enderror">
+                                    <div class="mb-3" id="ewalletInput" style="display: @error('tujuan_ewallet') block @else none @enderror;">
                                         <div>
                                             <p class="text-bold">Type QR</p>
                                         </div>
@@ -105,11 +104,11 @@
                                         </p>
                                     </div>
 
-                                    <div class="mb-3" id="bankInput" style="display: none;">
+                                    <div class="mb-3" id="bankInput" style="display: @error('tujuan_bank') block @else none @enderror;">
                                         <div>
                                             <p class="text-bold">Choose Bank</p>
                                         </div>
-                                        <select name="tujuan_bank" id="tujuan_bank" class="form-control">
+                                        <select name="tujuan_bank" id="tujuan_bank" class="form-control @error('tujuan_bank') is-invalid @enderror">
                                             <option value="" disabled selected>Choose</option>
                                             @forelse ($bank as $data)
                                                 <option value="{{ $data->tujuan }}" data="{{ $data->keterangan }}">
@@ -118,6 +117,9 @@
                                                 <option value=""disabled selected>No account number available</option>
                                             @endforelse
                                         </select>
+                                        @error('tujuan_bank')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                         <div class="mt-3">
                                             <p class="text-bold">No Rekening</p>
                                         </div>
