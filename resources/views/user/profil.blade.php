@@ -42,11 +42,11 @@
                                                 accept="image/*" onchange="previewImage()" />
                                             <label class="cursor-pointer avatar avatar-5xl" for="avatarFile">
                                                 @if ($user->profile)
-                                                    <img class="rounded-circle" id="avatarPreview"
+                                                    <img class="rounded-circle" id="avatarprofilPreview"
                                                         src="{{ asset('storage/' . $user->profile) }}" alt="" />
                                                 @else
                                                     <!-- Tampilkan foto default jika tidak ada foto profil -->
-                                                    <img class="rounded-circle" id="avatarPreview"
+                                                    <img class="rounded-circle" id="avatarprofilPreview"
                                                         src="{{ asset('assets/storage/apple.jpg') }}"
                                                         alt="Default Avatar" />
                                                 @endif
@@ -436,6 +436,7 @@
     function previewImage() {
         var input = document.getElementById('avatarFile');
         var preview = document.getElementById('avatarPreview');
+        var avatarpreview = document.getElementById('avatarprofilPreview');
 
         if (input.files.length > 0) {
             var file = input.files[0];
@@ -443,6 +444,7 @@
 
             reader.onloadend = function() {
                 preview.src = reader.result;
+                avatarpreview.src = reader.result;
             }
 
             reader.readAsDataURL(file);

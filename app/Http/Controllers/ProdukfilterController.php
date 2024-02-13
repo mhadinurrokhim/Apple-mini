@@ -62,10 +62,10 @@ class ProdukfilterController extends Controller
             $maxPrice = null;
         }
 
-        // Tambahkan filter untuk rating
-        if (!empty($rating)) {
-            $query->havingRaw('avg(rating) >= ?', [$rating]);
-        }
+        // // Tambahkan filter untuk rating
+        // if (!empty($rating)) {
+        //     $query->havingRaw('avg(rating) >= ?', [$rating]);
+        // }
 
         // Eksekusi query untuk mendapatkan hasil filter
         $produk = $query->get();

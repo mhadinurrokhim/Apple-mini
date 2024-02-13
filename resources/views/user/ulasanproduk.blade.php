@@ -72,17 +72,17 @@
                                     <form method="POST" action="{{ route('ulasanproduk.store') }}">
                                         @csrf
                                         <div class="mb-3">
-                                            <div class="rating">
+                                            <div class="rating" style="transform: rotate(180deg)">
                                                 <input type="radio" name="rating" id="star5" value="5">
-                                                <label for="star5">&#9733;</label>
+                                                <label for="star5" style="rotate: 35deg">&#9733;</label>
                                                 <input type="radio" name="rating" id="star4" value="4">
-                                                <label for="star4">&#9733;</label>
+                                                <label for="star4" style="rotate: 35deg">&#9733;</label>
                                                 <input type="radio" name="rating" id="star3" value="3">
-                                                <label for="star3">&#9733;</label>
+                                                <label for="star3" style="rotate: 35deg">&#9733;</label>
                                                 <input type="radio" name="rating" id="star2" value="2">
-                                                <label for="star2">&#9733;</label>
+                                                <label for="star2" style="rotate: 35deg">&#9733;</label>
                                                 <input type="radio" name="rating" id="star1" value="1">
-                                                <label for="star1">&#9733;</label>
+                                                <label for="star1" style="rotate: 35deg">&#9733;</label>
                                             </div>
 
                                             <script>

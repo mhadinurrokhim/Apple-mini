@@ -142,7 +142,7 @@
                             @endphp
                             @foreach ($produk as $pf)
                                 <div class="col-12 col-xl-4 mt-2">
-                                    <div class="card mr-3">
+                                    <div class="card mr-3" style="height: 450px">
                                         <div class="position-relative text-decoration-none product-card h-100">
                                             <div class="d-flex flex-column justify-content-between h-100">
                                                 <div>
